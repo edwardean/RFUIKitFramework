@@ -38,4 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import <UIKit/UIKit.h>
+#import "RFUIKeyboardCenter.h"
+#import "RFUIKeyboardLayoutView.h"
+#import "RFUISplitBackgoundView.h"
+#import "RFUITextField.h"

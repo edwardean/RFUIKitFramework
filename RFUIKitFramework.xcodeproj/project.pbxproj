@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301A2531159F2B7C00B906C6 /* RFUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2530159F2B7C00B906C6 /* RFUITextField.m */; };
+		301A2540159F2BA900B906C6 /* REExtendedUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2535159F2BA900B906C6 /* REExtendedUIKit.m */; };
+		301A2541159F2BA900B906C6 /* REUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2537159F2BA900B906C6 /* REUIColor.m */; };
+		301A2542159F2BA900B906C6 /* REUIGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2539159F2BA900B906C6 /* REUIGeometry.m */; };
+		301A2543159F2BA900B906C6 /* REUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253B159F2BA900B906C6 /* REUILabel.m */; };
+		301A2544159F2BA900B906C6 /* REUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253D159F2BA900B906C6 /* REUIScrollView.m */; };
+		301A2545159F2BA900B906C6 /* REUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253F159F2BA900B906C6 /* REUIView.m */; };
+		30682A62159A477900D050CA /* RFUIKeyboardCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */; };
+		30682A63159A477900D050CA /* RFUIKeyboardLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30682A61159A477900D050CA /* RFUIKeyboardLayoutView.m */; };
+		30972E26159B1BCE005D9B17 /* RFUISplitBackgoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */; };
 		30E21AF51599B76C00DDE278 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF41599B76C00DDE278 /* UIKit.framework */; };
 		30E21AF71599B76C00DDE278 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF61599B76C00DDE278 /* Foundation.framework */; };
 		30E21AF91599B76C00DDE278 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF81599B76C00DDE278 /* CoreGraphics.framework */; };
@@ -17,6 +27,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301A252F159F2B7C00B906C6 /* RFUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUITextField.h; sourceTree = "<group>"; };
+		301A2530159F2B7C00B906C6 /* RFUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITextField.m; sourceTree = "<group>"; };
+		301A2534159F2BA900B906C6 /* REExtendedUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REExtendedUIKit.h; sourceTree = "<group>"; };
+		301A2535159F2BA900B906C6 /* REExtendedUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REExtendedUIKit.m; sourceTree = "<group>"; };
+		301A2536159F2BA900B906C6 /* REUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIColor.h; sourceTree = "<group>"; };
+		301A2537159F2BA900B906C6 /* REUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIColor.m; sourceTree = "<group>"; };
+		301A2538159F2BA900B906C6 /* REUIGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIGeometry.h; sourceTree = "<group>"; };
+		301A2539159F2BA900B906C6 /* REUIGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIGeometry.m; sourceTree = "<group>"; };
+		301A253A159F2BA900B906C6 /* REUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUILabel.h; sourceTree = "<group>"; };
+		301A253B159F2BA900B906C6 /* REUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUILabel.m; sourceTree = "<group>"; };
+		301A253C159F2BA900B906C6 /* REUIScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIScrollView.h; sourceTree = "<group>"; };
+		301A253D159F2BA900B906C6 /* REUIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIScrollView.m; sourceTree = "<group>"; };
+		301A253E159F2BA900B906C6 /* REUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIView.h; sourceTree = "<group>"; };
+		301A253F159F2BA900B906C6 /* REUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIView.m; sourceTree = "<group>"; };
+		30682A5E159A477900D050CA /* RFUIKeyboardCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIKeyboardCenter.h; sourceTree = "<group>"; };
+		30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIKeyboardCenter.m; sourceTree = "<group>"; };
+		30682A60159A477900D050CA /* RFUIKeyboardLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIKeyboardLayoutView.h; sourceTree = "<group>"; };
+		30682A61159A477900D050CA /* RFUIKeyboardLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIKeyboardLayoutView.m; sourceTree = "<group>"; };
+		30972E24159B1BCE005D9B17 /* RFUISplitBackgoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUISplitBackgoundView.h; sourceTree = "<group>"; };
+		30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUISplitBackgoundView.m; sourceTree = "<group>"; };
 		30E21AF01599B76C00DDE278 /* RFUIKitFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIKitFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E21AF41599B76C00DDE278 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30E21AF61599B76C00DDE278 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -46,6 +76,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		301A2533159F2BA900B906C6 /* REExtendedUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				301A2534159F2BA900B906C6 /* REExtendedUIKit.h */,
+				301A2535159F2BA900B906C6 /* REExtendedUIKit.m */,
+				301A2536159F2BA900B906C6 /* REUIColor.h */,
+				301A2537159F2BA900B906C6 /* REUIColor.m */,
+				301A2538159F2BA900B906C6 /* REUIGeometry.h */,
+				301A2539159F2BA900B906C6 /* REUIGeometry.m */,
+				301A253A159F2BA900B906C6 /* REUILabel.h */,
+				301A253B159F2BA900B906C6 /* REUILabel.m */,
+				301A253C159F2BA900B906C6 /* REUIScrollView.h */,
+				301A253D159F2BA900B906C6 /* REUIScrollView.m */,
+				301A253E159F2BA900B906C6 /* REUIView.h */,
+				301A253F159F2BA900B906C6 /* REUIView.m */,
+			);
+			path = REExtendedUIKit;
+			sourceTree = "<group>";
+		};
+		30682A75159A6F9300D050CA /* External */ = {
+			isa = PBXGroup;
+			children = (
+				301A2533159F2BA900B906C6 /* REExtendedUIKit */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 		30E21AE51599B76C00DDE278 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +134,7 @@
 		30E21AFA1599B76C00DDE278 /* RFUIKitFramework */ = {
 			isa = PBXGroup;
 			children = (
+				30682A75159A6F9300D050CA /* External */,
 				30E21B541599BA2800DDE278 /* RFUIKitFramework */,
 				30E21B031599B76C00DDE278 /* RFAppDelegate.h */,
 				30E21B041599B76C00DDE278 /* RFAppDelegate.m */,
@@ -98,6 +156,14 @@
 		30E21B541599BA2800DDE278 /* RFUIKitFramework */ = {
 			isa = PBXGroup;
 			children = (
+				30682A5E159A477900D050CA /* RFUIKeyboardCenter.h */,
+				30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */,
+				30682A60159A477900D050CA /* RFUIKeyboardLayoutView.h */,
+				30682A61159A477900D050CA /* RFUIKeyboardLayoutView.m */,
+				30972E24159B1BCE005D9B17 /* RFUISplitBackgoundView.h */,
+				30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */,
+				301A252F159F2B7C00B906C6 /* RFUITextField.h */,
+				301A2530159F2B7C00B906C6 /* RFUITextField.m */,
 				30E21B551599BA6300DDE278 /* RFUIKitFramework.h */,
 				30E21B561599BA6300DDE278 /* RFUIKitFramework.m */,
 			);
@@ -169,6 +235,16 @@
 				30E21B011599B76C00DDE278 /* main.m in Sources */,
 				30E21B051599B76C00DDE278 /* RFAppDelegate.m in Sources */,
 				30E21B571599BA6300DDE278 /* RFUIKitFramework.m in Sources */,
+				30682A62159A477900D050CA /* RFUIKeyboardCenter.m in Sources */,
+				30682A63159A477900D050CA /* RFUIKeyboardLayoutView.m in Sources */,
+				30972E26159B1BCE005D9B17 /* RFUISplitBackgoundView.m in Sources */,
+				301A2531159F2B7C00B906C6 /* RFUITextField.m in Sources */,
+				301A2540159F2BA900B906C6 /* REExtendedUIKit.m in Sources */,
+				301A2541159F2BA900B906C6 /* REUIColor.m in Sources */,
+				301A2542159F2BA900B906C6 /* REUIGeometry.m in Sources */,
+				301A2543159F2BA900B906C6 /* REUILabel.m in Sources */,
+				301A2544159F2BA900B906C6 /* REUIScrollView.m in Sources */,
+				301A2545159F2BA900B906C6 /* REUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
