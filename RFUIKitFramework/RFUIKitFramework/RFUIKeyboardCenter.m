@@ -111,7 +111,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
     [super dealloc];
 }
 
-#pragma mark - Propeties
+#pragma mark - Getting the information of keyboard
 
 @synthesize animationCurve = mAnimationCurve;
 @synthesize animationDuration = mAnimationDuration;
