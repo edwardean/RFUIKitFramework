@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3013E04C15AE0868002045FB /* RFUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013E04B15AE0868002045FB /* RFUIViewController.m */; };
 		301A2531159F2B7C00B906C6 /* RFUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2530159F2B7C00B906C6 /* RFUITextField.m */; };
 		301A2540159F2BA900B906C6 /* REExtendedUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2535159F2BA900B906C6 /* REExtendedUIKit.m */; };
 		301A2541159F2BA900B906C6 /* REUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2537159F2BA900B906C6 /* REUIColor.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3013E04A15AE0868002045FB /* RFUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIViewController.h; sourceTree = "<group>"; };
+		3013E04B15AE0868002045FB /* RFUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIViewController.m; sourceTree = "<group>"; };
 		301A252F159F2B7C00B906C6 /* RFUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUITextField.h; sourceTree = "<group>"; };
 		301A2530159F2B7C00B906C6 /* RFUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITextField.m; sourceTree = "<group>"; };
 		301A2534159F2BA900B906C6 /* REExtendedUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REExtendedUIKit.h; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */,
 				301A252F159F2B7C00B906C6 /* RFUITextField.h */,
 				301A2530159F2B7C00B906C6 /* RFUITextField.m */,
+				3013E04A15AE0868002045FB /* RFUIViewController.h */,
+				3013E04B15AE0868002045FB /* RFUIViewController.m */,
 				30E21B551599BA6300DDE278 /* RFUIKitFramework.h */,
 				30E21B561599BA6300DDE278 /* RFUIKitFramework.m */,
 			);
@@ -269,6 +274,7 @@
 				30F7725015AD4342006D925F /* RFUIImageSplitBackgoundView.m in Sources */,
 				30F772F915AD5736006D925F /* RFUICheckView.m in Sources */,
 				30F772FC15AD8930006D925F /* RFUIImageCheckView.m in Sources */,
+				3013E04C15AE0868002045FB /* RFUIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

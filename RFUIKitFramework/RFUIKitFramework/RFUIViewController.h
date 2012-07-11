@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUIViewController.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2011.12.11.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,25 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUITextField.h"
-#import "RFUIViewController.h"
+#import <UIKit/UIKit.h>
+
+@interface RFUIViewController : UIViewController
+{
+@protected
+    
+    BOOL mIsAppeared;
+}
+
+// Responding to View Events
+
+@property (nonatomic, setter = setAppeared:) BOOL isAppeared;
+
+@end
+
+@interface UIViewController (UIViewControllerRFUIViewController)
+
+// Responding to View Events
+
+@property (nonatomic, setter = setAppeared:) BOOL isAppeared;
+
+@end
