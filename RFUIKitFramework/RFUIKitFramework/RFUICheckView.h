@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUICheckView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.11.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,10 +38,44 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUITextField.h"
+#import <UIKit/UIKit.h>
+
+@interface RFUICheckView : UIButton
+{
+@private
+    
+    NSUInteger      mCurrentState;
+    NSMutableArray *mEntities;
+    UIEdgeInsets    mStateViewEdgeInsets;
+}
+
+// Initializing and creating a RFUICheckView
+
+- (id)initWithNumberOfStates:(NSUInteger)numberOfStates;
+
+// Counting States
+
+@property (nonatomic) NSUInteger numberOfStates;
+
+// Managing Check View Content
+
+- (UIView *)stateViewForState:(NSUInteger )state controlState:(UIControlState)conrolState;
+- (void)setStateView:(UIView *)stateView forState:(NSUInteger )state controlState:(UIControlState)conrolState;
+
+- (UIView *)lastStateViewForControlState:(UIControlState)conrolState;
+- (void)setLastStateView:(UIView *)stateView forControlState:(UIControlState)conrolState;
+
+// Managing Check View Content
+
+@property (nonatomic) NSUInteger currentState;
+
+- (void)addState;
+- (void)insertState:(NSUInteger )state;
+- (void)removeState:(NSUInteger )state;
+- (void)removeLastState;
+
+// Configuring Edge Insets
+
+@property (nonatomic) UIEdgeInsets stateViewEdgeInsets; // Default is UIEdgeInsetsZero.
+
+@end
