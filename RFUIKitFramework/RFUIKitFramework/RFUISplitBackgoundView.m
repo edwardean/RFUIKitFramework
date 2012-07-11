@@ -75,17 +75,6 @@
         mView22 = nil;
 
         self.userInteractionEnabled = NO;
-//        mView00 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 10.0f)];
-//        mView01 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 10.0f)];
-//        mView02 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 10.0f)];
-//        
-//        mView10 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 100.0f)];
-//        mView11 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 100.0f)];
-//        mView12 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 100.0f)];
-//        
-//        mView20 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 10.0f)];
-//        mView21 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 10.0f)];
-//        mView22 = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 10.0f, 10.0f)];
     }
     
     return self;

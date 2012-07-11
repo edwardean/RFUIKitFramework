@@ -59,7 +59,7 @@
  */
 @interface RFUISplitBackgoundView : UIView
 {
-@private
+@protected
     
     CGFloat mHeight0;
     CGFloat mHeight2;

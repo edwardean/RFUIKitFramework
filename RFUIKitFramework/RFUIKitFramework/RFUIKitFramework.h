@@ -39,6 +39,7 @@
  */
 
 #import "RFUIButton.h"
+#import "RFUIImageSplitBackgoundView.h"
 #import "RFUIKeyboardCenter.h"
 #import "RFUIKeyboardLayoutView.h"
 #import "RFUISplitBackgoundView.h"
