@@ -56,18 +56,8 @@
     return self;
 }
 
-- (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
+- (id)initWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22
 {
-    UIImage *image00 = [UIImage imageNamed:imageNamed00];
-    UIImage *image01 = [UIImage imageNamed:imageNamed01];
-    UIImage *image02 = [UIImage imageNamed:imageNamed02];
-    UIImage *image10 = [UIImage imageNamed:imageNamed10];
-    UIImage *image11 = [UIImage imageNamed:imageNamed11];
-    UIImage *image12 = [UIImage imageNamed:imageNamed12];
-    UIImage *image20 = [UIImage imageNamed:imageNamed20];
-    UIImage *image21 = [UIImage imageNamed:imageNamed21];
-    UIImage *image22 = [UIImage imageNamed:imageNamed22];
-    
     CGSize image00Size = (image00 ? image00.size : CGSizeZero);
     CGSize image01Size = (image01 ? image01.size : CGSizeZero);
     CGSize image02Size = (image02 ? image02.size : CGSizeZero);
@@ -80,19 +70,19 @@
     
     CGFloat width0 = MAX(image00Size.width, image10Size.width);
     width0 = MAX(width0, image20Size.width);
-
+    
     CGFloat width1 = MAX(image01Size.width, image11Size.width);
     width1 = MAX(width1, image21Size.width);
-
+    
     CGFloat width2 = MAX(image02Size.width, image12Size.width);
     width2 = MAX(width2, image22Size.width);
     
     CGFloat height0 = MAX(image00Size.height, image01Size.height);
     height0 = MAX(height0, image02Size.height);
-
+    
     CGFloat height1 = MAX(image10Size.height, image11Size.height);
     height1 = MAX(height1, image12Size.height);
-
+    
     CGFloat height2 = MAX(image20Size.height, image21Size.height);
     height2 = MAX(height2, image22Size.height);
     
@@ -153,6 +143,25 @@
         {
             self.imageView22.image = image22;
         }
+    }
+    
+    return self;
+}
+
+- (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
+{
+    UIImage *image00 = [UIImage imageNamed:imageNamed00];
+    UIImage *image01 = [UIImage imageNamed:imageNamed01];
+    UIImage *image02 = [UIImage imageNamed:imageNamed02];
+    UIImage *image10 = [UIImage imageNamed:imageNamed10];
+    UIImage *image11 = [UIImage imageNamed:imageNamed11];
+    UIImage *image12 = [UIImage imageNamed:imageNamed12];
+    UIImage *image20 = [UIImage imageNamed:imageNamed20];
+    UIImage *image21 = [UIImage imageNamed:imageNamed21];
+    UIImage *image22 = [UIImage imageNamed:imageNamed22];
+    
+    if ((self = [self initWithImage00:image00 image01:image01 image02:image02 image10:image10 image11:image11 image12:image12 image20:image20 image21:image21 image22:image22]))
+    {
     }
     
     return self;
