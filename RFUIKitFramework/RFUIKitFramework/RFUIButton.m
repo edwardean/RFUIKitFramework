@@ -72,7 +72,7 @@
 
 - (void)dealloc
 {
-    [self removeTarget:self action:@selector(rfuiButtonEventAllTouchEventsAction:) forControlEvents:UIControlEventAllTouchEvents];
+    [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
 
     [mStateViews release];
     mStateViews = nil;
@@ -108,6 +108,29 @@
         
         [stateView setFrameIfNeeded:stateViewFrame];
     }
+}
+
+#pragma mark - Setting and Getting Control Attributes
+
+- (void)setEnabled:(BOOL)enabled
+{
+    [super setEnabled:enabled];
+    
+    [self updateStateView];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    [self updateStateView];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    [self updateStateView];
 }
 
 #pragma mark - Configuring Button Presentation
