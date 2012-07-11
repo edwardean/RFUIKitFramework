@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30046B4415AE0FC300B8AF5C /* RFUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30046B4315AE0FC300B8AF5C /* RFUINavigationController.m */; };
+		30046B4815AE10A500B8AF5C /* RFUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30046B4715AE10A500B8AF5C /* RFUITableViewController.m */; };
+		30046B4B15AE117900B8AF5C /* RFUISplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30046B4A15AE117900B8AF5C /* RFUISplitViewController.m */; };
+		30046B5215AE128F00B8AF5C /* RFUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30046B5115AE128F00B8AF5C /* RFUITabBarController.m */; };
 		3013E04C15AE0868002045FB /* RFUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3013E04B15AE0868002045FB /* RFUIViewController.m */; };
 		301A2531159F2B7C00B906C6 /* RFUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2530159F2B7C00B906C6 /* RFUITextField.m */; };
 		301A2540159F2BA900B906C6 /* REExtendedUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A2535159F2BA900B906C6 /* REExtendedUIKit.m */; };
@@ -32,6 +36,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30046B4215AE0FC300B8AF5C /* RFUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUINavigationController.h; sourceTree = "<group>"; };
+		30046B4315AE0FC300B8AF5C /* RFUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUINavigationController.m; sourceTree = "<group>"; };
+		30046B4615AE10A500B8AF5C /* RFUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUITableViewController.h; sourceTree = "<group>"; };
+		30046B4715AE10A500B8AF5C /* RFUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITableViewController.m; sourceTree = "<group>"; };
+		30046B4915AE117900B8AF5C /* RFUISplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUISplitViewController.h; sourceTree = "<group>"; };
+		30046B4A15AE117900B8AF5C /* RFUISplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUISplitViewController.m; sourceTree = "<group>"; };
+		30046B5015AE128F00B8AF5C /* RFUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUITabBarController.h; sourceTree = "<group>"; };
+		30046B5115AE128F00B8AF5C /* RFUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITabBarController.m; sourceTree = "<group>"; };
 		3013E04A15AE0868002045FB /* RFUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIViewController.h; sourceTree = "<group>"; };
 		3013E04B15AE0868002045FB /* RFUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIViewController.m; sourceTree = "<group>"; };
 		301A252F159F2B7C00B906C6 /* RFUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUITextField.h; sourceTree = "<group>"; };
@@ -183,8 +195,16 @@
 				30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */,
 				30682A60159A477900D050CA /* RFUIKeyboardLayoutView.h */,
 				30682A61159A477900D050CA /* RFUIKeyboardLayoutView.m */,
+				30046B4215AE0FC300B8AF5C /* RFUINavigationController.h */,
+				30046B4315AE0FC300B8AF5C /* RFUINavigationController.m */,
 				30972E24159B1BCE005D9B17 /* RFUISplitBackgoundView.h */,
 				30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */,
+				30046B4915AE117900B8AF5C /* RFUISplitViewController.h */,
+				30046B4A15AE117900B8AF5C /* RFUISplitViewController.m */,
+				30046B5015AE128F00B8AF5C /* RFUITabBarController.h */,
+				30046B5115AE128F00B8AF5C /* RFUITabBarController.m */,
+				30046B4615AE10A500B8AF5C /* RFUITableViewController.h */,
+				30046B4715AE10A500B8AF5C /* RFUITableViewController.m */,
 				301A252F159F2B7C00B906C6 /* RFUITextField.h */,
 				301A2530159F2B7C00B906C6 /* RFUITextField.m */,
 				3013E04A15AE0868002045FB /* RFUIViewController.h */,
@@ -275,6 +295,10 @@
 				30F772F915AD5736006D925F /* RFUICheckView.m in Sources */,
 				30F772FC15AD8930006D925F /* RFUIImageCheckView.m in Sources */,
 				3013E04C15AE0868002045FB /* RFUIViewController.m in Sources */,
+				30046B4415AE0FC300B8AF5C /* RFUINavigationController.m in Sources */,
+				30046B4815AE10A500B8AF5C /* RFUITableViewController.m in Sources */,
+				30046B4B15AE117900B8AF5C /* RFUISplitViewController.m in Sources */,
+				30046B5215AE128F00B8AF5C /* RFUITabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
