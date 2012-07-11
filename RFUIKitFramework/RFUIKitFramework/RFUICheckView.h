@@ -42,7 +42,7 @@
 
 @interface RFUICheckView : UIButton
 {
-@private
+@protected
     
     NSUInteger      mCurrentState;
     NSMutableArray *mEntities;

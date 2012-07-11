@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUIImageCheckView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.11.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,11 +38,27 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "RFUIButton.h"
 #import "RFUICheckView.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUITextField.h"
+
+@interface RFUIImageCheckView : RFUICheckView
+{
+@protected
+    
+}
+
+// Initializing and creating a RFUICheckView
+
+- (id)initWithNormalStateImageNameds:(NSArray *)normalStateImageNameds disabledStateImageNameds:(NSArray *)disabledStateImageNameds;
+
+// Managing Check View Content
+
+- (UIImageView *)stateImageViewForState:(NSUInteger )state controlState:(UIControlState)conrolState;
+- (void)setStateImageView:(UIImageView *)stateImageView forState:(NSUInteger )state controlState:(UIControlState)conrolState;
+
+- (UIImageView *)lastStateImageViewForControlState:(UIControlState)conrolState;
+- (void)setLastStateImageView:(UIImageView *)stateImageView forControlState:(UIControlState)conrolState;
+
+- (void)setStateImageNamed:(NSString *)stateImageNamed forState:(NSUInteger )state controlState:(UIControlState)conrolState;
+- (void)setLastStateImageNamed:(NSString *)stateImageNamed forControlState:(UIControlState)conrolState;
+
+@end
