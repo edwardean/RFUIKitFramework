@@ -46,7 +46,7 @@
 
 @implementation RFUITableViewController
 
-#pragma mark - Initializing and creating a RFUITableViewController
+#pragma mark - Initializing and Creating a RFUITableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

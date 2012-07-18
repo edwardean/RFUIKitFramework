@@ -44,7 +44,7 @@
 
 @implementation RFUIImageSplitBackgoundView
 
-#pragma mark - Initializing and creating a RFUIImageSplitBackgoundView
+#pragma mark - Initializing and Creating a RFUIImageSplitBackgoundView
 
 - (id)initWithFrame:(CGRect)frame
 {

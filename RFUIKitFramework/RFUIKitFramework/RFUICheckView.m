@@ -52,7 +52,7 @@
 
 @implementation RFUICheckView
 
-#pragma mark - Initializing and creating a RFUICheckView
+#pragma mark - Initializing and Creating a RFUICheckView
 
 - (id)init
 {

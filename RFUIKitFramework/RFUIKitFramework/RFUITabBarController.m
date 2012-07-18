@@ -46,7 +46,7 @@
 
 @implementation RFUITabBarController
 
-#pragma mark - Initializing and creating a RFUITabBarController
+#pragma mark - Initializing and Creating a RFUITabBarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

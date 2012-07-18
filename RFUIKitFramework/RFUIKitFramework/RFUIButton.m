@@ -52,7 +52,7 @@
 
 @implementation RFUIButton
 
-#pragma mark - Initializing and creating a RFUIButton
+#pragma mark - Initializing and Creating a RFUIButton
 
 - (id)initWithFrame:(CGRect)frame
 {

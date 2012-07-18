@@ -46,7 +46,7 @@
     
 }
 
-// Initializing and creating a RFUICheckView
+// Initializing and Creating a RFUICheckView
 
 - (id)initWithNormalStateImageNameds:(NSArray *)normalStateImageNameds disabledStateImageNameds:(NSArray *)disabledStateImageNameds;
 

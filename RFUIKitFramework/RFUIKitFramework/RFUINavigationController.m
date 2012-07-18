@@ -46,7 +46,7 @@
 
 @implementation RFUINavigationController
 
-#pragma mark - Initializing and creating a RFUINavigationController
+#pragma mark - Initializing and Creating a RFUINavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

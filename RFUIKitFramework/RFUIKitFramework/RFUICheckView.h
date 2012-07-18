@@ -49,7 +49,7 @@
     UIEdgeInsets    mStateViewEdgeInsets;
 }
 
-// Initializing and creating a RFUICheckView
+// Initializing and Creating a RFUICheckView
 
 - (id)initWithNumberOfStates:(NSUInteger)numberOfStates;
 

@@ -137,7 +137,7 @@
     {
         width0 = truncf(mWidth0 * (viewFrame.size.width / (mWidth0 + mWidth2)));
         width1 = 0.0f;
-        width2 = viewFrame.size.width - width0;  
+        width2 = viewFrame.size.width - width0;
     }
     
     CGFloat height0;
@@ -155,7 +155,7 @@
     {
         height0 = truncf(mHeight0 * (viewFrame.size.height / (mHeight0 + mHeight2)));
         height1 = 0.0f;
-        height2 = viewFrame.size.height - height0;  
+        height2 = viewFrame.size.height - height0;
     }
     
     [mView00 setFrameIfNeeded:CGRectMake(0.0f, 0.0f, width0, height0)];

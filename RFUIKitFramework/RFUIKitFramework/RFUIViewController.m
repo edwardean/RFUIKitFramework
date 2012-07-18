@@ -46,7 +46,7 @@
 
 @implementation RFUIViewController
 
-#pragma mark - Initializing and creating a RFUIViewController
+#pragma mark - Initializing and Creating a RFUIViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

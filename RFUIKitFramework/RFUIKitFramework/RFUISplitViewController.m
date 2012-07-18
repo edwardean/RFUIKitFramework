@@ -42,7 +42,7 @@
 
 @implementation RFUISplitViewController
 
-#pragma mark - Initializing and creating a RFUISplitViewController
+#pragma mark - Initializing and Creating a RFUISplitViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
