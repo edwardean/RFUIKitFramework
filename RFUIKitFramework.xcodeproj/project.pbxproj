@@ -19,6 +19,7 @@
 		301A2543159F2BA900B906C6 /* REUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253B159F2BA900B906C6 /* REUILabel.m */; };
 		301A2544159F2BA900B906C6 /* REUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253D159F2BA900B906C6 /* REUIScrollView.m */; };
 		301A2545159F2BA900B906C6 /* REUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301A253F159F2BA900B906C6 /* REUIView.m */; };
+		301AB46215C6F92000E91822 /* RFUIForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 301AB46115C6F92000E91822 /* RFUIForwardView.m */; };
 		30682A62159A477900D050CA /* RFUIKeyboardCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */; };
 		30682A63159A477900D050CA /* RFUIKeyboardLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30682A61159A477900D050CA /* RFUIKeyboardLayoutView.m */; };
 		30972E26159B1BCE005D9B17 /* RFUISplitBackgoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30972E25159B1BCE005D9B17 /* RFUISplitBackgoundView.m */; };
@@ -60,6 +61,8 @@
 		301A253D159F2BA900B906C6 /* REUIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIScrollView.m; sourceTree = "<group>"; };
 		301A253E159F2BA900B906C6 /* REUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIView.h; sourceTree = "<group>"; };
 		301A253F159F2BA900B906C6 /* REUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIView.m; sourceTree = "<group>"; };
+		301AB46015C6F92000E91822 /* RFUIForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIForwardView.h; sourceTree = "<group>"; };
+		301AB46115C6F92000E91822 /* RFUIForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIForwardView.m; sourceTree = "<group>"; };
 		30682A5E159A477900D050CA /* RFUIKeyboardCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIKeyboardCenter.h; sourceTree = "<group>"; };
 		30682A5F159A477900D050CA /* RFUIKeyboardCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIKeyboardCenter.m; sourceTree = "<group>"; };
 		30682A60159A477900D050CA /* RFUIKeyboardLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIKeyboardLayoutView.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				30E13D3B15AC15C5007998D6 /* RFUIButton.m */,
 				30F772F715AD5736006D925F /* RFUICheckView.h */,
 				30F772F815AD5736006D925F /* RFUICheckView.m */,
+				301AB46015C6F92000E91822 /* RFUIForwardView.h */,
+				301AB46115C6F92000E91822 /* RFUIForwardView.m */,
 				30F772FA15AD8930006D925F /* RFUIImageCheckView.h */,
 				30F772FB15AD8930006D925F /* RFUIImageCheckView.m */,
 				30F7724E15AD4342006D925F /* RFUIImageSplitBackgoundView.h */,
@@ -299,6 +304,7 @@
 				30046B4815AE10A500B8AF5C /* RFUITableViewController.m in Sources */,
 				30046B4B15AE117900B8AF5C /* RFUISplitViewController.m in Sources */,
 				30046B5215AE128F00B8AF5C /* RFUITabBarController.m in Sources */,
+				301AB46215C6F92000E91822 /* RFUIForwardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

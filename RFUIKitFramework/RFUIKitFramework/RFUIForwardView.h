@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUIForwardView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.30.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,17 +38,39 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUINavigationController.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUIViewController.h"
+#import <UIKit/UIKit.h>
+
+@protocol RFUIForwardViewDelegate;
+
+@interface RFUIForwardView : UIView
+{
+@protected
+    
+    id<RFUIForwardViewDelegate> mDelegate;
+}
+
+// Initializing and Creating a RFUIForwardView
+
++ (id)forwardView;
++ (id)forwardViewWithFrame:(CGRect)frame;
+
+// Managing the Delegate
+
+@end
+
+@protocol RFUIForwardViewDelegate <NSObject>
+
+@optional
+
+// Laying out Subview
+- (void)forwardViewLayoutSubviews:(RFUIForwardView *)forwardView;
+
+// Observing View-Related Changes
+- (void)forwardView:(RFUIForwardView *)forwardView didAddSubview:(UIView *)subview;
+- (void)forwardView:(RFUIForwardView *)forwardView willRemoveSubview:(UIView *)subview;
+- (void)forwardView:(RFUIForwardView *)forwardView willMoveToSuperview:(UIView *)newSuperview;
+- (void)forwardViewDidMoveToSuperview:(RFUIForwardView *)forwardView;
+- (void)forwardView:(RFUIForwardView *)forwardView willMoveToWindow:(UIWindow *)newWindow;
+- (void)forwardViewDidMoveToWindow:(RFUIForwardView *)forwardView;
+
+@end
