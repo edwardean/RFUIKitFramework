@@ -105,7 +105,7 @@
     CGRect backgroundViewFrame;
     CGRect contentViewFrame;
     
-    if (mHasKeyboad && mHasWindow)
+    if (mHasFirstResponder && mHasKeyboad && mHasWindow)
     {
         CGRect keyboardFrameEnd = CGRectZero;
 
@@ -263,6 +263,18 @@
 - (void)didMoveToWindow
 {
     [super didMoveToWindow];
+
+    RFUIFirstResponderArrangement firstResponderArrangement = [self calculateFirstResponderArrangementInView:self];
+    
+    if (mFirstResponderArrangement & firstResponderArrangement)
+    {
+        mHasFirstResponder = YES;
+    }
+    
+    else
+    {
+        mHasFirstResponder = NO;
+    }
 
     BOOL mHasWindowOld = mHasWindow;
     
@@ -509,6 +521,11 @@
         mHasFirstResponder = YES;
     }
     
+    else
+    {
+        mHasFirstResponder = NO;
+    }
+
     mHasKeyboad = YES;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
@@ -540,6 +557,11 @@
         mHasFirstResponder = YES;
     }
     
+    else
+    {
+        mHasFirstResponder = NO;
+    }
+
     mHasKeyboad = YES;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
@@ -571,6 +593,11 @@
         mHasFirstResponder = YES;
     }
     
+    else
+    {
+        mHasFirstResponder = NO;
+    }
+
     mHasKeyboad = NO;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
@@ -602,6 +629,11 @@
         mHasFirstResponder = YES;
     }
     
+    else
+    {
+        mHasFirstResponder = NO;
+    }
+
     mHasKeyboad = NO;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
