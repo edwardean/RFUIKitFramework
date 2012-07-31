@@ -152,4 +152,8 @@
     }
 }
 
+#pragma mark - Managing the Delegate
+
+@synthesize delegate = mDelegate;
+
 @end

@@ -56,6 +56,8 @@
 
 // Managing the Delegate
 
+@property (nonatomic, assign) id<RFUIForwardViewDelegate> delegate;
+
 @end
 
 @protocol RFUIForwardViewDelegate <NSObject>
