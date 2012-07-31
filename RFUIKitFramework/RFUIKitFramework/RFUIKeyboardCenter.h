@@ -50,7 +50,6 @@ enum RFUIKeyboardDisplayState
 
 typedef enum RFUIKeyboardDisplayState RFUIKeyboardDisplayState;
 
-
 @interface RFUIKeyboardCenter : NSObject
 {
 @private
@@ -74,9 +73,13 @@ typedef enum RFUIKeyboardDisplayState RFUIKeyboardDisplayState;
 @property (nonatomic, readonly) CGRect                   frameBegin;
 @property (nonatomic, readonly) CGRect                   frameEnd;
 
+// Hiding the Keyboard
+
+- (void)hideKeyboard;
+
 @end
 
-FOUNDATION_EXTERN NSString *const RFUIKeyboardCenterWillShowKeyboardNotification;
-FOUNDATION_EXTERN NSString *const RFUIKeyboardCenterDidShowKeyboardNotification; 
-FOUNDATION_EXTERN NSString *const RFUIKeyboardCenterWillHideKeyboardNotification; 
-FOUNDATION_EXTERN NSString *const RFUIKeyboardCenterDidHideKeyboardNotification;
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillShowKeyboardNotification;
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidShowKeyboardNotification; 
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillHideKeyboardNotification; 
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidHideKeyboardNotification;

@@ -42,10 +42,10 @@
 
 #import "RFUIKeyboardLayoutView.h"
 
-NSString *const RFUIKeyboardCenterWillShowKeyboardNotification = @"RFUIKeyboardCenterWillShowKeyboardNotification";
-NSString *const RFUIKeyboardCenterDidShowKeyboardNotification = @"RFUIKeyboardCenterDidShowKeyboardNotification"; 
-NSString *const RFUIKeyboardCenterWillHideKeyboardNotification = @"RFUIKeyboardCenterWillHideKeyboardNotification"; 
-NSString *const RFUIKeyboardCenterDidHideKeyboardNotification = @"RFUIKeyboardCenterDidHideKeyboardNotification";
+NSString * const RFUIKeyboardCenterWillShowKeyboardNotification = @"RFUIKeyboardCenterWillShowKeyboardNotification";
+NSString * const RFUIKeyboardCenterDidShowKeyboardNotification = @"RFUIKeyboardCenterDidShowKeyboardNotification"; 
+NSString * const RFUIKeyboardCenterWillHideKeyboardNotification = @"RFUIKeyboardCenterWillHideKeyboardNotification"; 
+NSString * const RFUIKeyboardCenterDidHideKeyboardNotification = @"RFUIKeyboardCenterDidHideKeyboardNotification";
 
 static RFUIKeyboardCenter * RFUIKeyboardCenter_SharedCenter = nil;
 static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
@@ -118,6 +118,46 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 @synthesize displayState = mDisplayState;
 @synthesize frameBegin = mFrameBegin;
 @synthesize frameEnd = mFrameEnd;
+
+#pragma mark - Hiding the Keyboard
+
+- (void)recursiveHideKayboardInView:(UIView *)view
+{
+    if (view.isFirstResponder)
+    {
+        [view resignFirstResponder];
+    }
+    
+    NSArray *subviews = [view.subviews copy];
+    
+    for (UIView *subview in subviews)
+    {
+        [self recursiveHideKayboardInView:subview];
+    }
+    
+    [subviews release];
+    subviews = nil;  
+}
+
+- (void)hideKeyboardOnAllWindows
+{
+    NSArray *windows = [[UIApplication sharedApplication].windows copy];
+    
+    for (NSUInteger index = 0; index < windows.count; index++)
+    {
+        UIWindow *window = [windows objectAtIndex:index];
+        
+        [self recursiveHideKayboardInView:window];
+    }
+    
+    [windows release];
+    windows = nil;
+}
+
+- (void)hideKeyboard
+{
+    [self hideKeyboardOnAllWindows];
+}
 
 #pragma mark - Sending RFUIKeyboardCenter Events
 
