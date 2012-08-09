@@ -40,15 +40,13 @@
 
 #import <UIKit/UIKit.h>
 
-enum RFUIKeyboardDisplayState
+typedef enum RFUIKeyboardDisplayState
 {
     RFUIKeyboardDisplayStateShowing = 1,
     RFUIKeyboardDisplayStateShown = 2,
     RFUIKeyboardDisplayStateHiding = 3,
     RFUIKeyboardDisplayStateHidden = 4
-};
-
-typedef enum RFUIKeyboardDisplayState RFUIKeyboardDisplayState;
+} RFUIKeyboardDisplayState;
 
 @interface RFUIKeyboardCenter : NSObject
 {

@@ -63,6 +63,24 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
     }
 }
 
+#pragma mark - Getting the RFUIKeyboardCenter Instance
+
++ (RFUIKeyboardCenter *)sharedCenter
+{
+    if (!RFUIKeyboardCenter_SharedCenter)
+    {
+        @synchronized(RFUIKeyboardCenter_Synchronizer)
+        {
+            if (!RFUIKeyboardCenter_SharedCenter)
+            {
+                RFUIKeyboardCenter_SharedCenter = [[RFUIKeyboardCenter alloc] init];
+            }
+        }
+    }
+    
+    return RFUIKeyboardCenter_SharedCenter;
+}
+
 #pragma mark - Initializing and Creating a RFUIKeyboardCenter
 
 - (id)init
@@ -82,24 +100,6 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
     }
     
     return self;
-}
-
-#pragma mark - Getting the RFUIKeyboardCenter Instance
-
-+ (RFUIKeyboardCenter *)sharedCenter
-{
-    if (!RFUIKeyboardCenter_SharedCenter)
-    {
-        @synchronized(RFUIKeyboardCenter_Synchronizer)
-        {
-            if (!RFUIKeyboardCenter_SharedCenter)
-            {
-                RFUIKeyboardCenter_SharedCenter = [[RFUIKeyboardCenter alloc] init];
-            }
-        }
-    }
-    
-    return RFUIKeyboardCenter_SharedCenter;
 }
 
 #pragma mark - Deallocating a RFUIKeyboardCenter
