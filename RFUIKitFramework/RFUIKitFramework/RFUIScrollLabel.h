@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUIScrollLabel.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.08.05.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -35,21 +35,33 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUINavigationController.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUIViewController.h"
+#import <UIKit/UIKit.h>
+
+@interface RFUIScrollLabel : UIScrollView
+{
+@protected
+    
+    UILabel      *mLabel;
+    UIEdgeInsets  mLabelInset;
+    BOOL          mUserInteractionAutomatic;
+}
+
+// Initializing and Creating a RFUIScrollLabel
+
++ (id)scrollLabel;
++ (id)scrollLabelWithFrame:(CGRect)frame;
+
+// Managing the UIScrollView object
+
+@property (nonatomic, retain) UILabel      *label;      // Default is nil. The first time the property is accessed, the UILabel is created.
+@property (nonatomic)         UIEdgeInsets  labelInset; // Default is UIEdgeInsetsZero.
+- (void)setLabelInsetIfNeeded:(UIEdgeInsets)labelInset;
+
+// Configuring the Event-Related Behavior
+
+@property (nonatomic) BOOL userInteractionAutomatic; // Default is NO.
+
+@end
