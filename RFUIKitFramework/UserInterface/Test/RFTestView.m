@@ -10,22 +10,29 @@
 
 @implementation RFTestView
 
+#pragma mark - Initializing and Creating a RFTestView
+
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if ((self = [super initWithFrame:frame]))
+    {
     }
+    
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark - Deallocating a RFTestView
+
+- (void)dealloc
 {
-    // Drawing code
+    [super dealloc];
 }
-*/
+
+#pragma mark - Laying out Subviews
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+}
 
 @end
