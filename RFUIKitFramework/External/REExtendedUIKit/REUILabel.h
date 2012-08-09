@@ -42,6 +42,11 @@
 
 @interface UILabel (UILabelREUILabel)
 
+// Initializing and Creating a UILabel
+
++ (id)label;
++ (id)labelWithFrame:(CGRect)frame;
+
 // Drawing and Positioning Overrides
 
 - (CGSize)textSize;

@@ -1,7 +1,7 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSFileManager.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
 //  Created by Roman Oliichuk on 2012.06.26.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
@@ -38,12 +38,19 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <Foundation/Foundation.h>
+
+@interface NSFileManager (NSFileManagerRENSFileManager)
+
+// Determining Access to Files
+
+/* The following methods are of limited utility. Attempting to predicate behavior based on the current state of the filesystem or a particular file on the filesystem is encouraging odd behavior in the face of filesystem race conditions. It's far better to attempt an operation (like loading a file or creating a directory) and handle the error gracefully than it is to try to figure out ahead of time whether the operation will succeed.
+ */
+- (BOOL)fileExistsAtURL:(NSURL *)url;
+- (BOOL)fileExistsAtURL:(NSURL *)url isDirectory:(BOOL *)isDirectory;
+- (BOOL)isReadableFileAtURL:(NSURL *)url;
+- (BOOL)isWritableFileAtURL:(NSURL *)url;
+- (BOOL)isExecutableFileAtURL:(NSURL *)url;
+- (BOOL)isDeletableFileAtURL:(NSURL *)url;
+
+@end

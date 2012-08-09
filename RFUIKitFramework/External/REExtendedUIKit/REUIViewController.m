@@ -1,6 +1,6 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
+//  REUIViewController.m
+//  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
 //  Created by Roman Oliichuk on 2012.06.26.
@@ -38,12 +38,20 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
 #import "REUIViewController.h"
+
+@implementation UIViewController (UIViewControllerREUIViewController)
+
+#pragma mark - Initializing and Creating a UIViewController
+
++ (id)viewController
+{
+    return [[[self alloc] init] autorelease];
+}
+
++ (id)viewControllerWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    return [[[self alloc] initWithNibName:nibNameOrNil bundle:nibBundleOrNil] autorelease];
+}
+
+@end

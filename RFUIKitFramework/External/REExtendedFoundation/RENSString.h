@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSString.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.06.27.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,38 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <Foundation/Foundation.h>
+
+@interface NSString (NSStringRENSString)
+
+// Getting a String’s Range
+
+/*
+ Return the NSRange structure giving the location is 0 and the length is the the number of Unicode characters currently in the receiver.
+ */
+- (NSRange)range;
+
+// Identifying and Comparing Strings
+
+/*
+ Returns the result identical comparing characters.
+ 
+ aString:
+ The string with which to compare the receiver.
+ This value must not be nil. If this value is nil, the behavior is undefined and may change in future versions of Mac OS X.
+ */
+- (NSComparisonResult)caseIdenticalCompare:(NSString *)string;
+
+// Working with Encodings
+
+- (NSData *)dataUsingUTF8StringEncoding;
+
+@end
+
+@interface NSMutableString (NSMutableStringRENSMutableString)
+
+// Modifying a String
+
+- (void)deleteAllCharacters;
+
+@end

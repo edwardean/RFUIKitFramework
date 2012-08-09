@@ -39,3 +39,10 @@
  */
 
 #import <UIKit/UIKit.h>
+
+UIKIT_STATIC_INLINE CGSize UIEdgeInsetsInsetSize(CGSize size, UIEdgeInsets insets)
+{
+    size.width  -= (insets.left + insets.right);
+    size.height -= (insets.top  + insets.bottom);
+    return size;
+}

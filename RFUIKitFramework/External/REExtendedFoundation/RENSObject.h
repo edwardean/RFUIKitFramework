@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSObject.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.237.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,12 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <Foundation/Foundation.h>
+
+@interface NSObject (NSObjectRENSObject)
+
+// Managing the NSObject Information
+
+- (NSMutableDictionary *)objectDictionary; // Default is nil. The first time the method is accessed, the NSMutableDictionary is created. This method returns nil for Core Foundation classes.
+
+@end

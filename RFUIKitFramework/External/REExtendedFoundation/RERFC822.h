@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RERFC822.m
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2010.10.09.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,36 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <Foundation/Foundation.h>
+
+//
+// See also:
+// http://www.ietf.org/rfc/rfc0822.txt
+// http://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW1
+// http://unicode.org/reports/tr35/tr35-10.html#Date_Format_Patterns
+//
+
+@interface NSString (NSStringRERFC822)
+
+// Methods of RFC 822
+
+- (NSDate *)dateRFC822;
+
+@end
+
+@interface NSDate (NSDateRERFC822)
+
+// Methods of RFC 822
+
+- (NSString *)stringRFC822;
+
+@end
+
+@interface NSDateFormatter (NSDateFormatterRERFC822)
+
+// Methods of RFC 822
+
++ (NSDate *)dateForStringRFC822:(NSString *)string;
++ (NSString *)stringRFC822ForDate:(NSDate *)date;
+
+@end

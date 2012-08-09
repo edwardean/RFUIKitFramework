@@ -40,7 +40,21 @@
 
 #import "REUILabel.h"
 
+#import "REUIView.h"
+
 @implementation UILabel (UILabelREUILabel)
+
+#pragma mark - Initializing and Creating a UILabel
+
++ (id)label
+{
+    return [self view];
+}
+
++ (id)labelWithFrame:(CGRect)frame
+{
+    return [self viewWithFrame:frame];
+}
 
 #pragma mark - Drawing and Positioning Overrides
 

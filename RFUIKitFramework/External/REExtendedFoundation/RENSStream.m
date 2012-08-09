@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSStream.m
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.22.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,63 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import "RENSStream.h"
+
+@implementation NSInputStream (NSInputStreamRENSInputStream)
+
+#pragma mark - Using Streams
+
+- (NSInteger)readAllBuffer:(uint8_t *)buffer maxLength:(NSUInteger)bufferLength
+{
+    NSInteger bytesRead = 0;
+    
+    do
+    {
+        NSInteger result = [self read:(buffer + bytesRead) maxLength:(bufferLength - bytesRead)];
+        
+        if (result < 0)
+        {
+            if (bytesRead == 0)
+            {
+                bytesRead = result;
+            }
+            
+            break;
+        }
+        
+        bytesRead += result;
+    } while (bytesRead < bufferLength);
+    
+    return bytesRead;
+}
+
+@end
+
+@implementation NSOutputStream (NSOutputStreamRWNSOutputStream)
+
+#pragma mark - Using Streams
+
+- (NSInteger)writeAllBuffer:(const uint8_t *)buffer maxLength:(NSUInteger)bufferLength
+{
+    NSInteger bytesWritten = 0;
+    
+    do {
+        int result = [self write:(buffer + bytesWritten) maxLength:(bufferLength - bytesWritten)];
+        
+        if (result < 0)
+        {
+            if (bytesWritten == 0)
+            {
+                bytesWritten = result;
+            }
+            
+            break;
+        }
+        
+        bytesWritten += result;
+    } while (bytesWritten < bufferLength);
+    
+    return bytesWritten;
+}
+
+@end

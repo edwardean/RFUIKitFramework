@@ -42,11 +42,30 @@
 
 @interface UIScrollView (UIScrollViewREUIScrollView)
 
+// Initializing and Creating a UIScrollView
+
++ (id)scrollView;
++ (id)scrollViewWithFrame:(CGRect)frame;
+
 // Managing the Display of Content
 
 - (void)setContentOffsetIfNeeded:(CGPoint)contentOffset;
 - (void)setContentSizeIfNeeded:(CGSize)contentSize;
 
 - (void)setContentOffsetIfNeeded:(CGPoint)contentOffset animated:(BOOL)animated;
+
+// Managing Scrolling
+
+- (void)scrollRectToVisibleIfNeeded:(CGRect)rect animated:(BOOL)animated;
+- (void)setAlwaysBounceHorizontalIfNeeded:(BOOL)alwaysBounceHorizontal;
+- (void)setAlwaysBounceVerticalIfNeeded:(BOOL)alwaysBounceVertical;
+- (void)setBouncesIfNeeded:(BOOL)bounces;
+- (void)setCanCancelContentTouchesIfNeeded:(BOOL)canCancelContentTouches;
+- (void)setDecelerationRateIfNeeded:(float)decelerationRate;
+- (void)setDelaysContentTouchesIfNeeded:(BOOL)delaysContentTouches;
+- (void)setDirectionalLockEnabledIfNeeded:(BOOL)directionalLockEnabled;
+- (void)setPagingEnabledIfNeeded:(BOOL)pagingEnabled;
+- (void)setScrollEnabledIfNeeded:(BOOL)scrollEnabled;
+- (void)setScrollsToTopIfNeeded:(BOOL)scrollsToTop;
 
 @end

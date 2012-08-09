@@ -1,7 +1,7 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  REExtendedFoundation.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
 //  Created by Roman Oliichuk on 2012.06.26.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
@@ -38,12 +38,16 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import "RENSArray.h"
+#import "RENSDateFormatter.h"
+#import "RENSDictionary.h"
+#import "RENSFileManager.h"
+#import "RENSIndexPath.h"
+#import "RENSLocale.h"
+#import "RENSNumber.h"
+#import "RENSObjCRuntime.h"
+#import "RENSObject.h"
+#import "RENSRange.h"
+#import "RENSStream.h"
+#import "RENSString.h"
+#import "RERFC822.h"

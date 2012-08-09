@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
+//  REUIScreen.h
 //  REExtendedUIKit
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2011.07.09.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,14 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <UIKit/UIKit.h>
+
+#define UI_SCREEN_BOUNDS() ([[UIScreen mainScreen] bounds])
+
+#define UI_SCREEN_BOUNDS_SIZE() ([[UIScreen mainScreen] bounds].size)
+
+#define UI_SCREEN_APPLICATION_FRAME() ([[UIScreen mainScreen] applicationFrame])
+
+#define UI_SCREEN_APPLICATION_FRAME_SIZE() ([[UIScreen mainScreen] applicationFrame].size)
+
+#define UI_SCREEN_SCALSE() ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f)

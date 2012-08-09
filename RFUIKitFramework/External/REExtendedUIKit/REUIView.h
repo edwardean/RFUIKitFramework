@@ -66,6 +66,11 @@ UIKIT_STATIC_INLINE UIViewAnimationTransition UIViewAnimationTransitionFromUIVie
 
 @interface UIView (UIViewREUIView)
 
+// Initializing and Creating a UIView
+
++ (id)view;
++ (id)viewWithFrame:(CGRect)frame;
+
 // Configuring a View’s Visual Appearance
 
 - (void)setAlphaIfNeeded:(CGFloat)alpha;
@@ -76,5 +81,9 @@ UIKIT_STATIC_INLINE UIViewAnimationTransition UIViewAnimationTransitionFromUIVie
 - (void)setCenterIfNeeded:(CGPoint)center;
 - (void)setFrameIfNeeded:(CGRect)frame;
 - (void)setTransformIfNeeded:(CGAffineTransform)transform;
+
+// Laying out Subviews
+
+- (void)recursiveLayoutSubviews;
 
 @end

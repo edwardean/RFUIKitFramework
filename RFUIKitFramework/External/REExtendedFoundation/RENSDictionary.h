@@ -1,7 +1,7 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSDictionary.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
 //  Created by Roman Oliichuk on 2012.06.26.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
@@ -38,12 +38,21 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <Foundation/Foundation.h>
+
+@interface NSDictionary (NSDictionaryRENSDictionary)
+
+// Accessing Keys and Values
+
+- (NSDictionary *)dictionaryWithKeys:(NSArray *)keys;
+- (NSDictionary *)dictionaryWithKeys:(NSArray *)keys notFoundMarker:(id)marker;
+
+@end
+
+@interface NSMutableDictionary (NSMutableDictionaryRENSDictionary)
+
+// Removing Entries From a Mutable Dictionary
+
+- (void)removeAllObjectsExceptObjectsForKeys:(NSArray *)keys;
+
+@end

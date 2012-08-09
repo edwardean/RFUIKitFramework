@@ -1,7 +1,7 @@
 //
-//  REUIView.m
-//  REUIKitFramework
-//  https://github.com/oliromole/REExtendedUIKit.git
+//  RENSFileManager.m
+//  REExtendedFoundation
+//  https://github.com/oliromole/REExtendedFoundation.git
 //
 //  Created by Roman Oliichuk on 2012.06.26.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
@@ -38,91 +38,101 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIView.h"
+#import "RENSFileManager.h"
 
-@implementation UIView (UIViewREUIView)
+@implementation NSFileManager (NSFileManager_RCNSFileManager)
 
-#pragma mark - Initializing and Creating a UIView
+#pragma mark - Determining Access to Files
 
-+ (id)view
+- (BOOL)fileExistsAtURL:(NSURL *)url
 {
-    return [[[self alloc] init] autorelease];
-}
-
-+ (id)viewWithFrame:(CGRect)frame
-{
-    return [[[self alloc] initWithFrame:frame] autorelease];
-}
-
-#pragma mark - Configuring a View’s Visual Appearance
-
-- (void)setAlphaIfNeeded:(CGFloat)newAlpha
-{
-    CGFloat oldAlpha = self.alpha;
+    BOOL fileExists = NO;
     
-    if (oldAlpha != newAlpha)
+    NSString *path = url.path;
+    
+    if (path)
     {
-        self.alpha = newAlpha;
-    }
-}
-
-#pragma mark - Configuring the Bounds and Frame Rectangles
-
-- (void)setFrameIfNeeded:(CGRect)newFrame
-{
-    CGRect oldFrame = self.frame;
-    
-    if (!CGRectEqualToRect(oldFrame, newFrame))
-    {
-        self.frame = newFrame;
-    }
-}
-
-- (void)setBoundsIfNeeded:(CGRect)newBounds
-{
-    CGRect oldBounds = self.bounds;
-    
-    if (!CGRectEqualToRect(oldBounds, newBounds))
-    {
-        self.bounds = newBounds;
-    }
-}
-
-- (void)setCenterIfNeeded:(CGPoint)newCenter
-{
-    CGPoint oldCenter = self.center;
-    
-    if (!CGPointEqualToPoint(oldCenter, newCenter))
-    {
-        self.center = newCenter;
-    }
-}
-
-- (void)setTransformIfNeeded:(CGAffineTransform)newTransform;
-{
-    CGAffineTransform oldTransform = self.transform;
-    
-    if (!CGAffineTransformEqualToTransform(oldTransform, newTransform))
-    {
-        self.transform = newTransform;
-    }
-}
-
-#pragma mark - Laying out Subviews
-
-- (void)recursiveLayoutSubviews
-{
-    [self layoutSubviews];
-    
-    NSArray *subviews = [self.subviews copy];
-    
-    for (UIView *subview in subviews)
-    {
-        [subview recursiveLayoutSubviews];
+        fileExists = [self fileExistsAtPath:path];
     }
     
-    [subviews release];
-    subviews = nil;
+    return fileExists;
+}
+
+- (BOOL)fileExistsAtURL:(NSURL *)url isDirectory:(BOOL *)isDirectory
+{
+    BOOL fileExists = NO;
+    
+    NSString *path = url.path;
+    
+    if (path)
+    {
+        BOOL isDirectory2 = (isDirectory ? *isDirectory : NO);
+        
+        fileExists = [self fileExistsAtPath:path isDirectory:(isDirectory ? &isDirectory2 : NULL)];
+        
+        if (isDirectory)
+        {
+            *isDirectory = isDirectory2;
+        }
+    }
+    
+    return fileExists;
+}
+
+- (BOOL)isReadableFileAtURL:(NSURL *)url
+{
+    BOOL isReadableFile = NO;
+    
+    NSString *path = url.path;
+    
+    if (path)
+    {
+        isReadableFile = [self isReadableFileAtPath:path];
+    }
+    
+    return isReadableFile;
+}
+
+- (BOOL)isWritableFileAtURL:(NSURL *)url
+{
+    BOOL isWritableFile = NO;
+    
+    NSString *path = url.path;
+    
+    if (path)
+    {
+        isWritableFile = [self isWritableFileAtPath:path];
+    }
+    
+    return isWritableFile;
+}
+
+- (BOOL)isExecutableFileAtURL:(NSURL *)url
+{
+    BOOL isExecutable = NO;
+    
+    NSString *path = url.path;
+    
+    if (path)
+    {
+        isExecutable = [self isExecutableFileAtPath:path];
+    }
+    
+    return isExecutable;
+}
+
+- (BOOL)isDeletableFileAtURL:(NSURL *)url
+{
+    BOOL isDeletable = NO;
+    
+    NSString *path = url.path;
+    
+    if (path)
+    {
+        isDeletable = [self isDeletableFileAtPath:path];
+    }
+    
+    return isDeletable;
 }
 
 @end

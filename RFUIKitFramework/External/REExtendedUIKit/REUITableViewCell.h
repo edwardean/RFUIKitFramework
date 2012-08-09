@@ -1,9 +1,9 @@
 //
-//  REExtendedUIKit.h
-//  REExtendedUIKit
+//  REUITableViewCell.h
+//  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.23.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,12 +38,17 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  */
 
-#import "REUIColor.h"
-#import "REUIGeometry.h"
-#import "REUIImage.h"
-#import "REUILabel.h"
-#import "REUIScreen.h"
-#import "REUIScrollView.h"
-#import "REUITableViewCell.h"
-#import "REUIView.h"
-#import "REUIViewController.h"
+#import <UIKit/UIKit.h>
+
+@interface UITableViewCell (UITableViewCellREUITableViewCell)
+
+// Initializing and Creating a UITableViewCell
+
++ (id)tableViewCell;
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
++ (id)tableViewCellWithReuseIdentifier:(NSString *)reuseIdentifier;
+
++ (id)tableViewCellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
+@end

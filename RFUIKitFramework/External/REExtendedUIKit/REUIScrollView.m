@@ -40,7 +40,21 @@
 
 #import "REUIScrollView.h"
 
+#import "REUIView.h"
+
 @implementation UIScrollView (UIScrollViewREUIScrollView)
+
+#pragma mark - Initializing and Creating a UIScrollView
+
++ (id)scrollView
+{
+    return [self view];
+}
+
++ (id)scrollViewWithFrame:(CGRect)frame
+{
+    return [self viewWithFrame:frame];
+}
 
 #pragma mark - Managing the Display of Content
 
@@ -71,6 +85,122 @@
     if (!CGPointEqualToPoint(oldContentOffset, newContentOffset))
     {
         [self setContentOffset:newContentOffset animated:(BOOL)animated];
+    }
+}
+
+#pragma mark - Managing Scrolling
+
+- (void)scrollRectToVisibleIfNeeded:(CGRect)visibleFrame2 animated:(BOOL)animated
+{
+    CGRect viewFrame = self.frame;
+    
+    CGRect visibleFrame1;
+    visibleFrame1.origin = self.contentOffset;
+    visibleFrame1.size = viewFrame.size;
+    
+    if (!CGRectContainsRect(visibleFrame1, visibleFrame2))
+    {
+        [self scrollRectToVisible:visibleFrame2 animated:animated];
+    }
+}
+
+- (void)setAlwaysBounceHorizontalIfNeeded:(BOOL)newAlwaysBounceHorizontal
+{
+    BOOL oldAlwaysBounceHorizontal = self.alwaysBounceHorizontal;
+    
+    if (oldAlwaysBounceHorizontal != newAlwaysBounceHorizontal)
+    {
+        self.alwaysBounceHorizontal = newAlwaysBounceHorizontal;
+    }
+}
+
+- (void)setAlwaysBounceVerticalIfNeeded:(BOOL)newAlwaysBounceVertical
+{
+    BOOL oldAlwaysBounceVertical = self.alwaysBounceVertical;
+    
+    if (oldAlwaysBounceVertical != newAlwaysBounceVertical)
+    {
+        self.alwaysBounceVertical = newAlwaysBounceVertical;
+    }
+}
+
+- (void)setBouncesIfNeeded:(BOOL)newBounces
+{
+    BOOL oldBounces = self.bounces;
+    
+    if (oldBounces != newBounces)
+    {
+        self.bounces = newBounces;
+    }
+}
+
+- (void)setCanCancelContentTouchesIfNeeded:(BOOL)newCanCancelContentTouches
+{
+    BOOL oldCanCancelContentTouches = self.canCancelContentTouches;
+    
+    if (oldCanCancelContentTouches != newCanCancelContentTouches)
+    {
+        self.canCancelContentTouches = newCanCancelContentTouches;
+    }
+}
+
+- (void)setDecelerationRateIfNeeded:(float)newDecelerationRate
+{
+    float oldDecelerationRate = self.decelerationRate;
+    
+    if (oldDecelerationRate != newDecelerationRate)
+    {
+        self.decelerationRate = newDecelerationRate;
+    }
+}
+
+- (void)setDelaysContentTouchesIfNeeded:(BOOL)newDelaysContentTouches
+{
+    BOOL oldDelaysContentTouches = self.delaysContentTouches;
+    
+    if (oldDelaysContentTouches != newDelaysContentTouches)
+    {
+        self.delaysContentTouches = newDelaysContentTouches;
+    }
+}
+
+- (void)setDirectionalLockEnabledIfNeeded:(BOOL)newDirectionalLockEnabled
+{
+    BOOL oldDirectionalLockEnabled = self.directionalLockEnabled;
+    
+    if (oldDirectionalLockEnabled != newDirectionalLockEnabled)
+    {
+        self.directionalLockEnabled = newDirectionalLockEnabled;
+    }
+}
+
+- (void)setPagingEnabledIfNeeded:(BOOL)newPagingEnabled
+{
+    BOOL oldPagingEnabled = self.pagingEnabled;
+    
+    if (oldPagingEnabled != newPagingEnabled)
+    {
+        self.pagingEnabled = newPagingEnabled;
+    }
+}
+
+- (void)setScrollEnabledIfNeeded:(BOOL)newScrollEnabled
+{
+    BOOL oldScrollEnabled = self.scrollEnabled;
+    
+    if (oldScrollEnabled != newScrollEnabled)
+    {
+        self.scrollEnabled = newScrollEnabled;
+    }
+}
+
+- (void)setScrollsToTopIfNeeded:(BOOL)newScrollsToTop
+{
+    BOOL oldScrollsToTop = self.scrollsToTop;
+    
+    if (oldScrollsToTop != newScrollsToTop)
+    {
+        self.scrollsToTop = newScrollsToTop;
     }
 }
 
