@@ -49,6 +49,42 @@
  */
 - (NSRange)range;
 
+// Getting a Substring
+
+- (NSString *)copySubstringFromIndex:(NSUInteger)from;
+- (NSString *)copySubstringToIndex:(NSUInteger)to;
+- (NSString *)copySubstringWithRange:(NSRange)range;
+
+// Trimming a String
+
+- (NSString *)copyStringByTrimming;
+- (NSString *)stringByTrimming;
+- (NSString *)copyStringByTrimmingLeft;
+- (NSString *)stringByTrimmingLeft;
+- (NSString *)copyStringByTrimmingRight;
+- (NSString *)stringByTrimmingRight;
+
+- (NSString *)copyStringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)copyStringByTrimmingLeftCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingLeftCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)copyStringByTrimmingRightCharactersInSet:(NSCharacterSet *)characterSet;
+- (NSString *)stringByTrimmingRightCharactersInSet:(NSCharacterSet *)characterSet;
+
+- (NSString *)copyStringByTrimmingStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)stringByTrimmingStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)copyStringByTrimmingLeftStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)stringByTrimmingLeftStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)copyStringByTrimmingRightStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (NSString *)stringByTrimmingRightStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+
+- (NSString *)copyStringByTrimmingStringsInSet:(NSSet *)stringSet;
+- (NSString *)stringByTrimmingStringsInSet:(NSSet *)stringSet;
+- (NSString *)copyStringByTrimmingLeftStringsInSet:(NSSet *)stringSet;
+- (NSString *)stringByTrimmingLeftStringsInSet:(NSSet *)stringSet;
+- (NSString *)copyStringByTrimmingRightStringsInSet:(NSSet *)stringSet;
+- (NSString *)stringByTrimmingRightStringsInSet:(NSSet *)stringSet;
+
 // Identifying and Comparing Strings
 
 /*
@@ -59,6 +95,9 @@
  This value must not be nil. If this value is nil, the behavior is undefined and may change in future versions of Mac OS X.
  */
 - (NSComparisonResult)caseIdenticalCompare:(NSString *)string;
+
+- (BOOL)hasPrefix:(NSString *)aString range:(NSRange)range;
+- (BOOL)hasSuffix:(NSString *)aString range:(NSRange)range;
 
 // Working with Encodings
 
@@ -71,5 +110,23 @@
 // Modifying a String
 
 - (void)deleteAllCharacters;
+
+// Trimming a String
+
+- (void)trim;
+- (void)trimLeft;
+- (void)trimRight;
+
+- (void)trimCharactersInSet:(NSCharacterSet *)characterSet;
+- (void)trimLeftCharactersInSet:(NSCharacterSet *)characterSet;
+- (void)trimRightCharactersInSet:(NSCharacterSet *)characterSet;
+
+- (void)trimStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)trimLeftStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)trimRightStrings:(NSString *)string0, ... NS_REQUIRES_NIL_TERMINATION;
+
+- (void)trimStringsInSet:(NSSet *)stringSet;
+- (void)trimLeftStringsInSet:(NSSet *)stringSet;
+- (void)trimRightStringsInSet:(NSSet *)stringSet;
 
 @end

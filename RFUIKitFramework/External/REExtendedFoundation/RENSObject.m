@@ -230,18 +230,17 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
             [object release];
             object = nil;
             
-            NSObject_ObjectDictionary_HashTable = malloc(sizeof(NSMutableArray *) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH);
+            NSObject_ObjectDictionary_HashTable = malloc(sizeof(NSMutableDictionary *) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH);
             
-            memset(NSObject_ObjectDictionary_HashTable, 0, (sizeof(NSMutableArray *) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH));
-            
-            if (NSObject_ObjectDictionary_HashTable)
-            {
-                NSObject_ObjectDictionary_HashTable_Length = NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH;
-            }
-            
-            else
+            if (!NSObject_ObjectDictionary_HashTable)
             {
                 @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
+            }
+
+            if (NSObject_ObjectDictionary_HashTable)
+            {
+                memset(NSObject_ObjectDictionary_HashTable, 0, (sizeof(NSMutableArray *) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH));
+                NSObject_ObjectDictionary_HashTable_Length = NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH;
             }
             
             BOOL result = class_addMethod([NSObject class], @selector(dealloc), (IMP)NSObject_ObjectDictionary_Dealloc, "v8@0:4");
@@ -279,6 +278,9 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                             
                             if (!nsObjectClassName)
                             {
+                                [classString release];
+                                classString = nil;
+                                
                                 @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
                             }
 

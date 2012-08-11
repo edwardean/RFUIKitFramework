@@ -338,7 +338,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         
         if ((mask & NSIndexPathCompareOptionBackwardsSearch) == NSIndexPathCompareOptionBackwardsSearch)
         {
-            // TODO: Implemented me.
+            // REEXTENDEDFOUNDATIONTODO: Implemented me.
             @throw [NSException exceptionWithName:NSGenericException reason:@"NSIndexPathCompareOptionBackwardsSearch does not supported. It is not implemented." userInfo:nil];
         }
         
@@ -407,7 +407,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
     
     if ((options & NSIndexPathCompareOptionBackwardsSearch) == NSIndexPathCompareOptionBackwardsSearch)
     {
-        // TODO: Implemented me.
+        // REEXTENDEDFOUNDATIONTODO: Implemented me.
         @throw [NSException exceptionWithName:NSGenericException reason:@"NSIndexPathCompareOptionBackwardsSearch does not supported. It is not implemented." userInfo:nil];
     }
     
@@ -468,7 +468,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         
         if ((options & NSIndexPathCompareOptionBackwardsSearch) == NSIndexPathCompareOptionBackwardsSearch)
         {
-            // TODO: Implemented me.
+            // REEXTENDEDFOUNDATIONTODO: Implemented me.
             @throw [NSException exceptionWithName:NSGenericException reason:@"NSIndexPathCompareOptionBackwardsSearch does not supported. It is not implemented." userInfo:nil];
         }
         

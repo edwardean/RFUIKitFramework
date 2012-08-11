@@ -91,19 +91,86 @@ FOUNDATION_EXTERN NSNumber * NSNumberUnsignedIntegerOne;
 #define NSNumberIntegerFromBool(value) ((value) ? NSNumberIntegerOne : NSNumberIntegerZero)
 #define NSNumberUnsignedIntegerFromBool(value) ((value) ? NSNumberUnsignedIntegerOne : NSNumberUnsignedIntegerZero)
 
-#define NSBoolFromNumberChar(value) (![(value) isEqual:NSNumberCharZero])
-#define NSBoolFromNumberUnsignedChar(value) (![(value) isEqual:NSNumberUnsignedCharZero])
-#define NSBoolFromNumberShort(value) (![(value) isEqual:NSNumberShortZero])
-#define NSBoolFromNumberUnsignedShort(value) (![(value) isEqual:NSNumberUnsignedShortZero])
-#define NSBoolFromNumberInt(value) (![(value) isEqual:NSNumberIntZero])
-#define NSBoolFromNumberUnsignedInt(value) (![(value) isEqual:NSNumberUnsignedIntZero])
-#define NSBoolFromNumberLong(value) (![(value) isEqual:NSNumberLongZero])
-#define NSBoolFromNumberUnsignedLong(value) (![(value) isEqual:NSNumberUnsignedLongZero])
-#define NSBoolFromNumberLongLong(value) (![(value) isEqual:NSNumberLongLongZero])
-#define NSBoolFromNumberUnsignedLongLong(value) (![(value) isEqual:NSNumberUnsignedLongLongZero])
-#define NSBoolFromNumberFloat(value) (![(value) isEqual:NSNumberFloatZero])
-#define NSBoolFromNumberUnsignedFloat(value) (![(value) isEqual:NSNumberUnsignedFloatZero])
-#define NSBoolFromNumberDouble(value) (![(value) isEqual:NSNumberDoubleZero])
-#define NSBoolFromNumberUnsignedDouble(value) (![(value) isEqual:NSNumberUnsignedDoubleZero])
-#define NSBoolFromNumberInteger(value) (![(value) isEqual:NSNumberIntegerZero])
-#define NSBoolFromNumberUnsignedInteger(value) (![(value) isEqual:NSNumberUnsignedIntegerZero])
+NS_INLINE BOOL NSBoolFromNumberChar(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberCharZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedChar(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedCharZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberShort(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberShortZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedShort(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedShortZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberInt(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberIntZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedInt(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedIntZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberLong(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberLongZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedLong(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedLongZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberLongLong(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberLongLongZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedLongLong(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedLongLongZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberFloat(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberFloatZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberDouble(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberDoubleZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberInteger(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberIntegerZero]);
+    return boolValue;
+}
+
+NS_INLINE BOOL NSBoolFromNumberUnsignedInteger(NSNumber *value)
+{
+    BOOL boolValue = (value && ![value isEqual:NSNumberUnsignedIntegerZero]);
+    return boolValue;
+}
