@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <UIKit/UIKit.h>
@@ -52,7 +52,6 @@
     {
     }
     
-
     return self;
 }
 
@@ -148,6 +147,11 @@
     return self;
 }
 
++ (id)imageSplitBackgoundViewWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22
+{
+    return [[[self alloc] initWithImage00:image00 image01:image01 image02:image02 image10:image10 image11:image11 image12:image12 image20:image20 image21:image21 image22:image22] autorelease];
+}
+
 - (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
 {
     UIImage *image00 = [UIImage imageNamed:imageNamed00];
@@ -165,6 +169,11 @@
     }
     
     return self;
+}
+
++ (id)imageSplitBackgoundViewWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
+{
+    return [[[self alloc] initWithImageNamed00:imageNamed00 imageNamed01:imageNamed01 imageNamed02:imageNamed02 imageNamed10:imageNamed10 imageNamed11:imageNamed11 imageNamed12:imageNamed12 imageNamed20:imageNamed20 imageNamed21:imageNamed21 imageNamed22:imageNamed22] autorelease];
 }
 
 #pragma mark - Deallocating a RFUIImageSplitBackgoundView
@@ -342,7 +351,7 @@
         
         UIImageView *imageView01 = (UIImageView *)mView01;
         imageView01.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView01];
         
         [self setNeedsLayout];
@@ -382,7 +391,7 @@
         
         UIImageView *imageView02 = (UIImageView *)mView02;
         imageView02.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView02];
         
         [self setNeedsLayout];
@@ -422,7 +431,7 @@
         
         UIImageView *imageView10 = (UIImageView *)mView10;
         imageView10.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView10];
         
         [self setNeedsLayout];
@@ -462,7 +471,7 @@
         
         UIImageView *imageView11 = (UIImageView *)mView11;
         imageView11.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView11];
         
         [self setNeedsLayout];
@@ -502,7 +511,7 @@
         
         UIImageView *imageView12 = (UIImageView *)mView12;
         imageView12.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView12];
         
         [self setNeedsLayout];
@@ -542,7 +551,7 @@
         
         UIImageView *imageView20 = (UIImageView *)mView20;
         imageView20.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView20];
         
         [self setNeedsLayout];
@@ -582,7 +591,7 @@
         
         UIImageView *imageView21 = (UIImageView *)mView21;
         imageView21.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView21];
         
         [self setNeedsLayout];
@@ -619,10 +628,10 @@
         imageView22Frame.size.height = mHeight2;
         
         mView22 = [[UIImageView alloc] initWithFrame:imageView22Frame];
-
+        
         UIImageView *imageView22 = (UIImageView *)mView22;
         imageView22.contentMode = UIViewContentModeScaleToFill;
-
+        
         [self addSubview:mView22];
         
         [self setNeedsLayout];

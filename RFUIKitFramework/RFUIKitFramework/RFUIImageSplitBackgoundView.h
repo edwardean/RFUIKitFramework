@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUISplitBackgoundView.h"
@@ -49,18 +49,21 @@
 // Initialize and Creating a RFUISplitBackgoundView
 
 - (id)initWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22;
++ (id)imageSplitBackgoundViewWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22;
+
 - (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22;
++ (id)imageSplitBackgoundViewWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22;
 
 // Managing the Content
 
-@property (nonatomic, retain) UIImageView *imageView00; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView01; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView02; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView10; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView11; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView12; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView20; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView21; // Default is nil. The first time the property is accessed, the UIImageView is created. 
-@property (nonatomic, retain) UIImageView *imageView22; // Default is nil. The first time the property is accessed, the UIImageView is created. 
+@property (nonatomic, retain) UIImageView *imageView00; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView01; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView02; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView10; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView11; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView12; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView20; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView21; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, retain) UIImageView *imageView22; // Default is nil. The first time the property is accessed, the UIImageView is created.
 
 @end
