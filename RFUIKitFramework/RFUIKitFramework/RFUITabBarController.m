@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUITabBarController.h"
@@ -61,7 +61,7 @@
 #pragma mark - Deallocating a RFUITabBarController
 
 - (void)dealloc
-{    
+{
     [super dealloc];
 }
 
@@ -94,8 +94,19 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     BOOL shouldAutorotate = [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
-    
     return shouldAutorotate;
+}
+
+- (BOOL)shouldAutorotate
+{
+    BOOL shouldAutorotate = [super shouldAutorotate];
+    return shouldAutorotate;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    NSUInteger supportedInterfaceOrientations = [super supportedInterfaceOrientations];
+    return supportedInterfaceOrientations;
 }
 
 #pragma mark - Responding to View Events
