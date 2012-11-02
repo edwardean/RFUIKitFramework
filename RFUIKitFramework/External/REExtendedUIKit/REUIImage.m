@@ -35,10 +35,12 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "REUIImage.h"
+
+#import <objc/runtime.h>
 
 @implementation UIImage (UIImageREUIImage)
 
@@ -123,46 +125,6 @@ jmp_exit:
     return [[[self alloc] initWithContentsOfFile:path scale:scale orientation:orientation] autorelease];
 }
 
-- (id)initWithData:(NSData *)data scale:(CGFloat)scale
-{
-    UIImage *image2 = nil;
-    
-    self = [self initWithData:data];
-    
-    if (!self)
-    {
-        goto jmp_exit;
-    }
-    
-    if (self.scale != scale)
-    {
-        CGImageRef cgImage = self.CGImage;
-        UIImageOrientation orientation = self.imageOrientation;
-        
-        image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
-        
-        [self release];
-        self = [image2 retain];
-    }
-    
-    if (!self)
-    {
-        goto jmp_exit;
-    }
-    
-jmp_exit:
-    
-    [image2 release];
-    image2 = nil;
-    
-    return self;
-}
-
-+ (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale
-{
-    return [[[self alloc] initWithData:data scale:scale] autorelease];
-}
-
 - (id)initWithData:(NSData *)data scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
 {
     UIImage *image2 = nil;
@@ -224,7 +186,7 @@ jmp_exit:
     return [self initWithImage:image scale:scale orientation:orientation];
 }
 
-+ (id)imageWithImage:(UIImage *)image scale:(CGFloat)scale
++ (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale
 {
     return [[[self alloc] initWithImage:image scale:scale] autorelease];
 }
@@ -241,7 +203,7 @@ jmp_exit:
     return [self initWithImage:image scale:scale orientation:orientation];
 }
 
-+ (id)imageWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation
++ (UIImage *)imageWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation
 {
     return [[[self alloc] initWithImage:image orientation:orientation] autorelease];
 }
@@ -276,9 +238,60 @@ jmp_error:
     return self;
 }
 
-+ (id)imageWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
++ (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
 {
     return [[[self alloc] initWithImage:image scale:scale orientation:orientation] autorelease];
+}
+
+@end
+
+static id UIImage_InitWithData_Scale(UIImage *self, SEL _cmd, NSData *data, CGFloat scale)
+{
+    UIImage *image2 = nil;
+    
+    self = [self initWithData:data];
+    
+    if (!self)
+    {
+        goto jmp_exit;
+    }
+    
+    if (self.scale != scale)
+    {
+        CGImageRef cgImage = self.CGImage;
+        UIImageOrientation orientation = self.imageOrientation;
+        
+        image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
+        
+        [self release];
+        self = [image2 retain];
+    }
+    
+    if (!self)
+    {
+        goto jmp_exit;
+    }
+    
+jmp_exit:
+    
+    [image2 release];
+    image2 = nil;
+    
+    return self;
+    
+}
+
+static UIImage *UIImage_ImageWithData_Scale(Class self, SEL _cmd, NSData *data, CGFloat scale)
+{
+    return [[[self alloc] initWithData:data scale:scale] autorelease];
+}
+
+@implementation UIImage (UIImageREUIImage_6_0_Dynamic)
+
++ (void)load
+{
+    class_addMethod([UIImage class], @selector(initWithData:scale:), (IMP)UIImage_InitWithData_Scale, "@16@0:4@8f12");
+    class_addMethod([UIImage class], @selector(imageWithData:scale:), (IMP)UIImage_ImageWithData_Scale, "@16@0:4@8f12");
 }
 
 @end

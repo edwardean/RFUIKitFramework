@@ -532,7 +532,7 @@
                 }
             }
         }
-
+        
         // Copying a substring in the range.
         
         timmedString = [self copySubstringWithRange:range];
@@ -649,6 +649,174 @@
 }
 
 #pragma mark - Identifying and Comparing Strings
+
++ (NSComparisonResult)compareLeftString:(NSString *)leftString rightString:(NSString *)rightString
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString compare:rightString];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
++ (NSComparisonResult)compareLeftString:(NSString *)leftString rightString:(NSString *)rightString options:(NSStringCompareOptions)options
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString compare:rightString options:options];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
++ (NSComparisonResult)caseIdenticalCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString caseIdenticalCompare:rightString];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
++ (NSComparisonResult)caseInsensitiveCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString caseInsensitiveCompare:rightString];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
++ (NSComparisonResult)localizedCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString localizedCompare:rightString];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
++ (NSComparisonResult)localizedCaseInsensitiveCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftString && rightString)
+    {
+        comparisonResult = [leftString localizedCaseInsensitiveCompare:rightString];
+    }
+    
+    else if (!leftString && rightString)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftString && !rightString)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftString && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
 
 - (NSComparisonResult)caseIdenticalCompare:(NSString *)rightString
 {

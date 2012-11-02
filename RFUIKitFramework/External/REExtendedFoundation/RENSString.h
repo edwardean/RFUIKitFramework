@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <Foundation/Foundation.h>
@@ -86,6 +86,15 @@
 - (NSString *)stringByTrimmingRightStringsInSet:(NSSet *)stringSet;
 
 // Identifying and Comparing Strings
+
++ (NSComparisonResult)compareLeftString:(NSString *)leftString rightString:(NSString *)rightString;
++ (NSComparisonResult)compareLeftString:(NSString *)leftString rightString:(NSString *)rightString options:(NSStringCompareOptions)mask;
+
++ (NSComparisonResult)caseIdenticalCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString;
++ (NSComparisonResult)caseInsensitiveCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString;
+
++ (NSComparisonResult)localizedCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString;
++ (NSComparisonResult)localizedCaseInsensitiveCompareLeftString:(NSString *)leftString rightString:(NSString *)rightString;
 
 /*
  Returns the result identical comparing characters.

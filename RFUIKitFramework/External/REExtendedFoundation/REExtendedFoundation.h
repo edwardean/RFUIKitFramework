@@ -35,19 +35,25 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RENSArray.h"
+#import "REBase256.h"
 #import "RENSDateFormatter.h"
 #import "RENSDictionary.h"
 #import "RENSFileManager.h"
 #import "RENSIndexPath.h"
+#import "RENSInvocation.h"
 #import "RENSLocale.h"
+#import "RENSNotification.h"
+#import "RENSNotificationQueue.h"
 #import "RENSNumber.h"
 #import "RENSObjCRuntime.h"
 #import "RENSObject.h"
+#import "RENSPropertyList.h"
 #import "RENSRange.h"
 #import "RENSStream.h"
 #import "RENSString.h"
+#import "RENSTimer.h"
 #import "RERFC822.h"

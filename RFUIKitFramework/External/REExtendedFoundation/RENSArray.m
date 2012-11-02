@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RENSArray.h"
@@ -248,7 +248,7 @@
         [mutableReversedArray addObject:object];
         
         index--;
-    }    
+    }
     
     NSArray *reversedArray = [[mutableReversedArray copy] autorelease];
     
@@ -273,15 +273,15 @@
     for (NSUInteger index = 0; !stop && (index < self.count); index++)
     {
         id object = [self objectAtIndex:index];
-
+        
         NSIndexPath *indexPath = [parentIndexPath copyIndexPathByAddingIndex:index];
-
+        
         indexPathBlock(object, indexPath, &stop);
-
+        
         if (!stop && [object isKindOfClass:arrayClass])
         {
             NSArray *childArray = (NSArray *)object;
-
+            
             stop = [childArray enumerateObjectsWithParentIndexPath:indexPath usingIndexPathBlock:indexPathBlock];
         }
         
@@ -325,7 +325,7 @@
             
             if (childArray)
             {
-                stop = [childArray enumerateObjectsWithParentIndexPath:indexPath usingIndexPathBlock:indexPathBlock];
+                stop = [childArray enumerateObjectsWithParentIndexPath:indexPath usingChildArrayBlock:childArrayBlock indexPathBlock:indexPathBlock];
             }
         }
         
@@ -339,7 +339,7 @@
 - (void)enumerateObjectsUsingChildArrayBlock:(id (^)(id object, NSIndexPath *indexPath))childArrayBlock indexPathBlock:(void (^)(id object, NSIndexPath *indexPath, BOOL *stop))indexPathBlock
 {
     NSIndexPath *parentIndexPath = [[NSIndexPath alloc] initWithIndexes:NULL length:0];
-
+    
     [self enumerateObjectsWithParentIndexPath:parentIndexPath usingChildArrayBlock:childArrayBlock indexPathBlock:indexPathBlock];
     
     [parentIndexPath release];
@@ -365,7 +365,7 @@
     for (NSUInteger position = 0; position < length; position++)
     {
         NSUInteger index = [indexPath indexAtPosition:position];
-
+        
         array = [array objectAtIndex:index];
     }
     
@@ -447,7 +447,7 @@
         else
         {
             id object = [array objectAtIndex:index];
-
+            
             NSIndexPath *subindexPath = [indexPath copySubindexPathToPosition:(position + 1)];
             
             array = childArrayBlock(object, subindexPath);
@@ -508,7 +508,7 @@
         else
         {
             id object = [array objectAtIndex:index];
-
+            
             NSIndexPath *subindexPath = [indexPath copySubindexPathToPosition:(position + 1)];
             
             array = childArrayBlock(object, subindexPath);
@@ -677,7 +677,7 @@
         {
             array1 = [array1 objectAtIndex:index1];
         }
-    } 
+    }
     
     NSMutableArray *array2 = self;
     NSUInteger      index2 = 0;
@@ -691,7 +691,7 @@
         {
             array2 = [array2 objectAtIndex:index2];
         }
-    } 
+    }
     
     id object = [[array2 objectAtIndex:index2] retain];
     
@@ -744,7 +744,7 @@
             [subindexPath1 release];
             subindexPath1 = nil;
         }
-    } 
+    }
     
     NSMutableArray *array2 = self;
     NSUInteger      index2 = 0;
@@ -765,7 +765,7 @@
             [subindexPath2 release];
             subindexPath2 = nil;
         }
-    } 
+    }
     
     id object = [[array2 objectAtIndex:index2] retain];
     
@@ -811,7 +811,7 @@
         {
             array1 = [array1 objectAtIndex:index1];
         }
-    } 
+    }
     
     NSMutableArray *array2 = self;
     NSUInteger      index2 = 0;
@@ -825,7 +825,7 @@
         {
             array2 = [array2 objectAtIndex:index2];
         }
-    } 
+    }
     
     id object1 = [[array1 objectAtIndex:index1] retain];
     id object2 = [[array2 objectAtIndex:index2] retain];
@@ -873,7 +873,7 @@
         if (position1 < (length1 - 1))
         {
             id object1 = [array1 objectAtIndex:index1];
-
+            
             NSIndexPath *subindexPath1 = [indexPath1 copySubindexPathToPosition:(position1 + 1)];
             
             array1 = childArrayBlock(object1, subindexPath1);
@@ -881,7 +881,7 @@
             [subindexPath1 release];
             subindexPath1 = nil;
         }
-    } 
+    }
     
     NSMutableArray *array2 = self;
     NSUInteger      index2 = 0;
@@ -894,7 +894,7 @@
         if (position2 < (length2 - 1))
         {
             id object2 = [array2 objectAtIndex:index2];
-
+            
             NSIndexPath *subindexPath2 = [indexPath2 copySubindexPathToPosition:(position2 + 1)];
             
             array2 = childArrayBlock(object2, subindexPath2);
@@ -902,7 +902,7 @@
             [subindexPath2 release];
             subindexPath2 = nil;
         }
-    } 
+    }
     
     id object1 = [[array1 objectAtIndex:index1] retain];
     id object2 = [[array2 objectAtIndex:index2] retain];

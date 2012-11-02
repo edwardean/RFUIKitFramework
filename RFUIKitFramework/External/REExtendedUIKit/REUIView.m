@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "REUIView.h"
@@ -106,6 +106,20 @@
     {
         self.transform = newTransform;
     }
+}
+
+#pragma mark - Managing the View Hierarchy
+
+- (void)bringToFront
+{
+    UIView *superview = self.superview;
+    [superview bringSubviewToFront:self];
+}
+
+- (void)sendToBack
+{
+    UIView *superview = self.superview;
+    [superview sendSubviewToBack:self];
 }
 
 #pragma mark - Laying out Subviews

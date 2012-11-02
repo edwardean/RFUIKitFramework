@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <UIKit/UIKit.h>
@@ -50,9 +50,6 @@
 - (id)initWithContentsOfFile:(NSString *)path scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 + (UIImage *)imageWithContentsOfFile:(NSString *)path scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 
-- (id)initWithData:(NSData *)data scale:(CGFloat)scale;
-+ (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale;
-
 - (id)initWithData:(NSData *)data scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 + (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 
@@ -60,15 +57,31 @@
 + (UIImage *)imageWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale;
 
 - (id)initWithImage:(UIImage *)image scale:(CGFloat)scale;
-+ (id)imageWithImage:(UIImage *)image scale:(CGFloat)scale;
++ (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale;
 
 - (id)initWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation;
-+ (id)imageWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation;
++ (UIImage *)imageWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation;
 
 - (id)initWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
-+ (id)imageWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
++ (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation;
 
 @end
+
+@interface UIImage (UIImageREUIImage_6_0_Dynamic)
+@end
+
+#if __IPHONE_6_0 > __IPHONE_OS_VERSION_MAX_ALLOWED
+
+@interface UIImage (UIImageREUIImage_6_0)
+
+// Initializing and creating a UIImage
+
+- (id)initWithData:(NSData *)data scale:(CGFloat)scale;
++ (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale;
+
+@end
+
+#endif
 
 UIKIT_STATIC_INLINE UIImageOrientation UIImageGetImageOrientation(UIImage *image)
 {
@@ -93,4 +106,3 @@ UIKIT_STATIC_INLINE CGFloat UIImageGetScale(UIImage *image)
     
     return scale;
 }
-

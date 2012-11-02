@@ -35,10 +35,19 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RENSNumber.h"
+
+NSNumber * NSNumberCharNegativeOne = nil;
+NSNumber * NSNumberShortNegativeOne = nil;
+NSNumber * NSNumberIntNegativeOne = nil;
+NSNumber * NSNumberLongNegativeOne = nil;
+NSNumber * NSNumberLongLongNegativeOne = nil;
+NSNumber * NSNumberFloatNegativeOne = nil;
+NSNumber * NSNumberDoubleNegativeOne = nil;
+NSNumber * NSNumberIntegerNegativeOne = nil;
 
 NSNumber * NSNumberCharZero = nil;
 NSNumber * NSNumberUnsignedCharZero = nil;
@@ -70,12 +79,24 @@ NSNumber * NSNumberDoubleOne = nil;
 NSNumber * NSNumberIntegerOne = nil;
 NSNumber * NSNumberUnsignedIntegerOne = nil;
 
+NSNumber * NSNumberBoolNO = nil;
+NSNumber * NSNumberBoolYES = nil;
+
 @implementation NSNumber (NSNumberRENSNumber)
 
 #pragma mark - Initializing a Class
 
 + (void)load
 {
+    NSNumberCharNegativeOne = [[NSNumber alloc] initWithChar:(char)(-1)];
+    NSNumberShortNegativeOne = [[NSNumber alloc] initWithShort:(short)(-1)];
+    NSNumberIntNegativeOne = [[NSNumber alloc] initWithInt:-1];
+    NSNumberLongNegativeOne = [[NSNumber alloc] initWithLong:-1l];
+    NSNumberLongLongNegativeOne = [[NSNumber alloc] initWithLongLong:-1ll];
+    NSNumberFloatNegativeOne = [[NSNumber alloc] initWithFloat:-1.0f];
+    NSNumberDoubleNegativeOne = [[NSNumber alloc] initWithDouble:-1.0];
+    NSNumberIntegerNegativeOne = [[NSNumber alloc] initWithInteger:(NSInteger)(-1)];
+    
     NSNumberCharZero = [[NSNumber alloc] initWithChar:(char)0];
     NSNumberUnsignedCharZero = [[NSNumber alloc] initWithUnsignedChar:(unsigned char)0];
     NSNumberShortZero = [[NSNumber alloc] initWithShort:(short)0];
@@ -105,6 +126,40 @@ NSNumber * NSNumberUnsignedIntegerOne = nil;
     NSNumberDoubleOne = [[NSNumber alloc] initWithDouble:1.0];
     NSNumberIntegerOne = [[NSNumber alloc] initWithInteger:(NSInteger)1];
     NSNumberUnsignedIntegerOne = [[NSNumber alloc] initWithUnsignedInteger:(NSUInteger)1];
+    
+    NSNumberBoolNO = [[NSNumber alloc] initWithBool:NO];
+    NSNumberBoolYES = [[NSNumber alloc] initWithBool:YES];
+}
+
+#pragma mark - Comparing NSNumber Objects
+
++ (NSComparisonResult)compareLeftNumber:(NSNumber *)leftNumber rightNumber:(NSNumber *)rightNumber
+{
+    NSComparisonResult comparisonResult;
+    
+    if (leftNumber && rightNumber)
+    {
+        comparisonResult = [leftNumber compare:rightNumber];
+    }
+    
+    else if (!leftNumber && rightNumber)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (leftNumber && !rightNumber)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    // !leftNumber && !rightString
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+    
 }
 
 @end

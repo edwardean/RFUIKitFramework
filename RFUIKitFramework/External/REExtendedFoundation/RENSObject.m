@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RENSObject.h"
@@ -81,7 +81,7 @@ void NSObject_ObjectDictionary_IgnoredObjects_AddObject(id object)
                 
                 free(NSObject_ObjectDictionary_IgnoredObjects);
                 NSObject_ObjectDictionary_IgnoredObjects = newIgnoredObjects;
-            }            
+            }
         }
         
         if (NSObject_ObjectDictionary_IgnoredObjects_Length < NSObject_ObjectDictionary_IgnoredObjects_Capacity)
@@ -129,9 +129,9 @@ void NSObject_ObjectDictionary_IgnoredObjects_RemoveObject(id object)
                 {
                     NSObject_ObjectDictionary_IgnoredObjects[indexOfIgnoredObject2] =  NSObject_ObjectDictionary_IgnoredObjects[indexOfIgnoredObject2 + 1];
                 }
-
+                
                 NSObject_ObjectDictionary_IgnoredObjects[indexOfIgnoredObject2] =  nil;
-
+                
                 NSObject_ObjectDictionary_IgnoredObjects_Length--;
                 
                 break;
@@ -172,7 +172,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                             if (objectDictionaries.count == 0)
                             {
                                 NSObject_ObjectDictionary_HashTable[index] = NULL;
-
+                                
                                 NSObject_ObjectDictionary_IgnoredObjects_AddObject(objectDictionaries);
                                 [objectDictionaries release];
                                 NSObject_ObjectDictionary_IgnoredObjects_RemoveObject(objectDictionary);
@@ -180,7 +180,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                             }
                         }
                     }
-                
+                    
                     NSObject_ObjectDictionary_IgnoredObjects_AddObject(key);
                     [key release];
                     NSObject_ObjectDictionary_IgnoredObjects_RemoveObject(key);
@@ -216,17 +216,17 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         if (NSObject_ObjectDictionary_HashTable_Length == 0)
         {
             NSObject *object = [[NSObject alloc] init];
-
+            
             if (object)
             {
                 NSObject_ObjectDictionary_ObjectTypeID = CFGetTypeID((CFTypeRef)object);
             }
-
+            
             else
             {
                 @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
             }
-
+            
             [object release];
             object = nil;
             
@@ -236,7 +236,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
             {
                 @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
             }
-
+            
             if (NSObject_ObjectDictionary_HashTable)
             {
                 memset(NSObject_ObjectDictionary_HashTable, 0, (sizeof(NSMutableArray *) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LENGTH));
@@ -263,7 +263,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                 {
                     @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
                 }
-
+                
                 else
                 {
                     Class objectClass = [self class];
@@ -283,7 +283,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                                 
                                 @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
                             }
-
+                            
                             else
                             {
                                 if (classString.length == 0)
@@ -338,7 +338,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                     {
                         @throw [NSException exceptionWithName:NSMallocException reason:@"Low memory." userInfo:nil];
                     }
-
+                    
                     else
                     {
                         objectDictionary = [objectDictionaries objectForKey:key];
@@ -352,15 +352,92 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
                             [objectDictionary release];
                         }
                     }
-                
+                    
                     [key release];
                     key = nil;
                 }
             }
         }
     }
-
+    
     return objectDictionary;
+}
+
+#pragma mark - Identifying and Comparing the Reference of Objects
+
+- (NSComparisonResult)compareReference:(id)object
+{
+    NSComparisonResult comparisonResult;
+    
+    if (self < object)
+    {
+        comparisonResult = NSOrderedAscending;
+    }
+    
+    else if (self > object)
+    {
+        comparisonResult = NSOrderedDescending;
+    }
+    
+    else
+    {
+        comparisonResult = NSOrderedSame;
+    }
+    
+    return comparisonResult;
+}
+
+- (BOOL)isReferenceEqual:(id)object
+{
+    BOOL isReferenceEqual  = (self == object);
+    return isReferenceEqual;
+}
+
+- (NSUInteger)referenceHash
+{
+    NSUInteger referenceHash = (NSUInteger)self;
+    return referenceHash;
+}
+
+#pragma mark - Sending Messages
+
+- (id)performSelector:(SEL)selector withObject:(id)object0 withObject:(id)object1 withObject:(id)object2
+{
+    IMP implementation = [self methodForSelector:selector];
+    
+    if (!implementation)
+    {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(selector), self] userInfo:nil];
+    }
+    
+    id returnValue = implementation(self, selector, object0, object1, object2);
+    return returnValue;
+}
+
+- (id)performSelector:(SEL)selector withObject:(id)object0 withObject:(id)object1 withObject:(id)object2 withObject:(id)object3
+{
+    IMP implementation = [self methodForSelector:selector];
+    
+    if (!implementation)
+    {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(selector), self] userInfo:nil];
+    }
+    
+    id returnValue = implementation(self, selector, object0, object1, object2, object3);
+    return returnValue;
+}
+
+- (id)performSelector:(SEL)selector withObject:(id)object0 withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 withObject:(id)object4
+{
+    IMP implementation = [self methodForSelector:selector];
+    
+    if (!implementation)
+    {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"-[%@ %@]: unrecognized selector sent to instance %p", NSStringFromClass(self.class), NSStringFromSelector(selector), self] userInfo:nil];
+    }
+    
+    id returnValue = implementation(self, selector, object0, object1, object2, object3, object4);
+    return returnValue;
 }
 
 @end

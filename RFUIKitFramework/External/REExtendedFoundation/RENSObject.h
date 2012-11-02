@@ -35,10 +35,17 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <Foundation/Foundation.h>
+
+@protocol NSInitializingInstance
+
+- (void)initializeInstance;
+- (void)deallocateInstance;
+
+@end
 
 @interface NSObject (NSObjectRENSObject)
 
@@ -46,4 +53,18 @@
 
 - (NSMutableDictionary *)objectDictionary; // Default is nil. The first time the method is accessed, the NSMutableDictionary is created. This method returns nil for Core Foundation classes.
 
+// Identifying and Comparing the Reference of Objects
+
+- (NSComparisonResult)compareReference:(id)object;
+
+- (BOOL)isReferenceEqual:(id)object;
+- (NSUInteger)referenceHash;
+
+// Sending Messages
+
+- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3;
+- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 withObject:(id)object4;
+- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 withObject:(id)object4 withObject:(id)object5;
+
 @end
+

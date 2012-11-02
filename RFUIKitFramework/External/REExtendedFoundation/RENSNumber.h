@@ -35,14 +35,27 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <Foundation/Foundation.h>
 
 @interface NSNumber (NSNumberRENSNumber)
 
+// Comparing NSNumber Objects
+
++ (NSComparisonResult)compareLeftNumber:(NSNumber *)leftNumber rightNumber:(NSNumber *)rightNumber;
+
 @end
+
+FOUNDATION_EXTERN NSNumber * NSNumberCharNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberShortNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberIntNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberLongNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberLongLongNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberFloatNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberDoubleNegativeOne;
+FOUNDATION_EXTERN NSNumber * NSNumberIntegerNegativeOne;
 
 FOUNDATION_EXTERN NSNumber * NSNumberCharZero;
 FOUNDATION_EXTERN NSNumber * NSNumberUnsignedCharZero;
@@ -74,6 +87,10 @@ FOUNDATION_EXTERN NSNumber * NSNumberDoubleOne;
 FOUNDATION_EXTERN NSNumber * NSNumberIntegerOne;
 FOUNDATION_EXTERN NSNumber * NSNumberUnsignedIntegerOne;
 
+FOUNDATION_EXTERN NSNumber * NSNumberBoolNO;
+FOUNDATION_EXTERN NSNumber * NSNumberBoolYES;
+
+#define NSNumberBoolFromBool(value) ((value) ? NSNumberBoolYES : NSNumberBoolNO)
 #define NSNumberCharFromBool(value) ((value) ? NSNumberCharOne : NSNumberCharZero)
 #define NSNumberUnsignedCharFromBool(value) ((value) ? NSNumberUnsignedCharOne : NSNumberUnsignedCharZero)
 #define NSNumberShortFromBool(value) ((value) ? NSNumberShortOne : NSNumberShortZero)
