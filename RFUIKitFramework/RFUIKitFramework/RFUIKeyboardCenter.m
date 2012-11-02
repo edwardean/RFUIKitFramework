@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUIKeyboardCenter.h"
@@ -43,8 +43,8 @@
 #import "RFUIKeyboardLayoutView.h"
 
 NSString * const RFUIKeyboardCenterWillShowKeyboardNotification = @"RFUIKeyboardCenterWillShowKeyboardNotification";
-NSString * const RFUIKeyboardCenterDidShowKeyboardNotification = @"RFUIKeyboardCenterDidShowKeyboardNotification"; 
-NSString * const RFUIKeyboardCenterWillHideKeyboardNotification = @"RFUIKeyboardCenterWillHideKeyboardNotification"; 
+NSString * const RFUIKeyboardCenterDidShowKeyboardNotification = @"RFUIKeyboardCenterDidShowKeyboardNotification";
+NSString * const RFUIKeyboardCenterWillHideKeyboardNotification = @"RFUIKeyboardCenterWillHideKeyboardNotification";
 NSString * const RFUIKeyboardCenterDidHideKeyboardNotification = @"RFUIKeyboardCenterDidHideKeyboardNotification";
 
 static RFUIKeyboardCenter * RFUIKeyboardCenter_SharedCenter = nil;
@@ -136,7 +136,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
     }
     
     [subviews release];
-    subviews = nil;  
+    subviews = nil;
 }
 
 - (void)hideKeyboardOnAllWindows
@@ -180,7 +180,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
             
             [self sendKeyboardCenterWillShowKeyboardMessageToView:subview];
         }
-
+        
         [subviews release];
         subviews = nil;
     }
@@ -334,15 +334,15 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
         
         NSNumber *animationDurationNumber = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
         mAnimationDuration = [animationDurationNumber doubleValue];
-    
+        
         mDisplayState = RFUIKeyboardDisplayStateShowing;
         
         NSValue *frameBeginValue = [userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
         mFrameBegin = [frameBeginValue CGRectValue];
-
+        
         NSValue *frameEndValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
         mFrameEnd = [frameEndValue CGRectValue];
-    
+        
         [self sendKeyboardCenterWillShowKeyboardMessageToAllWindows];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIKeyboardCenterWillShowKeyboardNotification object:self userInfo:nil];
@@ -362,7 +362,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
         mAnimationDuration = [animationDurationNumber doubleValue];
         
         mDisplayState = RFUIKeyboardDisplayStateShown;
-
+        
         NSValue *frameBeginValue = [userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
         mFrameBegin = [frameBeginValue CGRectValue];
         
@@ -370,7 +370,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
         mFrameEnd = [frameEndValue CGRectValue];
         
         [self sendKeyboardCenterDidShowKeyboardMessageToAllWindows];
-
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIKeyboardCenterDidShowKeyboardNotification object:self userInfo:nil];
     }
 }
@@ -388,7 +388,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
         mAnimationDuration = [animationDurationNumber doubleValue];
         
         mDisplayState = RFUIKeyboardDisplayStateHiding;
-
+        
         NSValue *frameBeginValue = [userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
         mFrameBegin = [frameBeginValue CGRectValue];
         
@@ -414,15 +414,15 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
         mAnimationDuration = [animationDurationNumber doubleValue];
         
         mDisplayState = RFUIKeyboardDisplayStateHidden;
-
+        
         NSValue *frameBeginValue = [userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
         mFrameBegin = [frameBeginValue CGRectValue];
         
         NSValue *frameEndValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
         mFrameEnd = [frameEndValue CGRectValue];
-
+        
         [self sendKeyboardCenterDidHideKeyboardMessageToAllWindows];
-
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIKeyboardCenterDidHideKeyboardNotification object:self userInfo:nil];
     }
 }

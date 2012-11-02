@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 
@@ -58,10 +58,10 @@
     {
         mWidth0 = 10.0f;
         mWidth2 = 10.0f;
-
+        
         mHeight0 = 10.0f;
         mHeight2 = 10.0f;
-
+        
         mView00 = nil;
         mView01 = nil;
         mView02 = nil;
@@ -73,7 +73,7 @@
         mView20 = nil;
         mView21 = nil;
         mView22 = nil;
-
+        
         self.userInteractionEnabled = NO;
     }
     

@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <UIKit/UIKit.h>
@@ -51,7 +51,7 @@ typedef enum RFUIKeyboardDisplayState
 @interface RFUIKeyboardCenter : NSObject
 {
 @private
-
+    
     UIViewAnimationCurve     mAnimationCurve;
     double                   mAnimationDuration;
     RFUIKeyboardDisplayState mDisplayState;
@@ -78,6 +78,6 @@ typedef enum RFUIKeyboardDisplayState
 @end
 
 FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillShowKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidShowKeyboardNotification; 
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillHideKeyboardNotification; 
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidShowKeyboardNotification;
+FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillHideKeyboardNotification;
 FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidHideKeyboardNotification;

@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFAppDelegate.h"
@@ -90,16 +90,8 @@
     windowFrame.size = [UIScreen mainScreen].bounds.size;
     
     mMainWindow = [[UIWindow alloc] initWithFrame:windowFrame];
-    mMainWindow.backgroundColor = [UIColor blackColor];
+    mMainWindow.backgroundColor = [UIColor whiteColor];
     [mMainWindow makeKeyAndVisible];
-    
-    mRootNavigationController = [[UINavigationController alloc] init];
-    mRootNavigationController.navigationBar.barStyle = UIBarStyleBlack;
-    mRootNavigationController.navigationBar.hidden = NO;
-    mRootNavigationController.toolbar.barStyle = UIBarStyleBlack;
-    mRootNavigationController.toolbar.hidden = YES;
-    
-    [mMainWindow addSubview:mRootNavigationController.view];
     
     [self testRFUIKitFramework];
     
@@ -114,7 +106,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

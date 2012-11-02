@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUIImageCheckView.h"
@@ -52,12 +52,12 @@
     {
         numberOfState = normalStateImageNameds.count;
     }
-
+    
     if (disabledStateImageNameds && (numberOfState < disabledStateImageNameds.count))
     {
         numberOfState = disabledStateImageNameds.count;
     }
-
+    
     if ((self = [super initWithNumberOfStates:numberOfState]))
     {
         for (NSUInteger state = 0; state < normalStateImageNameds.count; state++)
@@ -66,7 +66,7 @@
             
             [self setStateImageNamed:normalStateImageNamed forState:state controlState:UIControlStateNormal];
         }
-
+        
         for (NSUInteger state = 0; state < disabledStateImageNameds.count; state++)
         {
             NSString *disabledStateImageNamed = [disabledStateImageNameds objectAtIndex:state];

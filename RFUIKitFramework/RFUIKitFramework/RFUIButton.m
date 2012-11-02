@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUIButton.h"
@@ -59,12 +59,12 @@
     if ((self = [super initWithFrame:frame]))
     {
         [self addTarget:self action:@selector(rfuiButtonEventAllTouchEventsAction:) forControlEvents:UIControlEventAllTouchEvents];
-
+        
         mStateViewEdgeInsets = UIEdgeInsetsZero;
         
         mStateViews = [[NSMutableDictionary alloc] init];
     }
-
+    
     return self;
 }
 
@@ -73,7 +73,7 @@
 - (void)dealloc
 {
     [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
-
+    
     [mStateViews release];
     mStateViews = nil;
     
@@ -140,7 +140,7 @@
     if (newStateView)
     {
         NSNumber *stateNumber = [[NSNumber alloc] initWithUnsignedInteger:state];
-
+        
         if (stateNumber)
         {
             UIView *oldStateView = [mStateViews objectForKey:stateNumber];
@@ -215,7 +215,7 @@
     {
         simpleControlState = UIControlStateDisabled;
     }
-
+    
     else if ((controlState & UIControlStateHighlighted) == UIControlStateHighlighted)
     {
         simpleControlState = UIControlStateHighlighted;
@@ -225,7 +225,7 @@
     {
         simpleControlState = UIControlStateSelected;
     }
-
+    
     NSNumber *simpleControlStateNumber = [NSNumber numberWithUnsignedInteger:simpleControlState];
     
     UIView *simpleStateView = [mStateViews objectForKey:simpleControlStateNumber];

@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUICheckView.h"
@@ -82,7 +82,7 @@
     {
         [self addTarget:self action:@selector(rfuiCheckViewEventTouchEventsAction:) forControlEvents:(UIControlEventAllTouchEvents & ~UIControlEventTouchUpInside)];
         [self addTarget:self action:@selector(rfuiCheckViewEventTouchUpInsideAction:) forControlEvents:UIControlEventTouchUpInside];
-
+        
         mEntities = [[NSMutableArray alloc] initWithCapacity:numberOfStates];
         
         for (NSUInteger indexOfState = 0; indexOfState < numberOfStates; indexOfState++)
@@ -142,7 +142,7 @@
         for (NSNumber *conrolStateNumber in entity)
         {
             UIView *stateView = [entity objectForKey:conrolStateNumber];
-        
+            
             [stateView setFrameIfNeeded:stateViewFrame];
         }
     }
@@ -212,7 +212,7 @@
             
             [mEntities removeLastObject];
         }
-
+        
         if (mCurrentState != NSNotFound)
         {
             if (mCurrentState >= numberOfStates)
@@ -244,7 +244,7 @@
 - (void)setStateView:(UIView *)newStateView forState:(NSUInteger)state controlState:(UIControlState)conrolState
 {
     NSNumber *conrolStateNumber = [[NSNumber alloc] initWithUnsignedInteger:conrolState];
-
+    
     NSMutableDictionary *entity = [mEntities objectAtIndex:state];
     UIView *oldStateView = [entity objectForKey:conrolStateNumber];
     
@@ -530,7 +530,7 @@
         {
             newState = 0;
         }
-    
+        
         // newState < (numberOfStates - 1).
         else
         {

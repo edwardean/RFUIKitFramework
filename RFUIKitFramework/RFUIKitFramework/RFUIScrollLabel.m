@@ -93,7 +93,7 @@
     CGRect viewFrame = self.frame;
     
     CGSize contentSize = CGSizeZero;
-
+    
     if (mLabel)
     {
         BOOL alwaysBounceHorizontal = self.alwaysBounceHorizontal;
@@ -103,7 +103,7 @@
         labelContentSize.width = (alwaysBounceHorizontal ? CGFLOAT_MAX : viewFrame.size.width);
         labelContentSize.height = (alwaysBounceVertical ? CGFLOAT_MAX : viewFrame.size.height);
         labelContentSize = UIEdgeInsetsInsetSize(labelContentSize, mLabelInset);
-
+        
         CGSize labeTextSize;
         labeTextSize = [mLabel textSizeForSize:labelContentSize];
         
@@ -112,10 +112,10 @@
         labeFrame.origin.y = mLabelInset.top;
         labeFrame.size.width = MAX(labeTextSize.width, (viewFrame.size.width - mLabelInset.left - mLabelInset.right));
         labeFrame.size.height = MAX(labeTextSize.height, (viewFrame.size.height - mLabelInset.top - mLabelInset.bottom));
-
+        
         contentSize.width = labeFrame.size.width + mLabelInset.left + mLabelInset.right;
         contentSize.height = labeFrame.size.height + mLabelInset.top + mLabelInset.bottom;
-
+        
         [mLabel setFrameIfNeeded:labeFrame];
     }
     
@@ -176,7 +176,7 @@
         {
             [self addSubview:mLabel];
         }
-
+        
         [self setNeedsLayout];
     }
 }

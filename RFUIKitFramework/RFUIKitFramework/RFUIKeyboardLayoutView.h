@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <UIKit/UIKit.h>
@@ -66,8 +66,8 @@ typedef enum RFUIFirstResponderArrangement RFUIFirstResponderArrangement;
 
 // Managing the Views of the RFUIKeyboardLayoutView Object
 
-@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created. 
-@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created. 
+@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
 
 // Configuring the Behavior of Showing the Keyboard
 

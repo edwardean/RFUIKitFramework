@@ -35,7 +35,7 @@
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import "RFUIKeyboardLayoutView.h"
@@ -64,7 +64,7 @@
         {
             mHasKeyboad = NO;
         }
-
+        
         mFirstResponderArrangement = RFUIFirstResponderArrangementSubviews;
         
         mHasFirstResponder = NO;
@@ -72,7 +72,7 @@
         mHasWindow = NO;
         
         mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
-
+        
         mBackgroundView = nil;
         
         mContentView = nil;
@@ -108,7 +108,7 @@
     if (mHasFirstResponder && mHasKeyboad && mHasWindow)
     {
         CGRect keyboardFrameEnd = CGRectZero;
-
+        
         UIWindow *window = self.window;
         
         if (window)
@@ -142,7 +142,7 @@
     {
         backgroundViewFrame.origin = CGPointZero;
         backgroundViewFrame.size = viewFrame.size;
-
+        
         contentViewFrame.origin = CGPointZero;
         contentViewFrame.size = viewFrame.size;
     }
@@ -167,7 +167,7 @@
             
             [keyboardLayoutView keyboardCenterWillShowKeyboard];
         }
-
+        
         else
         {
             [self recursiveLayoutSubviewsAndSendKeyboardCenterWillShowKeyboardMessageInView:subview];
@@ -263,7 +263,7 @@
 - (void)didMoveToWindow
 {
     [super didMoveToWindow];
-
+    
     RFUIFirstResponderArrangement firstResponderArrangement = [self calculateFirstResponderArrangementInView:self];
     
     if (mFirstResponderArrangement & firstResponderArrangement)
@@ -275,7 +275,7 @@
     {
         mHasFirstResponder = NO;
     }
-
+    
     BOOL mHasWindowOld = mHasWindow;
     
     if (self.window)
@@ -415,7 +415,7 @@
         }
     }
 }
-   
+
 #pragma mark - Configuring the Behavior of Showing the Keyboard
 
 - (RFUIFirstResponderArrangement)firstResponderArrangement
@@ -481,7 +481,7 @@
         NSMutableArray *views = [[NSMutableArray alloc] init];
         
         UIView *view2 = firstResponderView;
-
+        
         while (view2 && (view2 != view))
         {
             [views addObject:view2];
@@ -525,7 +525,7 @@
     {
         mHasFirstResponder = NO;
     }
-
+    
     mHasKeyboad = YES;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
@@ -537,7 +537,7 @@
                                                    UIViewAnimationOptionAllowAnimatedContent |
                                                    UIViewAnimationOptionBeginFromCurrentState);
     viewAnimationOptions |= UIViewAnimationOptionsFromUIViewAnimationCurve(animationCurve);
-                                                   
+    
     [UIView animateWithDuration:animationDuration
                           delay:0.0f
                         options:viewAnimationOptions
@@ -561,11 +561,11 @@
     {
         mHasFirstResponder = NO;
     }
-
+    
     mHasKeyboad = YES;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
-
+    
     UIViewAnimationCurve animationCurve = [RFUIKeyboardCenter sharedCenter].animationCurve;
     double animationDuration = [RFUIKeyboardCenter sharedCenter].animationDuration;
     
@@ -597,11 +597,11 @@
     {
         mHasFirstResponder = NO;
     }
-
+    
     mHasKeyboad = NO;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
-
+    
     UIViewAnimationCurve animationCurve = [RFUIKeyboardCenter sharedCenter].animationCurve;
     double animationDuration = [RFUIKeyboardCenter sharedCenter].animationDuration;
     
@@ -633,11 +633,11 @@
     {
         mHasFirstResponder = NO;
     }
-
+    
     mHasKeyboad = NO;
     
     mKyeboadFrameEnd = [RFUIKeyboardCenter sharedCenter].frameEnd;
-
+    
     UIViewAnimationCurve animationCurve = [RFUIKeyboardCenter sharedCenter].animationCurve;
     double animationDuration = [RFUIKeyboardCenter sharedCenter].animationDuration;
     
