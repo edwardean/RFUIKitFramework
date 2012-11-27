@@ -103,7 +103,6 @@
 //- (UITableView
 @end
 
-
 @interface NSIndexPath (NSIndexPathRFUIPageScrollView)
 
 + (id)indexPathForRow:(NSInteger)row column:(NSInteger)column;

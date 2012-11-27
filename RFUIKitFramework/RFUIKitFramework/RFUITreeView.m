@@ -140,8 +140,8 @@
     @autoreleasepool
     {
         [self reloadDataIfNeeded];
-        [self calculateTreeViewCellMinimumWidth]; // IfNeeded
-        [self calculateTreeViewCellFrame];        // IfNeeded
+        [self calculateTreeViewCellMinimumWidth]; // IfNeeded.
+        [self calculateTreeViewCellFrame];        // IfNeeded.
         
         CGRect viewFrame = self.frame;
         
@@ -570,7 +570,7 @@
     return parentTreeViewNode;
 }
 
-- (void)loadRootTreeViewNodes;
+- (void)loadRootTreeViewNodes
 {
     NSInteger numberOfRootTreeViewNodes = [self numberOfRowsInRootInDataSource];
     
@@ -612,7 +612,7 @@
     {
         mTreeFlags.needsReloadData = NO;
         
-        // Remove all of Tree View Nodes
+        // Remove all of Tree View Nodes.
         //[self removeAllTreeViewNodeInRoot];
         
         // Loading Tree View Nodes.
@@ -972,8 +972,8 @@
                                                       treeViewNode.treeViewCellFrameOld = treeViewCellFrame;
                                                   }];
         
-        [self calculateTreeViewCellMinimumWidth]; // IfNeeded
-        [self calculateTreeViewCellFrame];        // IfNeeded
+        [self calculateTreeViewCellMinimumWidth]; // IfNeeded.
+        [self calculateTreeViewCellFrame];        // IfNeeded.
         
         CGRect viewFrame = self.frame;
         

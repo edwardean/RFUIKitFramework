@@ -152,7 +152,7 @@ NSNumber * NSNumberBoolYES = nil;
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftNumber && !rightString
+    // !leftNumber && !rightNumber.
     else
     {
         comparisonResult = NSOrderedSame;

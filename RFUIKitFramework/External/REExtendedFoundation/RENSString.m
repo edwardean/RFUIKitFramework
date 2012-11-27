@@ -112,6 +112,67 @@
     return string;
 }
 
+#pragma mark - Modifying a String
+
+- (NSString *)copyStringByDeletingPrefix:(NSString *)prefix
+{
+    NSString *modifiedString = nil;
+    
+    if (prefix)
+    {
+        NSRange range;
+        range.location = 0;
+        range.length = self.length;
+        
+        if ([self hasPrefix:prefix])
+        {
+            NSUInteger prefixLength = prefix.length;
+            
+            range.location = prefixLength;
+            range.length -= prefixLength;
+        }
+        
+        modifiedString = [self copySubstringWithRange:range];
+    }
+    
+    return modifiedString;
+}
+
+- (NSString *)stringByDeletingPrefix:(NSString *)prefix
+{
+    NSString *string = [[self copyStringByDeletingPrefix:prefix] autorelease];
+    return string;
+}
+
+- (NSString *)copyStringByDeletingSuffix:(NSString *)suffix
+{
+    NSString *modifiedString = nil;
+    
+    if (suffix)
+    {
+        NSRange range;
+        range.location = 0;
+        range.length = self.length;
+        
+        if ([self hasPrefix:suffix])
+        {
+            NSUInteger suffixLength = suffix.length;
+            
+            range.length -= suffixLength;
+        }
+        
+        modifiedString = [self copySubstringWithRange:range];
+    }
+    
+    return modifiedString;
+}
+
+- (NSString *)stringByDeletingSuffix:(NSString *)suffix
+{
+    NSString *string = [[self copyStringByDeletingSuffix:suffix] autorelease];
+    return string;
+}
+
 #pragma mark - Trimming a String
 
 - (NSString *)copyStringByTrimming
@@ -669,7 +730,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -697,7 +758,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -725,7 +786,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -753,7 +814,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -781,7 +842,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -809,7 +870,7 @@
         comparisonResult = NSOrderedDescending;
     }
     
-    // !leftString && !rightString
+    // !leftString && !rightString.
     else
     {
         comparisonResult = NSOrderedSame;
@@ -955,6 +1016,32 @@
     range.length = self.length;
     
     [self deleteCharactersInRange:range];
+}
+
+- (void)deletePrefix:(NSString *)prefix
+{
+    if ([self hasPrefix:prefix])
+    {
+        NSRange range;
+        range.location = 0;
+        range.length = prefix.length;
+        
+        [self deleteCharactersInRange:range];
+    }
+}
+
+- (void)deleteSuffix:(NSString *)suffix
+{
+    if ([self hasSuffix:suffix])
+    {
+        NSUInteger suffixLength = suffix.length;
+        
+        NSRange range;
+        range.location = self.length - suffixLength;
+        range.length = suffixLength;
+        
+        [self deleteCharactersInRange:range];
+    }
 }
 
 #pragma mark - Trimming a String

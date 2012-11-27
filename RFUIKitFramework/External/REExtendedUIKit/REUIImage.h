@@ -42,7 +42,7 @@
 
 @interface UIImage (UIImageREUIImage)
 
-// Initializing and creating a UIImage
+// Initializing and Creating a UIImage
 
 - (id)initWithContentsOfFile:(NSString *)path scale:(CGFloat)scale;
 + (UIImage *)imageWithContentsOfFile:(NSString *)path scale:(CGFloat)scale;
@@ -74,7 +74,7 @@
 
 @interface UIImage (UIImageREUIImage_6_0)
 
-// Initializing and creating a UIImage
+// Initializing and Creating a UIImage
 
 - (id)initWithData:(NSData *)data scale:(CGFloat)scale;
 + (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale;

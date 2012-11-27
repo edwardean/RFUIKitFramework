@@ -38,8 +38,38 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface RFUIStatusBarLayoutView : NSObject
+@interface RFUIStatusBarLayoutView : UIView
+{
+@private
+    
+    UIView *mBackgroundView;
+    UIView *mContentView;
+    BOOL    mHasSuperStatusBarLayoutView;
+    BOOL    mHasWindow;
+    UIView *mRotationView;
+    CGRect  mStatusBarFrameEnd;
+    BOOL    mSupportedApplicationFrame;
+    BOOL    mSupportedInterfaceOrientation;
+}
+
+// Managing the Views of the RFUIKeyboardLayoutView Object
+
+@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
+
+// Configuring the Behavior of Showing the Status Bar
+
+@property (nonatomic) BOOL supportedApplicationFrame;     // Default is YES.
+@property (nonatomic) BOOL supportedInterfaceOrientation; // Default is YES.
+
+// Responding to RFUIStatusBarCenter Events
+
+- (void)statusBarCenterWillChangeStatusBarFrame;
+- (void)statusBarCenterDidChangeStatusBarFrame;
+
+- (void)statusBarCenterWillChangeStatusBarOrientationFrame;
+- (void)statusBarCenterDidChangeStatusBarOrientationFrame;
 
 @end

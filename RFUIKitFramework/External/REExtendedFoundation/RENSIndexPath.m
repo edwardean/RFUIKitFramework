@@ -62,7 +62,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         self = [self initWithIndexes:NULL length:0];
     }
     
-    // Length > 0
+    // Length > 0.
     else
     {
         NSUInteger indexes[length];
@@ -94,7 +94,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         indexPath = [self indexPathWithIndexes:NULL length:0];
     }
     
-    // Length > 0
+    // Length > 0.
     else
     {
         NSUInteger indexes[length];
@@ -155,7 +155,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         indexPath = [self retain];
     }
     
-    // Length > 0
+    // Length > 0.
     else
     {
         NSUInteger length1 = self.length;
@@ -192,7 +192,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         indexPath = self;
     }
     
-    // Length > 0
+    // Length > 0.
     else
     {
         NSUInteger length1 = self.length;
@@ -730,7 +730,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
         indexPath = [[NSIndexPath alloc] initWithIndexes:indexes length:(length - 1)];
     }
     
-    return indexPath;    
+    return indexPath;
 }
 
 @end

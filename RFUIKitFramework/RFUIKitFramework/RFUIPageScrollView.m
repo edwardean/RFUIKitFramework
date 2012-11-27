@@ -175,7 +175,7 @@
             [indexPaths addObject:[NSIndexPath indexPathForRow:indexOfRow1 column:indexOfColumn1]];
         }
         
-        // Removing and updating the cell
+        // Removing and updating the cell.
         NSInteger indexOfVisibleCell = 0;
         
         while (indexOfVisibleCell < [mVisibleCells count])
@@ -218,7 +218,7 @@
             }
         }
         
-        // Loading New Cell
+        // Loading New Cell.
         for (NSIndexPath *indexPath in indexPaths)
         {
             RFUIPageScrollViewCell *pageScrollViewCell = [self cellForRowAtIndexPathInDataSource:indexPath];
@@ -418,7 +418,6 @@
     return pageScrollViewCell;
 }
 
-
 #pragma mark - Accessing Info
 
 - (NSInteger)numberOfColumns
@@ -539,7 +538,6 @@
     return [indexPaths autorelease];
 }
 
-
 // Reloading Data
 
 - (void)reloadData
@@ -548,7 +546,7 @@
     {
         mNeedsReloadData = NO;
         
-        // Removing All Cells
+        // Removing All Cells.
         
         [mRows removeAllObjects];
         
@@ -559,12 +557,12 @@
         
         [mVisibleCells removeAllObjects];
         
-        // Geting Info
+        // Geting Info.
         
         mNumberOfRows = [self numberOfRowsInDataSource];
         mNumberOfColumns = [self numberOfColumnsInDataSource];
         
-        // Adding Empty Cells
+        // Adding Empty Cells.
         for (NSInteger indexOfRow = 0; indexOfRow < mNumberOfRows; indexOfRow++)
         {
             NSMutableArray *columns = [NSMutableArray arrayWithCapacity:mNumberOfColumns];

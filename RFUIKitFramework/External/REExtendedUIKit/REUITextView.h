@@ -1,9 +1,9 @@
 //
-//  RFUIKeyboardCenter.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  REUITextView.h
+//  REUIKitFramework
+//  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2011.12.25.
+//  Created by Roman Oliichuk on 2012.11.22.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -40,44 +40,37 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum RFUIKeyboardDisplayState
-{
-    RFUIKeyboardDisplayStateShowing = 1,
-    RFUIKeyboardDisplayStateShown = 2,
-    RFUIKeyboardDisplayStateHiding = 3,
-    RFUIKeyboardDisplayStateHidden = 4
-} RFUIKeyboardDisplayState;
+@interface UITextView (UITextViewREUITextView)
 
-@interface RFUIKeyboardCenter : NSObject
-{
-@private
-    
-    UIViewAnimationCurve     mAnimationCurve;
-    double                   mAnimationDuration;
-    RFUIKeyboardDisplayState mDisplayState;
-    CGRect                   mFrameBegin;
-    CGRect                   mFrameEnd;
-}
+// Replacing and Returning Text
 
-// Getting the RFUIKeyboardCenter Instance
+- (NSString *)nsTextInRange:(NSRange)range;
+- (void)nsReplaceRange:(NSRange)range withText:(NSString *)text;
 
-+ (RFUIKeyboardCenter *)sharedCenter;
+// Working with Marked and Selected Text
 
-// Getting the Information of Keyboard
+@property (readwrite, setter = setNSMarkedTextRange:) NSRange nsSelectedTextRange;
+@property (nonatomic, readonly)                       NSRange nsMarkedTextRange;   // NSRangeNotFound if no marked text.
 
-@property (nonatomic, readonly) UIViewAnimationCurve     animationCurve;
-@property (nonatomic, readonly) double                   animationDuration;
-@property (nonatomic, readonly) RFUIKeyboardDisplayState displayState;
-@property (nonatomic, readonly) CGRect                   frameBegin;
-@property (nonatomic, readonly) CGRect                   frameEnd;
+// Computing Text Ranges and Text Positions
 
-// Hiding the Keyboard
+- (NSInteger)nsPositionFromPosition:(NSInteger)position inDirection:(UITextLayoutDirection)direction offset:(NSInteger)offset;
 
-- (void)hideKeyboard;
+// Determining Layout and Writing Direction
+
+- (NSInteger)nsPositionWithinRange:(NSRange)range farthestInDirection:(UITextLayoutDirection)direction;
+- (NSRange)nsCharacterRangeByExtendingPosition:(NSInteger)position inDirection:(UITextLayoutDirection)direction;
+
+- (UITextWritingDirection)nsBaseWritingDirectionForPosition:(NSInteger)position inDirection:(UITextStorageDirection)direction;
+- (void)setNSBaseWritingDirection:(UITextWritingDirection)writingDirection forRange:(NSRange)range;
+
+// Geometry and Hit-Testing Methods
+
+- (CGRect)nsFirstRectForRange:(NSRange)range;
+- (CGRect)nsCaretRectForPosition:(NSInteger)position;
+
+- (NSInteger)nsClosestPositionToPoint:(CGPoint)point;
+- (NSInteger)nsClosestPositionToPoint:(CGPoint)point withinRange:(NSRange)range;
+- (NSRange)nsCharacterRangeAtPoint:(CGPoint)point;
 
 @end
-
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillShowKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidShowKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillHideKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidHideKeyboardNotification;

@@ -39,8 +39,11 @@
  */
 
 #import "REUIApplication.h"
+#import "REUIBarButtonItem.h"
 #import "REUIColor.h"
+#import "REUIControl.h"
 #import "REUIGeometry.h"
+#import "REUIGestureRecognizer.h"
 #import "REUIImage.h"
 #import "REUILabel.h"
 #import "REUINavigationBar.h"
@@ -48,6 +51,8 @@
 #import "REUIScreen.h"
 #import "REUIScrollView.h"
 #import "REUITableViewCell.h"
+#import "REUITextField.h"
+#import "REUITextView.h"
 #import "REUIToolbar.h"
 #import "REUIView.h"
 #import "REUIViewController.h"

@@ -40,6 +40,10 @@
 
 #import "RFUIStatusBarCenter.h"
 
+#import "REExtendedFoundation.h"
+
+#import "RFUIStatusBarLayoutView.h"
+
 NSString * const RFUIStatusBarCenterWillChangeStatusBarFrameNotification = @"RFUIStatusBarCenterWillChangeStatusBarFrameNotification";
 NSString * const RFUIStatusBarCenterDidChangeStatusBarFrameNotification = @"RFUIStatusBarCenterDidChangeStatusBarFrameNotification";
 
@@ -86,18 +90,20 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 {
     if ((self = [super init]))
     {
-        mApplication = [[UIApplication sharedApplication] retain];
+        // Adding self as an observer on UIApplication Notifications.
         
-        if (!mApplication)
-        {
-            @throw [NSException exceptionWithName:NSGenericException reason:@"[UIApplication sharedApplication] returns nil." userInfo:nil];
-        }
+        UIApplication *application = [UIApplication sharedApplication];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillChangeStatusBarFrameNotification:) name:UIApplicationWillChangeStatusBarFrameNotification object:application];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarFrameNotification:) name:UIApplicationDidChangeStatusBarFrameNotification object:application];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillChangeStatusBarOrientationNotification:) name:UIApplicationWillChangeStatusBarOrientationNotification object:application];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientationNotification:) name:UIApplicationDidChangeStatusBarOrientationNotification object:application];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillChangeStatusBarFrameNotification:) name:UIApplicationWillChangeStatusBarFrameNotification object:mApplication];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarFrameNotification:) name:UIApplicationDidChangeStatusBarFrameNotification object:mApplication];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillChangeStatusBarOrientationNotification:) name:UIApplicationWillChangeStatusBarOrientationNotification object:mApplication];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeStatusBarOrientationNotification:) name:UIApplicationDidChangeStatusBarOrientationNotification object:mApplication];
+        mIsInterfaceOrientationChanging = NO;
+        mIsFrameChanging = NO;
+        mInterfaceOrientationBegin = application.statusBarOrientation;
+        mInterfaceOrientationEnd = application.statusBarOrientation;
+        mFrameBegin = application.statusBarFrame;
+        mFrameEnd = application.statusBarFrame;
     }
     
     return self;
@@ -109,102 +115,286 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [mApplication release];
-    mApplication = nil;
-    
     [super dealloc];
 }
 
-#pragma mark - Managing the Status Bar
+#pragma mark - Managing Status Bar Interface Orientation
 
-- (UIStatusBarStyle)statusBarStyle
+- (UIInterfaceOrientation)interfaceOrientation
 {
-    UIStatusBarStyle statusBarStyle = mApplication.statusBarStyle;
-    return statusBarStyle;
+    UIApplication *application = [UIApplication sharedApplication];
+    UIInterfaceOrientation interfaceOrientation = application.statusBarOrientation;
+    return interfaceOrientation;
 }
 
-- (void)setStatusBarStyle:(UIStatusBarStyle)newStatusBarStyle
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)newInterfaceOrientation
 {
-    UIStatusBarStyle oldStatusBarStyle = mApplication.statusBarStyle;
+    UIApplication *application = [UIApplication sharedApplication];
+    UIInterfaceOrientation oldInterfaceOrientation = application.statusBarOrientation;
     
-    if (oldStatusBarStyle != newStatusBarStyle)
+    if (oldInterfaceOrientation != newInterfaceOrientation)
     {
-        mApplication.statusBarStyle = newStatusBarStyle;
+        application.statusBarOrientation = newInterfaceOrientation;
     }
 }
 
-- (void)setStatusBarStyle:(UIStatusBarStyle)newStatusBarStyle animated:(BOOL)animated
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)newInterfaceOrientation animated:(BOOL)animated
 {
-    UIStatusBarStyle oldStatusBarStyle = mApplication.statusBarStyle;
+    UIApplication *application = [UIApplication sharedApplication];
+    UIInterfaceOrientation oldInterfaceOrientation = application.statusBarOrientation;
     
-    if (oldStatusBarStyle != newStatusBarStyle)
+    if (oldInterfaceOrientation != newInterfaceOrientation)
     {
-        [mApplication setStatusBarStyle:newStatusBarStyle animated:animated];
+        [application setStatusBarOrientation:newInterfaceOrientation animated:animated];
     }
 }
 
-- (BOOL)statusBarHidden
+- (NSTimeInterval)interfaceOrientationAnimationDuration
 {
-    BOOL statusBarHidden = mApplication.statusBarHidden;
-    return statusBarHidden;
+    UIApplication *application = [UIApplication sharedApplication];
+    NSTimeInterval interfaceOrientationAnimationDuration = application.statusBarOrientationAnimationDuration;
+    return interfaceOrientationAnimationDuration;
 }
 
-- (void)setStatusBarHidden:(BOOL)newStatusBarHidden
+#pragma mark - Controlling Status Bar Appearance
+
+- (UIStatusBarStyle)style
 {
-    BOOL oldStatusBarHidden = mApplication.statusBarHidden;
+    UIApplication *application = [UIApplication sharedApplication];
+    UIStatusBarStyle style = application.statusBarStyle;
+    return style;
+}
+
+- (void)setStyle:(UIStatusBarStyle)newStyle
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    UIStatusBarStyle oldStyle = application.statusBarStyle;
     
-    if (oldStatusBarHidden != newStatusBarHidden)
+    if (oldStyle != newStyle)
     {
-        mApplication.statusBarHidden = newStatusBarHidden;
+        application.statusBarStyle = newStyle;
     }
 }
 
-- (void)setStatusBarHidden:(BOOL)newStatusBarHidden withAnimation:(UIStatusBarAnimation)animation
+- (void)setStyle:(UIStatusBarStyle)newStyle animated:(BOOL)animated
 {
-    BOOL oldStatusBarHidden = mApplication.statusBarHidden;
+    UIApplication *application = [UIApplication sharedApplication];
+    UIStatusBarStyle oldStyle = application.statusBarStyle;
     
-    if (oldStatusBarHidden != newStatusBarHidden)
+    if (oldStyle != newStyle)
     {
-        [mApplication setStatusBarHidden:newStatusBarHidden withAnimation:animation];
+        [application setStatusBarStyle:newStyle animated:animated];
     }
 }
 
-- (UIInterfaceOrientation)statusBarOrientation
+- (BOOL)hidden
 {
-    UIInterfaceOrientation statusBarOrientation = mApplication.statusBarOrientation;
-    return statusBarOrientation;
+    UIApplication *application = [UIApplication sharedApplication];
+    BOOL hidden = application.statusBarHidden;
+    return hidden;
 }
 
-- (void)setStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation
+- (void)setHidden:(BOOL)newHidden
 {
-    UIInterfaceOrientation oldStatusBarOrientation = mApplication.statusBarOrientation;
+    UIApplication *application = [UIApplication sharedApplication];
+    BOOL oldHidden = application.statusBarHidden;
     
-    if (oldStatusBarOrientation != newStatusBarOrientation)
+    if (oldHidden != newHidden)
     {
-        mApplication.statusBarOrientation = newStatusBarOrientation;
+        application.statusBarHidden = newHidden;
     }
 }
 
-- (void)setStatusBarOrientation:(UIInterfaceOrientation)newStatusBarOrientation animated:(BOOL)animated
+- (void)setHidden:(BOOL)newHidden withAnimation:(UIStatusBarAnimation)animation
 {
-    UIInterfaceOrientation oldStatusBarOrientation = mApplication.statusBarOrientation;
+    UIApplication *application = [UIApplication sharedApplication];
+    BOOL oldHidden = application.statusBarHidden;
     
-    if (oldStatusBarOrientation != newStatusBarOrientation)
+    if (oldHidden != newHidden)
     {
-        [mApplication setStatusBarOrientation:newStatusBarOrientation animated:animated];
+        [application setStatusBarHidden:newHidden withAnimation:animation];
     }
 }
 
-- (NSTimeInterval)statusBarOrientationAnimationDuration
+- (CGRect)frame
 {
-    NSTimeInterval statusBarOrientationAnimationDuration = mApplication.statusBarOrientationAnimationDuration;
-    return statusBarOrientationAnimationDuration;
+    UIApplication *application = [UIApplication sharedApplication];
+    CGRect frame = application.statusBarFrame;
+    return frame;
 }
 
-- (CGRect)statusBarFrame
+#pragma mark - Getting the Information of Status Bar Interface Orientation
+
+@synthesize interfaceOrientationBegin = mInterfaceOrientationBegin;
+@synthesize interfaceOrientationEnd = mInterfaceOrientationEnd;
+@synthesize isInterfaceOrientationChanging = mIsInterfaceOrientationChanging;
+
+#pragma mark - Getting the Information of Status Bar Frame
+
+@synthesize frameBegin = mFrameBegin;
+@synthesize frameEnd = mFrameEnd;
+@synthesize isFrameChanging = mIsFrameChanging;
+
+#pragma mark - Sending RFUIStatusBarCenter Events
+
+- (void)sendStatusBarCenterWillChangeStatusBarFrameMessageToView:(UIView *)view
 {
-    CGRect statusBarFrame = mApplication.statusBarFrame;
-    return statusBarFrame;
+    if ([view isKindOfClass:[RFUIStatusBarLayoutView class]])
+    {
+        RFUIStatusBarLayoutView *statusBarLayoutView = (RFUIStatusBarLayoutView *)view;
+        
+        [statusBarLayoutView statusBarCenterWillChangeStatusBarFrame];
+    }
+    
+    else
+    {
+        NSArray *subviews = [view.subviews copy];
+        
+        for (NSUInteger index = 0; index < subviews.count; index++)
+        {
+            UIView *subview = [subviews objectAtIndex:index];
+            
+            [self sendStatusBarCenterWillChangeStatusBarFrameMessageToView:subview];
+        }
+        
+        [subviews release];
+        subviews = nil;
+    }
+}
+
+- (void)sendStatusBarCenterWillChangeStatusBarFrameMessageToAllWindows
+{
+    NSArray *windows = [[UIApplication sharedApplication].windows copy];
+    
+    for (NSUInteger index = 0; index < windows.count; index++)
+    {
+        UIWindow *window = [windows objectAtIndex:index];
+        
+        [self sendStatusBarCenterWillChangeStatusBarFrameMessageToView:window];
+    }
+    
+    [windows release];
+    windows = nil;
+}
+
+- (void)sendStatusBarCenterDidChangeStatusBarFrameMessageToView:(UIView *)view
+{
+    if ([view isKindOfClass:[RFUIStatusBarLayoutView class]])
+    {
+        RFUIStatusBarLayoutView *statusBarLayoutView = (RFUIStatusBarLayoutView *)view;
+        
+        [statusBarLayoutView statusBarCenterDidChangeStatusBarFrame];
+    }
+    
+    else
+    {
+        NSArray *subviews = [view.subviews copy];
+        
+        for (NSUInteger index = 0; index < subviews.count; index++)
+        {
+            UIView *subview = [subviews objectAtIndex:index];
+            
+            [self sendStatusBarCenterDidChangeStatusBarFrameMessageToView:subview];
+        }
+        
+        [subviews release];
+        subviews = nil;
+    }
+}
+
+- (void)sendStatusBarCenterDidChangeStatusBarFrameMessageToAllWindows
+{
+    NSArray *windows = [[UIApplication sharedApplication].windows copy];
+    
+    for (NSUInteger index = 0; index < windows.count; index++)
+    {
+        UIWindow *window = [windows objectAtIndex:index];
+        
+        [self sendStatusBarCenterDidChangeStatusBarFrameMessageToView:window];
+    }
+    
+    [windows release];
+    windows = nil;
+}
+
+- (void)sendStatusBarCenterWillChangeStatusBarOrientationMessageToView:(UIView *)view
+{
+    if ([view isKindOfClass:[RFUIStatusBarLayoutView class]])
+    {
+        RFUIStatusBarLayoutView *statusBarLayoutView = (RFUIStatusBarLayoutView *)view;
+        
+        [statusBarLayoutView statusBarCenterWillChangeStatusBarOrientationFrame];
+    }
+    
+    else
+    {
+        NSArray *subviews = [view.subviews copy];
+        
+        for (NSUInteger index = 0; index < subviews.count; index++)
+        {
+            UIView *subview = [subviews objectAtIndex:index];
+            
+            [self sendStatusBarCenterWillChangeStatusBarOrientationMessageToView:subview];
+        }
+        
+        [subviews release];
+        subviews = nil;
+    }
+}
+
+- (void)sendStatusBarCenterWillChangeStatusBarOrientationMessageToAllWindows
+{
+    NSArray *windows = [[UIApplication sharedApplication].windows copy];
+    
+    for (NSUInteger index = 0; index < windows.count; index++)
+    {
+        UIWindow *window = [windows objectAtIndex:index];
+        
+        [self sendStatusBarCenterWillChangeStatusBarOrientationMessageToView:window];
+    }
+    
+    [windows release];
+    windows = nil;
+}
+
+- (void)sendStatusBarCenterDidChangeStatusBarOrientationMessageToView:(UIView *)view
+{
+    if ([view isKindOfClass:[RFUIStatusBarLayoutView class]])
+    {
+        RFUIStatusBarLayoutView *statusBarLayoutView = (RFUIStatusBarLayoutView *)view;
+        
+        [statusBarLayoutView statusBarCenterDidChangeStatusBarOrientationFrame];
+    }
+    
+    else
+    {
+        NSArray *subviews = [view.subviews copy];
+        
+        for (NSUInteger index = 0; index < subviews.count; index++)
+        {
+            UIView *subview = [subviews objectAtIndex:index];
+            
+            [self sendStatusBarCenterDidChangeStatusBarOrientationMessageToView:subview];
+        }
+        
+        [subviews release];
+        subviews = nil;
+    }
+}
+
+- (void)sendStatusBarCenterDidChangeStatusBarOrientationMessageToAllWindows
+{
+    NSArray *windows = [[UIApplication sharedApplication].windows copy];
+    
+    for (NSUInteger index = 0; index < windows.count; index++)
+    {
+        UIWindow *window = [windows objectAtIndex:index];
+        
+        [self sendStatusBarCenterDidChangeStatusBarOrientationMessageToView:window];
+    }
+    
+    [windows release];
+    windows = nil;
 }
 
 #pragma mark - Notifications
@@ -213,12 +403,20 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 
 - (void)applicationWillChangeStatusBarFrameNotification:(NSNotification *)notification
 {
-    if (notification &&
-        notification.object &&
-        (notification.object == mApplication) &&
-        notification.name &&
-        [notification.name isEqual:UIApplicationWillChangeStatusBarFrameNotification])
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    if (NSNotificationEqualToNotificationNameAndObject(notification, UIApplicationWillChangeStatusBarFrameNotification, application))
     {
+        NSDictionary *userInfo = [notification userInfo];
+        
+        mFrameBegin = application.statusBarFrame;
+        
+        NSValue *mFrameEndValue = [userInfo objectForKey:UIApplicationStatusBarFrameUserInfoKey];
+        mFrameEnd = [mFrameEndValue CGRectValue];
+        
+        mIsFrameChanging = YES;
+        
+        [self sendStatusBarCenterWillChangeStatusBarFrameMessageToAllWindows];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIStatusBarCenterWillChangeStatusBarFrameNotification object:self userInfo:nil];
     }
@@ -226,12 +424,20 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 
 - (void)applicationDidChangeStatusBarFrameNotification:(NSNotification *)notification
 {
-    if (notification &&
-        notification.object &&
-        (notification.object == mApplication) &&
-        notification.name &&
-        [notification.name isEqual:UIApplicationDidChangeStatusBarFrameNotification])
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    if (NSNotificationEqualToNotificationNameAndObject(notification, UIApplicationDidChangeStatusBarFrameNotification, application))
     {
+        NSDictionary *userInfo = [notification userInfo];
+        
+        NSValue *frameBeginValue = [userInfo objectForKey:UIApplicationStatusBarFrameUserInfoKey];
+        mFrameBegin = [frameBeginValue CGRectValue];
+        
+        mFrameEnd = application.statusBarFrame;
+        
+        mIsFrameChanging = NO;
+        
+        [self sendStatusBarCenterDidChangeStatusBarFrameMessageToAllWindows];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIStatusBarCenterDidChangeStatusBarFrameNotification object:self userInfo:nil];
     }
@@ -239,12 +445,20 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 
 - (void)applicationWillChangeStatusBarOrientationNotification:(NSNotification *)notification
 {
-    if (notification &&
-        notification.object &&
-        (notification.object == mApplication) &&
-        notification.name &&
-        [notification.name isEqual:UIApplicationWillChangeStatusBarOrientationNotification])
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    if (NSNotificationEqualToNotificationNameAndObject(notification, UIApplicationWillChangeStatusBarOrientationNotification, application))
     {
+        NSDictionary *userInfo = [notification userInfo];
+        
+        mInterfaceOrientationBegin = application.statusBarOrientation;
+        
+        NSNumber *interfaceOrientationEndNumber = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
+        mInterfaceOrientationEnd = [interfaceOrientationEndNumber integerValue];
+        
+        mIsInterfaceOrientationChanging = YES;
+        
+        [self sendStatusBarCenterWillChangeStatusBarOrientationMessageToAllWindows];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIStatusBarCenterWillChangeStatusBarOrientationNotification object:self userInfo:nil];
     }
@@ -252,12 +466,20 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 
 - (void)applicationDidChangeStatusBarOrientationNotification:(NSNotification *)notification
 {
-    if (notification &&
-        notification.object &&
-        (notification.object == mApplication) &&
-        notification.name &&
-        [notification.name isEqual:UIApplicationDidChangeStatusBarOrientationNotification])
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    if (NSNotificationEqualToNotificationNameAndObject(notification, UIApplicationDidChangeStatusBarOrientationNotification, application))
     {
+        NSDictionary *userInfo = [notification userInfo];
+        
+        NSNumber *interfaceOrientationBeginNumber = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
+        mInterfaceOrientationBegin = [interfaceOrientationBeginNumber integerValue];
+        
+        mInterfaceOrientationEnd = application.statusBarOrientation;
+        
+        mIsInterfaceOrientationChanging = NO;
+        
+        [self sendStatusBarCenterDidChangeStatusBarOrientationMessageToAllWindows];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RFUIStatusBarCenterDidChangeStatusBarOrientationNotification object:self userInfo:nil];
     }

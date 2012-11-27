@@ -40,48 +40,55 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum RFUIStatusBarDisplayState
-{
-    RFUIStatusBarDisplayStateShowing = 1,
-    RFUIStatusBarDisplayStateShown = 2,
-    RFUIStatusBarDisplayStateHiding = 3,
-    RFUIStatusBarDisplayStateHidden = 4
-} RFUIStatusBarDisplayState;
-
 @interface RFUIStatusBarCenter : NSObject
 {
 @private
     
-    UIApplication *mApplication;
+    BOOL                   mIsInterfaceOrientationChanging;
+    BOOL                   mIsFrameChanging;
+    UIInterfaceOrientation mInterfaceOrientationBegin;
+    UIInterfaceOrientation mInterfaceOrientationEnd;
+    CGRect                 mFrameBegin;
+    CGRect                 mFrameEnd;
 }
 
 // Getting the RFUIStatusBarCenter Instance
 
 + (RFUIStatusBarCenter *)sharedCenter;
 
-// Managing the Status Bar
+// Managing Status Bar Interface Orientation
 
-@property (nonatomic) UIStatusBarStyle statusBarStyle; // Default is UIStatusBarStyleDefault.
-- (void)setStatusBarStyle:(UIStatusBarStyle)statusBarStyle animated:(BOOL)animated;
+@property (nonatomic) UIInterfaceOrientation interfaceOrientation;
+- (void)setInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation animated:(BOOL)animated;
 
-@property (nonatomic) BOOL statusBarHidden;
-- (void)setStatusBarHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
+@property (nonatomic, readonly) NSTimeInterval interfaceOrientationAnimationDuration;
 
-// Rotate to a specific orientation.  This only rotates the status bar and updates the statusBarOrientation property.
-// This does not change automatically if the device changes orientation.
-@property (nonatomic) UIInterfaceOrientation statusBarOrientation;
-- (void)setStatusBarOrientation:(UIInterfaceOrientation)interfaceOrientation animated:(BOOL)animated;
+// Controlling Status Bar Appearance
 
-@property (nonatomic, readonly) NSTimeInterval statusBarOrientationAnimationDuration; // Returns the animation duration for the status bar during a 90 degree orientation change.  It should be doubled for a 180 degree orientation change.
-@property (nonatomic, readonly) CGRect         statusBarFrame;                        // Returns CGRectZero if the status bar is hidden.
+@property (nonatomic) UIStatusBarStyle style; // Default is UIStatusBarStyleDefault.
+- (void)setStyle:(UIStatusBarStyle)style animated:(BOOL)animated;
+
+@property (nonatomic) BOOL hidden;
+- (void)setHidden:(BOOL)hidden withAnimation:(UIStatusBarAnimation)animation;
+
+@property (nonatomic, readonly) CGRect frame;
+
+// Getting the Information of Status Bar Interface Orientation
+
+@property (nonatomic, readonly) UIInterfaceOrientation interfaceOrientationBegin;
+@property (nonatomic, readonly) UIInterfaceOrientation interfaceOrientationEnd;
+@property (nonatomic, readonly) BOOL                   isInterfaceOrientationChanging;
+
+// Getting the Information of Status Bar Frame
+
+@property (nonatomic, readonly) CGRect frameBegin;
+@property (nonatomic, readonly) CGRect frameEnd;
+@property (nonatomic, readonly) BOOL   isFrameChanging;
 
 @end
 
-FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterWillChangeStatusBarFrameNotification;       // userInfo contains NSValue with new frame
-FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterDidChangeStatusBarFrameNotification;        // userInfo contains NSValue with old frame
+FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterWillChangeStatusBarFrameNotification;       // userInfo contains NSValue with new frame.
+FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterDidChangeStatusBarFrameNotification;        // userInfo contains NSValue with old frame.
 
-FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterWillChangeStatusBarOrientationNotification; // userInfo contains NSNumber with new orientation
-FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterDidChangeStatusBarOrientationNotification;  // userInfo contains NSNumber with old orientation
-
-//FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterStatusBarOrientationUserInfoKey;            // userInfo dictionary key for status bar orientation
-//FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterStatusBarFrameUserInfoKey;                  // userInfo dictionary key for status bar frame
+FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterWillChangeStatusBarOrientationNotification; // userInfo contains NSNumber with new orientation.
+FOUNDATION_EXTERN NSString * const RFUIStatusBarCenterDidChangeStatusBarOrientationNotification;  // userInfo contains NSNumber with old orientation.

@@ -55,6 +55,13 @@
 - (NSString *)copySubstringToIndex:(NSUInteger)to;
 - (NSString *)copySubstringWithRange:(NSRange)range;
 
+// Modifying a String
+
+- (NSString *)copyStringByDeletingPrefix:(NSString *)prefix;
+- (NSString *)stringByDeletingPrefix:(NSString *)prefix;
+- (NSString *)copyStringByDeletingSuffix:(NSString *)suffix;
+- (NSString *)stringByDeletingSuffix:(NSString *)suffix;
+
 // Trimming a String
 
 - (NSString *)copyStringByTrimming;
@@ -119,6 +126,9 @@
 // Modifying a String
 
 - (void)deleteAllCharacters;
+
+- (void)deletePrefix:(NSString *)prefix;
+- (void)deleteSuffix:(NSString *)suffix;
 
 // Trimming a String
 

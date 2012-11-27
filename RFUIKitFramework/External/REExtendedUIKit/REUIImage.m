@@ -44,7 +44,7 @@
 
 @implementation UIImage (UIImageREUIImage)
 
-// Initializing and creating a UIImage
+// Initializing and Creating a UIImage
 
 - (id)initWithContentsOfFile:(NSString *)path scale:(CGFloat)scale
 {

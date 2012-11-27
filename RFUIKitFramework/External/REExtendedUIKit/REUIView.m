@@ -98,7 +98,7 @@
     }
 }
 
-- (void)setTransformIfNeeded:(CGAffineTransform)newTransform;
+- (void)setTransformIfNeeded:(CGAffineTransform)newTransform
 {
     CGAffineTransform oldTransform = self.transform;
     

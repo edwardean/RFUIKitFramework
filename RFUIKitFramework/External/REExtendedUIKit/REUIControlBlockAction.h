@@ -1,9 +1,9 @@
 //
-//  RFUIKeyboardCenter.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  REUIControlBlockAction.h
+//  REUIKitFramework
+//  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2011.12.25.
+//  Created by Roman Oliichuk on 2012.11.08.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -40,44 +40,21 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum RFUIKeyboardDisplayState
-{
-    RFUIKeyboardDisplayStateShowing = 1,
-    RFUIKeyboardDisplayStateShown = 2,
-    RFUIKeyboardDisplayStateHiding = 3,
-    RFUIKeyboardDisplayStateHidden = 4
-} RFUIKeyboardDisplayState;
+#import "REUIBlockAction.h"
 
-@interface RFUIKeyboardCenter : NSObject
+@interface REUIControlBlockAction : REUIBlockAction
 {
-@private
+@protected
     
-    UIViewAnimationCurve     mAnimationCurve;
-    double                   mAnimationDuration;
-    RFUIKeyboardDisplayState mDisplayState;
-    CGRect                   mFrameBegin;
-    CGRect                   mFrameEnd;
+    UIControlEvents mControlEvents;
 }
 
-// Getting the RFUIKeyboardCenter Instance
+// Initializing and Creating a REUIControlBlockAction
 
-+ (RFUIKeyboardCenter *)sharedCenter;
++ (id)controlBlockAction;
 
-// Getting the Information of Keyboard
+// Managing the REUIControlBlockAction Object
 
-@property (nonatomic, readonly) UIViewAnimationCurve     animationCurve;
-@property (nonatomic, readonly) double                   animationDuration;
-@property (nonatomic, readonly) RFUIKeyboardDisplayState displayState;
-@property (nonatomic, readonly) CGRect                   frameBegin;
-@property (nonatomic, readonly) CGRect                   frameEnd;
-
-// Hiding the Keyboard
-
-- (void)hideKeyboard;
+@property (nonatomic) UIControlEvents controlEvents;
 
 @end
-
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillShowKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidShowKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterWillHideKeyboardNotification;
-FOUNDATION_EXTERN NSString * const RFUIKeyboardCenterDidHideKeyboardNotification;

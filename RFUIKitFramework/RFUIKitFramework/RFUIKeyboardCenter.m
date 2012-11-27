@@ -40,6 +40,8 @@
 
 #import "RFUIKeyboardCenter.h"
 
+#import "REExtendedFoundation.h"
+
 #import "RFUIKeyboardLayoutView.h"
 
 NSString * const RFUIKeyboardCenterWillShowKeyboardNotification = @"RFUIKeyboardCenterWillShowKeyboardNotification";
@@ -87,6 +89,8 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 {
     if ((self = [super init]))
     {
+        // Adding self as an observer on UIKeyboard Notifications.
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShowNotification:) name:UIKeyboardDidShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -111,7 +115,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
     [super dealloc];
 }
 
-#pragma mark - Getting the information of keyboard
+#pragma mark - Getting the Information of Keyboard
 
 @synthesize animationCurve = mAnimationCurve;
 @synthesize animationDuration = mAnimationDuration;
@@ -325,7 +329,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 
 - (void)keyboardWillShowNotification:(NSNotification *)notification
 {
-    if ([notification.name isEqual:UIKeyboardWillShowNotification])
+    if (NSNotificationEqualToNotificationName(notification, UIKeyboardWillShowNotification))
     {
         NSDictionary *userInfo = [notification userInfo];
         
@@ -351,7 +355,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 
 - (void)keyboardDidShowNotification:(NSNotification *)notification
 {
-    if ([notification.name isEqual:UIKeyboardDidShowNotification])
+    if (NSNotificationEqualToNotificationName(notification, UIKeyboardDidShowNotification))
     {
         NSDictionary *userInfo = [notification userInfo];
         
@@ -377,7 +381,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 
 - (void)keyboardWillHideNotification:(NSNotification *)notification
 {
-    if ([notification.name isEqual:UIKeyboardWillHideNotification])
+    if (NSNotificationEqualToNotificationName(notification, UIKeyboardWillHideNotification))
     {
         NSDictionary *userInfo = [notification userInfo];
         
@@ -403,7 +407,7 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 
 - (void)keyboardDidHideNotification:(NSNotification *)notification
 {
-    if ([notification.name isEqual:UIKeyboardDidHideNotification])
+    if (NSNotificationEqualToNotificationName(notification, UIKeyboardDidHideNotification))
     {
         NSDictionary *userInfo = [notification userInfo];
         
