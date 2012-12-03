@@ -38,11 +38,12 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface RFUITextField : UITextField
 {
-@private
+@protected
     
     UIColor *mPlaceholderColor;
     UIFont  *mPlaceholderFont;

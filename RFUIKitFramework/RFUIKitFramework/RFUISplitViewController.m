@@ -109,7 +109,7 @@
 
 - (BOOL)isAppeared
 {
-    return YES;
+    return mIsAppeared;
 }
 
 - (void)setAppeared:(BOOL)isAppeared

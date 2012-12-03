@@ -38,6 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 enum RFUIFirstResponderArrangement
@@ -53,7 +54,7 @@ typedef enum RFUIFirstResponderArrangement RFUIFirstResponderArrangement;
 
 @interface RFUIKeyboardLayoutView : UIView
 {
-@private
+@protected
     
     UIView                        *mBackgroundView;
     UIView                        *mContentView;

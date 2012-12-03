@@ -43,7 +43,7 @@
 
 @interface RFUIPageScrollViewCell : UIView
 {
-@private
+@protected
     
     UIView *mContentView;
 }

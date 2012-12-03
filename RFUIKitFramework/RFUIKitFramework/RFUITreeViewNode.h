@@ -48,7 +48,7 @@
 
 @interface RFUITreeViewNode : NSObject
 {
-@private
+@protected
     
     NSMutableArray           *mChildTreeViewNodes;
     RFUITreeViewRowAnimation  mDeleteTreeViewRowAnimation;

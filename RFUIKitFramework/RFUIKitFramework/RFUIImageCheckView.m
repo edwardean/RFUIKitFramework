@@ -1,5 +1,5 @@
 //
-//  RFUIImageCheckView.h
+//  RFUIImageCheckView.m
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //

@@ -48,7 +48,7 @@
 
 @interface RFUIPageScrollView : UIScrollView
 {
-@private
+@protected
     
     id<RFUIPageScrollViewDataSource> mDataSource;
     

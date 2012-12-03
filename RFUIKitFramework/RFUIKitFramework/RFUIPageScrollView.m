@@ -575,64 +575,6 @@
             [mRows addObject:columns];
         }
         
-        /*
-         NSMutableSet *indexPaths = [NSMutableSet setWithCapacity:4];
-         
-         CGPoint contentOffset = self.contentOffset;
-         CGRect viewFrame = self.frame;
-         
-         NSInteger indexOfRow0 = (NSInteger)truncf(contentOffset.y / viewFrame.size.height);
-         NSInteger indexOfRow1 = (NSInteger)truncf((contentOffset.y + viewFrame.size.height - 1.0) / viewFrame.size.height);
-         
-         NSInteger indexOfColumn0 = (NSInteger)truncf(contentOffset.x / viewFrame.size.width);
-         NSInteger indexOfColumn1 = (NSInteger)truncf((contentOffset.x + viewFrame.size.width - 1.0) / viewFrame.size.width);
-         
-         if ((indexOfRow0 >= 0) && (indexOfRow0 < mNumberOfRows) &&
-         (indexOfColumn0 >= 0) && (indexOfColumn0 < mNumberOfColumns))
-         {
-         [indexPaths addObject:[NSIndexPath indexPathForRow:indexOfRow0 column:indexOfColumn0]];
-         }
-         
-         if ((indexOfRow0 >= 0) && (indexOfRow0 < mNumberOfRows) &&
-         (indexOfColumn1 >= 0) && (indexOfColumn1 < mNumberOfColumns))
-         {
-         [indexPaths addObject:[NSIndexPath indexPathForRow:indexOfRow0 column:indexOfColumn1]];
-         }
-         
-         if ((indexOfRow1 >= 0) && (indexOfRow1 < mNumberOfRows) &&
-         (indexOfColumn0 >= 0) && (indexOfColumn0 < mNumberOfColumns))
-         {
-         [indexPaths addObject:[NSIndexPath indexPathForRow:indexOfRow1 column:indexOfColumn0]];
-         }
-         
-         if ((indexOfRow1 >= 0) && (indexOfRow1 < mNumberOfRows) &&
-         (indexOfColumn1 >= 0) && (indexOfColumn1 < mNumberOfColumns))
-         {
-         [indexPaths addObject:[NSIndexPath indexPathForRow:indexOfRow1 column:indexOfColumn1]];
-         }
-         
-         for (NSIndexPath *indexPath in indexPaths)
-         {
-         RFUIPageScrollViewCell *pageScrollViewCell = [self cellForRowAtIndexPathInDataSource:indexPath];
-         
-         CGRect pageScrollViewCellFrame;
-         pageScrollViewCellFrame.origin.x = indexPath.column * viewFrame.size.width;
-         pageScrollViewCellFrame.origin.y = indexPath.row * viewFrame.size.height;
-         pageScrollViewCellFrame.size.width = viewFrame.size.width;
-         pageScrollViewCellFrame.size.height = viewFrame.size.height;
-         
-         if (!CGRectEqualToRect(pageScrollViewCell.frame, pageScrollViewCellFrame))
-         {
-         pageScrollViewCell.frame = pageScrollViewCellFrame;
-         }
-         
-         [[mRows objectAtIndex:indexPath.row] replaceObjectAtIndex:indexPath.column withObject:pageScrollViewCell];
-         [mVisibleCells addObject:pageScrollViewCell];
-         
-         [self addSubview:pageScrollViewCell];
-         }
-         // */
-        
         CGRect viewFrame = self.frame;
         
         CGSize contentSize;
@@ -770,7 +712,7 @@
 
 - (void)setPageIndexPath:(NSIndexPath *)pageIndexPath animated:(BOOL)animated
 {
-    NSAssert(pageIndexPath, @"The pageIndexPath argument is invalid.");
+    NSAssert(pageIndexPath, @"The pageIndexPath argument is nil.");
     
     CGRect viewBounds = self.bounds;
     

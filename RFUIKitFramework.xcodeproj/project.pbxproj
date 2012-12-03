@@ -256,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				3039D06415CA5E23005D1E2B /* Test */,
-				3039D06B15CA6E52005D1E2B /* TreeView */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -270,13 +269,6 @@
 				3039D06915CA5E51005D1E2B /* RFTestViewController.m */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		3039D06B15CA6E52005D1E2B /* TreeView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TreeView;
 			sourceTree = "<group>";
 		};
 		304B427616645A0B000E2C38 /* External */ = {
