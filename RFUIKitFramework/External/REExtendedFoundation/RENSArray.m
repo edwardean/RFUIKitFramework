@@ -264,7 +264,7 @@
 {
     if (!parentIndexPath)
     {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The parentIndexPath agrument is nil." userInfo:nil];
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The parentIndexPath argument is nil." userInfo:nil];
     }
     
     Class arrayClass = [NSArray class];
@@ -306,7 +306,7 @@
 {
     if (!parentIndexPath)
     {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The parentIndexPath agrument is nil." userInfo:nil];
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The parentIndexPath argument is nil." userInfo:nil];
     }
     
     BOOL  stop = NO;

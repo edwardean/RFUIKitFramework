@@ -38,6 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
@@ -48,6 +49,10 @@
 
 - (id)initWithBlockAction:(void (^)(id sender))block;
 + (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
+
+// Managing the View
+
+- (void)removeFromView;
 
 // Adding and Removing Block Actions
 

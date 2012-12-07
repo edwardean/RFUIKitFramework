@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "RENSObject.h"
+
 @interface NSDictionary (NSDictionaryRENSDictionary)
 
 // Accessing Keys and Values
@@ -56,3 +58,5 @@
 - (void)removeAllObjectsExceptObjectsForKeys:(NSArray *)keys;
 
 @end
+
+#define NSMutableDictionaryCastOrCopy(dictionary) NSMutableObjectCastOrCopy(dictionary, NSMutableDictionary)

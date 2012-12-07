@@ -38,6 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface UIImage (UIImageREUIImage)
@@ -83,26 +84,12 @@
 
 #endif
 
-UIKIT_STATIC_INLINE UIImageOrientation UIImageGetImageOrientation(UIImage *image)
-{
-    UIImageOrientation imageOrientation = UIImageOrientationUp;
-    
-    if (image && [image respondsToSelector:@selector(scale)])
-    {
-        imageOrientation = image.imageOrientation;
-    }
-    
-    return imageOrientation;
-}
+#define UIImageGetImageOrientation(image) ((image).imageOrientation)
 
-UIKIT_STATIC_INLINE CGFloat UIImageGetScale(UIImage *image)
-{
-    CGFloat scale = 1.0f;
-    
-    if (image && [image respondsToSelector:@selector(scale)])
-    {
-        scale = image.scale;
-    }
-    
-    return scale;
-}
+#if __IPHONE_4_0 <= __IPHONE_OS_VERSION_MIN_REQUIRED
+#   define UIImageGetScale(image) ((image) ? (image).scale : 0.0f)
+#elif __IPHONE_4_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED
+#   define UIImageGetScale(image) ((image) ? ((image) respondsToSelector:@selector(scale)] ? (image).scale : 1.0f) : 0.0f)
+#else
+#   define UIImageGetScale(image) ((image) ? 1.0f : 0.0f)
+#endif

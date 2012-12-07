@@ -3,7 +3,7 @@
 //  REExtendedFoundation
 //  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.07.237.
+//  Created by Roman Oliichuk on 2012.07.23.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -49,6 +49,10 @@
 
 @interface NSObject (NSObjectRENSObject)
 
+// Synchronizing the Singleton
+
++ (NSObject *)singletonSynchronizer;
+
 // Managing the NSObject Information
 
 - (NSMutableDictionary *)objectDictionary; // Default is nil. The first time the method is accessed, the NSMutableDictionary is created. This method returns nil for Core Foundation classes.
@@ -68,3 +72,4 @@
 
 @end
 
+#define NSMutableObjectCastOrCopy(object, className) ({ __typeof__(object) __object = (object); [__object isKindOfClass:[className class]] ? [((className *)(__object)) retain] : [(__object) mutableCopy]; })

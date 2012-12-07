@@ -51,8 +51,8 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
 
 - (void)addBlockAction:(void (^)(id control))block forControlEvents:(UIControlEvents)controlEvents
 {
-    NSAssert(block, @"The block argument is invalid. The argument is nil.");
-    NSAssert((controlEvents != 0), @"The controlEvents argument is invalid. The argument does not have any event.");
+    NSAssert(block, @"The block argument is nil.");
+    NSAssert((controlEvents != 0), @"The controlEvents argument does not have any event.");
     
     REUIControlBlockAction *controlBlockAction = [[REUIControlBlockAction alloc] init];
     controlBlockAction.block = block;

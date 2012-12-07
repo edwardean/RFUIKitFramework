@@ -1,5 +1,5 @@
 //
-//  RERFC822.h
+//  RERFC822.m
 //  REExtendedFoundation
 //  https://github.com/oliromole/REExtendedFoundation.git
 //

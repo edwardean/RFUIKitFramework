@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "RENSObject.h"
+
 @interface NSString (NSStringRENSString)
 
 // Getting a String’s Range
@@ -149,3 +151,5 @@
 - (void)trimRightStringsInSet:(NSSet *)stringSet;
 
 @end
+
+#define NSMutableStringCastOrCopy(string) NSMutableObjectCastOrCopy(string, NSMutableString)

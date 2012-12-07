@@ -265,7 +265,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
 {
     if (NSMaxRange(range) > self.length)
     {
-        @throw [NSException exceptionWithName:NSRangeException reason:@"The range is invalid." userInfo:nil];
+        @throw [NSException exceptionWithName:NSRangeException reason:@"The range argument is invalid." userInfo:nil];
     }
     
     NSUInteger length = self.length;

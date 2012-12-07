@@ -57,7 +57,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 - (id)initWithBlockAction:(void (^)(id sender))block
 {
-    NSAssert(block, @"The block argument is invalid. The argument is nil.");
+    NSAssert(block, @"The block argument is nil.");
     
     REUIBlockAction *blockAction = [[REUIBlockAction alloc] init];
     blockAction.block = block;
@@ -90,11 +90,23 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     return [[[self alloc] initWithBlockAction:block] autorelease];
 }
 
+#pragma mark - Managing the View
+
+- (void)removeFromView
+{
+    UIView *view = self.view;
+    
+    if (view)
+    {
+        [view removeGestureRecognizer:self];
+    }
+}
+
 #pragma mark - Adding and Removing Block Actions
 
 - (void)addBlockAction:(void (^)(id control))block
 {
-    NSAssert(block, @"The block argument is invalid. The argument is nil.");
+    NSAssert(block, @"The block argument is nil.");
     
     REUIBlockAction *blockAction = [[REUIBlockAction alloc] init];
     blockAction.block = block;

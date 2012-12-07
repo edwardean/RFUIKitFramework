@@ -83,7 +83,7 @@
     [super dealloc];
 }
 
-#pragma mark - Manating the RFUITreeViewNode
+#pragma mark - Managing the RFUITreeViewNode
 
 @synthesize childTreeViewNodes = mChildTreeViewNodes;
 @synthesize deleteTreeViewRowAnimation = mDeleteTreeViewRowAnimation;

@@ -38,13 +38,18 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import "RENSParagraphStyle.h"
+#import "REUIActionSheet.h"
+#import "REUIAlertView.h"
 #import "REUIApplication.h"
 #import "REUIBarButtonItem.h"
 #import "REUIColor.h"
 #import "REUIControl.h"
 #import "REUIGeometry.h"
 #import "REUIGestureRecognizer.h"
+#import "REUIGraphics.h"
 #import "REUIImage.h"
+#import "REUIImageView.h"
 #import "REUILabel.h"
 #import "REUINavigationBar.h"
 #import "REUINavigationController.h"

@@ -1,5 +1,5 @@
 //
-//  REUIScreen.h
+//  REUIScreen.m
 //  REExtendedUIKit
 //  https://github.com/oliromole/REExtendedUIKit.git
 //

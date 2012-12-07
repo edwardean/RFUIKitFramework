@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "RENSObject.h"
+
 @interface NSArray (NSArrayRENSArray)
 
 // Querying an Array
@@ -114,3 +116,5 @@
 - (void)exchangeObjectAtIndexPath:(NSIndexPath *)indexPath1 withObjectAtIndexPath:(NSIndexPath *)indexPath2 usingChildArrayBlock:(id (^)(id object, NSIndexPath *indexPath))block;
 
 @end
+
+#define NSMutableArrayCastOrCopy(array) NSMutableObjectCastOrCopy(array, NSMutableArray)

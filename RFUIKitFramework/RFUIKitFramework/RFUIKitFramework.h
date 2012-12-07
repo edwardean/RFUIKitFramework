@@ -48,6 +48,7 @@
 #import "RFUINavigationController.h"
 #import "RFUIPageScrollView.h"
 #import "RFUIPageScrollViewCell.h"
+#import "RFUIScreenShooter.h"
 #import "RFUIScrollLabel.h"
 #import "RFUISplitBackgoundView.h"
 #import "RFUISplitViewController.h"

@@ -1,5 +1,5 @@
 //
-//  REUIImage.h
+//  REUIImage.m
 //  REExtendedUIKit
 //  https://github.com/oliromole/REExtendedUIKit.git
 //

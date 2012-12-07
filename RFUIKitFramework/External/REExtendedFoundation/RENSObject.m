@@ -3,7 +3,7 @@
 //  REExtendedFoundation
 //  https://github.com/oliromole/REExtendedFoundation.git
 //
-//  Created by Roman Oliichuk on 2012.07.237.
+//  Created by Roman Oliichuk on 2012.07.23.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -44,6 +44,8 @@
 #import <objc/runtime.h>
 
 #import <pthread.h>
+
+static NSObject * volatile NSObject_SingletonSynchronizer = nil;
 
 typedef struct RENSObjectDictionaryHashTableLevel1
 {
@@ -138,6 +140,8 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
 
 + (void)load
 {
+    NSObject_SingletonSynchronizer = [[NSObject alloc] init];
+    
     pthread_mutexattr_t mutextAttr;
     int                 result = 0;
     
@@ -155,6 +159,15 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
     
     result = pthread_mutexattr_destroy(&mutextAttr);
     NSAssert((result == 0), @"The NSObject (NSObjectRENSObject) category can not destroy the mutex attribute.");
+}
+
+#pragma mark - Synchronizing the Singleton
+
++ (NSObject *)singletonSynchronizer
+{
+    NSAssert(NSObject_SingletonSynchronizer, @"The %@ class is incorrectly used.", NSStringFromClass([self class]));
+    
+    return NSObject_SingletonSynchronizer;
 }
 
 #pragma mark - Managing the NSObject Information

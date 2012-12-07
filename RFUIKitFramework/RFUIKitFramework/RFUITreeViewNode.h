@@ -66,7 +66,7 @@
 
 + (id)treeViewNode;
 
-// Manating the RFUITreeViewNode
+// Managing the RFUITreeViewNode
 
 @property (nonatomic, retain)                NSMutableArray           *childTreeViewNodes;         // Default is nil.
 @property (nonatomic)                        RFUITreeViewRowAnimation  deleteTreeViewRowAnimation; // Default is RFUITreeViewRowAnimationNone.

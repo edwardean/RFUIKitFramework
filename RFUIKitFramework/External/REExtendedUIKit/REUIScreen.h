@@ -38,6 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 #define UI_SCREEN_BOUNDS() ([[UIScreen mainScreen] bounds])
@@ -48,4 +49,10 @@
 
 #define UI_SCREEN_APPLICATION_FRAME_SIZE() ([[UIScreen mainScreen] applicationFrame].size)
 
-#define UI_SCREEN_SCALSE() ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f)
+#if __IPHONE_4_0 <= __IPHONE_OS_VERSION_MIN_REQUIRED
+#   define UI_SCREEN_SCALSE() ([[UIScreen mainScreen] scale])
+#elif __IPHONE_4_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED
+#   define UI_SCREEN_SCALSE() ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f)
+#else
+#   define UI_SCREEN_SCALSE() (1.0f)
+#endif
