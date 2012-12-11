@@ -493,7 +493,7 @@
 
 - (RFUIPageScrollViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
 {
-    RFUIPageScrollViewCell *pageScrollViewCell = nil;;
+    RFUIPageScrollViewCell *pageScrollViewCell = nil;
     
     if ((indexPath.row >= 0) && (indexPath.row < mNumberOfRows) &&
         (indexPath.column >= 0) && (indexPath.column < mNumberOfColumns))

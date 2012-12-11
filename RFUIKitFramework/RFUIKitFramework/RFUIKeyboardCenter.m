@@ -49,21 +49,9 @@ NSString * const RFUIKeyboardCenterDidShowKeyboardNotification = @"RFUIKeyboardC
 NSString * const RFUIKeyboardCenterWillHideKeyboardNotification = @"RFUIKeyboardCenterWillHideKeyboardNotification";
 NSString * const RFUIKeyboardCenterDidHideKeyboardNotification = @"RFUIKeyboardCenterDidHideKeyboardNotification";
 
-static RFUIKeyboardCenter * RFUIKeyboardCenter_SharedCenter = nil;
-static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
+static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
 
 @implementation RFUIKeyboardCenter
-
-#pragma mark - Initializing a Class
-
-+ (void)initialize
-{
-    if (self == [RFUIKeyboardCenter class])
-    {
-        RFUIKeyboardCenter_SharedCenter = nil;
-        RFUIKeyboardCenter_Synchronizer = [[NSObject alloc] init];
-    }
-}
 
 #pragma mark - Getting the RFUIKeyboardCenter Instance
 
@@ -71,7 +59,9 @@ static NSObject * RFUIKeyboardCenter_Synchronizer = nil;
 {
     if (!RFUIKeyboardCenter_SharedCenter)
     {
-        @synchronized(RFUIKeyboardCenter_Synchronizer)
+        NSObject *singletonSynchronizer = [NSObject singletonSynchronizer];
+        
+        @synchronized(singletonSynchronizer)
         {
             if (!RFUIKeyboardCenter_SharedCenter)
             {

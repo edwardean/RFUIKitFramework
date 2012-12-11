@@ -63,7 +63,7 @@ typedef enum
 
 // Getting the RFUIScreenShooter Instance
 
-+ (RFUIScreenShooter *)sharedScreenShooter;
++ (RFUIScreenShooter *)sharedShooter;
 
 // Configuring the RFUIScreenShooter Object
 

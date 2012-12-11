@@ -46,28 +46,28 @@
 #import "REExtendedFoundation.h"
 #import "REExtendedUIKit.h"
 
-static RFUIScreenShooter * volatile RFUIScreenShooter_SharedScreenShooter = nil;
+static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 
 @implementation RFUIScreenShooter
 
 #pragma mark - Getting the RFUIScreenShooter Instance
 
-+ (RFUIScreenShooter *)sharedScreenShooter
++ (RFUIScreenShooter *)sharedShooter
 {
-    if (!RFUIScreenShooter_SharedScreenShooter)
+    if (!RFUIScreenShooter_SharedShooter)
     {
         NSObject *singletonSynchronizer = [NSObject singletonSynchronizer];
         
         @synchronized(singletonSynchronizer)
         {
-            if (!RFUIScreenShooter_SharedScreenShooter)
+            if (!RFUIScreenShooter_SharedShooter)
             {
-                RFUIScreenShooter_SharedScreenShooter = [[RFUIScreenShooter alloc] init];
+                RFUIScreenShooter_SharedShooter = [[RFUIScreenShooter alloc] init];
             }
         }
     }
     
-    return RFUIScreenShooter_SharedScreenShooter;
+    return RFUIScreenShooter_SharedShooter;
 }
 
 #pragma mark - Initializing and Creating a RFUIScreenShooter
@@ -98,15 +98,13 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedScreenShooter = nil;
         
         mScreenshotsPath = [[@"~/Documents/Screenshots" stringByExpandingTildeInPath] copy];
         
-        if (![fileManager fileExistsAtPath:mScreenshotsPath])
+        NSError *error = nil;
+        BOOL result = [fileManager createDirectoryAtPath:mScreenshotsPath withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        if (!result &&
+            !(error && [error.domain isEqual:NSCocoaErrorDomain] && (error.code == NSFileWriteFileExistsError)))
         {
-            NSError *error = nil;
-            BOOL result = [fileManager createDirectoryAtPath:mScreenshotsPath withIntermediateDirectories:YES attributes:nil error:&error];
-            
-            if (!result)
-            {
-                NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
-            }
+            NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
         }
         
         mTimeInterval = 1.0;
@@ -166,15 +164,13 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedScreenShooter = nil;
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         
-        if (![fileManager fileExistsAtPath:mScreenshotsPath])
+        NSError *error = nil;
+        BOOL result = [fileManager createDirectoryAtPath:mScreenshotsPath withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        if (!result &&
+            !(error && [error.domain isEqual:NSCocoaErrorDomain] && (error.code == NSFileWriteFileExistsError)))
         {
-            NSError *error = nil;
-            BOOL result = [fileManager createDirectoryAtPath:mScreenshotsPath withIntermediateDirectories:YES attributes:nil error:&error];
-            
-            if (!result)
-            {
-                NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
-            }
+            NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
         }
     }
 }

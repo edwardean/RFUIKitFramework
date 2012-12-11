@@ -50,21 +50,9 @@ NSString * const RFUIStatusBarCenterDidChangeStatusBarFrameNotification = @"RFUI
 NSString * const RFUIStatusBarCenterWillChangeStatusBarOrientationNotification = @"RFUIStatusBarCenterWillChangeStatusBarOrientationNotification";
 NSString * const RFUIStatusBarCenterDidChangeStatusBarOrientationNotification = @"RFUIStatusBarCenterDidChangeStatusBarOrientationNotification";
 
-static RFUIStatusBarCenter * RFUIStatusBarCenter_SharedCenter = nil;
-static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
+static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
 
 @implementation RFUIStatusBarCenter
-
-#pragma mark - Initializing a Class
-
-+ (void)initialize
-{
-    if (self == [RFUIStatusBarCenter class])
-    {
-        RFUIStatusBarCenter_SharedCenter = nil;
-        RFUIStatusBarCenter_Synchronizer = [[NSObject alloc] init];
-    }
-}
 
 #pragma mark - Getting the RFUIStatusBarCenter Instance
 
@@ -72,7 +60,9 @@ static NSObject * RFUIStatusBarCenter_Synchronizer = nil;
 {
     if (!RFUIStatusBarCenter_SharedCenter)
     {
-        @synchronized(RFUIStatusBarCenter_Synchronizer)
+        NSObject *singletonSynchronizer = [NSObject singletonSynchronizer];
+        
+        @synchronized(singletonSynchronizer)
         {
             if (!RFUIStatusBarCenter_SharedCenter)
             {
