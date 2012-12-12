@@ -46,12 +46,12 @@
 
 + (id)imageViewWithImage:(UIImage *)image
 {
-    return [[[self alloc] initWithImage:image] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image]);
 }
 
 + (id)imageViewWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage
 {
-    return [[[self alloc] initWithImage:image highlightedImage:highlightedImage] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image highlightedImage:highlightedImage]);
 }
 
 - (id)initWithImageNamed:(NSString *)imageName
@@ -67,7 +67,7 @@
 
 + (id)imageViewWithImageNamed:(NSString *)imageName
 {
-    return [[[self alloc] initWithImageNamed:imageName] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImageNamed:imageName]);
 }
 
 - (id)initWithImageNamed:(NSString *)imageName highlightedImageNamed:(NSString *)highlightedImageName
@@ -84,7 +84,7 @@
 
 + (id)imageViewWithImageNamed:(NSString *)imageName highlightedImageNamed:(NSString *)highlightedImageName
 {
-    return [[[self alloc] initWithImageNamed:imageName highlightedImageNamed:highlightedImageName] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImageNamed:imageName highlightedImageNamed:highlightedImageName]);
 }
 
 @end

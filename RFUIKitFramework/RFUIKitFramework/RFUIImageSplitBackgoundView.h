@@ -40,6 +40,8 @@
 
 #import "RFUISplitBackgoundView.h"
 
+#import "REExtendedCompiler.h"
+
 @interface RFUIImageSplitBackgoundView : RFUISplitBackgoundView
 {
 @protected
@@ -56,14 +58,14 @@
 
 // Managing the Content
 
-@property (nonatomic, retain) UIImageView *imageView00; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView01; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView02; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView10; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView11; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView12; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView20; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView21; // Default is nil. The first time the property is accessed, the UIImageView is created.
-@property (nonatomic, retain) UIImageView *imageView22; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView00; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView01; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView02; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView10; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView11; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView12; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView20; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView21; // Default is nil. The first time the property is accessed, the UIImageView is created.
+@property (nonatomic, strong) UIImageView *imageView22; // Default is nil. The first time the property is accessed, the UIImageView is created.
 
 @end

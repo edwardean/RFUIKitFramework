@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface UITextView (UITextViewREUITextView)
 
 // Replacing and Returning Text

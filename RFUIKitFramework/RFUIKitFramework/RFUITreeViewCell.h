@@ -42,6 +42,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @class RFUITreeView;
 
 @interface RFUITreeViewCell : UIView
@@ -63,12 +65,12 @@
 
 // Managing the RFUITreeView
 
-@property (nonatomic, retain) RFUITreeView *treeView; // Default is nil.
+@property (nonatomic, strong) RFUITreeView *treeView; // Default is nil.
 
 // Accessing Views of the Cell Object
 
-@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
 
 // Reusing Cells
 

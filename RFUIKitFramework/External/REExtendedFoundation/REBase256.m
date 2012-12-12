@@ -122,7 +122,7 @@
         data = [mutableData copy];
     }
     
-    [mutableData release];
+    RENSObjectRelease(mutableData);
     mutableData = nil;
     
     return data;
@@ -130,7 +130,7 @@
 
 - (NSData *)decodeBase256
 {
-    NSData *data = [[self copyDecodeBase256] autorelease];
+    NSData *data = RENSObjectAutorelease([self copyDecodeBase256]);
     return data;
 }
 
@@ -154,7 +154,7 @@
     
     NSString *string = [mutableString copy];
     
-    [mutableString release];
+    RENSObjectRelease(mutableString);
     mutableString = nil;
     
     return string;
@@ -162,7 +162,7 @@
 
 - (NSString *)encodeBase256
 {
-    NSString *string = [[self copyEncodeBase256] autorelease];
+    NSString *string = RENSObjectAutorelease([self copyEncodeBase256]);
     return string;
 }
 

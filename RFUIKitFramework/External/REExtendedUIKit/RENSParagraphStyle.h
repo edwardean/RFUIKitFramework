@@ -41,6 +41,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
 #import "REExtendedFoundation.h"
 
 #define NSMutableParagraphStyleCastOrCopy(paragraphStyle) NSMutableObjectCastOrCopy(paragraphStyle, NSMutableParagraphStyle)

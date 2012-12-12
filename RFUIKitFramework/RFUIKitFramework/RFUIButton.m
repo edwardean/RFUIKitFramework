@@ -74,10 +74,10 @@
 {
     [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
     
-    [mStateViews release];
+    RENSObjectRelease(mStateViews);
     mStateViews = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -159,7 +159,7 @@
             }
         }
         
-        [stateNumber release];
+        RENSObjectRelease(stateNumber);
         stateNumber = nil;
     }
 }
@@ -174,7 +174,7 @@
         stateView = [mStateViews objectForKey:stateNumber];
     }
     
-    [stateNumber release];
+    RENSObjectRelease(stateNumber);
     stateNumber = nil;
     
     return stateView;
@@ -226,7 +226,7 @@
         simpleControlState = UIControlStateSelected;
     }
     
-    NSNumber *simpleControlStateNumber = [NSNumber numberWithUnsignedInteger:simpleControlState];
+    NSNumber *simpleControlStateNumber = [[NSNumber alloc] initWithUnsignedInteger:simpleControlState];
     
     UIView *simpleStateView = [mStateViews objectForKey:simpleControlStateNumber];
     
@@ -247,6 +247,9 @@
     {
         [self addSubview:simpleStateView];
     }
+    
+    RENSObjectRelease(simpleControlStateNumber);
+    simpleControlStateNumber = nil;
 }
 
 #pragma mark - UIControl Events

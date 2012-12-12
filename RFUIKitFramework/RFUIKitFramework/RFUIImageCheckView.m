@@ -82,7 +82,7 @@
 
 - (void)dealloc
 {
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing Check View Content
@@ -117,7 +117,7 @@
     
     [self setStateImageView:stateImageView forState:state controlState:conrolState];
     
-    [stateImageView release];
+    RENSObjectRelease(stateImageView);
     stateImageView = nil;
 }
 
@@ -129,7 +129,7 @@
     
     [self setLastStateImageView:stateImageView forControlState:conrolState];
     
-    [stateImageView release];
+    RENSObjectRelease(stateImageView);
     stateImageView = nil;
 }
 

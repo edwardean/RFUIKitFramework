@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface RFUIScrollLabel : UIScrollView
 {
 @protected
@@ -57,7 +59,7 @@
 
 // Managing the UIScrollView object
 
-@property (nonatomic, retain) UILabel      *label;      // Default is nil. The first time the property is accessed, the UILabel is created.
+@property (nonatomic, strong) UILabel      *label;      // Default is nil. The first time the property is accessed, the UILabel is created.
 @property (nonatomic)         UIEdgeInsets  labelInset; // Default is UIEdgeInsetsZero.
 - (void)setLabelInsetIfNeeded:(UIEdgeInsets)labelInset;
 

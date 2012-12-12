@@ -52,27 +52,27 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
 
 + (id)barButtonItemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
 {
-    return [[[self alloc] initWithImage:image style:style target:target action:action] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image style:style target:target action:action]);
 }
 
 + (id)barButtonItemWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
 {
-    return [[[self alloc] initWithImage:image landscapeImagePhone:landscapeImagePhone style:style target:target action:action] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image landscapeImagePhone:landscapeImagePhone style:style target:target action:action]);
 }
 
 + (id)barButtonItemWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
 {
-    return [[[self alloc] initWithTitle:title style:style target:target action:action] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithTitle:title style:style target:target action:action]);
 }
 
 + (id)barButtonItemWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(id)target action:(SEL)action
 {
-    return [[[self alloc] initWithBarButtonSystemItem:systemItem target:target action:action] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithBarButtonSystemItem:systemItem target:target action:action]);
 }
 
 + (id)barButtonItemWithCustomView:(UIView *)customView
 {
-    return [[[self alloc] initWithCustomView:customView] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithCustomView:customView]);
 }
 
 - (id)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
@@ -87,7 +87,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
     {
     }
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
     
     return self;
@@ -95,7 +95,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
 
 + (id)barButtonItemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
 {
-    return [[[self alloc] initWithImage:image style:style blockAction:block] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image style:style blockAction:block]);
 }
 
 - (id)initWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
@@ -110,7 +110,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
     {
     }
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
     
     return self;
@@ -118,7 +118,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
 
 + (id)barButtonItemWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
 {
-    return [[[self alloc] initWithImage:image landscapeImagePhone:landscapeImagePhone style:style blockAction:block] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithImage:image landscapeImagePhone:landscapeImagePhone style:style blockAction:block]);
 }
 
 - (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
@@ -133,7 +133,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
     {
     }
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
     
     return self;
@@ -141,7 +141,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
 
 + (id)barButtonItemWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style blockAction:(void (^)(id sender))block
 {
-    return [[[self alloc] initWithTitle:title style:style blockAction:block] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithTitle:title style:style blockAction:block]);
 }
 
 - (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem blockAction:(void (^)(id sender))block
@@ -156,7 +156,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
     {
     }
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
     
     return self;
@@ -164,7 +164,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
 
 + (id)barButtonItemWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem blockAction:(void (^)(id sender))block
 {
-    return [[[self alloc] initWithBarButtonSystemItem:systemItem blockAction:block] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithBarButtonSystemItem:systemItem blockAction:block]);
 }
 
 #pragma mark - Getting and Setting Properties
@@ -190,7 +190,7 @@ NSString * const UIBarButtonItemBlockActionKey = @"UIBarButtonItemBlockActionKey
         
         [objectDictionary setObject:newBlockAction forKey:UIBarButtonItemBlockActionKey];
         
-        [newBlockAction release];
+        RENSObjectRelease(newBlockAction);
         newBlockAction = nil;
     }
 }

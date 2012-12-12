@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface UIToolbar (UIToolbarREUIToolbar)
 
 // Configuring the Toolbar

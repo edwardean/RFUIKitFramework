@@ -46,12 +46,12 @@
 
 + (id)view
 {
-    return [[[self alloc] init] autorelease];
+    return RENSObjectAutorelease([[self alloc] init]);
 }
 
 + (id)viewWithFrame:(CGRect)frame
 {
-    return [[[self alloc] initWithFrame:frame] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithFrame:frame]);
 }
 
 #pragma mark - Configuring a View’s Visual Appearance
@@ -135,7 +135,7 @@
         [subview recursiveLayoutSubviews];
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 

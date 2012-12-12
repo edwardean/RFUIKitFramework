@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface RFUIStatusBarLayoutView : UIView
 {
 @protected
@@ -57,8 +59,8 @@
 
 // Managing the Views of the RFUIKeyboardLayoutView Object
 
-@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
 
 // Configuring the Behavior of Showing the Status Bar
 

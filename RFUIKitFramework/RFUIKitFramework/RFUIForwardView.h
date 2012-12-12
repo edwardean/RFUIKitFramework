@@ -41,13 +41,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @protocol RFUIForwardViewDelegate;
 
 @interface RFUIForwardView : UIView
 {
 @protected
     
-    id<RFUIForwardViewDelegate> mDelegate;
+    id<RFUIForwardViewDelegate> __weak2 mDelegate;
 }
 
 // Initializing and Creating a RFUIForwardView
@@ -57,7 +59,7 @@
 
 // Managing the Delegate
 
-@property (nonatomic, assign) id<RFUIForwardViewDelegate> delegate;
+@property (nonatomic, weak) id<RFUIForwardViewDelegate> delegate;
 
 @end
 

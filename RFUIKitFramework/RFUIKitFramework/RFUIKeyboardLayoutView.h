@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 enum RFUIFirstResponderArrangement
 {
     RFUIFirstResponderArrangementNone                  = 0,
@@ -67,8 +69,8 @@ typedef enum RFUIFirstResponderArrangement RFUIFirstResponderArrangement;
 
 // Managing the Views of the RFUIKeyboardLayoutView Object
 
-@property (nonatomic, retain) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *backgroundView; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *contentView;    // Default is nil. The first time the property is accessed, the UIView is created.
 
 // Configuring the Behavior of Showing the Keyboard
 

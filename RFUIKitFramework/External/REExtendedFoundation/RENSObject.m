@@ -49,8 +49,8 @@ static NSObject * volatile NSObject_SingletonSynchronizer = nil;
 
 typedef struct RENSObjectDictionaryHashTableLevel1
 {
-    id                   object;
-    NSMutableDictionary *objectDictionary;
+    CFTypeRef              objectRef;
+    CFMutableDictionaryRef objectDictionaryRef;
 } RENSObjectDictionaryHashTableLevel1;
 
 typedef struct RENSObjectDictionaryHashTableLevel0
@@ -96,12 +96,12 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         
         while (hashTableLevel1 < hashTableLevel1End)
         {
-            if (hashTableLevel1->object == self)
+            if (hashTableLevel1->objectRef == RECMBridge(CFTypeRef, self))
             {
-                objectDictionary = hashTableLevel1->objectDictionary;
+                objectDictionary = RECMBridgeTransfer(NSMutableDictionary *, hashTableLevel1->objectDictionaryRef);
                 
-                hashTableLevel1->object = nil;
-                hashTableLevel1->objectDictionary = nil;
+                hashTableLevel1->objectRef = NULL;
+                hashTableLevel1->objectDictionaryRef = NULL;
                 
                 hashTableLevel0->level1sCount--;
                 
@@ -123,7 +123,7 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         
         if (objectDictionary)
         {
-            [objectDictionary release];
+            RENSObjectRelease(objectDictionary);
             objectDictionary = nil;
         }
     }
@@ -185,9 +185,9 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         NSObject *object = [[NSObject alloc] init];
         NSAssert(object, @"The %@ method can not create a object.", NSStringFromSelector(_cmd));
         
-        NSObject_ObjectDictionary_ObjectTypeID = CFGetTypeID((CFTypeRef)object);
+        NSObject_ObjectDictionary_ObjectTypeID = CFGetTypeID(RECMBridge(CFTypeRef, object));
         
-        [object release];
+        RENSObjectRelease(object);
         object = nil;
         
         NSObject_ObjectDictionary_HashTableLevel0s = malloc(sizeof(RENSObjectDictionaryHashTableLevel0) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LEVEL0S_LENGTH);
@@ -195,17 +195,17 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         
         memset(NSObject_ObjectDictionary_HashTableLevel0s, 0, (sizeof(RENSObjectDictionaryHashTableLevel0) * NS_OBJECT_OBJECT_DICTIONARY_HASH_TABLE_LEVEL0S_LENGTH));
         
-        BOOL success = class_addMethod([NSObject class], @selector(dealloc), (IMP)NSObject_ObjectDictionary_Dealloc, "v8@0:4");
+        BOOL success = class_addMethod([NSObject class], NSSelectorFromString(@"dealloc"), (IMP)NSObject_ObjectDictionary_Dealloc, "v8@0:4");
         
         if (!success)
         {
-            NSObject_ObjectDictionary_PreviousDealloc = (void (*)(id, SEL))class_replaceMethod([NSObject class], @selector(dealloc), (IMP)NSObject_ObjectDictionary_Dealloc, "v8@0:4");
+            NSObject_ObjectDictionary_PreviousDealloc = (void (*)(id, SEL))class_replaceMethod([NSObject class], NSSelectorFromString(@"dealloc"), (IMP)NSObject_ObjectDictionary_Dealloc, "v8@0:4");
         }
         
         NSObject_ObjectDictionary_Initialized = YES;
     }
     
-    CFTypeID objectType = CFGetTypeID((CFTypeRef)self);
+    CFTypeID objectType = CFGetTypeID(RECMBridge(CFTypeRef, self));
     
     if (objectType != NSObject_ObjectDictionary_ObjectTypeID)
     {
@@ -224,9 +224,9 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
         
         while (hashTableLevel1 < hashTableLevel1End)
         {
-            if (hashTableLevel1->object == self)
+            if (hashTableLevel1->objectRef == RECMBridge(CFTypeRef, self))
             {
-                objectDictionary = hashTableLevel1->objectDictionary;
+                objectDictionary = RECMBridge(NSMutableDictionary *, hashTableLevel1->objectDictionaryRef);
                 
                 break;
             }
@@ -240,12 +240,12 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
             
             while (hashTableLevel1 < hashTableLevel1End)
             {
-                if (hashTableLevel1->object == nil)
+                if (hashTableLevel1->objectRef == NULL)
                 {
-                    hashTableLevel1->object = self;
-                    hashTableLevel1->objectDictionary = [[NSMutableDictionary alloc] init];
+                    hashTableLevel1->objectRef = RECMBridge(CFTypeRef, self);
+                    hashTableLevel1->objectDictionaryRef = RECMBridgeRetained(CFMutableDictionaryRef, [[NSMutableDictionary alloc] init]);
                     
-                    objectDictionary = hashTableLevel1->objectDictionary;
+                    objectDictionary = RECMBridge(NSMutableDictionary *, hashTableLevel1->objectDictionaryRef);
                     
                     hashTableLevel0->level1sCount++;
                     
@@ -268,10 +268,10 @@ static void NSObject_ObjectDictionary_Dealloc(id self, SEL _cmd)
             memcpy(hashTableLevel1s, hashTableLevel0->level1s, (sizeof(RENSObjectDictionaryHashTableLevel1) * hashTableLevel0->level1sLength));
             
             hashTableLevel1 = hashTableLevel1s + hashTableLevel0->level1sLength;
-            hashTableLevel1->object = self;
-            hashTableLevel1->objectDictionary = [[NSMutableDictionary alloc] init];
+            hashTableLevel1->objectRef = RECMBridge(CFTypeRef, self);
+            hashTableLevel1->objectDictionaryRef = RECMBridgeRetained(CFMutableDictionaryRef, [[NSMutableDictionary alloc] init]);
             
-            objectDictionary = hashTableLevel1->objectDictionary;
+            objectDictionary = RECMBridge(NSMutableDictionary *, hashTableLevel1->objectDictionaryRef);
             
             free(hashTableLevel0->level1s);
             hashTableLevel0->level1s = hashTableLevel1s;

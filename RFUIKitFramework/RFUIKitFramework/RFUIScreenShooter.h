@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 typedef enum
 {
     RFUIScreenShooterImageTypePNG = 0, // File ex .png

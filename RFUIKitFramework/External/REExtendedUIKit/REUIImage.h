@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface UIImage (UIImageREUIImage)
 
 // Initializing and Creating a UIImage

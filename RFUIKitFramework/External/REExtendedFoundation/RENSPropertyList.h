@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 @interface NSPropertyListSerialization (NSPropertyListSerializationRENSPropertyListSerialization)
 
 // Serializing a Property List

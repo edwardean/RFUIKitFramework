@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 #import "RENSObject.h"
 
 #define NSMutableAttributedStringCastOrCopy(attributedString) NSMutableObjectCastOrCopy(attributedString, NSMutableAttributedString)

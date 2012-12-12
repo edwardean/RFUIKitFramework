@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface UIBarButtonItem (UIBarButtonItemREUIBarButtonItem)
 
 // Initializing and Creating a UIBarButtonItem

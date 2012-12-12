@@ -63,7 +63,7 @@
 
 - (void)dealloc
 {
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing the REUIControlBlockAction Object

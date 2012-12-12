@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 @interface NSDateFormatter (NSDateFormatterRENSDateFormatter)
 
 // Initializing and Creating a NSDateFormatter

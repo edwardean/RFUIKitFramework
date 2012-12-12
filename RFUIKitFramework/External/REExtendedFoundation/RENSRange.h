@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 FOUNDATION_EXTERN const NSRange NSRangeNotFound;
 
 NS_INLINE BOOL NSRangeIsNotFound(NSRange range)

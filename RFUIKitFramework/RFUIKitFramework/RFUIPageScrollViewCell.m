@@ -69,10 +69,10 @@
 
 - (void)dealloc
 {
-    [mContentView release];
+    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Lays out Subviews

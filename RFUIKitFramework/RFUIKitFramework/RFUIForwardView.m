@@ -46,7 +46,7 @@
 
 + (id)forwardView
 {
-    return [[[self alloc] init] autorelease];
+    return RENSObjectAutorelease([[self alloc] init]);
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -61,14 +61,14 @@
 
 + (id)forwardViewWithFrame:(CGRect)frame
 {
-    return [[[self alloc] initWithFrame:frame] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithFrame:frame]);
 }
 
 #pragma mark - Deallocating a RFUIForwardView
 
 - (void)dealloc
 {
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subview

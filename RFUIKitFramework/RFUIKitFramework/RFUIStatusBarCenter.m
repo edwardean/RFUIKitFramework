@@ -105,7 +105,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing Status Bar Interface Orientation
@@ -247,7 +247,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
             [self sendStatusBarCenterWillChangeStatusBarFrameMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -263,7 +263,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         [self sendStatusBarCenterWillChangeStatusBarFrameMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -287,7 +287,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
             [self sendStatusBarCenterDidChangeStatusBarFrameMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -303,7 +303,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         [self sendStatusBarCenterDidChangeStatusBarFrameMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -327,7 +327,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
             [self sendStatusBarCenterWillChangeStatusBarOrientationMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -343,7 +343,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         [self sendStatusBarCenterWillChangeStatusBarOrientationMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -367,7 +367,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
             [self sendStatusBarCenterDidChangeStatusBarOrientationMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -383,7 +383,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         [self sendStatusBarCenterDidChangeStatusBarOrientationMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 

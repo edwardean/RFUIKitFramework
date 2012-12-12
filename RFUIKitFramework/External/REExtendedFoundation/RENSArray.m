@@ -123,7 +123,7 @@
             id object2 = [array objectAtIndex:index];
             array = childArrayBlock(object2, subindexPath);
             
-            [subindexPath release];
+            RENSObjectRelease(subindexPath);
             subindexPath = nil;
         }
     }
@@ -250,12 +250,12 @@
         index--;
     }
     
-    NSArray *reversedArray = [[mutableReversedArray copy] autorelease];
+    NSArray *reversedArray = [mutableReversedArray copy];
     
-    [mutableReversedArray release];
+    RENSObjectRelease(mutableReversedArray);
     mutableReversedArray = nil;
     
-    return reversedArray;
+    return RENSObjectAutorelease(reversedArray);
 }
 
 #pragma mark - Sending Messages to Elements
@@ -285,7 +285,7 @@
             stop = [childArray enumerateObjectsWithParentIndexPath:indexPath usingIndexPathBlock:indexPathBlock];
         }
         
-        [indexPath release];
+        RENSObjectRelease(indexPath);
         indexPath = nil;
     }
     
@@ -298,7 +298,7 @@
     
     [self enumerateObjectsWithParentIndexPath:parentIndexPath usingIndexPathBlock:indexPathBlock];
     
-    [parentIndexPath release];
+    RENSObjectRelease(parentIndexPath);
     parentIndexPath = nil;
 }
 
@@ -329,7 +329,7 @@
             }
         }
         
-        [indexPath release];
+        RENSObjectRelease(indexPath);
         indexPath = nil;
     }
     
@@ -342,7 +342,7 @@
     
     [self enumerateObjectsWithParentIndexPath:parentIndexPath usingChildArrayBlock:childArrayBlock indexPathBlock:indexPathBlock];
     
-    [parentIndexPath release];
+    RENSObjectRelease(parentIndexPath);
     parentIndexPath = nil;
 }
 
@@ -392,7 +392,7 @@
         
         array = childArrayBlock(object, subindexPath);
         
-        [subindexPath release];
+        RENSObjectRelease(subindexPath);
         subindexPath = nil;
     }
     
@@ -452,7 +452,7 @@
             
             array = childArrayBlock(object, subindexPath);
             
-            [subindexPath release];
+            RENSObjectRelease(subindexPath);
             subindexPath = nil;
         }
     }
@@ -513,7 +513,7 @@
             
             array = childArrayBlock(object, subindexPath);
             
-            [subindexPath release];
+            RENSObjectRelease(subindexPath);
             subindexPath = nil;
         }
     }
@@ -609,7 +609,7 @@
             
             array = childArrayBlock(object, subindexPath);
             
-            [subindexPath release];
+            RENSObjectRelease(subindexPath);
             subindexPath = nil;
         }
     }
@@ -619,13 +619,13 @@
 
 - (void)moveObjectAtIndex:(NSUInteger)index1 withIndex:(NSUInteger)index2
 {
-    id object = [[self objectAtIndex:index2] retain];
+    id object = RENSObjectRetain([self objectAtIndex:index2]);
     
     [self removeObjectAtIndex:index2];
     
     [self insertObject:object atIndex:index1];
     
-    [object release];
+    RENSObjectRelease(object);
     object = nil;
 }
 
@@ -693,13 +693,13 @@
         }
     }
     
-    id object = [[array2 objectAtIndex:index2] retain];
+    id object = RENSObjectRetain([array2 objectAtIndex:index2]);
     
     [array2 removeObjectAtIndex:index2];
     
     [array1 insertObject:object atIndex:index1];
     
-    [object release];
+    RENSObjectRelease(object);
     object = nil;
 }
 
@@ -741,7 +741,7 @@
             
             array1 = childArrayBlock(object1, subindexPath1);
             
-            [subindexPath1 release];
+            RENSObjectRelease(subindexPath1);
             subindexPath1 = nil;
         }
     }
@@ -762,18 +762,18 @@
             
             array2 = childArrayBlock(object2, subindexPath2);
             
-            [subindexPath2 release];
+            RENSObjectRelease(subindexPath2);
             subindexPath2 = nil;
         }
     }
     
-    id object = [[array2 objectAtIndex:index2] retain];
+    id object = RENSObjectRetain([array2 objectAtIndex:index2]);
     
     [array2 removeObjectAtIndex:index2];
     
     [array1 insertObject:object atIndex:index1];
     
-    [object release];
+    RENSObjectRelease(object);
     object = nil;
 }
 
@@ -827,16 +827,16 @@
         }
     }
     
-    id object1 = [[array1 objectAtIndex:index1] retain];
-    id object2 = [[array2 objectAtIndex:index2] retain];
+    id object1 = RENSObjectRetain([array1 objectAtIndex:index1]);
+    id object2 = RENSObjectRetain([array2 objectAtIndex:index2]);
     
     [array1 replaceObjectAtIndex:index1 withObject:object2];
     [array2 replaceObjectAtIndex:index2 withObject:object1];
     
-    [object1 release];
+    RENSObjectRelease(object1);
     object1 = nil;
     
-    [object2 release];
+    RENSObjectRelease(object2);
     object2 = nil;
 }
 
@@ -878,7 +878,7 @@
             
             array1 = childArrayBlock(object1, subindexPath1);
             
-            [subindexPath1 release];
+            RENSObjectRelease(subindexPath1);
             subindexPath1 = nil;
         }
     }
@@ -899,21 +899,21 @@
             
             array2 = childArrayBlock(object2, subindexPath2);
             
-            [subindexPath2 release];
+            RENSObjectRelease(subindexPath2);
             subindexPath2 = nil;
         }
     }
     
-    id object1 = [[array1 objectAtIndex:index1] retain];
-    id object2 = [[array2 objectAtIndex:index2] retain];
+    id object1 = RENSObjectRetain([array1 objectAtIndex:index1]);
+    id object2 = RENSObjectRetain([array2 objectAtIndex:index2]);
     
     [array1 replaceObjectAtIndex:index1 withObject:object2];
     [array2 replaceObjectAtIndex:index2 withObject:object1];
     
-    [object1 release];
+    RENSObjectRelease(object1);
     object1 = nil;
     
-    [object2 release];
+    RENSObjectRelease(object2);
     object2 = nil;
 }
 

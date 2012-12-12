@@ -73,10 +73,10 @@
     
     NSError *error2 = [[NSError alloc] initWithDomain:domain code:code userInfo:userInfo2];
     
-    [mutableUserInfo2 release];
+    RENSObjectRelease(mutableUserInfo2);
     mutableUserInfo2 = nil;
     
-    [userInfo2 release];
+    RENSObjectRelease(userInfo2);
     userInfo2 = nil;
     
     return error2;
@@ -84,8 +84,8 @@
 
 - (NSError *)errorByAddingEntriesToUserInfo:(NSDictionary *)otherUserInfo
 {
-    NSError *error = [[self copyErrorByAddingEntriesToUserInfo:otherUserInfo] autorelease];
-    return error;
+    NSError *error = [self copyErrorByAddingEntriesToUserInfo:otherUserInfo];
+    return RENSObjectAutorelease(error);
 }
 
 @end

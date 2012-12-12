@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @protocol RFUIPageScrollViewDataSource;
 @protocol RFUIPageScrollViewDelegate;
 
@@ -50,7 +52,7 @@
 {
 @protected
     
-    id<RFUIPageScrollViewDataSource> mDataSource;
+    id<RFUIPageScrollViewDataSource> __weak2 mDataSource;
     
     BOOL            mNeedsReloadData;
     NSInteger       mNumberOfRows;
@@ -64,10 +66,10 @@
 
 // Managing the Delegate
 
-@property (nonatomic, assign) id<RFUIPageScrollViewDelegate, UIScrollViewDelegate> delegate;
+@property (nonatomic, weak) id<RFUIPageScrollViewDelegate, UIScrollViewDelegate> delegate;
 
 // Specifying the Data Source
-@property (nonatomic, assign) id<RFUIPageScrollViewDataSource> dataSource;
+@property (nonatomic, weak) id<RFUIPageScrollViewDataSource> dataSource;
 
 // Accessing Info
 

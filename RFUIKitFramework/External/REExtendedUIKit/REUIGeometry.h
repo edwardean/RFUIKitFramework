@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 UIKIT_STATIC_INLINE CGSize UIEdgeInsetsInsetSize(CGSize size, UIEdgeInsets insets)
 {
     size.width  -= (insets.left + insets.right);

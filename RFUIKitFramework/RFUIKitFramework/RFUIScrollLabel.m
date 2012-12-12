@@ -78,10 +78,10 @@
 
 - (void)dealloc
 {
-    [mLabel release];
+    RENSObjectRelease(mLabel);
     mLabel = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -169,8 +169,8 @@
             [mLabel removeFromSuperview];
         }
         
-        [mLabel release];
-        mLabel = [label retain];
+        RENSObjectRelease(mLabel);
+        mLabel = RENSObjectRetain(label);
         
         if (mLabel)
         {

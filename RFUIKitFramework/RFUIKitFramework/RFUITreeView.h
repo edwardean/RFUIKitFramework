@@ -42,6 +42,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 #import "RFUITreeViewRowAnimation.h"
 
 typedef enum RFUITreeViewScrollPosition
@@ -73,8 +75,8 @@ typedef enum RFUITreeViewScrollPosition
 {
 @protected
     
-    id<RFUITreeViewDataSource> mDataSource;
-    id<RFUITreeViewDelegate>   mDelegate;
+    id<RFUITreeViewDataSource> __weak2 mDataSource;
+    id<RFUITreeViewDelegate> __weak2   mDelegate;
     
     UIView         *mBackgroundView;
     UIView         *mContentView;
@@ -113,12 +115,12 @@ typedef enum RFUITreeViewScrollPosition
 
 // Managing the Delegate and the Data Source
 
-@property (nonatomic, assign) id<RFUITreeViewDataSource> dataSource;
-@property (nonatomic, assign) id<RFUITreeViewDelegate>   delegate;
+@property (nonatomic, weak) id<RFUITreeViewDataSource> dataSource;
+@property (nonatomic, weak) id<RFUITreeViewDelegate>   delegate;
 
 // Configuring a Tree View
 
-@property (nonatomic, retain) UIView  *backgroundView;   // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView  *backgroundView;   // Default is nil. The first time the property is accessed, the UIView is created.
 @property (nonatomic)         BOOL     usesDynamicWidth; // Default is NO.
 @property (nonatomic)         CGFloat  minimumRowWidth;  // Default is 0.0f.
 @property (nonatomic)         CGFloat  rowHeight;        // Default is 44.0f.
@@ -163,7 +165,7 @@ typedef enum RFUITreeViewScrollPosition
 
 // Inserting, Deleting and Reloading Rows
 
-@property (nonatomic, readonly, assign) BOOL isUpdating; // Default is NO.
+@property (nonatomic, readonly) BOOL isUpdating; // Default is NO.
 
 - (void)beginUpdates;
 - (void)endUpdates;

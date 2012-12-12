@@ -58,7 +58,7 @@
 
 + (UIColor *)colorWithWhite255:(CGFloat)white255 alpha255:(CGFloat)alpha255
 {
-    return [[[self alloc] initWithWhite255:white255 alpha255:alpha255] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithWhite255:white255 alpha255:alpha255]);
 }
 
 - (UIColor *)initWithRed255:(CGFloat)red255 green255:(CGFloat)green255 blue255:(CGFloat)blue255 alpha255:(CGFloat)alpha255
@@ -77,7 +77,7 @@
 
 + (UIColor *)colorWithRed255:(CGFloat)red255 green255:(CGFloat)green255 blue255:(CGFloat)blue255 alpha255:(CGFloat)alpha255
 {
-    return [[[self alloc] initWithRed255:red255 green255:green255 blue255:blue255 alpha255:alpha255] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithRed255:red255 green255:green255 blue255:blue255 alpha255:alpha255]);
 }
 
 - (UIColor *)initWithPatternImageNamed:(NSString *)name
@@ -100,7 +100,7 @@
     
 jmp_error:
     
-    [self release];
+    RENSObjectRelease(self);
     self = nil;
     
     return self;
@@ -108,7 +108,7 @@ jmp_error:
 
 + (UIColor *)colorWithPatternImageNamed:(NSString *)name
 {
-    return [[[self alloc] initWithPatternImageNamed:name] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithPatternImageNamed:name]);
 }
 
 #pragma mark - Getting Color Components
@@ -146,7 +146,7 @@ jmp_error:
                     red = [ciColor red];
                 }
                 
-                [ciColor release];
+                RENSObjectRelease(ciColor);
                 ciColor = nil;
             }
         }
@@ -212,7 +212,7 @@ jmp_error:
                     green = [ciColor green];
                 }
                 
-                [ciColor release];
+                RENSObjectRelease(ciColor);
                 ciColor = nil;
             }
         }
@@ -278,7 +278,7 @@ jmp_error:
                     blue = [ciColor blue];
                 }
                 
-                [ciColor release];
+                RENSObjectRelease(ciColor);
                 ciColor = nil;
             }
         }
@@ -345,7 +345,7 @@ jmp_error:
                     alpha = [ciColor alpha];
                 }
                 
-                [ciColor release];
+                RENSObjectRelease(ciColor);
                 ciColor = nil;
             }
         }

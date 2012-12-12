@@ -57,8 +57,12 @@
             if ([currentThread respondsToSelector:@selector(setName:)])
             {
                 NSString *className = NSStringFromClass([self class]);
-                NSString *threadName = [NSString stringWithFormat:@"com.oliromole.%@", className];
+                NSString *threadName = [[NSString
+                                         alloc] initWithFormat:@"com.oliromole.%@", className];
                 currentThread.name = threadName;
+                
+                RENSObjectRelease(threadName);
+                threadName = nil;
             }
             
             if ([currentThread respondsToSelector:@selector(setThreadPriority:)])

@@ -79,7 +79,12 @@
 
 - (void)dequeueNotificationsMatchingName:(NSString *)aName
 {
-    NSNotification *notification = [NSNotification notificationWithName:aName object:[[[NSObject alloc] init] autorelease]];
+    NSObject *object = [[NSObject alloc] init];
+    
+    NSNotification *notification = [NSNotification notificationWithName:aName object:object];
+    
+    RENSObjectRelease(object);
+    object = nil;
     
     [self dequeueNotificationsMatching:notification coalesceMask:NSNotificationCoalescingOnName];
 }

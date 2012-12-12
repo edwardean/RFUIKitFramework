@@ -46,7 +46,7 @@
 
 - (NSDictionary *)dictionaryWithKeys:(NSArray *)keys
 {
-    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] initWithCapacity:(keys ? keys.count : 0)];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:(keys ? keys.count : 0)];
     
     for (id key in keys)
     {
@@ -54,16 +54,11 @@
         
         if (object)
         {
-            [mutableDictionary setObject:object forKey:key];
+            [dictionary setObject:object forKey:key];
         }
     }
     
-    NSDictionary *dictionary = [[mutableDictionary copy] autorelease];
-    
-    [mutableDictionary release];
-    mutableDictionary = nil;
-    
-    return dictionary;
+    return RENSObjectAutorelease(dictionary);
 }
 
 - (NSDictionary *)dictionaryWithKeys:(NSArray *)keys notFoundMarker:(id)marker
@@ -73,7 +68,7 @@
         @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"*** -[NSDictionary dictionaryForKeys:notFoundMarker:]: marker cannot be nil" userInfo:nil];
     }
     
-    NSMutableDictionary *mutableDictionary = [self mutableCopy];
+    NSMutableDictionary *dictionary = [self mutableCopy];
     
     for (id key in keys)
     {
@@ -81,21 +76,16 @@
         
         if (object)
         {
-            [mutableDictionary setObject:object forKey:key];
+            [dictionary setObject:object forKey:key];
         }
         
         else
         {
-            [mutableDictionary setObject:marker forKey:key];
+            [dictionary setObject:marker forKey:key];
         }
     }
     
-    NSDictionary *dictionary = [[mutableDictionary copy] autorelease];
-    
-    [mutableDictionary release];
-    mutableDictionary = nil;
-    
-    return dictionary;
+    return RENSObjectAutorelease(dictionary);
 }
 
 @end
@@ -121,7 +111,7 @@
     [self removeAllObjects];
     [self setDictionary:mutableDictionary];
     
-    [mutableDictionary release];
+    RENSObjectRelease(mutableDictionary);
     mutableDictionary = nil;
 }
 

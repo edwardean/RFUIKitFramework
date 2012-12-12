@@ -72,7 +72,7 @@
 {
     if ((self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)]))
     {
-        [mReuseIdentifier release];
+        RENSObjectRelease(mReuseIdentifier);
         mReuseIdentifier = [reuseIdentifier copy];
     }
     
@@ -81,26 +81,26 @@
 
 + (id)treeViewCellWithReuseIdentifier:(NSString *)reuseIdentifier
 {
-    return [[[self alloc] initWithReuseIdentifier:reuseIdentifier] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithReuseIdentifier:reuseIdentifier]);
 }
 
 #pragma mark - Deallocating a RFUITreeViewCell
 
 - (void)dealloc
 {
-    [mBackgroundView release];
+    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    [mContentView release];
+    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    [mReuseIdentifier release];
+    RENSObjectRelease(mReuseIdentifier);
     mReuseIdentifier = nil;
     
-    [mTreeView release];
+    RENSObjectRelease(mTreeView);
     mTreeView = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subview
@@ -168,8 +168,8 @@
             [mBackgroundView removeFromSuperview];
         }
         
-        [mBackgroundView release];
-        mBackgroundView = [backgroundView retain];
+        RENSObjectRelease(mBackgroundView);
+        mBackgroundView = RENSObjectRetain(backgroundView);
         
         if (mBackgroundView)
         {
@@ -209,8 +209,8 @@
             [mContentView removeFromSuperview];
         }
         
-        [mContentView release];
-        mContentView = [contentView retain];
+        RENSObjectRelease(mContentView);
+        mContentView = RENSObjectRetain(contentView);
         
         if (mContentView)
         {

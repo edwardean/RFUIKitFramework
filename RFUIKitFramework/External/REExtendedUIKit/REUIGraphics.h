@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 #if __IPHONE_4_0 <= __IPHONE_OS_VERSION_MIN_REQUIRED
 #   define REUIGraphicsBeginImageContextWithOptions(size, opaque, scale) (UIGraphicsBeginImageContextWithOptions((size), (opaque), (scale)))
 #elif __IPHONE_4_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED

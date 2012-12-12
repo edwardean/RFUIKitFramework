@@ -142,8 +142,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)indexPathByAppendingIndexPath:(NSIndexPath *)aIndexPath
 {
-    NSIndexPath *indexPath = [[self copyIndexPathByAppendingIndexPath:aIndexPath] autorelease];
-    return indexPath;
+    NSIndexPath *indexPath = [self copyIndexPathByAppendingIndexPath:aIndexPath];
+    return RENSObjectAutorelease(indexPath);
 }
 
 - (NSIndexPath *)copyIndexPathByAppendingLength:(NSUInteger)length2, ...
@@ -152,7 +152,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
     
     if (length2 == 0)
     {
-        indexPath = [self retain];
+        indexPath = RENSObjectRetain(self);
     }
     
     // Length > 0.
@@ -189,7 +189,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
     
     if (length2 == 0)
     {
-        indexPath = self;
+        indexPath = RENSObjectRetain(self);
     }
     
     // Length > 0.
@@ -214,10 +214,10 @@ NSIndexPath * NSIndexPathEmpty = nil;
         
         va_end(valist);
         
-        indexPath = [NSIndexPath indexPathWithIndexes:indexes length:length];
+        indexPath = [[NSIndexPath alloc] initWithIndexes:indexes length:length];
     }
     
-    return indexPath;
+    return RENSObjectAutorelease(indexPath);
 }
 
 #pragma mark - Dividing Index Paths
@@ -240,8 +240,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)subindexPathFromPosition:(NSUInteger)fromPosition
 {
-    NSIndexPath *subindexPath = [[self copySubindexPathFromPosition:fromPosition] autorelease];
-    return subindexPath;
+    NSIndexPath *subindexPath = [self copySubindexPathFromPosition:fromPosition];
+    return RENSObjectAutorelease(subindexPath);
 }
 
 - (NSIndexPath *)copySubindexPathToPosition:(NSUInteger)toPosition
@@ -257,8 +257,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)subindexPathToPosition:(NSUInteger)toPosition
 {
-    NSIndexPath *subindexPath = [[self copySubindexPathToPosition:toPosition] autorelease];
-    return subindexPath;
+    NSIndexPath *subindexPath = [self copySubindexPathToPosition:toPosition];
+    return RENSObjectAutorelease(subindexPath);
 }
 
 - (NSIndexPath *)copySubindexPathWithRange:(NSRange)range
@@ -281,8 +281,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)subindexPathWithRange:(NSRange)range
 {
-    NSIndexPath *subindexPath = [[self copySubindexPathWithRange:range] autorelease];
-    return subindexPath;
+    NSIndexPath *subindexPath = [self copySubindexPathWithRange:range];
+    return RENSObjectAutorelease(subindexPath);
 }
 
 #pragma mark - Finding SubindexPaths
@@ -537,7 +537,7 @@ NSIndexPath * NSIndexPathEmpty = nil;
     
     else
     {
-        indexPath = [self retain];
+        indexPath = RENSObjectRetain(self);
     }
     
     return indexPath;
@@ -545,8 +545,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)indexPathByReplacingOccurrencesOfIndexPath:(NSIndexPath *)target withIndexPath:(NSIndexPath *)replacement options:(NSIndexPathCompareOptions)options range:(NSRange)searchRange
 {
-    NSIndexPath *indexPath = [[self copyIndexPathByReplacingOccurrencesOfIndexPath:target withIndexPath:replacement options:options range:searchRange] autorelease];
-    return indexPath;
+    NSIndexPath *indexPath = [self copyIndexPathByReplacingOccurrencesOfIndexPath:target withIndexPath:replacement options:options range:searchRange];
+    return RENSObjectAutorelease(indexPath);
 }
 
 - (NSIndexPath *)copyIndexPathByReplacingOccurrencesOfIndexPath:(NSIndexPath *)target withIndexPath:(NSIndexPath *)replacement
@@ -562,8 +562,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)indexPathByReplacingOccurrencesOfIndexPath:(NSIndexPath *)target withIndexPath:(NSIndexPath *)replacement
 {
-    NSIndexPath *indexPath = [[self copyIndexPathByReplacingOccurrencesOfIndexPath:target withIndexPath:replacement] autorelease];
-    return indexPath;
+    NSIndexPath *indexPath = [self copyIndexPathByReplacingOccurrencesOfIndexPath:target withIndexPath:replacement];
+    return RENSObjectAutorelease(indexPath);
 }
 
 - (NSIndexPath *)copyIndexPathByReplacingIndexesInRange:(NSRange)range withIndexPath:(NSIndexPath *)indexPath2
@@ -602,8 +602,8 @@ NSIndexPath * NSIndexPathEmpty = nil;
 
 - (NSIndexPath *)indexPathByReplacingIndexesInRange:(NSRange)range withIndexPath:(NSIndexPath *)replacement
 {
-    NSIndexPath *indexPath = [[self copyIndexPathByReplacingIndexesInRange:range withIndexPath:replacement] autorelease];
-    return indexPath;
+    NSIndexPath *indexPath = [self copyIndexPathByReplacingIndexesInRange:range withIndexPath:replacement];
+    return RENSObjectAutorelease(indexPath);
 }
 
 #pragma mark - Comparing Index Paths

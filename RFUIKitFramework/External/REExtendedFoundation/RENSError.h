@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 @interface NSError (NSErrorRENSError)
 
 // Combining the User Info

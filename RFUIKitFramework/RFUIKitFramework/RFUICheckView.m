@@ -91,7 +91,7 @@
             
             [mEntities addObject:entity];
             
-            [entity release];
+            RENSObjectRelease(entity);
             entity = nil;
         }
         
@@ -109,10 +109,10 @@
 {
     [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
     
-    [mEntities release];
+    RENSObjectRelease(mEntities);
     mEntities = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -192,7 +192,7 @@
             
             [mEntities addObject:entity];
             
-            [entity release];
+            RENSObjectRelease(entity);
             entity = nil;
         }
         
@@ -235,7 +235,7 @@
     
     UIView *stateView = [entity objectForKey:conrolStateNumber];
     
-    [conrolStateNumber release];
+    RENSObjectRelease(conrolStateNumber);
     conrolStateNumber = nil;
     
     return stateView;
@@ -261,7 +261,7 @@
         [self updateStateView];
     }
     
-    [conrolStateNumber release];
+    RENSObjectRelease(conrolStateNumber);
     conrolStateNumber = nil;
 }
 
@@ -331,7 +331,7 @@
     
     [mEntities insertObject:entity atIndex:state];
     
-    [entity release];
+    RENSObjectRelease(entity);
     entity = nil;
     
     if (mCurrentState != NSNotFound)
@@ -461,8 +461,7 @@
         }
     }
     
-    NSNumber *simpleControlStateNumber = [NSNumber numberWithUnsignedInteger:simpleControlState];
-    
+    NSNumber *simpleControlStateNumber = [[NSNumber alloc] initWithUnsignedInteger:simpleControlState];
     
     UIView *simpleStateView = nil;
     
@@ -492,6 +491,9 @@
     {
         [self addSubview:simpleStateView];
     }
+    
+    RENSObjectRelease(simpleControlStateNumber);
+    simpleControlStateNumber = nil;
 }
 
 #pragma mark - UIControl Events

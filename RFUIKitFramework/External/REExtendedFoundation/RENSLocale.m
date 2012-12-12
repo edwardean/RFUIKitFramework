@@ -46,7 +46,7 @@
 
 + (id)localeWithLocaleIdentifier:(NSString *)string
 {
-    return [[[self alloc] initWithLocaleIdentifier:string] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithLocaleIdentifier:string]);
 }
 
 @end

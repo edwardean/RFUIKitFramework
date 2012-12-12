@@ -60,11 +60,11 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
     
     NSMutableDictionary *objectDictionary = [self objectDictionary];
     
-    NSMutableArray *controlBlockActions = [objectDictionary objectForKey:UIControlControlBlockActionsKey];
+    NSMutableArray *controlBlockActions = RENSObjectRetain([objectDictionary objectForKey:UIControlControlBlockActionsKey]);
     
     if (!controlBlockActions)
     {
-        controlBlockActions = [NSMutableArray array];
+        controlBlockActions = [[NSMutableArray alloc] init];
         
         [objectDictionary setObject:controlBlockActions forKey:UIControlControlBlockActionsKey];
     }
@@ -73,8 +73,11 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
     
     [self addTarget:controlBlockAction action:@selector(sendAction:) forControlEvents:controlEvents];
     
-    [controlBlockAction release];
+    RENSObjectRelease(controlBlockAction);
     controlBlockAction = nil;
+    
+    RENSObjectRelease(controlBlockActions);
+    controlBlockActions = nil;
 }
 
 - (void)removeBlockAction:(void (^)(id control))block forControlEvents:(UIControlEvents)controlEvents
@@ -137,8 +140,8 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
 
 - (NSMutableArray *)allBlockActions
 {
-    NSMutableArray *allBlockActions = [[self copyAllBlockActions] autorelease];
-    return allBlockActions;
+    NSMutableArray *allBlockActions = [self copyAllBlockActions];
+    return RENSObjectAutorelease(allBlockActions);
 }
 
 @end

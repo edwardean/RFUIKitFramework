@@ -140,8 +140,8 @@
 
 - (NSString *)stringByDeletingPrefix:(NSString *)prefix
 {
-    NSString *string = [[self copyStringByDeletingPrefix:prefix] autorelease];
-    return string;
+    NSString *string = [self copyStringByDeletingPrefix:prefix];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByDeletingSuffix:(NSString *)suffix
@@ -169,8 +169,8 @@
 
 - (NSString *)stringByDeletingSuffix:(NSString *)suffix
 {
-    NSString *string = [[self copyStringByDeletingSuffix:suffix] autorelease];
-    return string;
+    NSString *string = [self copyStringByDeletingSuffix:suffix];
+    return RENSObjectAutorelease(string);
 }
 
 #pragma mark - Trimming a String
@@ -185,8 +185,8 @@
 
 - (NSString *)stringByTrimming
 {
-    NSString *string = [[self copyStringByTrimming] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimming];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingLeft
@@ -199,8 +199,8 @@
 
 - (NSString *)stringByTrimmingLeft
 {
-    NSString *string = [[self copyStringByTrimmingLeft] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingLeft];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingRight
@@ -213,8 +213,8 @@
 
 - (NSString *)stringByTrimmingRight
 {
-    NSString *string = [[self copyStringByTrimmingRight] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingRight];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet
@@ -268,8 +268,8 @@
 
 - (NSString *)stringByTrimmingCharactersInSet:(NSCharacterSet *)characterSet
 {
-    NSString *string = [[self copyStringByTrimmingCharactersInSet:characterSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingCharactersInSet:characterSet];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingLeftCharactersInSet:(NSCharacterSet *)characterSet
@@ -306,8 +306,8 @@
 
 - (NSString *)stringByTrimmingLeftCharactersInSet:(NSCharacterSet *)characterSet
 {
-    NSString *string = [[self copyStringByTrimmingLeftCharactersInSet:characterSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingLeftCharactersInSet:characterSet];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingRightCharactersInSet:(NSCharacterSet *)characterSet
@@ -343,8 +343,8 @@
 
 - (NSString *)stringByTrimmingRightCharactersInSet:(NSCharacterSet *)characterSet
 {
-    NSString *string = [[self copyStringByTrimmingRightCharactersInSet:characterSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingRightCharactersInSet:characterSet];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingStrings:(NSString *)string0, ...
@@ -371,7 +371,7 @@
         
         trimmedString = [self copyStringByTrimmingStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -402,7 +402,7 @@
         
         trimmedString = [self stringByTrimmingStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -433,7 +433,7 @@
         
         trimmedString = [self copyStringByTrimmingLeftStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -464,7 +464,7 @@
         
         trimmedString = [self stringByTrimmingLeftStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -495,7 +495,7 @@
         
         trimmedString = [self copyStringByTrimmingRightStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -526,7 +526,7 @@
         
         trimmedString = [self stringByTrimmingRightStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
     
@@ -604,8 +604,8 @@
 
 - (NSString *)stringByTrimmingStringsInSet:(NSSet *)stringSet
 {
-    NSString *string = [[self copyStringByTrimmingStringsInSet:stringSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingStringsInSet:stringSet];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingLeftStringsInSet:(NSSet *)stringSet
@@ -655,8 +655,8 @@
 
 - (NSString *)stringByTrimmingLeftStringsInSet:(NSSet *)stringSet
 {
-    NSString *string = [[self copyStringByTrimmingLeftStringsInSet:stringSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingLeftStringsInSet:stringSet];
+    return RENSObjectAutorelease(string);
 }
 
 - (NSString *)copyStringByTrimmingRightStringsInSet:(NSSet *)stringSet
@@ -705,8 +705,8 @@
 
 - (NSString *)stringByTrimmingRightStringsInSet:(NSSet *)stringSet
 {
-    NSString *string = [[self copyStringByTrimmingRightStringsInSet:stringSet] autorelease];
-    return string;
+    NSString *string = [self copyStringByTrimmingRightStringsInSet:stringSet];
+    return RENSObjectAutorelease(string);
 }
 
 #pragma mark - Identifying and Comparing Strings
@@ -1198,7 +1198,7 @@
         
         [self trimStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
 }
@@ -1225,7 +1225,7 @@
         
         [self trimLeftStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
 }
@@ -1252,7 +1252,7 @@
         
         [self trimRightStringsInSet:strings];
         
-        [strings release];
+        RENSObjectRelease(strings);
         strings = nil;
     }
 }

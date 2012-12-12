@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 @interface NSNumber (NSNumberRENSNumber)
 
 // Comparing NSNumber Objects

@@ -102,7 +102,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Getting the Information of Keyboard
@@ -129,7 +129,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self recursiveHideKayboardInView:subview];
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 
@@ -144,7 +144,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self recursiveHideKayboardInView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -175,7 +175,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             [self sendKeyboardCenterWillShowKeyboardMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -191,7 +191,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self sendKeyboardCenterWillShowKeyboardMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -215,7 +215,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             [self sendKeyboardCenterDidShowKeyboardMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -231,7 +231,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self sendKeyboardCenterDidShowKeyboardMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -255,7 +255,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             [self sendKeyboardCenterWillHideKeyboardMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -271,7 +271,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self sendKeyboardCenterWillHideKeyboardMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 
@@ -295,7 +295,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             [self sendKeyboardCenterDidHideKeyboardMessageToView:subview];
         }
         
-        [subviews release];
+        RENSObjectRelease(subviews);
         subviews = nil;
     }
 }
@@ -311,7 +311,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         [self sendKeyboardCenterDidHideKeyboardMessageToView:window];
     }
     
-    [windows release];
+    RENSObjectRelease(windows);
     windows = nil;
 }
 

@@ -42,6 +42,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 #import "RFUITreeViewRowAnimation.h"
 
 @class RFUITreeViewCell;
@@ -54,7 +56,7 @@
     RFUITreeViewRowAnimation  mDeleteTreeViewRowAnimation;
     BOOL                      mIsExpanded;
     BOOL                      mNeedsGetTreeViewCellHeight;
-    RFUITreeViewNode         *mParentTreeViewNode;
+    RFUITreeViewNode         * __weak2 mParentTreeViewNode;
     RFUITreeViewCell         *mTreeViewCell;
     CGRect                    mTreeViewCellFrame;
     CGRect                    mTreeViewCellFrameOld;
@@ -68,12 +70,12 @@
 
 // Managing the RFUITreeViewNode
 
-@property (nonatomic, retain)                NSMutableArray           *childTreeViewNodes;         // Default is nil.
+@property (nonatomic, strong)                NSMutableArray           *childTreeViewNodes;         // Default is nil.
 @property (nonatomic)                        RFUITreeViewRowAnimation  deleteTreeViewRowAnimation; // Default is RFUITreeViewRowAnimationNone.
 @property (nonatomic, setter = setExpanded:) BOOL                      isExpanded;                 // Default is NO.
-@property (nonatomic, assign)                BOOL                      needsGetTreeViewCellHeight; // Default is NO.
-@property (nonatomic, assign)                RFUITreeViewNode         *parentTreeViewNode;         // Default is nil.
-@property (nonatomic, retain)                RFUITreeViewCell         *treeViewCell;               // Default is nil.
+@property (nonatomic)                        BOOL                      needsGetTreeViewCellHeight; // Default is NO.
+@property (nonatomic, weak)                  RFUITreeViewNode         *parentTreeViewNode;         // Default is nil.
+@property (nonatomic, strong)                RFUITreeViewCell         *treeViewCell;               // Default is nil.
 @property (nonatomic)                        CGRect                    treeViewCellFrame;          // Default is CGRectZero.
 @property (nonatomic)                        CGRect                    treeViewCellFrameOld;       // Default is CGRectZero.
 @property (nonatomic)                        CGFloat                   treeViewCellHeight;         // Default is 0.0f.

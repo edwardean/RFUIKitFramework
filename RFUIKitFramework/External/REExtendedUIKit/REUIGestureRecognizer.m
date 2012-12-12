@@ -52,7 +52,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 + (id)gestureRecognizerWithTarget:(id)target action:(SEL)action
 {
-    return [[[self alloc] initWithTarget:target action:action] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithTarget:target action:action]);
 }
 
 - (id)initWithBlockAction:(void (^)(id sender))block
@@ -64,11 +64,11 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     NSMutableDictionary *objectDictionary = [self objectDictionary];
     
-    NSMutableArray *blockActions = [objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey];
+    NSMutableArray *blockActions = RENSObjectRetain([objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey]);
     
     if (!blockActions)
     {
-        blockActions = [NSMutableArray array];
+        blockActions = [[NSMutableArray alloc] init];
         
         [objectDictionary setObject:blockActions forKey:UIGestureRecognizerBlockActionsKey];
     }
@@ -79,15 +79,18 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     {
     }
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
+    
+    RENSObjectRelease(blockActions);
+    blockActions = nil;
     
     return self;
 }
 
 + (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block
 {
-    return [[[self alloc] initWithBlockAction:block] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithBlockAction:block]);
 }
 
 #pragma mark - Managing the View
@@ -113,11 +116,11 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     NSMutableDictionary *objectDictionary = [self objectDictionary];
     
-    NSMutableArray *blockActions = [objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey];
+    NSMutableArray *blockActions = RENSObjectRetain([objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey]);
     
     if (!blockActions)
     {
-        blockActions = [NSMutableArray array];
+        blockActions = [[NSMutableArray alloc] init];
         
         [objectDictionary setObject:blockActions forKey:UIGestureRecognizerBlockActionsKey];
     }
@@ -126,8 +129,11 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     [self addTarget:blockAction action:@selector(sendAction:)];
     
-    [blockAction release];
+    RENSObjectRelease(blockAction);
     blockAction = nil;
+    
+    RENSObjectRelease(blockActions);
+    blockActions = nil;
 }
 
 - (void)removeBlockAction:(void (^)(id control))block
@@ -181,8 +187,8 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 - (NSMutableArray *)allBlockActions
 {
-    NSMutableArray *allBlockActions = [[self copyAllBlockActions] autorelease];
-    return allBlockActions;
+    NSMutableArray *allBlockActions = [self copyAllBlockActions];
+    return RENSObjectAutorelease(allBlockActions);
 }
 
 @end

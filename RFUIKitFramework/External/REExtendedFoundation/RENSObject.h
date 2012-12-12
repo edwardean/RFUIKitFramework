@@ -40,7 +40,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol NSInitializingInstance
+#import "REExtendedCompiler.h"
+
+@protocol NSInitializingInstance <NSObject>
+
+@required
 
 - (void)initializeInstance;
 - (void)deallocateInstance;

@@ -94,6 +94,11 @@
 		307FBA451671B6E2008AF204 /* REUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA3E1671B6E2008AF204 /* REUIAlertView.m */; };
 		307FBA461671B6E2008AF204 /* REUIGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA401671B6E2008AF204 /* REUIGraphics.m */; };
 		307FBA471671B6E2008AF204 /* REUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA421671B6E2008AF204 /* REUIImageView.m */; };
+		30B31DFA1678C0CE00CCE51F /* RECMBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B31DF11678C0CE00CCE51F /* RECMBridge.m */; };
+		30B31DFB1678C0CE00CCE51F /* RECMDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B31DF31678C0CE00CCE51F /* RECMDefines.m */; };
+		30B31DFC1678C0CE00CCE51F /* RECMKeyWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B31DF51678C0CE00CCE51F /* RECMKeyWord.m */; };
+		30B31DFD1678C0CE00CCE51F /* RECMNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B31DF71678C0CE00CCE51F /* RECMNSObject.m */; };
+		30B31DFE1678C0CE00CCE51F /* REExtendedCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B31DF91678C0CE00CCE51F /* REExtendedCompiler.m */; };
 		30E21AF51599B76C00DDE278 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF41599B76C00DDE278 /* UIKit.framework */; };
 		30E21AF71599B76C00DDE278 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF61599B76C00DDE278 /* Foundation.framework */; };
 		30E21AF91599B76C00DDE278 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF81599B76C00DDE278 /* CoreGraphics.framework */; };
@@ -276,6 +281,16 @@
 		307FBA401671B6E2008AF204 /* REUIGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIGraphics.m; sourceTree = "<group>"; };
 		307FBA411671B6E2008AF204 /* REUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIImageView.h; sourceTree = "<group>"; };
 		307FBA421671B6E2008AF204 /* REUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIImageView.m; sourceTree = "<group>"; };
+		30B31DF01678C0CE00CCE51F /* RECMBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECMBridge.h; sourceTree = "<group>"; };
+		30B31DF11678C0CE00CCE51F /* RECMBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECMBridge.m; sourceTree = "<group>"; };
+		30B31DF21678C0CE00CCE51F /* RECMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECMDefines.h; sourceTree = "<group>"; };
+		30B31DF31678C0CE00CCE51F /* RECMDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECMDefines.m; sourceTree = "<group>"; };
+		30B31DF41678C0CE00CCE51F /* RECMKeyWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECMKeyWord.h; sourceTree = "<group>"; };
+		30B31DF51678C0CE00CCE51F /* RECMKeyWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECMKeyWord.m; sourceTree = "<group>"; };
+		30B31DF61678C0CE00CCE51F /* RECMNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECMNSObject.h; sourceTree = "<group>"; };
+		30B31DF71678C0CE00CCE51F /* RECMNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECMNSObject.m; sourceTree = "<group>"; };
+		30B31DF81678C0CE00CCE51F /* REExtendedCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REExtendedCompiler.h; sourceTree = "<group>"; };
+		30B31DF91678C0CE00CCE51F /* REExtendedCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REExtendedCompiler.m; sourceTree = "<group>"; };
 		30E21AF01599B76C00DDE278 /* RFUIKitFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIKitFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E21AF41599B76C00DDE278 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30E21AF61599B76C00DDE278 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -325,6 +340,7 @@
 		304B427616645A0B000E2C38 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				30B31DEF1678C0CE00CCE51F /* REExtendedCompiler */,
 				307FB9BF1671B64C008AF204 /* REExtendedCoreGraphics */,
 				304B427716645A0B000E2C38 /* REExtendedFoundation */,
 				304B42A016645A0B000E2C38 /* REExtendedUIKit */,
@@ -552,6 +568,23 @@
 			path = REExtendedCoreGraphics;
 			sourceTree = "<group>";
 		};
+		30B31DEF1678C0CE00CCE51F /* REExtendedCompiler */ = {
+			isa = PBXGroup;
+			children = (
+				30B31DF01678C0CE00CCE51F /* RECMBridge.h */,
+				30B31DF11678C0CE00CCE51F /* RECMBridge.m */,
+				30B31DF21678C0CE00CCE51F /* RECMDefines.h */,
+				30B31DF31678C0CE00CCE51F /* RECMDefines.m */,
+				30B31DF41678C0CE00CCE51F /* RECMKeyWord.h */,
+				30B31DF51678C0CE00CCE51F /* RECMKeyWord.m */,
+				30B31DF61678C0CE00CCE51F /* RECMNSObject.h */,
+				30B31DF71678C0CE00CCE51F /* RECMNSObject.m */,
+				30B31DF81678C0CE00CCE51F /* REExtendedCompiler.h */,
+				30B31DF91678C0CE00CCE51F /* REExtendedCompiler.m */,
+			);
+			path = REExtendedCompiler;
+			sourceTree = "<group>";
+		};
 		30E21AE51599B76C00DDE278 = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +806,11 @@
 				307FBA451671B6E2008AF204 /* REUIAlertView.m in Sources */,
 				307FBA461671B6E2008AF204 /* REUIGraphics.m in Sources */,
 				307FBA471671B6E2008AF204 /* REUIImageView.m in Sources */,
+				30B31DFA1678C0CE00CCE51F /* RECMBridge.m in Sources */,
+				30B31DFB1678C0CE00CCE51F /* RECMDefines.m in Sources */,
+				30B31DFC1678C0CE00CCE51F /* RECMKeyWord.m in Sources */,
+				30B31DFD1678C0CE00CCE51F /* RECMNSObject.m in Sources */,
+				30B31DFE1678C0CE00CCE51F /* REExtendedCompiler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

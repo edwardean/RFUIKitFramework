@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 @interface RFUITextField : UITextField
 {
 @protected
@@ -51,7 +53,7 @@
 
 // Accessing the Text Attributes
 
-@property (nonatomic, retain) UIColor *placeholderColor; // Default value is nil.
-@property (nonatomic, retain) UIFont  *placeholderFont;
+@property (nonatomic, strong) UIColor *placeholderColor; // Default value is nil.
+@property (nonatomic, strong) UIFont  *placeholderFont;
 
 @end

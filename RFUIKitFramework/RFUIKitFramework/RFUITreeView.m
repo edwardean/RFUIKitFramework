@@ -100,35 +100,35 @@
 
 + (id)treeViewWithFrame:(CGRect)frame
 {
-    return [[[self alloc] initWithFrame:frame] autorelease];
+    return RENSObjectAutorelease([[self alloc] initWithFrame:frame]);
 }
 
 #pragma mark - Deallocating a RFUITreeView
 
 - (void)dealloc
 {
-    [mBackgroundView release];
+    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    [mContentView release];
+    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    [mDeletedTreeViewNodes release];
+    RENSObjectRelease(mDeletedTreeViewNodes);
     mDeletedTreeViewNodes = nil;
     
-    [mReusableTreeViewCells release];
+    RENSObjectRelease(mReusableTreeViewCells);
     mReusableTreeViewCells = nil;
     
-    [mRootTreeViewNodes release];
+    RENSObjectRelease(mRootTreeViewNodes);
     mRootTreeViewNodes = nil;
     
-    [mVisibleTreeViewNodes release];
+    RENSObjectRelease(mVisibleTreeViewNodes);
     mVisibleTreeViewNodes = nil;
     
-    [mTreeViewNodesBlock release];
+    RENSObjectRelease(mTreeViewNodesBlock);
     mTreeViewNodesBlock = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -279,15 +279,15 @@
     
     if (mTreeFlags.dataSource_treeView_cellForRowAtIndexPath)
     {
-        cell = [mDataSource treeView:self cellForRowAtIndexPath:indexPath];
+        cell = RENSObjectRetain([mDataSource treeView:self cellForRowAtIndexPath:indexPath]);
     }
     
     if (!cell)
     {
-        cell = [RFUITreeViewCell treeViewCellWithReuseIdentifier:nil];
+        cell = [[RFUITreeViewCell alloc] initWithReuseIdentifier:nil];
     }
     
-    return cell;
+    return RENSObjectAutorelease(cell);
 }
 
 - (id<RFUITreeViewDelegate>)delegate
@@ -383,8 +383,8 @@
             [mBackgroundView removeFromSuperview];
         }
         
-        [mBackgroundView release];
-        mBackgroundView = [backgroundView retain];
+        RENSObjectRelease(mBackgroundView);
+        mBackgroundView = RENSObjectRetain(backgroundView);
         
         if (mBackgroundView)
         {
@@ -497,7 +497,8 @@
             
             if ([reusableTreeViewCell2.reuseIdentifier isEqual:reuseIdentifier])
             {
-                reusableTreeViewCell = [[reusableTreeViewCell2 retain] autorelease];
+                RENSObjectRelease(reusableTreeViewCell);
+                reusableTreeViewCell = RENSObjectRetain(reusableTreeViewCell2);
                 [mReusableTreeViewCells removeObjectAtIndex:indexOfReusableTreeViewCell];
                 
                 break;
@@ -511,7 +512,7 @@
         }
     }
     
-    return reusableTreeViewCell;
+    return RENSObjectAutorelease(reusableTreeViewCell);
 }
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier
@@ -551,10 +552,10 @@
             
             [parentTreeViewNode.childTreeViewNodes addObject:childTreeViewNode];
             
-            [indexPathOfChildTreeViewNode release];
+            RENSObjectRelease(indexPathOfChildTreeViewNode);
             indexPathOfChildTreeViewNode = nil;
             
-            [childTreeViewNode release];
+            RENSObjectRelease(childTreeViewNode);
             childTreeViewNode = nil;
         }
         
@@ -563,7 +564,7 @@
             parentTreeViewNode.childTreeViewNodes = nil;
         }
         
-        [childTreeViewNodes release];
+        RENSObjectRelease(childTreeViewNodes);
         childTreeViewNodes = nil;
     }
     
@@ -582,10 +583,10 @@
         
         [mRootTreeViewNodes addObject:rootTreeViewNode];
         
-        [rootTreeViewNode release];
+        RENSObjectRelease(rootTreeViewNode);
         rootTreeViewNode = nil;
         
-        [indexPathOfRootTreeViewNode release];
+        RENSObjectRelease(indexPathOfRootTreeViewNode);
         indexPathOfRootTreeViewNode = nil;
     }
 }
@@ -643,7 +644,7 @@
             
             treeViewCellMinimumWidth = MAX(treeViewCellMinimumWidth, childTreeViewCellMinimumWidth);
             
-            [indexPathOfChildTreeViewNode release];
+            RENSObjectRelease(indexPathOfChildTreeViewNode);
             indexPathOfChildTreeViewNode = nil;
         }
     }
@@ -669,7 +670,7 @@
             
             treeViewCellCalculatedMinimumWidth = MAX(treeViewCellCalculatedMinimumWidth, rootTreeViewCellMinimumWidth);
             
-            [indexPathOfRootTreeViewNode release];
+            RENSObjectRelease(indexPathOfRootTreeViewNode);
             indexPathOfRootTreeViewNode = nil;
         }
         
@@ -718,7 +719,7 @@
             
             [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfChildTreeViewNode];
             
-            [indexPathOfChildTreeViewNode release];
+            RENSObjectRelease(indexPathOfChildTreeViewNode);
             indexPathOfChildTreeViewNode = nil;
         }
     }
@@ -736,7 +737,7 @@
         
         [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfRootTreeViewNode];
         
-        [indexPathOfRootTreeViewNode release];
+        RENSObjectRelease(indexPathOfRootTreeViewNode);
         indexPathOfRootTreeViewNode = nil;
     }
 }
@@ -773,8 +774,8 @@
                                                   indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
                                                       if (treeViewNode.treeViewCell == treeViewCell)
                                                       {
-                                                          [indexPathForCell release];
-                                                          indexPathForCell = [indexPath retain];
+                                                          RENSObjectRelease(indexPathForCell);
+                                                          indexPathForCell = RENSObjectRetain(indexPath);
                                                           
                                                           if (stop)
                                                           {
@@ -791,8 +792,8 @@
 {
     NSAssert(treeViewCell, @"The treeViewCell argument is nil.");
     
-    NSIndexPath *indexPathForCell = [[self copyIndexPathForCell:treeViewCell] autorelease];
-    return indexPathForCell;
+    NSIndexPath *indexPathForCell = [self copyIndexPathForCell:treeViewCell];
+    return RENSObjectAutorelease(indexPathForCell);
 }
 
 - (NSIndexPath *)copyIndexPathForRowAtPoint:(CGPoint)point
@@ -805,8 +806,8 @@
                                                   
                                                   if (CGRectContainsPoint(treeViewCellFrame, point))
                                                   {
-                                                      [indexPath release];
-                                                      indexPath = [indexPath2 retain];
+                                                      RENSObjectRelease(indexPath);
+                                                      indexPath = RENSObjectRetain(indexPath2);
                                                       
                                                       if (stop)
                                                       {
@@ -820,8 +821,8 @@
 
 - (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point
 {
-    NSIndexPath *indexPath = [[self copyIndexPathForRowAtPoint:point] autorelease];
-    return indexPath;
+    NSIndexPath *indexPath = [self copyIndexPathForRowAtPoint:point];
+    return RENSObjectAutorelease(indexPath);
 }
 
 - (NSMutableArray *)copyIndexPathsForRowsInRect:(CGRect)rect
@@ -843,8 +844,8 @@
 
 - (NSMutableArray *)indexPathsForRowsInRect:(CGRect)rect
 {
-    NSMutableArray *indexPaths = [[self copyIndexPathsForRowsInRect:rect] autorelease];
-    return indexPaths;
+    NSMutableArray *indexPaths = [self copyIndexPathsForRowsInRect:rect];
+    return RENSObjectAutorelease(indexPaths);
 }
 
 - (RFUITreeViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -875,8 +876,8 @@
 
 - (NSMutableArray *)visibleCells
 {
-    NSMutableArray *visibleCells = [[self copyVisibleCells] autorelease];
-    return visibleCells;
+    NSMutableArray *visibleCells = [self copyVisibleCells];
+    return RENSObjectAutorelease(visibleCells);
 }
 
 - (NSMutableArray *)copyIndexPathsForVisibleRows
@@ -898,8 +899,8 @@
 
 - (NSMutableArray *)indexPathsForVisibleRows
 {
-    NSMutableArray *indexPaths = [[self copyIndexPathsForVisibleRows] autorelease];
-    return indexPaths;
+    NSMutableArray *indexPaths = [self copyIndexPathsForVisibleRows];
+    return RENSObjectAutorelease(indexPaths);
 }
 
 #pragma mark - Scrolling the Tree View
@@ -1120,7 +1121,7 @@
                                  }
                              }
                              
-                             [deletedTreeViewNodes release];
+                             RENSObjectRelease(deletedTreeViewNodes);
                              deletedTreeViewNodes = nil;
                          }];
         
@@ -1194,10 +1195,10 @@
                     
                     [parentTreeViewNode.childTreeViewNodes addObject:childTreeViewNode];
                     
-                    [indexPathOfChildTreeViewNode release];
+                    RENSObjectRelease(indexPathOfChildTreeViewNode);
                     indexPathOfChildTreeViewNode = nil;
                     
-                    [childTreeViewNode release];
+                    RENSObjectRelease(childTreeViewNode);
                     childTreeViewNode = nil;
                 }
                 
@@ -1206,7 +1207,7 @@
                     parentTreeViewNode.childTreeViewNodes = nil;
                 }
                 
-                [childTreeViewNodes release];
+                RENSObjectRelease(childTreeViewNodes);
                 childTreeViewNodes = nil;
             }
         }
@@ -1241,7 +1242,7 @@
                 
                 while (childTreeViewNodes.count > 0)
                 {
-                    RFUITreeViewNode *childTreeViewNode = [childTreeViewNodes.lastObject retain];
+                    RFUITreeViewNode *childTreeViewNode = RENSObjectRetain(childTreeViewNodes.lastObject);
                     [childTreeViewNodes removeLastObject];
                     
                     childTreeViewNode.parentTreeViewNode = nil;
@@ -1258,11 +1259,11 @@
                         [mDeletedTreeViewNodes addObject:childTreeViewNode];
                     }
                     
-                    [childTreeViewNode release];
+                    RENSObjectRelease(childTreeViewNode);
                     childTreeViewNode = nil;
                 }
                 
-                [childTreeViewNodes release];
+                RENSObjectRelease(childTreeViewNodes);
                 childTreeViewNodes = nil;
             }
         }

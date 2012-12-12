@@ -41,6 +41,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 /*
  The RFUISplitBackgoundView split the background view into 9 views.
  
@@ -60,38 +62,38 @@
 {
 @protected
     
-    CGFloat mHeight0;
-    CGFloat mHeight2;
-    UIView *mView00;
-    UIView *mView01;
-    UIView *mView02;
-    UIView *mView10;
-    UIView *mView11;
-    UIView *mView12;
-    UIView *mView20;
-    UIView *mView21;
-    UIView *mView22;
-    CGFloat mWidth0;
-    CGFloat mWidth2;
+    CGFloat  mHeight0;
+    CGFloat  mHeight2;
+    UIView  *mView00;
+    UIView  *mView01;
+    UIView  *mView02;
+    UIView  *mView10;
+    UIView  *mView11;
+    UIView  *mView12;
+    UIView  *mView20;
+    UIView  *mView21;
+    UIView  *mView22;
+    CGFloat  mWidth0;
+    CGFloat  mWidth2;
 }
 
 // Configuring the RFUISplitBackgoundView
 
-@property (nonatomic, assign) CGFloat height0;
-@property (nonatomic, assign) CGFloat height2;
-@property (nonatomic, assign) CGFloat width0;
-@property (nonatomic, assign) CGFloat width2;
+@property (nonatomic) CGFloat height0;
+@property (nonatomic) CGFloat height2;
+@property (nonatomic) CGFloat width0;
+@property (nonatomic) CGFloat width2;
 
 // Managing the Content
 
-@property (nonatomic, retain) UIView *view00; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view01; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view02; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view10; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view11; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view12; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view20; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view21; // Default is nil. The first time the property is accessed, the UIView is created.
-@property (nonatomic, retain) UIView *view22; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view00; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view01; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view02; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view10; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view11; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view12; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view20; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view21; // Default is nil. The first time the property is accessed, the UIView is created.
+@property (nonatomic, strong) UIView *view22; // Default is nil. The first time the property is accessed, the UIView is created.
 
 @end

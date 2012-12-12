@@ -41,6 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "REExtendedCompiler.h"
+
 UIKIT_STATIC_INLINE UIViewAnimationOptions UIViewAnimationOptionsFromUIViewAnimationCurve(UIViewAnimationCurve viewAnimationCurve)
 {
     UIViewAnimationOptions viewAnimationOptions = (viewAnimationCurve & 0x0000000F) << 16;

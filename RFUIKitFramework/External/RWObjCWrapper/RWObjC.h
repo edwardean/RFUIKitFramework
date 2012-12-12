@@ -40,6 +40,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "REExtendedCompiler.h"
+
 NS_INLINE NSString *RWObjCNSStringFromBool(BOOL value)
 {
     NSString *nsString = (value ? @"YES" : @"NO");

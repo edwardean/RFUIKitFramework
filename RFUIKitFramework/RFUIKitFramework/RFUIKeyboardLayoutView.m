@@ -85,13 +85,13 @@
 
 - (void)dealloc
 {
-    [mBackgroundView release];
+    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    [mContentView release];
+    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    [super dealloc];
+    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -174,7 +174,7 @@
         }
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 
@@ -199,7 +199,7 @@
         }
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 
@@ -224,7 +224,7 @@
         }
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 
@@ -249,7 +249,7 @@
         }
     }
     
-    [subviews release];
+    RENSObjectRelease(subviews);
     subviews = nil;
 }
 
@@ -339,8 +339,8 @@
     {
         [mBackgroundView removeFromSuperview];
         
-        [mBackgroundView release];
-        mBackgroundView = [backgroundView retain];
+        RENSObjectRelease(mBackgroundView);
+        mBackgroundView = RENSObjectRetain(backgroundView);
         
         if (mBackgroundView)
         {
@@ -403,8 +403,8 @@
     {
         [mContentView removeFromSuperview];
         
-        [mContentView release];
-        mContentView = [contentView retain];
+        RENSObjectRelease(mContentView);
+        mContentView = RENSObjectRetain(contentView);
         
         if (mContentView)
         {
@@ -458,7 +458,7 @@
                 }
             }
             
-            [subviews release];
+            RENSObjectRelease(subviews);
             subviews = nil;
         }
     }
@@ -503,7 +503,7 @@
             }
         }
         
-        [views release];
+        RENSObjectRelease(views);
         views = nil;
     }
     
