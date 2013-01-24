@@ -57,7 +57,7 @@
 + (id)scrollLabel;
 + (id)scrollLabelWithFrame:(CGRect)frame;
 
-// Managing the UIScrollView object
+// Managing the UIScrollView Object
 
 @property (nonatomic, strong) UILabel      *label;      // Default is nil. The first time the property is accessed, the UILabel is created.
 @property (nonatomic)         UIEdgeInsets  labelInset; // Default is UIEdgeInsetsZero.

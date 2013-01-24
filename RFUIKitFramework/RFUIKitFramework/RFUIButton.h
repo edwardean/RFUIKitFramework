@@ -53,9 +53,13 @@
 
 // Configuring Button Presentation
 
+- (UIView *)stateViewForState:(UIControlState)state;
 - (void)setStateView:(UIView *)stateView forState:(UIControlState)state;
 
-- (UIView *)stateViewForState:(UIControlState)state;
+@property (nonatomic, retain) UIView *disabledView;
+@property (nonatomic, retain) UIView *highlightedView;
+@property (nonatomic, retain) UIView *normalView;
+@property (nonatomic, retain) UIView *selectedView;
 
 // Configuring Edge Insets
 

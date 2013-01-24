@@ -45,6 +45,7 @@
 #import "RFUIImageSplitBackgoundView.h"
 #import "RFUIKeyboardCenter.h"
 #import "RFUIKeyboardLayoutView.h"
+#import "RFUILocalNetworkActivityIndicator.h"
 #import "RFUINavigationController.h"
 #import "RFUIPageScrollView.h"
 #import "RFUIPageScrollViewCell.h"

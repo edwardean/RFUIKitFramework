@@ -135,6 +135,22 @@
 
 #pragma mark - Configuring Button Presentation
 
+- (UIView *)stateViewForState:(UIControlState)state
+{
+    NSNumber *stateNumber = [[NSNumber alloc] initWithUnsignedInteger:state];
+    UIView   *stateView = nil;
+    
+    if (stateNumber)
+    {
+        stateView = [mStateViews objectForKey:stateNumber];
+    }
+    
+    RENSObjectRelease(stateNumber);
+    stateNumber = nil;
+    
+    return stateView;
+}
+
 - (void)setStateView:(UIView *)newStateView forState:(UIControlState)state
 {
     if (newStateView)
@@ -164,20 +180,48 @@
     }
 }
 
-- (UIView *)stateViewForState:(UIControlState)state
+- (UIView *)disabledView
 {
-    NSNumber *stateNumber = [[NSNumber alloc] initWithUnsignedInteger:state];
-    UIView   *stateView = nil;
-    
-    if (stateNumber)
-    {
-        stateView = [mStateViews objectForKey:stateNumber];
-    }
-    
-    RENSObjectRelease(stateNumber);
-    stateNumber = nil;
-    
-    return stateView;
+    UIView *disabledView = [self stateViewForState:UIControlStateDisabled];
+    return disabledView;
+}
+
+- (void)setDisabledView:(UIView *)disabledView
+{
+    [self setStateView:disabledView forState:UIControlStateDisabled];
+}
+
+- (UIView *)highlightedView
+{
+    UIView *highlightedView = [self stateViewForState:UIControlStateHighlighted];
+    return highlightedView;
+}
+
+- (void)setHighlightedView:(UIView *)highlightedView
+{
+    [self setStateView:highlightedView forState:UIControlStateHighlighted];
+}
+
+- (UIView *)normalView
+{
+    UIView *normalView = [self stateViewForState:UIControlStateNormal];
+    return normalView;
+}
+
+- (void)setNormalView:(UIView *)normalView
+{
+    [self setStateView:normalView forState:UIControlStateNormal];
+}
+
+- (UIView *)selectedView
+{
+    UIView *selectedView = [self stateViewForState:UIControlStateSelected];
+    return selectedView;
+}
+
+- (void)setSelectedView:(UIView *)selectedView
+{
+    [self setStateView:selectedView forState:UIControlStateSelected];
 }
 
 #pragma mark - Configuring Edge Insets

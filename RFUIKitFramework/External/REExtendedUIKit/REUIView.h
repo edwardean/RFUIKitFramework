@@ -92,6 +92,11 @@ UIKIT_STATIC_INLINE UIViewAnimationTransition UIViewAnimationTransitionFromUIVie
 
 // Laying out Subviews
 
+- (void)setNeedsLayoutAndLayoutIfNeeded;
+
 - (void)recursiveLayoutSubviews;
+- (void)recursiveSetNeedsLayout;
+- (void)recursiveLayoutIfNeeded;
+- (void)recursiveSetNeedsLayoutAndLayoutIfNeeded;
 
 @end

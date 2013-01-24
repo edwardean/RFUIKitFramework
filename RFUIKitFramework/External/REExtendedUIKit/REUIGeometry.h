@@ -43,9 +43,48 @@
 
 #import "REExtendedCompiler.h"
 
+UIKIT_STATIC_INLINE CGFloat UIEdgeInsetsInsetWidth(CGFloat width, UIEdgeInsets insets)
+{
+    width -= (insets.left + insets.right);
+    return width;
+}
+
+UIKIT_STATIC_INLINE CGFloat UIEdgeInsetsOutsetWidth(CGFloat width, UIEdgeInsets insets)
+{
+    width += (insets.left + insets.right);
+    return width;
+}
+
+UIKIT_STATIC_INLINE CGFloat UIEdgeInsetsInsetHeight(CGFloat height, UIEdgeInsets insets)
+{
+    height -= (insets.top  + insets.bottom);
+    return height;
+}
+
+UIKIT_STATIC_INLINE CGFloat UIEdgeInsetsOutsetHeight(CGFloat height, UIEdgeInsets insets)
+{
+    height += (insets.top  + insets.bottom);
+    return height;
+}
+
 UIKIT_STATIC_INLINE CGSize UIEdgeInsetsInsetSize(CGSize size, UIEdgeInsets insets)
 {
     size.width  -= (insets.left + insets.right);
     size.height -= (insets.top  + insets.bottom);
     return size;
+}
+
+UIKIT_STATIC_INLINE CGSize UIEdgeInsetsOutsetSize(CGSize size, UIEdgeInsets insets)
+{
+    size.width  += (insets.left + insets.right);
+    size.height += (insets.top  + insets.bottom);
+    return size;
+}
+
+UIKIT_STATIC_INLINE CGRect UIEdgeInsetsOutsetRect(CGRect rect, UIEdgeInsets insets) {
+    rect.origin.x    -= insets.left;
+    rect.origin.y    -= insets.top;
+    rect.size.width  += (insets.left + insets.right);
+    rect.size.height += (insets.top  + insets.bottom);
+    return rect;
 }

@@ -43,6 +43,7 @@
 #import "REUIAlertView.h"
 #import "REUIApplication.h"
 #import "REUIBarButtonItem.h"
+#import "REUIButton.h"
 #import "REUIColor.h"
 #import "REUIControl.h"
 #import "REUIGeometry.h"

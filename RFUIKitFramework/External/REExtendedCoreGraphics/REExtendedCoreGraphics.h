@@ -39,3 +39,4 @@
  */
 
 #import "RECGContext.h"
+#import "RECGGeometry.h"

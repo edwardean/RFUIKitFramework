@@ -70,7 +70,7 @@
     [self replaceRange:uiTextRange withText:text];
 }
 
-// Working with Marked and Selected Text
+#pragma mark - Working with Marked and Selected Text
 
 - (NSRange)nsSelectedTextRange
 {
@@ -129,6 +129,43 @@
     return nsMarkedTextRange;
 }
 
+- (NSRange)nsTextRange
+{
+    @synchronized(self)
+    {
+        NSRange nsTextRange = NSRangeNotFound;
+        
+        UITextPosition *uiBeginningOfDocument = self.beginningOfDocument;
+        UITextPosition *uiEndOfDocument = self.endOfDocument;
+        
+        if (uiBeginningOfDocument && uiEndOfDocument)
+        {
+            nsTextRange.location = 0;
+            nsTextRange.length = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
+        }
+        
+        return nsTextRange;
+    }
+}
+
+- (NSUInteger)nsTextLength
+{
+    @synchronized(self)
+    {
+        NSUInteger nsTextLength = 0;
+        
+        UITextPosition *uiBeginningOfDocument = self.beginningOfDocument;
+        UITextPosition *uiEndOfDocument = self.endOfDocument;
+        
+        if (uiBeginningOfDocument && uiEndOfDocument)
+        {
+            nsTextLength = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
+        }
+        
+        return nsTextLength;
+    }
+}
+
 #pragma mark - Computing Text Ranges and Text Positions
 
 - (NSInteger)nsPositionFromPosition:(NSInteger)nsOldTextPosition inDirection:(UITextLayoutDirection)direction offset:(NSInteger)offset
@@ -151,7 +188,7 @@
     return nsNewTextPosition;
 }
 
-// Determining Layout and Writing Direction
+#pragma mark - Determining Layout and Writing Direction
 
 - (NSInteger)nsPositionWithinRange:(NSRange)nsTextRange farthestInDirection:(UITextLayoutDirection)direction
 {

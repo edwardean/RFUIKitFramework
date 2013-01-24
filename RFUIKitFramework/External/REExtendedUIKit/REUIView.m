@@ -124,6 +124,12 @@
 
 #pragma mark - Laying out Subviews
 
+- (void)setNeedsLayoutAndLayoutIfNeeded
+{
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
 - (void)recursiveLayoutSubviews
 {
     [self layoutSubviews];
@@ -137,6 +143,42 @@
     
     RENSObjectRelease(subviews);
     subviews = nil;
+}
+
+- (void)recursiveSetNeedsLayout
+{
+    [self setNeedsLayout];
+    
+    NSArray *subviews = [self.subviews copy];
+    
+    for (UIView *subview in subviews)
+    {
+        [subview recursiveSetNeedsLayout];
+    }
+    
+    RENSObjectRelease(subviews);
+    subviews = nil;
+}
+
+- (void)recursiveLayoutIfNeeded
+{
+    [self layoutIfNeeded];
+    
+    NSArray *subviews = [self.subviews copy];
+    
+    for (UIView *subview in subviews)
+    {
+        [subview recursiveSetNeedsLayout];
+    }
+    
+    RENSObjectRelease(subviews);
+    subviews = nil;
+}
+
+- (void)recursiveSetNeedsLayoutAndLayoutIfNeeded
+{
+    [self recursiveSetNeedsLayout];
+    [self recursiveLayoutIfNeeded];
 }
 
 @end

@@ -1,9 +1,9 @@
 //
-//  RENSThread.h
-//  REExtendedFoundation
-//  https://github.com/oliromole/REExtendedFoundation.git
+//  RECGGeometry.h
+//  REExtendedCoreGraphics
+//  https://github.com/oliromole/REExtendedCoreGraphics.git
 //
-//  Created by Roman Oliichuk on 2012.12.02.
+//  Created by Roman Oliichuk on 2012.12.20.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,27 +38,48 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
-#import "REExtendedCompiler.h"
+CG_INLINE bool CGPointIsZero(CGPoint point)
+{
+    bool result = ((point.x == 0.0f) && (point.y == 0.0f));
+    return result;
+}
 
-#import "RENSObject.h"
+CG_INLINE CGPoint CGPointIntersection(CGPoint point1, CGPoint point2)
+{
+    CGPoint intersectedPoint;
+    intersectedPoint.x = (point1.x < point2.x ? point1.x : point2.x);
+    intersectedPoint.y = (point1.y < point2.y ? point1.y : point2.y);
+    return intersectedPoint;
+}
 
-@interface NSThread (NSThreadRENSThread)
+CG_INLINE CGPoint CGPointUnion(CGPoint point1, CGPoint point2)
+{
+    CGPoint unitedPoint;
+    unitedPoint.x = (point1.x > point2.x ? point1.x : point2.x);
+    unitedPoint.y = (point1.y > point2.y ? point1.y : point2.y);
+    return unitedPoint;
+}
 
-// Working with the Second Thread
+CG_INLINE bool CGSizeIsZero(CGSize size)
+{
+    bool result = ((size.width == 0.0f) && (size.height == 0.0f));
+    return result;
+}
 
-- (BOOL)isSecondThread;
-+ (BOOL)isSecondThread;
-+ (NSThread *)secondThread;
+CG_INLINE CGSize CGSizeIntersection(CGSize size1, CGSize size2)
+{
+    CGSize intersectedSize;
+    intersectedSize.width = (size1.width < size2.width ? size1.width : size2.width);
+    intersectedSize.height = (size1.height < size2.height ? size1.height : size2.height);
+    return intersectedSize;
+}
 
-@end
-
-@interface NSObject (NSObjectRENSThread)
-
-// Sending Messages
-
-- (void)performSelectorOnSecondThread:(SEL)selector withObject:(id)argument waitUntilDone:(BOOL)wait modes:(NSArray *)modes;
-- (void)performSelectorOnSecondThread:(SEL)selector withObject:(id)argument waitUntilDone:(BOOL)wait;
-
-@end
+CG_INLINE CGSize CGSizeUnion(CGSize size1, CGSize size2)
+{
+    CGSize unitedSize;
+    unitedSize.width = (size1.width > size2.width ? size1.width : size2.width);
+    unitedSize.height = (size1.height > size2.height ? size1.height : size2.height);
+    return unitedSize;
+}

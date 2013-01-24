@@ -58,7 +58,7 @@
         
         mIndentationLevel = 0;
         
-        mIndentationWidth = 10.0;
+        mIndentationWidth = 10.0f;
         
         mReuseIdentifier = nil;
         

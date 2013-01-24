@@ -129,7 +129,7 @@
             font = [UIFont fontWithName:@"Helvetica" size:17.0f];
         }
         
-        UILineBreakMode lineBreakMode = UILineBreakModeCharacterWrap;
+        NSLineBreakMode lineBreakMode = NSLineBreakByCharWrapping;
         
         UITextAlignment textAlignment = self.textAlignment;
         

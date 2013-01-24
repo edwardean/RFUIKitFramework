@@ -115,7 +115,7 @@ jmp_error:
 
 - (CGFloat)red
 {
-    CGFloat red = 0.0;
+    CGFloat red = 0.0f;
     
     CGColorRef cgColor = self.CGColor;
     
@@ -181,7 +181,7 @@ jmp_error:
 
 - (CGFloat)green
 {
-    CGFloat green = 0.0;
+    CGFloat green = 0.0f;
     
     CGColorRef cgColor = self.CGColor;
     
@@ -247,7 +247,7 @@ jmp_error:
 
 - (CGFloat)blue
 {
-    CGFloat blue = 0.0;
+    CGFloat blue = 0.0f;
     
     CGColorRef cgColor = self.CGColor;
     
@@ -314,7 +314,7 @@ jmp_error:
 
 - (CGFloat)alpha
 {
-    CGFloat alpha = 1.0;
+    CGFloat alpha = 1.0f;
     
     CGColorRef cgColor = self.CGColor;
     

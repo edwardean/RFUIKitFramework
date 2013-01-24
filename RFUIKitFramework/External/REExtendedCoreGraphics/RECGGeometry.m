@@ -1,9 +1,9 @@
 //
-//  RENSThread.h
-//  REExtendedFoundation
-//  https://github.com/oliromole/REExtendedFoundation.git
+//  RECGGeometry.m
+//  REExtendedCoreGraphics
+//  https://github.com/oliromole/REExtendedCoreGraphics.git
 //
-//  Created by Roman Oliichuk on 2012.12.02.
+//  Created by Roman Oliichuk on 2012.12.20.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,27 +38,4 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-
-#import "REExtendedCompiler.h"
-
-#import "RENSObject.h"
-
-@interface NSThread (NSThreadRENSThread)
-
-// Working with the Second Thread
-
-- (BOOL)isSecondThread;
-+ (BOOL)isSecondThread;
-+ (NSThread *)secondThread;
-
-@end
-
-@interface NSObject (NSObjectRENSThread)
-
-// Sending Messages
-
-- (void)performSelectorOnSecondThread:(SEL)selector withObject:(id)argument waitUntilDone:(BOOL)wait modes:(NSArray *)modes;
-- (void)performSelectorOnSecondThread:(SEL)selector withObject:(id)argument waitUntilDone:(BOOL)wait;
-
-@end
+#import "RECGGeometry.h"

@@ -80,6 +80,6 @@
 // Managing Content Indentation
 
 @property (nonatomic) NSInteger indentationLevel; // Default is 0. Adjust content indent.
-@property (nonatomic) CGFloat   indentationWidth; // Default is 10.0. Width for each level.
+@property (nonatomic) CGFloat   indentationWidth; // Default is 10.0f. Width for each level.
 
 @end

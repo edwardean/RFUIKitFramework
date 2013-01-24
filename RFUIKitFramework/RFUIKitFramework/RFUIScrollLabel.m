@@ -138,7 +138,7 @@
     }
 }
 
-#pragma mark - Managing the UIScrollView object
+#pragma mark - Managing the UIScrollView Object
 
 - (UILabel *)label
 {

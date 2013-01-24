@@ -40,6 +40,8 @@
 
 #import "RFUIPageScrollView.h"
 
+#import "REExtendedFoundation.h"
+
 #import "RFUIPageScrollViewCell.h"
 
 @implementation RFUIPageScrollView
@@ -146,10 +148,10 @@
         NSMutableSet *indexPaths = [[NSMutableSet alloc] initWithCapacity:4];
         
         NSInteger indexOfRow0 = (NSInteger)truncf(contentOffset.y / viewFrame.size.height);
-        NSInteger indexOfRow1 = (NSInteger)truncf((contentOffset.y + viewFrame.size.height - 1.0) / viewFrame.size.height);
+        NSInteger indexOfRow1 = (NSInteger)truncf((contentOffset.y + viewFrame.size.height - 1.0f) / viewFrame.size.height);
         
         NSInteger indexOfColumn0 = (NSInteger)truncf(contentOffset.x / viewFrame.size.width);
-        NSInteger indexOfColumn1 = (NSInteger)truncf((contentOffset.x + viewFrame.size.width - 1.0) / viewFrame.size.width);
+        NSInteger indexOfColumn1 = (NSInteger)truncf((contentOffset.x + viewFrame.size.width - 1.0f) / viewFrame.size.width);
         
         if ((indexOfRow0 >= 0) && (indexOfRow0 < mNumberOfRows) &&
             (indexOfColumn0 >= 0) && (indexOfColumn0 < mNumberOfColumns))
@@ -544,7 +546,7 @@
     return RENSObjectAutorelease(indexPaths);
 }
 
-// Reloading Data
+#pragma mark - Reloading Data
 
 - (void)reloadData
 {
@@ -608,7 +610,7 @@
     }
 }
 
-// Row insertion/deletion/reloading.
+#pragma mark - Insertion, Deleting, Reloading the Row.
 
 - (void)insertRow:(NSInteger)row
 {
@@ -724,7 +726,7 @@
 
 - (void)setPageIndexPath:(NSIndexPath *)pageIndexPath animated:(BOOL)animated
 {
-    NSAssert(pageIndexPath, @"The pageIndexPath argument is nil.");
+    RENSAssert(pageIndexPath, @"The pageIndexPath argument is nil.");
     
     CGRect viewBounds = self.bounds;
     

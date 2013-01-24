@@ -449,7 +449,7 @@
 
 - (NSInteger)numberOfRowsInParentRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *treeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
     NSInteger numberOfRowsInParent = treeViewNode.childTreeViewNodes.count;
@@ -460,12 +460,12 @@
 
 - (void)enqueueReusableTreeViewCell:(RFUITreeViewCell *)treeViewCell
 {
-    NSAssert(treeViewCell, @"The treeViewCell argument is nil.");
+    RENSAssert(treeViewCell, @"The treeViewCell argument is nil.");
     
     if (treeViewCell.reuseIdentifier)
     {
         NSUInteger indexOfReusableTreeViewCell = [mReusableTreeViewCells indexOfObjectIdenticalTo:treeViewCell];
-        NSAssert((indexOfReusableTreeViewCell == NSNotFound), @"The method has a logical error.");
+        RENSAssert((indexOfReusableTreeViewCell == NSNotFound), @"The method has a logical error.");
         
         [mReusableTreeViewCells addObject:treeViewCell];
         
@@ -483,7 +483,7 @@
 
 - (id)dequeueReusableTreeViewCellWithIdentifier:(NSString *)reuseIdentifier
 {
-    NSAssert(reuseIdentifier, @"The reuseIdentifier argument is nil.");
+    RENSAssert(reuseIdentifier, @"The reuseIdentifier argument is nil.");
     
     RFUITreeViewCell *reusableTreeViewCell = nil;
     
@@ -517,7 +517,7 @@
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier
 {
-    NSAssert(reuseIdentifier, @"The reuseIdentifier argument is nil.");
+    RENSAssert(reuseIdentifier, @"The reuseIdentifier argument is nil.");
     
     RFUITreeViewCell *reusableTreeViewCell = [self dequeueReusableTreeViewCellWithIdentifier:reuseIdentifier];
     return reusableTreeViewCell;
@@ -529,7 +529,7 @@
 
 - (RFUITreeViewNode *)copyRecursiveLoadTreeViewNodeAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *parentTreeViewNode = [[RFUITreeViewNode alloc] init];
     
@@ -625,7 +625,7 @@
 
 - (CGFloat)recursiveCalculateTreeViewCellMinimumWidthAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *parentTreeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
     parentTreeViewNode.treeViewCellMinimumWidth = [self minimumWidthForRowAtIndexPathInDelegate:indexPath];
@@ -694,7 +694,7 @@
 
 - (void)recursiveCalculateTreeViewCellFrameAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *parentTreeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
     parentTreeViewNode.treeViewCellHeight = [self heightForRowAtIndexPathInDelegate:indexPath width:mTreeViewCellCalculatedMinimumWidth];
@@ -746,7 +746,7 @@
 
 - (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     CGRect rect = CGRectZero;
     
@@ -764,7 +764,7 @@
 
 - (NSIndexPath *)copyIndexPathForCell:(RFUITreeViewCell *)treeViewCell
 {
-    NSAssert(treeViewCell, @"The treeViewCell argument is nil.");
+    RENSAssert(treeViewCell, @"The treeViewCell argument is nil.");
     
     __block NSIndexPath *indexPathForCell = nil;
     
@@ -790,7 +790,7 @@
 
 - (NSIndexPath *)indexPathForCell:(RFUITreeViewCell *)treeViewCell
 {
-    NSAssert(treeViewCell, @"The treeViewCell argument is nil.");
+    RENSAssert(treeViewCell, @"The treeViewCell argument is nil.");
     
     NSIndexPath *indexPathForCell = [self copyIndexPathForCell:treeViewCell];
     return RENSObjectAutorelease(indexPathForCell);
@@ -850,7 +850,7 @@
 
 - (RFUITreeViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSAssert(indexPath, @"The indexPath argument is nil.");
+    RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *treeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
     RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
@@ -907,7 +907,7 @@
 
 //- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(RFUITreeViewScrollPosition)scrollPosition animated:(BOOL)animated
 //{
-//    NSAssert(indexPath, @"The indexPath argument is nil.");
+//    RENSAssert(indexPath, @"The indexPath argument is nil.");
 //
 //    RFUITreeViewNode *treeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
 //
@@ -961,7 +961,7 @@
 
 - (void)endUpdates
 {
-    NSAssert((mUpdateCounter > 0), @"The method has a logical error.");
+    RENSAssert((mUpdateCounter > 0), @"The method has a logical error.");
     
     mUpdateCounter--;
     
@@ -1132,7 +1132,7 @@
 
 //- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)animation
 //{
-//    NSAssert(indexPaths, @"The method has a logical error.");
+//    RENSAssert(indexPaths, @"The method has a logical error.");
 //
 //    if (indexPaths.count > 0)
 //    {
@@ -1141,7 +1141,7 @@
 
 //- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)animation
 //{
-//    NSAssert(indexPaths, @"The method has a logical error.");
+//    RENSAssert(indexPaths, @"The method has a logical error.");
 //
 //    if (indexPaths.count > 0)
 //    {
@@ -1153,7 +1153,7 @@
 
 //- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)animation
 //{
-//    NSAssert(indexPaths, @"The method has a logical error.");
+//    RENSAssert(indexPaths, @"The method has a logical error.");
 //
 //    if (indexPaths.count > 0)
 //    {
@@ -1167,7 +1167,7 @@
 
 - (void)expandRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)animation
 {
-    NSAssert(indexPaths, @"The indexPaths argument is nil.");
+    RENSAssert(indexPaths, @"The indexPaths argument is nil.");
     
     if (indexPaths.count > 0)
     {
@@ -1218,7 +1218,7 @@
 
 - (void)collapseRowAtIndexPats:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)treeViewRowAnimation
 {
-    NSAssert(indexPaths, @"The indexPaths argument is nil.");
+    RENSAssert(indexPaths, @"The indexPaths argument is nil.");
     
     if (indexPaths.count > 0)
     {

@@ -309,7 +309,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         screenshotContextAffineTransform.b = -1.0f;
         screenshotContextAffineTransform.c = 1.0f;
         screenshotContextAffineTransform.d = 0.0f;
-        screenshotContextAffineTransform.tx = 0.0;
+        screenshotContextAffineTransform.tx = 0.0f;
         screenshotContextAffineTransform.ty = screenshotImageSize.height;
     }
     

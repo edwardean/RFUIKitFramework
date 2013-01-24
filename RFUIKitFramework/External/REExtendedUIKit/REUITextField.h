@@ -52,8 +52,10 @@
 
 // Working with Marked and Selected Text
 
-@property (readwrite, setter = setNSMarkedTextRange:) NSRange nsSelectedTextRange;
-@property (nonatomic, readonly)                       NSRange nsMarkedTextRange;   // NSRangeNotFound if no marked text.
+@property (readwrite, setter = setNSMarkedTextRange:) NSRange    nsSelectedTextRange; // NSRangeNotFound if no selected text.
+@property (nonatomic, readonly)                       NSRange    nsMarkedTextRange;   // NSRangeNotFound if no marked text.
+@property (nonatomic, readonly)                       NSRange    nsTextRange;         // NSRangeNotFound if no text.
+@property (nonatomic, readonly)                       NSUInteger nsTextLength;
 
 // Computing Text Ranges and Text Positions
 

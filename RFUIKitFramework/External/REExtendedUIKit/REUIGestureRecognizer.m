@@ -57,7 +57,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 - (id)initWithBlockAction:(void (^)(id sender))block
 {
-    NSAssert(block, @"The block argument is nil.");
+    RENSAssert(block, @"The block argument is nil.");
     
     REUIBlockAction *blockAction = [[REUIBlockAction alloc] init];
     blockAction.block = block;
@@ -109,7 +109,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 - (void)addBlockAction:(void (^)(id control))block
 {
-    NSAssert(block, @"The block argument is nil.");
+    RENSAssert(block, @"The block argument is nil.");
     
     REUIBlockAction *blockAction = [[REUIBlockAction alloc] init];
     blockAction.block = block;

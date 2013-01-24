@@ -42,7 +42,7 @@
 
 #import "REExtendedCompiler.h"
 
-typedef enum RFUITreeViewRowAnimation
+typedef NS_OPTIONS(NSUInteger, RFUITreeViewRowAnimation)
 {
     RFUITreeViewRowAnimationNone      = 0,      // No animation is performed. The new cell value appears as if the cell had just been reloaded.
     RFUITreeViewRowAnimationFade      = 1 << 0, // The inserted or deleted row or rows fades into or out of the table view.
@@ -52,7 +52,7 @@ typedef enum RFUITreeViewRowAnimation
     RFUITreeViewRowAnimationBottom    = 1 << 4, // The inserted row or rows slides in from the bottom; the deleted row or rows slides out toward the bottom.
     RFUITreeViewRowAnimationMiddle    = 1 << 5, // The tree view attempts to keep the old and new cells centered in the space they did or will occupy.
     RFUITreeViewRowAnimationAutomatic = 1 << 6, // The tree view chooses an appropriate animation style for you.
-} RFUITreeViewRowAnimation;
+};
 
 NS_INLINE RFUITreeViewRowAnimation RFUITreeViewRowAnimationCorrectDeletingAnimation(RFUITreeViewRowAnimation treeViewRowAnimation)
 {
