@@ -1020,6 +1020,20 @@
     [self deleteCharactersInRange:range];
 }
 
+- (void)deleteLastCharacter
+{
+    NSUInteger length = self.length;
+    
+    if (length > 0)
+    {
+        NSRange range;
+        range.location = length - 1;
+        range.length = 1;
+        
+        [self deleteCharactersInRange:range];
+    }
+}
+
 - (void)deletePrefix:(NSString *)prefix
 {
     if ([self hasPrefix:prefix])

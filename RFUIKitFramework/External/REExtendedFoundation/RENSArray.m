@@ -40,9 +40,48 @@
 
 #import "RENSArray.h"
 
+#import "RENSException.h"
 #import "RENSIndexPath.h"
 
 @implementation NSArray (NSArrayRENSArray)
+
+#pragma mark - Initializing and Creating an Array.
+
+- (id)initWithLength:(NSUInteger)length
+{
+    return [self initWithLength:length object:[NSNull null]];
+}
+
++ (id)arrauWithLength:(NSUInteger)length
+{
+    return RENSObjectAutorelease([[self alloc] initWithLength:length]);
+}
+
+- (id)initWithLength:(NSUInteger)length object:(id)object
+{
+    __unsafe_unretained id *objects = (__unsafe_unretained id *)malloc(length * sizeof(id));
+    
+    RENSAssert(objects, @"Low memory.");
+    
+    for (NSUInteger index = 0; index < length; index++)
+    {
+        objects[index] = object;
+    }
+    
+    if ((self = [self initWithObjects:objects count:length]))
+    {
+    }
+    
+    free(objects);
+    objects = NULL;
+    
+    return self;
+}
+
++ (id)arrauWithLength:(NSUInteger)length object:(id)object
+{
+    return RENSObjectAutorelease([[self alloc] initWithLength:length object:object]);
+}
 
 #pragma mark - Querying an Array
 

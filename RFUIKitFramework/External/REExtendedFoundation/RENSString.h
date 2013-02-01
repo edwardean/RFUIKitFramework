@@ -130,6 +130,7 @@
 // Modifying a String
 
 - (void)deleteAllCharacters;
+- (void)deleteLastCharacter;
 
 - (void)deletePrefix:(NSString *)prefix;
 - (void)deleteSuffix:(NSString *)suffix;

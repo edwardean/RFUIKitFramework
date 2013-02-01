@@ -89,7 +89,7 @@ NS_INLINE NSComparisonResult NSComparisonResultFromCComparisonResult(int cCompar
 
 NS_INLINE int CComparisonResultFromNSComparisonResult(NSComparisonResult nsComparisonResult)
 {
-    NSComparisonResult cComparisonResult;
+    int cComparisonResult;
     
     if (nsComparisonResult < NSOrderedSame)
     {

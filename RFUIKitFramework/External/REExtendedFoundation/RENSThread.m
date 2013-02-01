@@ -58,13 +58,15 @@
             
             if ([currentThread respondsToSelector:@selector(setName:)])
             {
-                NSString *className = NSStringFromClass([self class]);
-                NSString *threadName = [[NSString
-                                         alloc] initWithFormat:@"com.oliromole.%@", className];
-                currentThread.name = threadName;
-                
-                RENSObjectRelease(threadName);
-                threadName = nil;
+                if (currentThread.name.length == 0)
+                {
+                    NSString *className = NSStringFromClass([self class]);
+                    NSString *threadName = [[NSString alloc] initWithFormat:@"com.oliromole.%@", className];
+                    currentThread.name = threadName;
+                    
+                    RENSObjectRelease(threadName);
+                    threadName = nil;
+                }
             }
             
             if ([currentThread respondsToSelector:@selector(setThreadPriority:)])
@@ -128,6 +130,7 @@ static RENSOtherThread * volatile NSThread_SecondThread = nil;
             if (!NSThread_SecondThread)
             {
                 NSThread_SecondThread = [[RENSOtherThread alloc] init];
+                NSThread_SecondThread.name = @"com.oliromole.SASecondThread";
                 [NSThread_SecondThread start];
             }
         }

@@ -131,7 +131,7 @@
         
         NSLineBreakMode lineBreakMode = NSLineBreakByCharWrapping;
         
-        UITextAlignment textAlignment = self.textAlignment;
+        NSTextAlignment textAlignment = self.textAlignment;
         
         UIColor *color = mPlaceholderColor;
         

@@ -46,6 +46,14 @@
 
 @interface NSArray (NSArrayRENSArray)
 
+// Initializing and Creating an Array.
+
+- (id)initWithLength:(NSUInteger)length;
++ (id)arrauWithLength:(NSUInteger)length;
+
+- (id)initWithLength:(NSUInteger)length object:(id)object;
++ (id)arrauWithLength:(NSUInteger)length object:(id)object;;
+
 // Querying an Array
 
 // Return the NSRange structure giving the location is 0 and the length is the number of objects currently in the array.

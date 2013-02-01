@@ -324,7 +324,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         NSDictionary *userInfo = [notification userInfo];
         
         NSNumber *animationCurveNumber = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-        mAnimationCurve = [animationCurveNumber unsignedIntegerValue];
+        mAnimationCurve = (UIViewAnimationCurve)[animationCurveNumber unsignedIntegerValue];
         
         NSNumber *animationDurationNumber = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
         mAnimationDuration = [animationDurationNumber doubleValue];
@@ -350,7 +350,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         NSDictionary *userInfo = [notification userInfo];
         
         NSNumber *animationCurveNumber = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-        mAnimationCurve = [animationCurveNumber unsignedIntegerValue];
+        mAnimationCurve = (UIViewAnimationCurve)[animationCurveNumber unsignedIntegerValue];
         
         NSNumber *animationDurationNumber = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
         mAnimationDuration = [animationDurationNumber doubleValue];
@@ -376,7 +376,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         NSDictionary *userInfo = [notification userInfo];
         
         NSNumber *animationCurveNumber = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-        mAnimationCurve = [animationCurveNumber unsignedIntegerValue];
+        mAnimationCurve = (UIViewAnimationCurve)[animationCurveNumber unsignedIntegerValue];
         
         NSNumber *animationDurationNumber = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
         mAnimationDuration = [animationDurationNumber doubleValue];
@@ -402,7 +402,7 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         NSDictionary *userInfo = [notification userInfo];
         
         NSNumber *animationCurveNumber = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-        mAnimationCurve = [animationCurveNumber unsignedIntegerValue];
+        mAnimationCurve = (UIViewAnimationCurve)[animationCurveNumber unsignedIntegerValue];
         
         NSNumber *animationDurationNumber = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
         mAnimationDuration = [animationDurationNumber doubleValue];

@@ -444,7 +444,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         mInterfaceOrientationBegin = application.statusBarOrientation;
         
         NSNumber *interfaceOrientationEndNumber = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
-        mInterfaceOrientationEnd = [interfaceOrientationEndNumber integerValue];
+        mInterfaceOrientationEnd = (UIInterfaceOrientation)[interfaceOrientationEndNumber integerValue];
         
         mIsInterfaceOrientationChanging = YES;
         
@@ -463,7 +463,7 @@ static RFUIStatusBarCenter * volatile RFUIStatusBarCenter_SharedCenter = nil;
         NSDictionary *userInfo = [notification userInfo];
         
         NSNumber *interfaceOrientationBeginNumber = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
-        mInterfaceOrientationBegin = [interfaceOrientationBeginNumber integerValue];
+        mInterfaceOrientationBegin = (UIInterfaceOrientation)[interfaceOrientationBeginNumber integerValue];
         
         mInterfaceOrientationEnd = application.statusBarOrientation;
         

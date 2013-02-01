@@ -125,10 +125,13 @@ NSInitializingInstance
 
 - (void)update
 {
+    // Checking the performance of the method on the main thread.
     BOOL isMainThread = [NSThread isMainThread];
     
+    // Needs pefrom the method on main thread.
     if (!isMainThread)
     {
+        // Pefroming the method on main thread.
         [self performSelectorOnMainThread:_cmd waitUntilDone:NO];
         return;
     }
