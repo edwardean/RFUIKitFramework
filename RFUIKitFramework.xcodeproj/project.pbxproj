@@ -76,6 +76,7 @@
 		304B434116645A0B000E2C38 /* RFUITreeViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B42FC16645A0B000E2C38 /* RFUITreeViewNode.m */; };
 		304B434216645A0B000E2C38 /* RFUITreeViewRowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B42FE16645A0B000E2C38 /* RFUITreeViewRowAnimation.m */; };
 		304B434316645A0B000E2C38 /* RFUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B430016645A0B000E2C38 /* RFUIViewController.m */; };
+		3056F55516CFE37300DCFF44 /* RFUIImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056F55416CFE37300DCFF44 /* RFUIImageCache.m */; };
 		307BD62D1634B2EF00178FC2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BD62C1634B2EF00178FC2 /* Default-568h@2x.png */; };
 		307FB9BD1671B61E008AF204 /* RFUIScreenShooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FB9BC1671B61E008AF204 /* RFUIScreenShooter.m */; };
 		307FB9C41671B64C008AF204 /* RECGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FB9C11671B64C008AF204 /* RECGContext.m */; };
@@ -252,6 +253,8 @@
 		304B42FE16645A0B000E2C38 /* RFUITreeViewRowAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITreeViewRowAnimation.m; sourceTree = "<group>"; };
 		304B42FF16645A0B000E2C38 /* RFUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIViewController.h; sourceTree = "<group>"; };
 		304B430016645A0B000E2C38 /* RFUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIViewController.m; sourceTree = "<group>"; };
+		3056F55316CFE37300DCFF44 /* RFUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIImageCache.h; sourceTree = "<group>"; };
+		3056F55416CFE37300DCFF44 /* RFUIImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIImageCache.m; sourceTree = "<group>"; };
 		307BD62C1634B2EF00178FC2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		307FB9BB1671B61E008AF204 /* RFUIScreenShooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIScreenShooter.h; sourceTree = "<group>"; };
 		307FB9BC1671B61E008AF204 /* RFUIScreenShooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIScreenShooter.m; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 		304B42D016645A0B000E2C38 /* RFUIKitFramework */ = {
 			isa = PBXGroup;
 			children = (
+				3056F55316CFE37300DCFF44 /* RFUIImageCache.h */,
+				3056F55416CFE37300DCFF44 /* RFUIImageCache.m */,
 				304B42D116645A0B000E2C38 /* RFUIButton.h */,
 				304B42D216645A0B000E2C38 /* RFUIButton.m */,
 				304B42D316645A0B000E2C38 /* RFUICheckView.h */,
@@ -847,6 +852,7 @@
 				30EFE1ED16B1408400582DB2 /* REUIButton.m in Sources */,
 				30EFE1F216B140D000582DB2 /* RFUILocalNetworkActivityIndicator.m in Sources */,
 				30EFE1F316B140D000582DB2 /* RFUINetworkActivityIndicator.m in Sources */,
+				3056F55516CFE37300DCFF44 /* RFUIImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
