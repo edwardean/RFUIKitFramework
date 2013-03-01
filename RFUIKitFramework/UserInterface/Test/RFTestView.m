@@ -25,7 +25,6 @@
 
 - (void)dealloc
 {
-    [super dealloc];
 }
 
 #pragma mark - Laying out Subviews

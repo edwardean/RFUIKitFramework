@@ -52,7 +52,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 
 + (id)gestureRecognizerWithTarget:(id)target action:(SEL)action
 {
-    return RENSObjectAutorelease([[self alloc] initWithTarget:target action:action]);
+    return [[self alloc] initWithTarget:target action:action];
 }
 
 - (id)initWithBlockAction:(void (^)(id sender))block
@@ -64,7 +64,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     NSMutableDictionary *objectDictionary = [self objectDictionary];
     
-    NSMutableArray *blockActions = RENSObjectRetain([objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey]);
+    NSMutableArray *blockActions = [objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey];
     
     if (!blockActions)
     {
@@ -79,18 +79,12 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     {
     }
     
-    RENSObjectRelease(blockAction);
-    blockAction = nil;
-    
-    RENSObjectRelease(blockActions);
-    blockActions = nil;
-    
     return self;
 }
 
 + (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block
 {
-    return RENSObjectAutorelease([[self alloc] initWithBlockAction:block]);
+    return [[self alloc] initWithBlockAction:block];
 }
 
 #pragma mark - Managing the View
@@ -116,7 +110,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     NSMutableDictionary *objectDictionary = [self objectDictionary];
     
-    NSMutableArray *blockActions = RENSObjectRetain([objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey]);
+    NSMutableArray *blockActions = [objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey];
     
     if (!blockActions)
     {
@@ -128,12 +122,6 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     [blockActions addObject:blockAction];
     
     [self addTarget:blockAction action:@selector(sendAction:)];
-    
-    RENSObjectRelease(blockAction);
-    blockAction = nil;
-    
-    RENSObjectRelease(blockActions);
-    blockActions = nil;
 }
 
 - (void)removeBlockAction:(void (^)(id control))block
@@ -188,7 +176,7 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 - (NSMutableArray *)allBlockActions
 {
     NSMutableArray *allBlockActions = [self copyAllBlockActions];
-    return RENSObjectAutorelease(allBlockActions);
+    return allBlockActions;
 }
 
 @end

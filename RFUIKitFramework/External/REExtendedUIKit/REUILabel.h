@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 @interface UILabel (UILabelREUILabel)
 
 // Initializing and Creating a UILabel

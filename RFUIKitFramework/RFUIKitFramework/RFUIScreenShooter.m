@@ -108,9 +108,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         }
         
         mTimeInterval = 1.0;
-        
-        RENSObjectRelease(locale);
-        locale = nil;
     }
     
     return self;
@@ -122,22 +119,16 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    RENSObjectRelease(mImageNameDateFormatter);
     mImageNameDateFormatter = nil;
     
     [mSaveTimer invalidate];
-    RENSObjectRelease(mSaveTimer);
     mSaveTimer = nil;
     
     [mSaveTapGestureRecognizer removeTarget:self action:NULL];
     [mSaveTapGestureRecognizer removeFromView];
-    RENSObjectRelease(mSaveTapGestureRecognizer);
     mSaveTapGestureRecognizer = nil;
     
-    RENSObjectRelease(mScreenshotsPath);
     mScreenshotsPath = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Configuring the RFUIScreenShooter Object
@@ -154,7 +145,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 {
     if (mScreenshotsPath != screenshotsPath)
     {
-        RENSObjectRelease(mScreenshotsPath);
         mScreenshotsPath = [[screenshotsPath stringByExpandingTildeInPath] copy];
         
         if (!mScreenshotsPath)
@@ -359,7 +349,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
     
     // Gettimg the screenshot image.
     
-    UIImage *screenshotImage = RENSObjectRetain(UIGraphicsGetImageFromCurrentImageContext());
+    UIImage *screenshotImage = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
@@ -369,7 +359,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 - (UIImage *)makeScreenshotImage
 {
     UIImage *screenshot = [self copyMakeScreenshotImage];
-    return RENSObjectAutorelease(screenshot);
+    return screenshot;
 }
 
 #pragma mark - Saving a Screenshot
@@ -389,7 +379,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         {
             [mSaveTapGestureRecognizer removeTarget:self action:NULL];
             [mSaveTapGestureRecognizer removeFromView];
-            RENSObjectRelease(mSaveTapGestureRecognizer);
             mSaveTapGestureRecognizer = nil;
         }
         
@@ -447,12 +436,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
     
     BOOL result = [self saveScreenshotImageWithName:imageName];
     
-    RENSObjectRelease(date);
-    date = nil;
-    
-    RENSObjectRelease(imageName);
-    imageName = nil;
-    
     return result;
 }
 
@@ -483,9 +466,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
                 result = [screenshotData writeToFile:imagePath atomically:YES];
             }
         }
-        
-        RENSObjectRelease(screenshotImage);
-        screenshotImage = nil;
     }
     
     return result;
@@ -518,7 +498,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 {
     if (!mSaveTimer)
     {
-        mSaveTimer = RENSObjectRetain([NSTimer timerWithTimeInterval:mTimeInterval target:self selector:@selector(saveTimerAction:) repeats:YES]);
+        mSaveTimer = [NSTimer timerWithTimeInterval:mTimeInterval target:self selector:@selector(saveTimerAction:) repeats:YES];
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         
@@ -532,7 +512,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
     if (mSaveTimer)
     {
         [mSaveTimer invalidate];
-        RENSObjectRelease(mSaveTimer);
         mSaveTimer = nil;
     }
 }
@@ -551,7 +530,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
             {
                 [mSaveTapGestureRecognizer removeTarget:self action:NULL];
                 [mSaveTapGestureRecognizer removeFromView];
-                RENSObjectRelease(mSaveTapGestureRecognizer);
                 mSaveTapGestureRecognizer = nil;
             }
             
@@ -596,7 +574,6 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
             {
                 [mSaveTapGestureRecognizer removeTarget:self action:NULL];
                 [mSaveTapGestureRecognizer removeFromView];
-                RENSObjectRelease(mSaveTapGestureRecognizer);
                 mSaveTapGestureRecognizer = nil;
             }
         }

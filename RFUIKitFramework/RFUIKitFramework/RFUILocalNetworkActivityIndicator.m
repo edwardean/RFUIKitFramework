@@ -64,7 +64,7 @@
 
 + (id)localNetworkActivityIndicator
 {
-    return RENSObjectAutorelease([[self alloc] init]);
+    return [[self alloc] init];
 }
 
 #pragma mark - Deallocating a RFUILocalNetworkActivityIndicator
@@ -79,10 +79,7 @@
         [networkActivityIndicator hideWithCondition:1 blinked:NO];
     }
     
-    RENSObjectRelease(mLock);
     mLock = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Updateing the Indecator

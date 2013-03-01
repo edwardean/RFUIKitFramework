@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 UIKIT_STATIC_INLINE CGFloat UIEdgeInsetsInsetWidth(CGFloat width, UIEdgeInsets insets)
 {
     width -= (insets.left + insets.right);

@@ -40,8 +40,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "REExtendedCompiler.h"
-
 typedef NS_OPTIONS(NSUInteger, RFUITreeViewRowAnimation)
 {
     RFUITreeViewRowAnimationNone      = 0,      // No animation is performed. The new cell value appears as if the cell had just been reloaded.

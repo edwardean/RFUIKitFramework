@@ -64,8 +64,7 @@
         
         image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
         
-        RENSObjectRelease(self);
-        self = RENSObjectRetain(image2);
+        self = image2;
     }
     
     if (!self)
@@ -75,7 +74,6 @@
     
 jmp_exit:
     
-    RENSObjectRelease(image2);
     image2 = nil;
     
     return self;
@@ -83,7 +81,7 @@ jmp_exit:
 
 + (UIImage *)imageWithContentsOfFile:(NSString *)path scale:(CGFloat)scale
 {
-    return RENSObjectAutorelease([[self alloc] initWithContentsOfFile:path scale:scale]);
+    return [[self alloc] initWithContentsOfFile:path scale:scale];
 }
 
 - (id)initWithContentsOfFile:(NSString *)path scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
@@ -103,8 +101,7 @@ jmp_exit:
         
         image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
         
-        RENSObjectRelease(self);
-        self = RENSObjectRetain(image2);
+        self = image2;
     }
     
     if (!self)
@@ -114,7 +111,6 @@ jmp_exit:
     
 jmp_exit:
     
-    RENSObjectRelease(image2);
     image2 = nil;
     
     return self;
@@ -122,7 +118,7 @@ jmp_exit:
 
 + (UIImage *)imageWithContentsOfFile:(NSString *)path scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
 {
-    return RENSObjectAutorelease([[self alloc] initWithContentsOfFile:path scale:scale orientation:orientation]);
+    return [[self alloc] initWithContentsOfFile:path scale:scale orientation:orientation];
 }
 
 - (id)initWithData:(NSData *)data scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
@@ -142,8 +138,7 @@ jmp_exit:
         
         image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
         
-        RENSObjectRelease(self);
-        self = RENSObjectRetain(image2);
+        self = image2;
     }
     
     if (!self)
@@ -153,7 +148,6 @@ jmp_exit:
     
 jmp_exit:
     
-    RENSObjectRelease(image2);
     image2 = nil;
     
     return self;
@@ -161,7 +155,7 @@ jmp_exit:
 
 + (UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
 {
-    return RENSObjectAutorelease([[self alloc] initWithData:data scale:scale orientation:orientation]);
+    return [[self alloc] initWithData:data scale:scale orientation:orientation];
 }
 
 - (id)initWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale
@@ -171,7 +165,7 @@ jmp_exit:
 
 + (UIImage *)imageWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale
 {
-    return RENSObjectAutorelease([[self alloc] initWithCGImage:cgImage scale:scale]);
+    return [[self alloc] initWithCGImage:cgImage scale:scale];
 }
 
 - (id)initWithImage:(UIImage *)image scale:(CGFloat)scale
@@ -188,7 +182,7 @@ jmp_exit:
 
 + (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale
 {
-    return RENSObjectAutorelease([[self alloc] initWithImage:image scale:scale]);
+    return [[self alloc] initWithImage:image scale:scale];
 }
 
 - (id)initWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation
@@ -205,7 +199,7 @@ jmp_exit:
 
 + (UIImage *)imageWithImage:(UIImage *)image orientation:(UIImageOrientation)orientation
 {
-    return RENSObjectAutorelease([[self alloc] initWithImage:image orientation:orientation]);
+    return [[self alloc] initWithImage:image orientation:orientation];
 }
 
 - (id)initWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
@@ -232,7 +226,6 @@ jmp_exit:
     
 jmp_error:
     
-    RENSObjectRelease(self);
     self = nil;
     
     return self;
@@ -240,7 +233,7 @@ jmp_error:
 
 + (UIImage *)imageWithImage:(UIImage *)image scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
 {
-    return RENSObjectAutorelease([[self alloc] initWithImage:image scale:scale orientation:orientation]);
+    return [[self alloc] initWithImage:image scale:scale orientation:orientation];
 }
 
 @end
@@ -263,8 +256,7 @@ static id UIImage_InitWithData_Scale(UIImage *self, SEL _cmd, NSData *data, CGFl
         
         image2 = [[UIImage alloc] initWithCGImage:cgImage scale:scale orientation:orientation];
         
-        RENSObjectRelease(self);
-        self = RENSObjectRetain(image2);
+        self = image2;
     }
     
     if (!self)
@@ -274,7 +266,6 @@ static id UIImage_InitWithData_Scale(UIImage *self, SEL _cmd, NSData *data, CGFl
     
 jmp_exit:
     
-    RENSObjectRelease(image2);
     image2 = nil;
     
     return self;
@@ -283,7 +274,7 @@ jmp_exit:
 
 static UIImage *UIImage_ImageWithData_Scale(Class self, SEL _cmd, NSData *data, CGFloat scale)
 {
-    return RENSObjectAutorelease([[self alloc] initWithData:data scale:scale]);
+    return [[self alloc] initWithData:data scale:scale];
 }
 
 @implementation UIImage (UIImageREUIImage_6_0_Dynamic)

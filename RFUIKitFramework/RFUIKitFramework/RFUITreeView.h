@@ -42,8 +42,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 #import "RFUITreeViewRowAnimation.h"
 
 typedef enum RFUITreeViewScrollPosition
@@ -75,8 +73,8 @@ typedef enum RFUITreeViewScrollPosition
 {
 @protected
     
-    id<RFUITreeViewDataSource> __weak2 mDataSource;
-    id<RFUITreeViewDelegate> __weak2   mDelegate;
+    id<RFUITreeViewDataSource> __weak mDataSource;
+    id<RFUITreeViewDelegate> __weak   mDelegate;
     
     UIView         *mBackgroundView;
     UIView         *mContentView;

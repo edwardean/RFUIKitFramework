@@ -77,16 +77,11 @@
 
 - (void)dealloc
 {
-    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    RENSObjectRelease(mRotationView);
     mRotationView = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -264,9 +259,6 @@
             [self recursiveLayoutSubviewsAndSendStatusBarCenterWillChangeStatusBarFrameMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendStatusBarCenterDidChangeStatusBarFrameMessageInView:(UIView *)view
@@ -289,9 +281,6 @@
             [self recursiveLayoutSubviewsAndSendStatusBarCenterDidChangeStatusBarFrameMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendStatusBarCenterWillChangeStatusBarOrientationFrameMessageInView:(UIView *)view
@@ -314,9 +303,6 @@
             [self recursiveLayoutSubviewsAndSendStatusBarCenterWillChangeStatusBarOrientationFrameMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendStatusBarCenterDidChangeStatusBarOrientationFrameMessageInView:(UIView *)view
@@ -339,9 +325,6 @@
             [self recursiveLayoutSubviewsAndSendStatusBarCenterDidChangeStatusBarOrientationFrameMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 #pragma mark - Observing View-Related Changes
@@ -518,8 +501,7 @@
     {
         [mBackgroundView removeFromSuperview];
         
-        RENSObjectRelease(mBackgroundView);
-        mBackgroundView = RENSObjectRetain(backgroundView);
+        mBackgroundView = backgroundView;
         
         if (mBackgroundView)
         {
@@ -642,8 +624,7 @@
     {
         [mContentView removeFromSuperview];
         
-        RENSObjectRelease(mContentView);
-        mContentView = RENSObjectRetain(contentView);
+        mContentView = contentView;
         
         if (mContentView)
         {

@@ -40,7 +40,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "REExtendedCompiler.h"
 #import "RWObjCWrapper.h"
 
 NS_INLINE NSComparisonResult NSInvertComparisonResult(NSComparisonResult comparisonResult)

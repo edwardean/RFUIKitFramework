@@ -85,13 +85,9 @@
 
 - (void)dealloc
 {
-    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    RENSObjectRelease(mContentView);
     mContentView = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -173,9 +169,6 @@
             [self recursiveLayoutSubviewsAndSendKeyboardCenterWillShowKeyboardMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendKeyboardCenterDidShowKeyboardMessageInView:(UIView *)view
@@ -198,9 +191,6 @@
             [self recursiveLayoutSubviewsAndSendKeyboardCenterDidShowKeyboardMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendKeyboardCenterWillHideKeyboardMessageInView:(UIView *)view
@@ -223,9 +213,6 @@
             [self recursiveLayoutSubviewsAndSendKeyboardCenterWillHideKeyboardMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)recursiveLayoutSubviewsAndSendKeyboardCenterDidHideKeyboardMessageInView:(UIView *)view
@@ -248,9 +235,6 @@
             [self recursiveLayoutSubviewsAndSendKeyboardCenterDidHideKeyboardMessageInView:subview];
         }
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 #pragma mark - Observing View-Related Changes
@@ -339,8 +323,7 @@
     {
         [mBackgroundView removeFromSuperview];
         
-        RENSObjectRelease(mBackgroundView);
-        mBackgroundView = RENSObjectRetain(backgroundView);
+        mBackgroundView = backgroundView;
         
         if (mBackgroundView)
         {
@@ -403,8 +386,7 @@
     {
         [mContentView removeFromSuperview];
         
-        RENSObjectRelease(mContentView);
-        mContentView = RENSObjectRetain(contentView);
+        mContentView = contentView;
         
         if (mContentView)
         {
@@ -457,9 +439,6 @@
                     break;
                 }
             }
-            
-            RENSObjectRelease(subviews);
-            subviews = nil;
         }
     }
     
@@ -502,9 +481,6 @@
                 break;
             }
         }
-        
-        RENSObjectRelease(views);
-        views = nil;
     }
     
     return firstResponderArrangementForView;

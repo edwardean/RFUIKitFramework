@@ -40,8 +40,6 @@
 
 #import "RFUISplitBackgoundView.h"
 
-#import "REExtendedCompiler.h"
-
 @interface RFUIImageSplitBackgoundView : RFUISplitBackgoundView
 {
 @protected

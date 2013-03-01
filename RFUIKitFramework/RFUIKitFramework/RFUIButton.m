@@ -74,10 +74,7 @@
 {
     [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
     
-    RENSObjectRelease(mStateViews);
     mStateViews = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -145,7 +142,6 @@
         stateView = [mStateViews objectForKey:stateNumber];
     }
     
-    RENSObjectRelease(stateNumber);
     stateNumber = nil;
     
     return stateView;
@@ -174,9 +170,6 @@
                 [self updateStateView];
             }
         }
-        
-        RENSObjectRelease(stateNumber);
-        stateNumber = nil;
     }
 }
 
@@ -291,9 +284,6 @@
     {
         [self addSubview:simpleStateView];
     }
-    
-    RENSObjectRelease(simpleControlStateNumber);
-    simpleControlStateNumber = nil;
 }
 
 #pragma mark - UIControl Events

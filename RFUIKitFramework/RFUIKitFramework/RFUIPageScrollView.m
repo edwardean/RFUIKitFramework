@@ -82,19 +82,13 @@
 
 - (void)dealloc
 {
-    RENSObjectRelease(mOldPageIndePath);
     mOldPageIndePath = nil;
     
-    RENSObjectRelease(mPageIndexPath);
     mPageIndexPath = nil;
     
-    RENSObjectRelease(mRows);
     mRows = nil;
     
-    RENSObjectRelease(mVisibleCells);
     mVisibleCells = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Lays out Subviews
@@ -241,9 +235,6 @@
             
             [self addSubview:pageScrollViewCell];
         }
-        
-        RENSObjectRelease(indexPaths);
-        indexPaths = nil;
     }
 }
 
@@ -309,15 +300,14 @@
                 column = 0;
             }
             
-            pageIndexPath = RENSObjectRetain([NSIndexPath indexPathForRow:row column:column]);
+            pageIndexPath = [NSIndexPath indexPathForRow:row column:column];
         }
         
         if ((mPageIndexPath != pageIndexPath) &&  ![mPageIndexPath isEqual:pageIndexPath])
         {
-            NSIndexPath *oldPageIndexPath = RENSObjectRetain(mPageIndexPath);
+            NSIndexPath *oldPageIndexPath = mPageIndexPath;
             
-            RENSObjectRelease(mPageIndexPath);
-            mPageIndexPath = RENSObjectRetain(pageIndexPath);
+            mPageIndexPath = pageIndexPath;
             
             id delegate = self.delegate;
             
@@ -326,13 +316,7 @@
             {
                 [delegate pageScrollView:self didChangeToPageIndexPath:mPageIndexPath fromPageIndexPath:oldPageIndexPath];
             }
-            
-            RENSObjectRelease(oldPageIndexPath);
-            oldPageIndexPath = nil;
         }
-        
-        RENSObjectRelease(pageIndexPath);
-        pageIndexPath = nil;
     }
 }
 
@@ -346,8 +330,7 @@
     
     if (CGSizeEqualToSize(mPageSize, pageSize))
     {
-        RENSObjectRelease(mOldPageIndePath);
-        mOldPageIndePath = RENSObjectRetain(mPageIndexPath);
+        mOldPageIndePath = mPageIndexPath;
     }
 }
 
@@ -363,8 +346,7 @@
     {
         if (mOldPageIndePath != mPageIndexPath)
         {
-            RENSObjectRelease(mOldPageIndePath);
-            mOldPageIndePath = RENSObjectRetain(mPageIndexPath);
+            mOldPageIndePath = mPageIndexPath;
         }
     }
 }
@@ -415,7 +397,7 @@
     
     if (mDataSource)
     {
-        pageScrollViewCell = RENSObjectRetain([mDataSource pageScrollView:self cellForRowAtIndexPath:indexPath]);
+        pageScrollViewCell = [mDataSource pageScrollView:self cellForRowAtIndexPath:indexPath];
     }
     
     if (!pageScrollViewCell)
@@ -423,7 +405,7 @@
         pageScrollViewCell = [[RFUIPageScrollViewCell alloc] init];
     }
     
-    return RENSObjectAutorelease(pageScrollViewCell);
+    return pageScrollViewCell;
 }
 
 #pragma mark - Accessing Info
@@ -470,10 +452,10 @@
     if ((row >= 0) && (row < mNumberOfRows) &&
         (column >= 0) && (column < mNumberOfColumns))
     {
-        indexPath = RENSObjectRetain([NSIndexPath indexPathForRow:row column:column]);
+        indexPath = [NSIndexPath indexPathForRow:row column:column];
     }
     
-    return RENSObjectAutorelease(indexPath);
+    return indexPath;
 }
 
 - (NSIndexPath *)indexPathForCell:(RFUIPageScrollViewCell *)cell
@@ -490,13 +472,13 @@
             
             if (indexOfColumn != NSNotFound)
             {
-                indexPath = RENSObjectRetain([NSIndexPath indexPathForRow:indexOfRow column:indexOfColumn]);
+                indexPath = [NSIndexPath indexPathForRow:indexOfRow column:indexOfColumn];
                 break;
             }
         }
     }
     
-    return RENSObjectAutorelease(indexPath);
+    return indexPath;
 }
 
 - (RFUIPageScrollViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
@@ -521,7 +503,7 @@
 - (NSArray *)visibleCells
 {
     NSArray *visibleCells = [mVisibleCells copy];
-    return RENSObjectAutorelease(visibleCells);
+    return visibleCells;
 }
 
 - (NSArray *)indexPathsForVisibleCells
@@ -540,10 +522,7 @@
     
     NSArray *indexPaths = [mutableIndexPaths copy];
     
-    RENSObjectRelease(mutableIndexPaths);
-    mutableIndexPaths = nil;
-    
-    return RENSObjectAutorelease(indexPaths);
+    return indexPaths;
 }
 
 #pragma mark - Reloading Data
@@ -581,9 +560,6 @@
             }
             
             [mRows addObject:columns];
-            
-            RENSObjectRelease(columns);
-            columns = nil;
         }
         
         CGRect viewFrame = self.frame;
@@ -623,9 +599,6 @@
     
     [mRows insertObject:columns atIndex:row];
     mNumberOfRows++;
-    
-    RENSObjectRelease(columns);
-    columns = nil;
     
     [self layoutIfNeeded];
 }

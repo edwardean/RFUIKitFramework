@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 @class RFUIImageCache;
 
 typedef void (^RFUIImageCacheNotImageNamedBlock)(RFUIImageCache *imageCache, NSString *imageNamed);

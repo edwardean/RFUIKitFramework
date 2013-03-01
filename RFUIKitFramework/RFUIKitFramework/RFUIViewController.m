@@ -62,7 +62,6 @@
 
 - (void)dealloc
 {
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing the View

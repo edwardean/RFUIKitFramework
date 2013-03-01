@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 @interface UIApplication (UIApplicationREUIApplication)
 
 // Controlling and Handling Events

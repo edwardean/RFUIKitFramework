@@ -97,10 +97,7 @@ NSInitializingInstance
 
 - (void)dealloc
 {
-    RENSObjectRelease(mLock);
     mLock = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Conforming the NSInitializingInstance Protocol
@@ -109,7 +106,6 @@ NSInitializingInstance
 {
     mCondition = 0;
     
-    RENSObjectRelease(mLock);
     mLock = [[NSRecursiveLock alloc] init];
     
     mNeedsBlink = NO;

@@ -41,8 +41,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 /*
  The RFUISplitBackgoundView split the background view into 9 views.
  

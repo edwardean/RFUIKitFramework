@@ -100,35 +100,26 @@
 
 + (id)treeViewWithFrame:(CGRect)frame
 {
-    return RENSObjectAutorelease([[self alloc] initWithFrame:frame]);
+    return [[self alloc] initWithFrame:frame];
 }
 
 #pragma mark - Deallocating a RFUITreeView
 
 - (void)dealloc
 {
-    RENSObjectRelease(mBackgroundView);
     mBackgroundView = nil;
     
-    RENSObjectRelease(mContentView);
     mContentView = nil;
     
-    RENSObjectRelease(mDeletedTreeViewNodes);
     mDeletedTreeViewNodes = nil;
     
-    RENSObjectRelease(mReusableTreeViewCells);
     mReusableTreeViewCells = nil;
     
-    RENSObjectRelease(mRootTreeViewNodes);
     mRootTreeViewNodes = nil;
     
-    RENSObjectRelease(mVisibleTreeViewNodes);
     mVisibleTreeViewNodes = nil;
     
-    RENSObjectRelease(mTreeViewNodesBlock);
     mTreeViewNodesBlock = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -279,7 +270,7 @@
     
     if (mTreeFlags.dataSource_treeView_cellForRowAtIndexPath)
     {
-        cell = RENSObjectRetain([mDataSource treeView:self cellForRowAtIndexPath:indexPath]);
+        cell = [mDataSource treeView:self cellForRowAtIndexPath:indexPath];
     }
     
     if (!cell)
@@ -287,7 +278,7 @@
         cell = [[RFUITreeViewCell alloc] initWithReuseIdentifier:nil];
     }
     
-    return RENSObjectAutorelease(cell);
+    return cell;
 }
 
 - (id<RFUITreeViewDelegate>)delegate
@@ -383,8 +374,7 @@
             [mBackgroundView removeFromSuperview];
         }
         
-        RENSObjectRelease(mBackgroundView);
-        mBackgroundView = RENSObjectRetain(backgroundView);
+        mBackgroundView = backgroundView;
         
         if (mBackgroundView)
         {
@@ -497,8 +487,8 @@
             
             if ([reusableTreeViewCell2.reuseIdentifier isEqual:reuseIdentifier])
             {
-                RENSObjectRelease(reusableTreeViewCell);
-                reusableTreeViewCell = RENSObjectRetain(reusableTreeViewCell2);
+                reusableTreeViewCell = reusableTreeViewCell2;
+                
                 [mReusableTreeViewCells removeObjectAtIndex:indexOfReusableTreeViewCell];
                 
                 break;
@@ -512,7 +502,7 @@
         }
     }
     
-    return RENSObjectAutorelease(reusableTreeViewCell);
+    return reusableTreeViewCell;
 }
 
 - (id)dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier
@@ -551,21 +541,12 @@
             childTreeViewNode.parentTreeViewNode = parentTreeViewNode;
             
             [parentTreeViewNode.childTreeViewNodes addObject:childTreeViewNode];
-            
-            RENSObjectRelease(indexPathOfChildTreeViewNode);
-            indexPathOfChildTreeViewNode = nil;
-            
-            RENSObjectRelease(childTreeViewNode);
-            childTreeViewNode = nil;
         }
         
         if (parentTreeViewNode.childTreeViewNodes.count == 0)
         {
             parentTreeViewNode.childTreeViewNodes = nil;
         }
-        
-        RENSObjectRelease(childTreeViewNodes);
-        childTreeViewNodes = nil;
     }
     
     return parentTreeViewNode;
@@ -582,12 +563,6 @@
         RFUITreeViewNode *rootTreeViewNode = [self copyRecursiveLoadTreeViewNodeAtIndexPath:indexPathOfRootTreeViewNode];
         
         [mRootTreeViewNodes addObject:rootTreeViewNode];
-        
-        RENSObjectRelease(rootTreeViewNode);
-        rootTreeViewNode = nil;
-        
-        RENSObjectRelease(indexPathOfRootTreeViewNode);
-        indexPathOfRootTreeViewNode = nil;
     }
 }
 
@@ -643,9 +618,6 @@
             CGFloat childTreeViewCellMinimumWidth = [self recursiveCalculateTreeViewCellMinimumWidthAtIndexPath:indexPathOfChildTreeViewNode];
             
             treeViewCellMinimumWidth = MAX(treeViewCellMinimumWidth, childTreeViewCellMinimumWidth);
-            
-            RENSObjectRelease(indexPathOfChildTreeViewNode);
-            indexPathOfChildTreeViewNode = nil;
         }
     }
     
@@ -669,9 +641,6 @@
             CGFloat rootTreeViewCellMinimumWidth = [self recursiveCalculateTreeViewCellMinimumWidthAtIndexPath:indexPathOfRootTreeViewNode];
             
             treeViewCellCalculatedMinimumWidth = MAX(treeViewCellCalculatedMinimumWidth, rootTreeViewCellMinimumWidth);
-            
-            RENSObjectRelease(indexPathOfRootTreeViewNode);
-            indexPathOfRootTreeViewNode = nil;
         }
         
         mTreeViewCellCalculatedMinimumWidth = treeViewCellCalculatedMinimumWidth;
@@ -718,9 +687,6 @@
             NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:indexOfChildTreeViewNode];
             
             [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfChildTreeViewNode];
-            
-            RENSObjectRelease(indexPathOfChildTreeViewNode);
-            indexPathOfChildTreeViewNode = nil;
         }
     }
 }
@@ -736,9 +702,6 @@
         NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:indexOfRootTreeViewNode];
         
         [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfRootTreeViewNode];
-        
-        RENSObjectRelease(indexPathOfRootTreeViewNode);
-        indexPathOfRootTreeViewNode = nil;
     }
 }
 
@@ -774,8 +737,7 @@
                                                   indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
                                                       if (treeViewNode.treeViewCell == treeViewCell)
                                                       {
-                                                          RENSObjectRelease(indexPathForCell);
-                                                          indexPathForCell = RENSObjectRetain(indexPath);
+                                                          indexPathForCell = indexPath;
                                                           
                                                           if (stop)
                                                           {
@@ -793,7 +755,7 @@
     RENSAssert(treeViewCell, @"The treeViewCell argument is nil.");
     
     NSIndexPath *indexPathForCell = [self copyIndexPathForCell:treeViewCell];
-    return RENSObjectAutorelease(indexPathForCell);
+    return indexPathForCell;
 }
 
 - (NSIndexPath *)copyIndexPathForRowAtPoint:(CGPoint)point
@@ -806,8 +768,7 @@
                                                   
                                                   if (CGRectContainsPoint(treeViewCellFrame, point))
                                                   {
-                                                      RENSObjectRelease(indexPath);
-                                                      indexPath = RENSObjectRetain(indexPath2);
+                                                      indexPath = indexPath2;
                                                       
                                                       if (stop)
                                                       {
@@ -822,7 +783,7 @@
 - (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point
 {
     NSIndexPath *indexPath = [self copyIndexPathForRowAtPoint:point];
-    return RENSObjectAutorelease(indexPath);
+    return indexPath;
 }
 
 - (NSMutableArray *)copyIndexPathsForRowsInRect:(CGRect)rect
@@ -845,7 +806,7 @@
 - (NSMutableArray *)indexPathsForRowsInRect:(CGRect)rect
 {
     NSMutableArray *indexPaths = [self copyIndexPathsForRowsInRect:rect];
-    return RENSObjectAutorelease(indexPaths);
+    return indexPaths;
 }
 
 - (RFUITreeViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -877,7 +838,7 @@
 - (NSMutableArray *)visibleCells
 {
     NSMutableArray *visibleCells = [self copyVisibleCells];
-    return RENSObjectAutorelease(visibleCells);
+    return visibleCells;
 }
 
 - (NSMutableArray *)copyIndexPathsForVisibleRows
@@ -900,7 +861,7 @@
 - (NSMutableArray *)indexPathsForVisibleRows
 {
     NSMutableArray *indexPaths = [self copyIndexPathsForVisibleRows];
-    return RENSObjectAutorelease(indexPaths);
+    return indexPaths;
 }
 
 #pragma mark - Scrolling the Tree View
@@ -1121,7 +1082,6 @@
                                  }
                              }
                              
-                             RENSObjectRelease(deletedTreeViewNodes);
                              deletedTreeViewNodes = nil;
                          }];
         
@@ -1194,21 +1154,12 @@
                     childTreeViewNode.parentTreeViewNode = parentTreeViewNode;
                     
                     [parentTreeViewNode.childTreeViewNodes addObject:childTreeViewNode];
-                    
-                    RENSObjectRelease(indexPathOfChildTreeViewNode);
-                    indexPathOfChildTreeViewNode = nil;
-                    
-                    RENSObjectRelease(childTreeViewNode);
-                    childTreeViewNode = nil;
                 }
                 
                 if (parentTreeViewNode.childTreeViewNodes.count == 0)
                 {
                     parentTreeViewNode.childTreeViewNodes = nil;
                 }
-                
-                RENSObjectRelease(childTreeViewNodes);
-                childTreeViewNodes = nil;
             }
         }
         
@@ -1242,7 +1193,7 @@
                 
                 while (childTreeViewNodes.count > 0)
                 {
-                    RFUITreeViewNode *childTreeViewNode = RENSObjectRetain(childTreeViewNodes.lastObject);
+                    RFUITreeViewNode *childTreeViewNode = childTreeViewNodes.lastObject;
                     [childTreeViewNodes removeLastObject];
                     
                     childTreeViewNode.parentTreeViewNode = nil;
@@ -1258,13 +1209,7 @@
                         childTreeViewNode.deleteTreeViewRowAnimation = treeViewRowAnimation;
                         [mDeletedTreeViewNodes addObject:childTreeViewNode];
                     }
-                    
-                    RENSObjectRelease(childTreeViewNode);
-                    childTreeViewNode = nil;
                 }
-                
-                RENSObjectRelease(childTreeViewNodes);
-                childTreeViewNodes = nil;
             }
         }
         

@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 @protocol RFUIPageScrollViewDataSource;
 @protocol RFUIPageScrollViewDelegate;
 
@@ -52,7 +50,7 @@
 {
 @protected
     
-    id<RFUIPageScrollViewDataSource> __weak2 mDataSource;
+    id<RFUIPageScrollViewDataSource> __weak mDataSource;
     
     BOOL            mNeedsReloadData;
     NSInteger       mNumberOfRows;

@@ -101,8 +101,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Getting the Information of Keyboard
@@ -128,9 +126,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
     {
         [self recursiveHideKayboardInView:subview];
     }
-    
-    RENSObjectRelease(subviews);
-    subviews = nil;
 }
 
 - (void)hideKeyboardOnAllWindows
@@ -143,9 +138,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         
         [self recursiveHideKayboardInView:window];
     }
-    
-    RENSObjectRelease(windows);
-    windows = nil;
 }
 
 - (void)hideKeyboard
@@ -174,9 +166,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             
             [self sendKeyboardCenterWillShowKeyboardMessageToView:subview];
         }
-        
-        RENSObjectRelease(subviews);
-        subviews = nil;
     }
 }
 
@@ -190,9 +179,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         
         [self sendKeyboardCenterWillShowKeyboardMessageToView:window];
     }
-    
-    RENSObjectRelease(windows);
-    windows = nil;
 }
 
 - (void)sendKeyboardCenterDidShowKeyboardMessageToView:(UIView *)view
@@ -214,9 +200,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             
             [self sendKeyboardCenterDidShowKeyboardMessageToView:subview];
         }
-        
-        RENSObjectRelease(subviews);
-        subviews = nil;
     }
 }
 
@@ -230,9 +213,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         
         [self sendKeyboardCenterDidShowKeyboardMessageToView:window];
     }
-    
-    RENSObjectRelease(windows);
-    windows = nil;
 }
 
 - (void)sendKeyboardCenterWillHideKeyboardMessageToView:(UIView *)view
@@ -254,9 +234,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             
             [self sendKeyboardCenterWillHideKeyboardMessageToView:subview];
         }
-        
-        RENSObjectRelease(subviews);
-        subviews = nil;
     }
 }
 
@@ -270,9 +247,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         
         [self sendKeyboardCenterWillHideKeyboardMessageToView:window];
     }
-    
-    RENSObjectRelease(windows);
-    windows = nil;
 }
 
 - (void)sendKeyboardCenterDidHideKeyboardMessageToView:(UIView *)view
@@ -294,9 +268,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
             
             [self sendKeyboardCenterDidHideKeyboardMessageToView:subview];
         }
-        
-        RENSObjectRelease(subviews);
-        subviews = nil;
     }
 }
 
@@ -310,9 +281,6 @@ static RFUIKeyboardCenter * volatile RFUIKeyboardCenter_SharedCenter = nil;
         
         [self sendKeyboardCenterDidHideKeyboardMessageToView:window];
     }
-    
-    RENSObjectRelease(windows);
-    windows = nil;
 }
 
 #pragma mark - Notifications

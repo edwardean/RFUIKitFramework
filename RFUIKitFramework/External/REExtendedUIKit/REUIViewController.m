@@ -46,12 +46,12 @@
 
 + (id)viewController
 {
-    return RENSObjectAutorelease([[self alloc] init]);
+    return [[self alloc] init];
 }
 
 + (id)viewControllerWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    return RENSObjectAutorelease([[self alloc] initWithNibName:nibNameOrNil bundle:nibBundleOrNil]);
+    return [[self alloc] initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 }
 
 @end

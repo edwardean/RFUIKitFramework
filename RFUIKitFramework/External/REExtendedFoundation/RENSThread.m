@@ -63,9 +63,6 @@
                     NSString *className = NSStringFromClass([self class]);
                     NSString *threadName = [[NSString alloc] initWithFormat:@"com.oliromole.%@", className];
                     currentThread.name = threadName;
-                    
-                    RENSObjectRelease(threadName);
-                    threadName = nil;
                 }
             }
             

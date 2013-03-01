@@ -149,7 +149,7 @@
 
 + (id)imageSplitBackgoundViewWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22
 {
-    return RENSObjectAutorelease([[self alloc] initWithImage00:image00 image01:image01 image02:image02 image10:image10 image11:image11 image12:image12 image20:image20 image21:image21 image22:image22]);
+    return [[self alloc] initWithImage00:image00 image01:image01 image02:image02 image10:image10 image11:image11 image12:image12 image20:image20 image21:image21 image22:image22];
 }
 
 - (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
@@ -173,14 +173,13 @@
 
 + (id)imageSplitBackgoundViewWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22
 {
-    return RENSObjectAutorelease([[self alloc] initWithImageNamed00:imageNamed00 imageNamed01:imageNamed01 imageNamed02:imageNamed02 imageNamed10:imageNamed10 imageNamed11:imageNamed11 imageNamed12:imageNamed12 imageNamed20:imageNamed20 imageNamed21:imageNamed21 imageNamed22:imageNamed22]);
+    return [[self alloc] initWithImageNamed00:imageNamed00 imageNamed01:imageNamed01 imageNamed02:imageNamed02 imageNamed10:imageNamed10 imageNamed11:imageNamed11 imageNamed12:imageNamed12 imageNamed20:imageNamed20 imageNamed21:imageNamed21 imageNamed22:imageNamed22];
 }
 
 #pragma mark - Deallocating a RFUIImageSplitBackgoundView
 
 - (void)dealloc
 {
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing the Content
@@ -326,8 +325,7 @@
     {
         [mView00 removeFromSuperview];
         
-        RENSObjectRelease(mView00);
-        mView00 = RENSObjectRetain(view00);
+        mView00 = view00;
         
         [self addSubview:mView00];
         
@@ -366,8 +364,7 @@
     {
         [mView01 removeFromSuperview];
         
-        RENSObjectRelease(mView01);
-        mView01 = RENSObjectRetain(view01);
+        mView01 = view01;
         
         [self addSubview:mView01];
         
@@ -406,8 +403,7 @@
     {
         [mView02 removeFromSuperview];
         
-        RENSObjectRelease(mView02);
-        mView02 = RENSObjectRetain(view02);
+        mView02 = view02;
         
         [self addSubview:mView02];
         
@@ -446,8 +442,7 @@
     {
         [mView10 removeFromSuperview];
         
-        RENSObjectRelease(mView10);
-        mView10 = RENSObjectRetain(view10);
+        mView10 = view10;
         
         [self addSubview:mView10];
         
@@ -486,8 +481,7 @@
     {
         [mView11 removeFromSuperview];
         
-        RENSObjectRelease(mView11);
-        mView11 = RENSObjectRetain(view11);
+        mView11 = view11;
         
         [self addSubview:mView11];
         
@@ -526,8 +520,7 @@
     {
         [mView12 removeFromSuperview];
         
-        RENSObjectRelease(mView12);
-        mView12 = RENSObjectRetain(view12);
+        mView12 = view12;
         
         [self addSubview:mView12];
         
@@ -566,8 +559,7 @@
     {
         [mView20 removeFromSuperview];
         
-        RENSObjectRelease(mView20);
-        mView20 = RENSObjectRetain(view20);
+        mView20 = view20;
         
         [self addSubview:mView20];
         
@@ -606,8 +598,7 @@
     {
         [mView21 removeFromSuperview];
         
-        RENSObjectRelease(mView21);
-        mView21 = RENSObjectRetain(view21);
+        mView21 = view21;
         
         [self addSubview:mView21];
         
@@ -646,8 +637,7 @@
     {
         [mView22 removeFromSuperview];
         
-        RENSObjectRelease(mView22);
-        mView22 = RENSObjectRetain(view22);
+        mView22 = view22;
         
         [self addSubview:mView22];
         

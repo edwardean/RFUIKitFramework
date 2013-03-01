@@ -40,8 +40,6 @@
 
 #import "RFUICheckView.h"
 
-#import "REExtendedCompiler.h"
-
 @interface RFUIImageCheckView : RFUICheckView
 {
 @protected

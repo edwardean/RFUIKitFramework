@@ -51,12 +51,12 @@
 
 + (id)tableViewCell
 {
-    return RENSObjectAutorelease([[self alloc] init]);
+    return [[self alloc] init];
 }
 
 + (id)tableViewCellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    return RENSObjectAutorelease([[self alloc] initWithStyle:style reuseIdentifier:reuseIdentifier]);
+    return [[self alloc] initWithStyle:style reuseIdentifier:reuseIdentifier];
 }
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
@@ -66,7 +66,7 @@
 
 + (id)tableViewCellWithReuseIdentifier:(NSString *)reuseIdentifier
 {
-    return RENSObjectAutorelease([[self alloc] initWithReuseIdentifier:reuseIdentifier]);
+    return [[self alloc] initWithReuseIdentifier:reuseIdentifier];
 }
 
 @end

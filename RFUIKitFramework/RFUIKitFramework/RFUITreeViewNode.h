@@ -42,8 +42,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 #import "RFUITreeViewRowAnimation.h"
 
 @class RFUITreeViewCell;
@@ -56,7 +54,7 @@
     RFUITreeViewRowAnimation  mDeleteTreeViewRowAnimation;
     BOOL                      mIsExpanded;
     BOOL                      mNeedsGetTreeViewCellHeight;
-    RFUITreeViewNode         * __weak2 mParentTreeViewNode;
+    RFUITreeViewNode         * __weak mParentTreeViewNode;
     RFUITreeViewCell         *mTreeViewCell;
     CGRect                    mTreeViewCellFrame;
     CGRect                    mTreeViewCellFrameOld;

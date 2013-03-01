@@ -67,20 +67,16 @@
 
 + (id)treeViewNode
 {
-    return RENSObjectAutorelease([[self alloc] init]);
+    return [[self alloc] init];
 }
 
 #pragma mark - Deallocating a RFUITreeViewNode
 
 - (void)dealloc
 {
-    RENSObjectRelease(mChildTreeViewNodes);
     mChildTreeViewNodes = nil;
     
-    RENSObjectRelease(mTreeViewCell);
     mTreeViewCell = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing the RFUITreeViewNode

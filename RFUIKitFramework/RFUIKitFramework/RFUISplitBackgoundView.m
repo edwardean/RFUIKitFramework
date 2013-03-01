@@ -83,34 +83,23 @@
 
 - (void)dealloc
 {
-    RENSObjectRelease(mView00);
     mView00 = nil;
     
-    RENSObjectRelease(mView01);
     mView01 = nil;
     
-    RENSObjectRelease(mView02);
     mView02 = nil;
     
-    RENSObjectRelease(mView10);
     mView10 = nil;
     
-    RENSObjectRelease(mView11);
     mView11 = nil;
     
-    RENSObjectRelease(mView12);
     mView12 = nil;
     
-    RENSObjectRelease(mView20);
     mView20 = nil;
     
-    RENSObjectRelease(mView21);
     mView21 = nil;
     
-    RENSObjectRelease(mView22);
     mView22 = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -260,8 +249,7 @@
     {
         [mView00 removeFromSuperview];
         
-        RENSObjectRelease(mView00);
-        mView00 = RENSObjectRetain(view00);
+        mView00 = view00;
         
         [self addSubview:mView00];
         
@@ -297,8 +285,7 @@
     {
         [mView01 removeFromSuperview];
         
-        RENSObjectRelease(mView01);
-        mView01 = RENSObjectRetain(view01);
+        mView01 = view01;
         
         [self addSubview:mView01];
         
@@ -334,8 +321,7 @@
     {
         [mView02 removeFromSuperview];
         
-        RENSObjectRelease(mView02);
-        mView02 = RENSObjectRetain(view02);
+        mView02 = view02;
         
         [self addSubview:mView02];
         
@@ -371,8 +357,7 @@
     {
         [mView10 removeFromSuperview];
         
-        RENSObjectRelease(mView10);
-        mView10 = RENSObjectRetain(view10);
+        mView10 = view10;
         
         [self addSubview:mView10];
         
@@ -408,8 +393,7 @@
     {
         [mView11 removeFromSuperview];
         
-        RENSObjectRelease(mView11);
-        mView11 = RENSObjectRetain(view11);
+        mView11 = view11;
         
         [self addSubview:mView11];
         
@@ -445,8 +429,7 @@
     {
         [mView12 removeFromSuperview];
         
-        RENSObjectRelease(mView12);
-        mView12 = RENSObjectRetain(view12);
+        mView12 = view12;
         
         [self addSubview:mView12];
         
@@ -482,8 +465,7 @@
     {
         [mView20 removeFromSuperview];
         
-        RENSObjectRelease(mView20);
-        mView20 = RENSObjectRetain(view20);
+        mView20 = view20;
         
         [self addSubview:mView20];
         
@@ -519,8 +501,7 @@
     {
         [mView21 removeFromSuperview];
         
-        RENSObjectRelease(mView21);
-        mView21 = RENSObjectRetain(view21);
+        mView21 = view21;
         
         [self addSubview:mView21];
         
@@ -556,8 +537,7 @@
     {
         [mView22 removeFromSuperview];
         
-        RENSObjectRelease(mView22);
-        mView22 = RENSObjectRetain(view22);
+        mView22 = view22;
         
         [self addSubview:mView22];
         

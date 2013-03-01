@@ -90,9 +90,6 @@
             NSMutableDictionary *entity = [[NSMutableDictionary alloc] initWithCapacity:4];
             
             [mEntities addObject:entity];
-            
-            RENSObjectRelease(entity);
-            entity = nil;
         }
         
         mCurrentState = (numberOfStates > 0 ? 0 : NSNotFound);
@@ -109,10 +106,7 @@
 {
     [self removeTarget:self action:NULL forControlEvents:UIControlEventAllTouchEvents];
     
-    RENSObjectRelease(mEntities);
     mEntities = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Laying out Subviews
@@ -191,9 +185,6 @@
             NSMutableDictionary *entity = [[NSMutableDictionary alloc] initWithCapacity:4];
             
             [mEntities addObject:entity];
-            
-            RENSObjectRelease(entity);
-            entity = nil;
         }
         
         while (mEntities.count > numberOfStates)
@@ -235,9 +226,6 @@
     
     UIView *stateView = [entity objectForKey:conrolStateNumber];
     
-    RENSObjectRelease(conrolStateNumber);
-    conrolStateNumber = nil;
-    
     return stateView;
 }
 
@@ -260,9 +248,6 @@
         [self setNeedsLayout];
         [self updateStateView];
     }
-    
-    RENSObjectRelease(conrolStateNumber);
-    conrolStateNumber = nil;
 }
 
 - (UIView *)lastStateViewForControlState:(UIControlState)conrolState
@@ -330,9 +315,6 @@
     NSMutableDictionary *entity = [[NSMutableDictionary alloc] initWithCapacity:4];
     
     [mEntities insertObject:entity atIndex:state];
-    
-    RENSObjectRelease(entity);
-    entity = nil;
     
     if (mCurrentState != NSNotFound)
     {
@@ -491,9 +473,6 @@
     {
         [self addSubview:simpleStateView];
     }
-    
-    RENSObjectRelease(simpleControlStateNumber);
-    simpleControlStateNumber = nil;
 }
 
 #pragma mark - UIControl Events

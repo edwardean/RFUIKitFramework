@@ -62,13 +62,9 @@
 
 - (void)dealloc
 {
-    RENSObjectRelease(mPlaceholderColor);
     mPlaceholderColor = nil;
     
-    RENSObjectRelease(mPlaceholderFont);
     mPlaceholderFont = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Accessing the Text Attributes
@@ -82,8 +78,7 @@
 {
     if (mPlaceholderColor != placeholderColor)
     {
-        RENSObjectRelease(mPlaceholderColor);
-        mPlaceholderColor = RENSObjectRetain(placeholderColor);
+        mPlaceholderColor = placeholderColor;
         
         [self setNeedsDisplay];
     }
@@ -98,8 +93,7 @@
 {
     if (mPlaceholderFont != placeholderFont)
     {
-        RENSObjectRelease(mPlaceholderFont);
-        mPlaceholderFont = RENSObjectRetain(placeholderFont);
+        mPlaceholderFont = placeholderFont;
         
         [self setNeedsDisplay];
     }

@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 #define UI_SCREEN_BOUNDS() ([[UIScreen mainScreen] bounds])
 
 #define UI_SCREEN_BOUNDS_SIZE() ([[UIScreen mainScreen] bounds].size)

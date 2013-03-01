@@ -82,7 +82,6 @@
 
 - (void)dealloc
 {
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing Check View Content
@@ -116,9 +115,6 @@
     UIImageView *stateImageView = [[UIImageView alloc] initWithImage:stateImage];
     
     [self setStateImageView:stateImageView forState:state controlState:conrolState];
-    
-    RENSObjectRelease(stateImageView);
-    stateImageView = nil;
 }
 
 - (void)setLastStateImageNamed:(NSString *)stateImageNamed forControlState:(UIControlState)conrolState
@@ -128,9 +124,6 @@
     UIImageView *stateImageView = [[UIImageView alloc] initWithImage:stateImage];
     
     [self setLastStateImageView:stateImageView forControlState:conrolState];
-    
-    RENSObjectRelease(stateImageView);
-    stateImageView = nil;
 }
 
 @end

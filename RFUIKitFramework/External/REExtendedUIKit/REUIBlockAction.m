@@ -56,17 +56,14 @@
 
 + (id)blockAction
 {
-    return RENSObjectAutorelease([[self alloc] init]);
+    return [[self alloc] init];
 }
 
 #pragma mark - Deallocating a REUIBlockAction
 
 - (void)dealloc
 {
-    RENSObjectRelease(mBlock);
     mBlock = nil;
-    
-    RENSObjectSuperDealloc();
 }
 
 #pragma mark - Managing the REUIBlockAction Object

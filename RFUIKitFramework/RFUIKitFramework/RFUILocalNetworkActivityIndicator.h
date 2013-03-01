@@ -41,8 +41,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "REExtendedCompiler.h"
-
 @interface RFUILocalNetworkActivityIndicator : NSObject
 {
     NSInteger        mCondition;
