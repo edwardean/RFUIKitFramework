@@ -257,7 +257,7 @@
     NSInteger oldCondition = mCondition;
     
     mCondition += (hidden ? -condition : condition);
-    RENSAssert((mCondition >= 0), @"The %@ class is incorrectly used.", NSStringFromClass([self class]));
+    RENSAssert((mCondition >= 0), @"The %@ class is used incorrectly.", NSStringFromClass([self class]));
     
     NSInteger newCondtion = mCondition;
     
