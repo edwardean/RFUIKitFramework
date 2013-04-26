@@ -61,6 +61,8 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
+#pragma unused(frame)
+    
     if ((self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 16.0f, 16.0f)]))
     {
         [self addTarget:self action:@selector(rfuiCheckViewEventTouchEventsAction:) forControlEvents:(UIControlEventAllTouchEvents & ~UIControlEventTouchUpInside)];

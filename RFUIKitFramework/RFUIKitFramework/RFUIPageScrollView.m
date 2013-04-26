@@ -174,9 +174,9 @@
         // Removing and updating the cell.
         NSInteger indexOfVisibleCell = 0;
         
-        while (indexOfVisibleCell < [mVisibleCells count])
+        while (indexOfVisibleCell < (NSInteger)mVisibleCells.count)
         {
-            RFUIPageScrollViewCell *pageScrollViewCell = [mVisibleCells objectAtIndex:indexOfVisibleCell];
+            RFUIPageScrollViewCell *pageScrollViewCell = [mVisibleCells objectAtIndex:(NSUInteger)indexOfVisibleCell];
             NSIndexPath *indexPath = [self indexPathForCell:pageScrollViewCell];
             
             if (indexPath)
@@ -202,15 +202,15 @@
                 else
                 {
                     [pageScrollViewCell removeFromSuperview];
-                    [mVisibleCells removeObjectAtIndex:indexOfVisibleCell];
-                    [[mRows objectAtIndex:indexPath.row] replaceObjectAtIndex:indexPath.column withObject:[NSNull null]];
+                    [mVisibleCells removeObjectAtIndex:(NSUInteger)indexOfVisibleCell];
+                    [[mRows objectAtIndex:(NSUInteger)indexPath.row] replaceObjectAtIndex:(NSUInteger)indexPath.column withObject:[NSNull null]];
                 }
             }
             
             else
             {
                 [pageScrollViewCell removeFromSuperview];
-                [mVisibleCells removeObjectAtIndex:indexOfVisibleCell];
+                [mVisibleCells removeObjectAtIndex:(NSUInteger)indexOfVisibleCell];
             }
         }
         
@@ -230,7 +230,7 @@
                 pageScrollViewCell.frame = pageScrollViewCellFrame;
             }
             
-            [[mRows objectAtIndex:indexPath.row] replaceObjectAtIndex:indexPath.column withObject:pageScrollViewCell];
+            [[mRows objectAtIndex:(NSUInteger)indexPath.row] replaceObjectAtIndex:(NSUInteger)indexPath.column withObject:pageScrollViewCell];
             [mVisibleCells addObject:pageScrollViewCell];
             
             [self addSubview:pageScrollViewCell];
@@ -371,9 +371,11 @@
 {
     NSInteger numberOfCollumns = 0;
     
-    if (mDataSource)
+    id<RFUIPageScrollViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource)
     {
-        numberOfCollumns = [mDataSource numberOfColumnInPageScrollView:self];
+        numberOfCollumns = [dataSource numberOfColumnInPageScrollView:self];
     }
     
     return numberOfCollumns;
@@ -383,9 +385,11 @@
 {
     NSInteger numberOfRows = 0;
     
-    if (mDataSource)
+    id<RFUIPageScrollViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource)
     {
-        numberOfRows = [mDataSource numberOfRowsInPageScrollView:self];
+        numberOfRows = [dataSource numberOfRowsInPageScrollView:self];
     }
     
     return numberOfRows;
@@ -395,9 +399,11 @@
 {
     RFUIPageScrollViewCell *pageScrollViewCell = nil;
     
-    if (mDataSource)
+    id<RFUIPageScrollViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource)
     {
-        pageScrollViewCell = [mDataSource pageScrollView:self cellForRowAtIndexPath:indexPath];
+        pageScrollViewCell = [dataSource pageScrollView:self cellForRowAtIndexPath:indexPath];
     }
     
     if (!pageScrollViewCell)
@@ -466,9 +472,9 @@
     {
         for (NSInteger indexOfRow = 0; indexOfRow < mNumberOfRows; indexOfRow++)
         {
-            NSMutableArray *columns = [mRows objectAtIndex:indexOfRow];
+            NSMutableArray *columns = [mRows objectAtIndex:(NSUInteger)indexOfRow];
             
-            NSInteger indexOfColumn = [columns indexOfObjectIdenticalTo:cell];
+            NSInteger indexOfColumn = (NSInteger)[columns indexOfObjectIdenticalTo:cell];
             
             if (indexOfColumn != NSNotFound)
             {
@@ -488,8 +494,8 @@
     if ((indexPath.row >= 0) && (indexPath.row < mNumberOfRows) &&
         (indexPath.column >= 0) && (indexPath.column < mNumberOfColumns))
     {
-        NSMutableArray *columns = [mRows objectAtIndex:indexPath.row];
-        pageScrollViewCell = [columns objectAtIndex:indexPath.column];
+        NSMutableArray *columns = [mRows objectAtIndex:(NSUInteger)indexPath.row];
+        pageScrollViewCell = [columns objectAtIndex:(NSUInteger)indexPath.column];
         
         if ([pageScrollViewCell isEqual:[NSNull null]])
         {
@@ -508,7 +514,7 @@
 
 - (NSArray *)indexPathsForVisibleCells
 {
-    NSMutableArray *mutableIndexPaths = [[NSMutableArray alloc] initWithCapacity:[mVisibleCells count]];
+    NSMutableArray *mutableIndexPaths = [[NSMutableArray alloc] initWithCapacity:mVisibleCells.count];
     
     for (RFUIPageScrollViewCell *pageScrollViewCell in mVisibleCells)
     {
@@ -552,7 +558,7 @@
         // Adding Empty Cells.
         for (NSInteger indexOfRow = 0; indexOfRow < mNumberOfRows; indexOfRow++)
         {
-            NSMutableArray *columns = [[NSMutableArray alloc] initWithCapacity:mNumberOfColumns];
+            NSMutableArray *columns = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)mNumberOfColumns];
             
             for (NSInteger indexOfColumn = 0; indexOfColumn < mNumberOfColumns; indexOfColumn++)
             {
@@ -590,14 +596,14 @@
 
 - (void)insertRow:(NSInteger)row
 {
-    NSMutableArray *columns = [[NSMutableArray alloc] initWithCapacity:mNumberOfColumns];
+    NSMutableArray *columns = [[NSMutableArray alloc] initWithCapacity:(NSUInteger)mNumberOfColumns];
     
     for (NSInteger indexOfColumn = 0; indexOfColumn < mNumberOfColumns; indexOfColumn++)
     {
         [columns addObject:[NSNull null]];
     }
     
-    [mRows insertObject:columns atIndex:row];
+    [mRows insertObject:columns atIndex:(NSUInteger)row];
     mNumberOfRows++;
     
     [self layoutIfNeeded];
@@ -607,8 +613,8 @@
 {
     for (NSInteger indexOfRow = 0; indexOfRow < mNumberOfRows; indexOfRow++)
     {
-        NSMutableArray *columns = [mRows objectAtIndex:indexOfRow];
-        [columns insertObject:[NSNull null] atIndex:indexOfColumn];
+        NSMutableArray *columns = [mRows objectAtIndex:(NSUInteger)indexOfRow];
+        [columns insertObject:[NSNull null] atIndex:(NSUInteger)indexOfColumn];
     }
     
     mNumberOfColumns++;
@@ -618,11 +624,11 @@
 
 - (void)deleteRow:(NSInteger)indexOfRow
 {
-    NSMutableArray *columns = [mRows objectAtIndex:indexOfRow];
+    NSMutableArray *columns = [mRows objectAtIndex:(NSUInteger)indexOfRow];
     
     for (NSInteger indexOfColumn = 0; indexOfColumn < mNumberOfColumns; indexOfColumn++)
     {
-        RFUIPageScrollViewCell *pageScrollViewCell = [columns objectAtIndex:indexOfColumn];
+        RFUIPageScrollViewCell *pageScrollViewCell = [columns objectAtIndex:(NSUInteger)indexOfColumn];
         
         if (![pageScrollViewCell isEqual:[NSNull null]])
         {
@@ -631,7 +637,7 @@
         }
     }
     
-    [mRows removeObjectAtIndex:indexOfRow];
+    [mRows removeObjectAtIndex:(NSUInteger)indexOfRow];
     
     mNumberOfRows--;
     
@@ -642,9 +648,9 @@
 {
     for (NSInteger indexOfRow = 0; indexOfRow < mNumberOfRows; indexOfRow++)
     {
-        NSMutableArray *columns = [mRows objectAtIndex:indexOfRow];
+        NSMutableArray *columns = [mRows objectAtIndex:(NSUInteger)indexOfRow];
         
-        RFUIPageScrollViewCell *pageScrollViewCell = [columns objectAtIndex:indexOfColumn];
+        RFUIPageScrollViewCell *pageScrollViewCell = [columns objectAtIndex:(NSUInteger)indexOfColumn];
         
         if (![pageScrollViewCell isEqual:[NSNull null]])
         {
@@ -652,7 +658,7 @@
             [mVisibleCells removeObjectIdenticalTo:pageScrollViewCell];
         }
         
-        [columns removeObjectAtIndex:indexOfColumn];
+        [columns removeObjectAtIndex:(NSUInteger)indexOfColumn];
     }
     
     mNumberOfColumns--;
@@ -677,7 +683,7 @@
                 pageScrollViewCell2.frame = pageScrollViewCell2Frame;
             }
             
-            [[mRows objectAtIndex:indexPath.row] replaceObjectAtIndex:indexPath.column withObject:pageScrollViewCell2];
+            [[mRows objectAtIndex:(NSUInteger)indexPath.row] replaceObjectAtIndex:(NSUInteger)indexPath.column withObject:pageScrollViewCell2];
             [mVisibleCells removeObjectIdenticalTo:pageScrollViewCell];
             [mVisibleCells addObject:pageScrollViewCell2];
             

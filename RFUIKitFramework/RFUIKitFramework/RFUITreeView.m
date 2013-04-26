@@ -59,6 +59,8 @@
         CGRect viewFrame = self.frame;
         
         mTreeViewNodesBlock = [^id(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath) {
+#pragma unused(indexPath)
+            
             NSMutableArray *childTreeViewNodes = treeViewNode.childTreeViewNodes;
             return childTreeViewNodes;
         } copy];
@@ -160,6 +162,8 @@
         
         [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                                   indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(stop)
+                                                      
                                                       RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
                                                       CGRect treeViewCellFrame = treeViewNode.treeViewCellFrame;
                                                       
@@ -211,12 +215,12 @@
     {
         mDataSource = dataSource;
         
-        if ([mDataSource conformsToProtocol:@protocol(RFUITreeViewDataSource) ])
+        if ([dataSource conformsToProtocol:@protocol(RFUITreeViewDataSource) ])
         {
-            mTreeFlags.dataSource_numberOfRowsInRootInTreeView = [mDataSource respondsToSelector:@selector(numberOfRowsInRootInTreeView:)];
-            mTreeFlags.dataSource_treeView_numberOfRowsInParentRowAtIndexPath = [mDataSource respondsToSelector:@selector(treeView:numberOfRowsInParentRowAtIndexPath:)];
-            mTreeFlags.dataSource_treeView_expandedRowAtIndexPath = [mDataSource respondsToSelector:@selector(treeView:expandedRowAtIndexPath:)];
-            mTreeFlags.dataSource_treeView_cellForRowAtIndexPath = [mDataSource respondsToSelector:@selector(treeView:cellForRowAtIndexPath:)];
+            mTreeFlags.dataSource_numberOfRowsInRootInTreeView = (unsigned int)[dataSource respondsToSelector:@selector(numberOfRowsInRootInTreeView:)];
+            mTreeFlags.dataSource_treeView_numberOfRowsInParentRowAtIndexPath = (unsigned int)[dataSource respondsToSelector:@selector(treeView:numberOfRowsInParentRowAtIndexPath:)];
+            mTreeFlags.dataSource_treeView_expandedRowAtIndexPath = (unsigned int)[dataSource respondsToSelector:@selector(treeView:expandedRowAtIndexPath:)];
+            mTreeFlags.dataSource_treeView_cellForRowAtIndexPath = (unsigned int)[dataSource respondsToSelector:@selector(treeView:cellForRowAtIndexPath:)];
         }
         
         else
@@ -232,9 +236,11 @@
 {
     NSInteger numberOfRows = 0;
     
-    if (mTreeFlags.dataSource_numberOfRowsInRootInTreeView)
+    id<RFUITreeViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource && mTreeFlags.dataSource_numberOfRowsInRootInTreeView)
     {
-        numberOfRows = [mDataSource numberOfRowsInRootInTreeView:self];
+        numberOfRows = [dataSource numberOfRowsInRootInTreeView:self];
     }
     
     return numberOfRows;
@@ -244,9 +250,11 @@
 {
     NSInteger numberOfRows = 0;
     
-    if (mTreeFlags.dataSource_treeView_numberOfRowsInParentRowAtIndexPath)
+    id<RFUITreeViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource && mTreeFlags.dataSource_treeView_numberOfRowsInParentRowAtIndexPath)
     {
-        numberOfRows = [mDataSource treeView:self numberOfRowsInParentRowAtIndexPath:indexPath];
+        numberOfRows = [dataSource treeView:self numberOfRowsInParentRowAtIndexPath:indexPath];
     }
     
     return numberOfRows;
@@ -256,9 +264,11 @@
 {
     BOOL expandedRow = NO;
     
-    if (mTreeFlags.dataSource_treeView_expandedRowAtIndexPath)
+    id<RFUITreeViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource && mTreeFlags.dataSource_treeView_expandedRowAtIndexPath)
     {
-        expandedRow = [mDataSource treeView:self expandedRowAtIndexPath:indexPath];
+        expandedRow = [dataSource treeView:self expandedRowAtIndexPath:indexPath];
     }
     
     return expandedRow;
@@ -268,9 +278,11 @@
 {
     RFUITreeViewCell *cell = nil;
     
-    if (mTreeFlags.dataSource_treeView_cellForRowAtIndexPath)
+    id<RFUITreeViewDataSource> dataSource = mDataSource;
+    
+    if (dataSource && mTreeFlags.dataSource_treeView_cellForRowAtIndexPath)
     {
-        cell = [mDataSource treeView:self cellForRowAtIndexPath:indexPath];
+        cell = [dataSource treeView:self cellForRowAtIndexPath:indexPath];
     }
     
     if (!cell)
@@ -294,11 +306,13 @@
         super.delegate = delegate;
         mDelegate = self.delegate;
         
-        if ([mDelegate conformsToProtocol:@protocol(RFUITreeViewDelegate)])
+        id<RFUITreeViewDelegate> delegate2 = mDelegate;
+        
+        if ([delegate2 conformsToProtocol:@protocol(RFUITreeViewDelegate)])
         {
-            mTreeFlags.delegete_treeViewShouldUseDynamicWidth = [mDelegate respondsToSelector:@selector(treeViewShouldUseDynamicWidth:)];
-            mTreeFlags.delegete_minimumWidthForRowAtIndexPath = [mDelegate respondsToSelector:@selector(treeView:minimumWidthForRowAtIndexPath:)];
-            mTreeFlags.delegete_heightForRowAtIndexPath_width = [mDelegate respondsToSelector:@selector(treeView:heightForRowAtIndexPath:width:)];
+            mTreeFlags.delegete_treeViewShouldUseDynamicWidth = (unsigned int)[delegate2 respondsToSelector:@selector(treeViewShouldUseDynamicWidth:)];
+            mTreeFlags.delegete_minimumWidthForRowAtIndexPath = (unsigned int)[delegate2 respondsToSelector:@selector(treeView:minimumWidthForRowAtIndexPath:)];
+            mTreeFlags.delegete_heightForRowAtIndexPath_width = (unsigned int)[delegate2 respondsToSelector:@selector(treeView:heightForRowAtIndexPath:width:)];
         }
         
         else
@@ -314,9 +328,11 @@
 {
     BOOL shouldUseDynamicWidth = mTreeFlags.usesDynamicWidth;
     
-    if (mTreeFlags.delegete_treeViewShouldUseDynamicWidth)
+    id<RFUITreeViewDelegate> delegate = mDelegate;
+    
+    if (delegate && mTreeFlags.delegete_treeViewShouldUseDynamicWidth)
     {
-        shouldUseDynamicWidth = [mDelegate treeViewShouldUseDynamicWidth:self];
+        shouldUseDynamicWidth = [delegate treeViewShouldUseDynamicWidth:self];
     }
     
     return shouldUseDynamicWidth;
@@ -326,9 +342,11 @@
 {
     CGFloat minimumWidthForRow = mTreeViewCellMinimumWidth;
     
-    if (mTreeFlags.delegete_minimumWidthForRowAtIndexPath)
+    id<RFUITreeViewDelegate> delegate = mDelegate;
+    
+    if (delegate && mTreeFlags.delegete_minimumWidthForRowAtIndexPath)
     {
-        minimumWidthForRow = [mDelegate treeView:self minimumWidthForRowAtIndexPath:indexPath];
+        minimumWidthForRow = [delegate treeView:self minimumWidthForRowAtIndexPath:indexPath];
     }
     
     return minimumWidthForRow;
@@ -338,9 +356,11 @@
 {
     CGFloat treeViewCellHeight = mTreeViewCellHeight;
     
-    if (mTreeFlags.delegete_heightForRowAtIndexPath_width)
+    id<RFUITreeViewDelegate> delegate = mDelegate;
+    
+    if (delegate && mTreeFlags.delegete_heightForRowAtIndexPath_width)
     {
-        treeViewCellHeight = [mDelegate treeView:self heightForRowAtIndexPath:indexPath width:width];
+        treeViewCellHeight = [delegate treeView:self heightForRowAtIndexPath:indexPath width:width];
     }
     
     return treeViewCellHeight;
@@ -392,7 +412,7 @@
 {
     if (mTreeFlags.usesDynamicWidth != usesDynamicWidth)
     {
-        mTreeFlags.usesDynamicWidth = usesDynamicWidth;
+        mTreeFlags.usesDynamicWidth = (unsigned int)usesDynamicWidth;
         
         [self setNeedsReloadData];
         [self setNeedsLayout];
@@ -433,7 +453,7 @@
 
 - (NSInteger)numberOfRowsInRoot
 {
-    NSInteger numberOfRowsInRoot = mRootTreeViewNodes.count;
+    NSInteger numberOfRowsInRoot = (NSInteger)mRootTreeViewNodes.count;
     return numberOfRowsInRoot;
 }
 
@@ -442,7 +462,7 @@
     RENSAssert(indexPath, @"The indexPath argument is nil.");
     
     RFUITreeViewNode *treeViewNode = [mRootTreeViewNodes objectAtIndexPath:indexPath usingChildArrayBlock:mTreeViewNodesBlock];
-    NSInteger numberOfRowsInParent = treeViewNode.childTreeViewNodes.count;
+    NSInteger numberOfRowsInParent = (NSInteger)treeViewNode.childTreeViewNodes.count;
     return numberOfRowsInParent;
 }
 
@@ -483,13 +503,13 @@
         
         while (indexOfReusableTreeViewCell > -1)
         {
-            RFUITreeViewCell *reusableTreeViewCell2 = [mReusableTreeViewCells objectAtIndex:indexOfReusableTreeViewCell];
+            RFUITreeViewCell *reusableTreeViewCell2 = [mReusableTreeViewCells objectAtIndex:(NSUInteger)indexOfReusableTreeViewCell];
             
             if ([reusableTreeViewCell2.reuseIdentifier isEqual:reuseIdentifier])
             {
                 reusableTreeViewCell = reusableTreeViewCell2;
                 
-                [mReusableTreeViewCells removeObjectAtIndex:indexOfReusableTreeViewCell];
+                [mReusableTreeViewCells removeObjectAtIndex:(NSUInteger)indexOfReusableTreeViewCell];
                 
                 break;
             }
@@ -535,7 +555,7 @@
         
         for (NSInteger indexOfChildTreeViewNode = 0; indexOfChildTreeViewNode < numberOfChildTreeViewNodes; indexOfChildTreeViewNode++)
         {
-            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:indexOfChildTreeViewNode];
+            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:(NSUInteger)indexOfChildTreeViewNode];
             
             RFUITreeViewNode *childTreeViewNode = [self copyRecursiveLoadTreeViewNodeAtIndexPath:indexPathOfChildTreeViewNode];
             childTreeViewNode.parentTreeViewNode = parentTreeViewNode;
@@ -558,7 +578,7 @@
     
     for (NSInteger indexOfRootTreeViewNode = 0; indexOfRootTreeViewNode < numberOfRootTreeViewNodes; indexOfRootTreeViewNode++)
     {
-        NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:indexOfRootTreeViewNode];
+        NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:(NSUInteger)indexOfRootTreeViewNode];
         
         RFUITreeViewNode *rootTreeViewNode = [self copyRecursiveLoadTreeViewNodeAtIndexPath:indexPathOfRootTreeViewNode];
         
@@ -609,11 +629,11 @@
     
     if (parentTreeViewNode.isExpanded)
     {
-        NSInteger numberOfChildTreeViewNodes = parentTreeViewNode.childTreeViewNodes.count;
+        NSInteger numberOfChildTreeViewNodes = (NSInteger)parentTreeViewNode.childTreeViewNodes.count;
         
         for (NSInteger indexOfChildTreeViewNode = 0; indexOfChildTreeViewNode < numberOfChildTreeViewNodes; indexOfChildTreeViewNode++)
         {
-            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:indexOfChildTreeViewNode];
+            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:(NSUInteger)indexOfChildTreeViewNode];
             
             CGFloat childTreeViewCellMinimumWidth = [self recursiveCalculateTreeViewCellMinimumWidthAtIndexPath:indexPathOfChildTreeViewNode];
             
@@ -634,9 +654,9 @@
         
         CGFloat treeViewCellCalculatedMinimumWidth = mTreeViewCellMinimumWidth;
         
-        for (NSInteger indexOfRootTreeViewNode = 0; indexOfRootTreeViewNode < numberOfRootTreeViewNodes; indexOfRootTreeViewNode++)
+        for (NSInteger indexOfRootTreeViewNode = 0; indexOfRootTreeViewNode < (NSInteger)numberOfRootTreeViewNodes; indexOfRootTreeViewNode++)
         {
-            NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:indexOfRootTreeViewNode];
+            NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:(NSUInteger)indexOfRootTreeViewNode];
             
             CGFloat rootTreeViewCellMinimumWidth = [self recursiveCalculateTreeViewCellMinimumWidthAtIndexPath:indexPathOfRootTreeViewNode];
             
@@ -680,11 +700,11 @@
     
     if (parentTreeViewNode.isExpanded)
     {
-        NSInteger numberOfChildTreeViewNodes = parentTreeViewNode.childTreeViewNodes.count;
+        NSInteger numberOfChildTreeViewNodes = (NSInteger)parentTreeViewNode.childTreeViewNodes.count;
         
         for (NSInteger indexOfChildTreeViewNode = 0; indexOfChildTreeViewNode < numberOfChildTreeViewNodes; indexOfChildTreeViewNode++)
         {
-            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:indexOfChildTreeViewNode];
+            NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:(NSUInteger)indexOfChildTreeViewNode];
             
             [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfChildTreeViewNode];
         }
@@ -693,13 +713,13 @@
 
 - (void)calculateTreeViewCellFrame
 {
-    NSUInteger numberOfRootTreeViewNodes = mRootTreeViewNodes.count;
+    NSInteger numberOfRootTreeViewNodes = (NSInteger)mRootTreeViewNodes.count;
     
     mContentViewCalculatedHeight = 0.0f;
     
     for (NSInteger indexOfRootTreeViewNode = 0; indexOfRootTreeViewNode < numberOfRootTreeViewNodes; indexOfRootTreeViewNode++)
     {
-        NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:indexOfRootTreeViewNode];
+        NSIndexPath *indexPathOfRootTreeViewNode = [[NSIndexPath alloc] initWithIndex:(NSUInteger)indexOfRootTreeViewNode];
         
         [self recursiveCalculateTreeViewCellFrameAtIndexPath:indexPathOfRootTreeViewNode];
     }
@@ -792,6 +812,8 @@
     
     [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                               indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(stop)
+                                                  
                                                   CGRect treeViewCellFrame = treeViewNode.treeViewCellFrame;
                                                   
                                                   if (CGRectIntersectsRect(treeViewCellFrame, rect))
@@ -824,6 +846,9 @@
     
     [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                               indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(indexPath)
+#pragma unused(stop)
+                                                  
                                                   RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
                                                   
                                                   if (treeViewCell)
@@ -847,6 +872,8 @@
     
     [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                               indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(stop)
+                                                  
                                                   RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
                                                   
                                                   if (treeViewCell)
@@ -930,6 +957,9 @@
     {
         [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                                   indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(indexPath)
+#pragma unused(stop)
+                                                      
                                                       CGRect treeViewCellFrame = treeViewNode.treeViewCellFrame;
                                                       treeViewNode.treeViewCellFrameOld = treeViewCellFrame;
                                                   }];
@@ -959,6 +989,8 @@
         
         [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                                   indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(stop)
+                                                      
                                                       RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
                                                       CGRect treeViewCellFrameOld = treeViewNode.treeViewCellFrameOld;
                                                       CGRect treeViewCellFrameNew = treeViewNode.treeViewCellFrame;
@@ -996,6 +1028,9 @@
                          animations:^{
                              [mRootTreeViewNodes enumerateObjectsUsingChildArrayBlock:mTreeViewNodesBlock
                                                                        indexPathBlock:^(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath, BOOL *stop) {
+#pragma unused(indexPath)
+#pragma unused(stop)
+                                                                           
                                                                            RFUITreeViewCell *treeViewCell = treeViewNode.treeViewCell;
                                                                            CGRect treeViewCellFrame = treeViewNode.treeViewCellFrame;
                                                                            
@@ -1068,6 +1103,8 @@
                              }
                          }
                          completion:^(BOOL finished) {
+#pragma unused(finished)
+                             
                              for (RFUITreeViewNode *deletedTreeViewNode in deletedTreeViewNodes)
                              {
                                  RFUITreeViewCell *treeViewCell = deletedTreeViewNode.treeViewCell;
@@ -1127,6 +1164,8 @@
 
 - (void)expandRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(RFUITreeViewRowAnimation)animation
 {
+#pragma unused(animation)
+    
     RENSAssert(indexPaths, @"The indexPaths argument is nil.");
     
     if (indexPaths.count > 0)
@@ -1148,7 +1187,7 @@
                 
                 for (NSInteger indexOfChildTreeViewNode = 0; indexOfChildTreeViewNode < numberOfChildTreeViewNodes; indexOfChildTreeViewNode++)
                 {
-                    NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:indexOfChildTreeViewNode];
+                    NSIndexPath *indexPathOfChildTreeViewNode = [indexPath copyIndexPathByAddingIndex:(NSUInteger)indexOfChildTreeViewNode];
                     
                     RFUITreeViewNode *childTreeViewNode = [self copyRecursiveLoadTreeViewNodeAtIndexPath:indexPathOfChildTreeViewNode];
                     childTreeViewNode.parentTreeViewNode = parentTreeViewNode;

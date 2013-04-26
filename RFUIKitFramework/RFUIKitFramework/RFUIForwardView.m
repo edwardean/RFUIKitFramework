@@ -76,10 +76,12 @@
 {
     [super layoutSubviews];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardViewLayoutSubviews:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardViewLayoutSubviews:)])
     {
-        [mDelegate forwardViewLayoutSubviews:self];
+        [delegate forwardViewLayoutSubviews:self];
     }
 }
 
@@ -89,10 +91,12 @@
 {
     [super didAddSubview:subview];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardView:didAddSubview:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardView:didAddSubview:)])
     {
-        [mDelegate forwardView:self didAddSubview:subview];
+        [delegate forwardView:self didAddSubview:subview];
     }
 }
 
@@ -100,10 +104,12 @@
 {
     [super willRemoveSubview:subview];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardView:willRemoveSubview:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardView:willRemoveSubview:)])
     {
-        [mDelegate forwardView:self willRemoveSubview:subview];
+        [delegate forwardView:self willRemoveSubview:subview];
     }
 }
 
@@ -111,10 +117,12 @@
 {
     [super willMoveToSuperview:newSuperview];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardView:willMoveToSuperview:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardView:willMoveToSuperview:)])
     {
-        [mDelegate forwardView:self willMoveToSuperview:newSuperview];
+        [delegate forwardView:self willMoveToSuperview:newSuperview];
     }
 }
 
@@ -122,10 +130,12 @@
 {
     [super didMoveToSuperview];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardViewDidMoveToSuperview:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardViewDidMoveToSuperview:)])
     {
-        [mDelegate forwardViewDidMoveToSuperview:self];
+        [delegate forwardViewDidMoveToSuperview:self];
     }
 }
 
@@ -133,10 +143,12 @@
 {
     [super willMoveToWindow:newWindow];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardView:willMoveToWindow:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardView:willMoveToWindow:)])
     {
-        [mDelegate forwardView:self willMoveToWindow:newWindow];
+        [delegate forwardView:self willMoveToWindow:newWindow];
     }
 }
 
@@ -144,10 +156,12 @@
 {
     [super didMoveToWindow];
     
-    if ([mDelegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
-        [mDelegate respondsToSelector:@selector(forwardViewDidMoveToWindow:)])
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardViewDidMoveToWindow:)])
     {
-        [mDelegate forwardViewDidMoveToWindow:self];
+        [delegate forwardViewDidMoveToWindow:self];
     }
 }
 

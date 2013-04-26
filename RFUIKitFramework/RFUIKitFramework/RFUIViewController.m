@@ -76,6 +76,11 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillUnload
+{
+    [super viewWillUnload];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -153,7 +158,7 @@
 
 @end
 
-@implementation UIViewController (UIViewControllerSAViewController)
+@implementation UIViewController (UIViewControllerRFUIViewController)
 
 #pragma mark - Responding to View Events
 
@@ -171,6 +176,8 @@
 
 - (void)setAppeared:(BOOL)isAppeared
 {
+#pragma unused(isAppeared)
+    
     // This stub.
 }
 

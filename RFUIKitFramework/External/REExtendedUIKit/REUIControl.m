@@ -80,11 +80,11 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
     
     NSMutableArray *controlBlockActions = [objectDictionary objectForKey:UIControlControlBlockActionsKey];
     
-    NSInteger indexOfControlBlockAction = controlBlockActions.count - 1;
+    NSInteger indexOfControlBlockAction = (NSInteger)controlBlockActions.count - 1;
     
-    while (indexOfControlBlockAction < controlBlockActions.count)
+    while (indexOfControlBlockAction < (NSInteger)controlBlockActions.count)
     {
-        REUIControlBlockAction *controlBlockAction = [controlBlockActions objectAtIndex:indexOfControlBlockAction];
+        REUIControlBlockAction *controlBlockAction = [controlBlockActions objectAtIndex:(NSUInteger)indexOfControlBlockAction];
         
         if (!block ||
             (block && (controlBlockAction.block == block)))
@@ -100,7 +100,7 @@ NSString * const UIControlControlBlockActionsKey = @"UIControlControlBlockAction
         if (controlBlockAction.controlEvents == 0)
         {
             [self removeTarget:controlBlockAction action:NULL forControlEvents:UIControlEventAllEvents];
-            [controlBlockActions removeObjectAtIndex:indexOfControlBlockAction];
+            [controlBlockActions removeObjectAtIndex:(NSUInteger)indexOfControlBlockAction];
         }
         
         indexOfControlBlockAction--;

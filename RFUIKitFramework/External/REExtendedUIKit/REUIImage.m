@@ -220,8 +220,6 @@ jmp_exit:
         goto jmp_error;
     }
     
-jmp_exit:
-    
     return self;
     
 jmp_error:
@@ -240,6 +238,8 @@ jmp_error:
 
 static id UIImage_InitWithData_Scale(UIImage *self, SEL _cmd, NSData *data, CGFloat scale)
 {
+#pragma unused(_cmd)
+    
     UIImage *image2 = nil;
     
     self = [self initWithData:data];
@@ -274,6 +274,8 @@ jmp_exit:
 
 static UIImage *UIImage_ImageWithData_Scale(Class self, SEL _cmd, NSData *data, CGFloat scale)
 {
+#pragma unused(_cmd)
+    
     return [[self alloc] initWithData:data scale:scale];
 }
 

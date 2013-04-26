@@ -2,7 +2,7 @@
 //  RFTestViewController.h
 //  RFUIKitFramework
 //
-//  Created by Roman Oliichuk on 02/08/2012.
+//  Created by Roman Oliichuk on 2012.02.08.
 //  Copyright (c) 2012 Oliromole. All rights reserved.
 //
 

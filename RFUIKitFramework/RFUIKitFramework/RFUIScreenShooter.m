@@ -48,6 +48,12 @@
 
 static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
 
+@interface NSObject ()
+
+@property (nonatomic, strong) UIWindow *mainWindow;
+
+@end
+
 @implementation RFUIScreenShooter
 
 #pragma mark - Getting the RFUIScreenShooter Instance
@@ -317,7 +323,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
     
     // Rendering the windows.
     
-    for (NSInteger index = 0; index < windows.count; index++)
+    for (NSUInteger index = 0; index < windows.count; index++)
     {
         UIWindow *window = [windows objectAtIndex:index];
         

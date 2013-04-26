@@ -390,7 +390,7 @@
         
         if (mContentView)
         {
-            NSInteger index = self.subviews.count;
+            NSInteger index = (NSInteger)self.subviews.count;
             
             [self insertSubview:mContentView atIndex:index];
             [self setNeedsLayout];
@@ -467,15 +467,15 @@
             view2 = view2.superview;
         }
         
-        for (UIView *view2 in [views reverseObjectEnumerator])
+        for (UIView *view3 in [views reverseObjectEnumerator])
         {
-            if (mContentView && (mContentView == view2))
+            if (mContentView && (mContentView == view3))
             {
                 firstResponderArrangementForView = RFUIFirstResponderArrangementSubviews;
             }
             
             if ((firstResponderArrangementForView & RFUIFirstResponderArrangementSubviews) &&
-                [view2 isKindOfClass:[RFUIKeyboardLayoutView class]])
+                [view3 isKindOfClass:[RFUIKeyboardLayoutView class]])
             {
                 firstResponderArrangementForView = RFUIFirstResponderArrangementSubkeyboardLayoutView;
                 break;
@@ -521,6 +521,7 @@
                          [self recursiveLayoutSubviewsAndSendKeyboardCenterWillShowKeyboardMessageInView:self];
                      }
                      completion:^(BOOL finished) {
+#pragma unused(finished)
                      }];
 }
 
@@ -557,6 +558,7 @@
                          [self recursiveLayoutSubviewsAndSendKeyboardCenterDidShowKeyboardMessageInView:self];
                      }
                      completion:^(BOOL finished) {
+#pragma unused(finished)
                      }];
 }
 
@@ -593,6 +595,7 @@
                          [self recursiveLayoutSubviewsAndSendKeyboardCenterWillHideKeyboardMessageInView:self];
                      }
                      completion:^(BOOL finished) {
+#pragma unused(finished)
                      }];
 }
 
@@ -629,6 +632,7 @@
                          [self recursiveLayoutSubviewsAndSendKeyboardCenterDidHideKeyboardMessageInView:self];
                      }
                      completion:^(BOOL finished) {
+#pragma unused(finished)
                      }];
 }
 

@@ -133,7 +133,7 @@
                 
             case UIInterfaceOrientationPortraitUpsideDown:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI));
                 
                 rotationViewBounds.size.width = viewBounds.size.width;
                 rotationViewBounds.size.height = viewBounds.size.height;
@@ -143,7 +143,7 @@
                 
             case UIInterfaceOrientationLandscapeLeft:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI + M_PI_2);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI + M_PI_2));
                 
                 rotationViewBounds.size.width = viewBounds.size.height;
                 rotationViewBounds.size.height = viewBounds.size.width;
@@ -153,7 +153,7 @@
                 
             case UIInterfaceOrientationLandscapeRight:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI_2);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI_2));
                 
                 rotationViewBounds.size.width = viewBounds.size.height;
                 rotationViewBounds.size.height = viewBounds.size.width;
@@ -184,7 +184,7 @@
                 
             case UIInterfaceOrientationPortraitUpsideDown:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI));
                 
                 rotationViewCenter.x = viewBounds.size.width / 2.0f;
                 rotationViewCenter.y = viewBounds.size.height / 2.0f - 10.0f;
@@ -197,7 +197,7 @@
                 
             case UIInterfaceOrientationLandscapeLeft:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI + M_PI_2);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI + M_PI_2));
                 
                 rotationViewCenter.x = viewBounds.size.width / 2.0f + 10.0f;
                 rotationViewCenter.y = viewBounds.size.height / 2.0f;
@@ -210,7 +210,7 @@
                 
             case UIInterfaceOrientationLandscapeRight:
             {
-                rotationViewAffineTransform = CGAffineTransformMakeRotation(M_PI_2);
+                rotationViewAffineTransform = CGAffineTransformMakeRotation((float)(M_PI_2));
                 
                 rotationViewCenter.x = viewBounds.size.width / 2.0f - 10.0f;
                 rotationViewCenter.y = viewBounds.size.height / 2.0f;
@@ -628,7 +628,7 @@
         
         if (mContentView)
         {
-            NSInteger index = mRotationView.subviews.count;
+            NSInteger index = (NSInteger)mRotationView.subviews.count;
             
             [mRotationView insertSubview:mContentView atIndex:index];
             [self setNeedsLayout];
@@ -647,7 +647,7 @@
 {
     RFUIStatusBarLayoutView *superStatusBarLayoutView = nil;
     
-    UIView *superview = self.superview;
+    UIView *superview = view.superview;
     
     while (superview)
     {

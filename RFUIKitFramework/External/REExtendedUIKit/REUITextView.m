@@ -50,8 +50,8 @@
 {
     UITextPosition *uiBeginningOfDocument = self.beginningOfDocument;
     
-    UITextPosition *uiTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-    UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextStartPosition offset:nsTextRange.length];
+    UITextPosition *uiTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+    UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextStartPosition offset:(NSInteger)nsTextRange.length];
     UITextRange *uiTextRange = [self textRangeFromPosition:uiTextStartPosition toPosition:uiTextEndPosition];
     
     NSString *text = [self textInRange:uiTextRange];
@@ -63,8 +63,8 @@
 {
     UITextPosition *uiBeginningOfDocument = self.beginningOfDocument;
     
-    UITextPosition *uiTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-    UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextStartPosition offset:nsTextRange.length];
+    UITextPosition *uiTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+    UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextStartPosition offset:(NSInteger)nsTextRange.length];
     UITextRange *uiTextRange = [self textRangeFromPosition:uiTextStartPosition toPosition:uiTextEndPosition];
     
     [self replaceRange:uiTextRange withText:text];
@@ -86,8 +86,8 @@
             
             if (uiBeginningOfDocument)
             {
-                nsSelectedTextRange.location = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiSelectedTextRange.start];
-                nsSelectedTextRange.length = [self offsetFromPosition:uiSelectedTextRange.start toPosition:uiSelectedTextRange.end];
+                nsSelectedTextRange.location = (NSUInteger)[self offsetFromPosition:uiBeginningOfDocument toPosition:uiSelectedTextRange.start];
+                nsSelectedTextRange.length = (NSUInteger)[self offsetFromPosition:uiSelectedTextRange.start toPosition:uiSelectedTextRange.end];
             }
         }
         
@@ -101,8 +101,8 @@
     {
         UITextPosition *uiBeginningOfDocument = self.beginningOfDocument;
         
-        UITextPosition *uiMarkedTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsMarkedTextRange.location];
-        UITextPosition *uiMarkedTextEndPosition = [self positionFromPosition:uiMarkedTextStartPosition offset:nsMarkedTextRange.length];
+        UITextPosition *uiMarkedTextStartPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsMarkedTextRange.location];
+        UITextPosition *uiMarkedTextEndPosition = [self positionFromPosition:uiMarkedTextStartPosition offset:(NSInteger)nsMarkedTextRange.length];
         UITextRange *uiMarkedTextRange = [self textRangeFromPosition:uiMarkedTextStartPosition toPosition:uiMarkedTextEndPosition];
         
         self.selectedTextRange = uiMarkedTextRange;
@@ -121,8 +121,8 @@
         
         if (beginningOfDocument)
         {
-            nsMarkedTextRange.location = [self offsetFromPosition:beginningOfDocument toPosition:uiMmarkedTextRange.start];
-            nsMarkedTextRange.length = [self offsetFromPosition:uiMmarkedTextRange.start toPosition:uiMmarkedTextRange.end];
+            nsMarkedTextRange.location = (NSUInteger)[self offsetFromPosition:beginningOfDocument toPosition:uiMmarkedTextRange.start];
+            nsMarkedTextRange.length = (NSUInteger)[self offsetFromPosition:uiMmarkedTextRange.start toPosition:uiMmarkedTextRange.end];
         }
     }
     
@@ -141,7 +141,7 @@
         if (uiBeginningOfDocument && uiEndOfDocument)
         {
             nsTextRange.location = 0;
-            nsTextRange.length = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
+            nsTextRange.length = (NSUInteger)[self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
         }
         
         return nsTextRange;
@@ -159,7 +159,7 @@
         
         if (uiBeginningOfDocument && uiEndOfDocument)
         {
-            nsTextLength = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
+            nsTextLength = (NSUInteger)[self offsetFromPosition:uiBeginningOfDocument toPosition:uiEndOfDocument];
         }
         
         return nsTextLength;
@@ -177,7 +177,7 @@
     if (uiBeginningOfDocument)
     {
         UITextPosition *uiOldTextPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsOldTextPosition];
-        UITextPosition *uiNewTextPosition = [self positionFromPosition:uiOldTextPosition offset:offset];
+        UITextPosition *uiNewTextPosition = [self positionFromPosition:uiOldTextPosition inDirection:direction offset:offset];
         
         if (uiNewTextPosition)
         {
@@ -198,8 +198,8 @@
     
     if (uiBeginningOfDocument)
     {
-        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:nsTextRange.length];
+        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:(NSInteger)nsTextRange.length];
         UITextRange *uiTextRange = [self textRangeFromPosition:uiTextBeginPosition toPosition:uiTextEndPosition];
         
         UITextPosition *uiTextPosition = [self positionWithinRange:uiTextRange farthestInDirection:direction];
@@ -226,8 +226,8 @@
         
         if (uiCharecterTextRange)
         {
-            nsCharecterTextRange.location = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiCharecterTextRange.start];
-            nsCharecterTextRange.length = [self offsetFromPosition:uiCharecterTextRange.start toPosition:uiCharecterTextRange.end];
+            nsCharecterTextRange.location = (NSUInteger)[self offsetFromPosition:uiBeginningOfDocument toPosition:uiCharecterTextRange.start];
+            nsCharecterTextRange.length = (NSUInteger)[self offsetFromPosition:uiCharecterTextRange.start toPosition:uiCharecterTextRange.end];
         }
     }
     
@@ -259,8 +259,8 @@
     
     if (uiBeginningOfDocument)
     {
-        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:nsTextRange.length];
+        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:(NSInteger)nsTextRange.length];
         UITextRange *uiTextRange = [self textRangeFromPosition:uiTextBeginPosition toPosition:uiTextEndPosition];
         
         if (uiTextRange)
@@ -280,8 +280,8 @@
     
     if (uiBeginningOfDocument)
     {
-        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:nsTextRange.length];
+        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:(NSInteger)nsTextRange.length];
         UITextRange *uiTextRange = [self textRangeFromPosition:uiTextBeginPosition toPosition:uiTextEndPosition];
         
         if (uiTextRange)
@@ -339,8 +339,8 @@
     
     if (uiBeginningOfDocument)
     {
-        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:nsTextRange.location];
-        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:nsTextRange.length];
+        UITextPosition *uiTextBeginPosition = [self positionFromPosition:uiBeginningOfDocument offset:(NSInteger)nsTextRange.location];
+        UITextPosition *uiTextEndPosition = [self positionFromPosition:uiTextBeginPosition offset:(NSInteger)nsTextRange.length];
         UITextRange *uiTextRange = [self textRangeFromPosition:uiTextBeginPosition toPosition:uiTextEndPosition];
         
         if (uiTextRange)
@@ -369,8 +369,8 @@
         
         if (uiBeginningOfDocument)
         {
-            nsCharacterRange.location = [self offsetFromPosition:uiBeginningOfDocument toPosition:uiCharacterTextRange.start];
-            nsCharacterRange.length = [self offsetFromPosition:uiCharacterTextRange.start toPosition:uiCharacterTextRange.end];
+            nsCharacterRange.location = (NSUInteger)[self offsetFromPosition:uiBeginningOfDocument toPosition:uiCharacterTextRange.start];
+            nsCharacterRange.length = (NSUInteger)[self offsetFromPosition:uiCharacterTextRange.start toPosition:uiCharacterTextRange.end];
         }
     }
     

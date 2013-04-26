@@ -43,7 +43,7 @@
 
 UIKIT_STATIC_INLINE UIViewAnimationOptions UIViewAnimationOptionsFromUIViewAnimationCurve(UIViewAnimationCurve viewAnimationCurve)
 {
-    UIViewAnimationOptions viewAnimationOptions = (viewAnimationCurve & 0x0000000F) << 16;
+    UIViewAnimationOptions viewAnimationOptions = (UIViewAnimationOptions)((viewAnimationCurve & 0x0000000F) << 16);
     return viewAnimationOptions;
 }
 
@@ -55,7 +55,7 @@ UIKIT_STATIC_INLINE UIViewAnimationCurve UIViewAnimationCurveFromUIViewAnimation
 
 UIKIT_STATIC_INLINE UIViewAnimationOptions UIViewAnimationOptionsFromUIViewAnimationTransition(UIViewAnimationTransition viewAnimationTransition)
 {
-    UIViewAnimationOptions viewAnimationOptions = (viewAnimationTransition & 0x0000000F) << 20;
+    UIViewAnimationOptions viewAnimationOptions = (UIViewAnimationOptions)((viewAnimationTransition & 0x0000000F) << 20);
     return viewAnimationOptions;
 }
 

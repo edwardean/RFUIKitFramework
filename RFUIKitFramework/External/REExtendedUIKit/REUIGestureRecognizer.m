@@ -130,18 +130,18 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
     
     NSMutableArray *blockActions = [objectDictionary objectForKey:UIGestureRecognizerBlockActionsKey];
     
-    NSInteger indexOfBlockAction = blockActions.count - 1;
+    NSInteger indexOfBlockAction = (NSInteger)blockActions.count - 1;
     
-    while (indexOfBlockAction < blockActions.count)
+    while (indexOfBlockAction < (NSInteger)blockActions.count)
     {
-        REUIBlockAction *blockAction = [blockActions objectAtIndex:indexOfBlockAction];
+        REUIBlockAction *blockAction = [blockActions objectAtIndex:(NSUInteger)indexOfBlockAction];
         
         if (!block ||
             (block && (blockAction.block == block)))
         {
             [self removeTarget:blockAction action:@selector(sendAction:)];
             
-            [blockActions removeObjectAtIndex:indexOfBlockAction];
+            [blockActions removeObjectAtIndex:(NSUInteger)indexOfBlockAction];
         }
         
         indexOfBlockAction--;
