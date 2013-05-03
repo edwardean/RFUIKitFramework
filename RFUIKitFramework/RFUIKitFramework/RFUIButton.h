@@ -54,10 +54,10 @@
 - (UIView *)stateViewForState:(UIControlState)state;
 - (void)setStateView:(UIView *)stateView forState:(UIControlState)state;
 
-@property (nonatomic, retain) UIView *disabledView;
-@property (nonatomic, retain) UIView *highlightedView;
-@property (nonatomic, retain) UIView *normalView;
-@property (nonatomic, retain) UIView *selectedView;
+@property (nonatomic, strong) UIView *disabledView;
+@property (nonatomic, strong) UIView *highlightedView;
+@property (nonatomic, strong) UIView *normalView;
+@property (nonatomic, strong) UIView *selectedView;
 
 // Configuring Edge Insets
 

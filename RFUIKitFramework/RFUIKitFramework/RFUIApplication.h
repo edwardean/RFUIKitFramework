@@ -1,9 +1,9 @@
 //
-//  RFUINavigationController.h
+//  RFUIApplication.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2011.12.11.
+//  Created by Roman Oliichuk on 2013.05.02.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,23 +41,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "RFUIApplication.h"
-#import "RFUIViewController.h"
-
-@interface RFUINavigationController : UINavigationController
+typedef NS_ENUM(NSInteger, RFUIInterfaceOrientationMode)
 {
-@protected
-    
-    RFUIInterfaceOrientationMode mInterfaceOrientationMode;
-    BOOL                         mIsAppeared;
-}
-
-// Responding to View Events
-
-@property (nonatomic, setter = setAppeared:) BOOL isAppeared;
-
-// Configuring the View Rotation Settings
-
-@property (nonatomic) RFUIInterfaceOrientationMode interfaceOrientationMode;
-
-@end
+    RFUIInterfaceOrientationModeDefault = 0,
+    RFUIInterfaceOrientationModeFixedV1 = 1
+};

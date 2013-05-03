@@ -1,9 +1,9 @@
 //
-//  RFUINavigationController.h
+//  RFUIView.m
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2011.12.11.
+//  Created by Roman Oliichuk on 2013.05.02.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,26 +38,32 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "RFUIView.h"
 
-#import "RFUIApplication.h"
-#import "RFUIViewController.h"
+@implementation RFUIView
 
-@interface RFUINavigationController : UINavigationController
+#pragma mark - Initializing and Creating a RFUIView
+
+- (id)initWithFrame:(CGRect)frame
 {
-@protected
+    if ((self = [super initWithFrame:frame]))
+    {
+    }
     
-    RFUIInterfaceOrientationMode mInterfaceOrientationMode;
-    BOOL                         mIsAppeared;
+    return self;
 }
 
-// Responding to View Events
+#pragma mark - Deallocating a RFUIView
 
-@property (nonatomic, setter = setAppeared:) BOOL isAppeared;
+- (void)dealloc
+{
+}
 
-// Configuring the View Rotation Settings
+#pragma mark - Laying out Subviews
 
-@property (nonatomic) RFUIInterfaceOrientationMode interfaceOrientationMode;
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+}
 
 @end

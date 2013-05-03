@@ -52,6 +52,7 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
+        mInterfaceOrientationMode = RFUIInterfaceOrientationModeDefault;
         mIsAppeared = NO;
     }
     
@@ -92,19 +93,73 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeDefault)
+    {
+        BOOL shouldAutorotate = [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+        return shouldAutorotate;
+    }
+    
+    else if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeFixedV1)
+    {
+        BOOL shouldAutorotate = [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+        return shouldAutorotate;
+    }
+    
     BOOL shouldAutorotate = [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
     return shouldAutorotate;
 }
 
 - (BOOL)shouldAutorotate
 {
+    if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeDefault)
+    {
+        BOOL shouldAutorotate = [super shouldAutorotate];
+        return shouldAutorotate;
+    }
+    
+    else if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeFixedV1)
+    {
+        BOOL shouldAutorotate = YES;
+        
+        UIViewController *topViewController = self.topViewController;
+        
+        if (topViewController)
+        {
+            BOOL childShouldAutorotate = topViewController.shouldAutorotate;
+            shouldAutorotate &= childShouldAutorotate;
+        }
+        
+        return shouldAutorotate;
+    }
+    
     BOOL shouldAutorotate = [super shouldAutorotate];
     return shouldAutorotate;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    NSUInteger supportedInterfaceOrientations = [super supportedInterfaceOrientations];
+    if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeDefault)
+    {
+        UIInterfaceOrientationMask supportedInterfaceOrientations = [super supportedInterfaceOrientations];
+        return supportedInterfaceOrientations;
+    }
+    
+    else if (mInterfaceOrientationMode == RFUIInterfaceOrientationModeFixedV1)
+    {
+        UIInterfaceOrientationMask supportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
+        
+        UIViewController *topViewController = self.topViewController;
+        
+        if (topViewController)
+        {
+            UIInterfaceOrientationMask childSupportedInterfaceOrientations = topViewController.supportedInterfaceOrientations;
+            supportedInterfaceOrientations &= childSupportedInterfaceOrientations;
+        }
+        
+        return supportedInterfaceOrientations;
+    }
+    
+    UIInterfaceOrientationMask supportedInterfaceOrientations = [super supportedInterfaceOrientations];
     return supportedInterfaceOrientations;
 }
 
@@ -150,5 +205,9 @@
     
     self.isAppeared = NO;
 }
+
+#pragma mark - Configuring the View Rotation Settings
+
+@synthesize interfaceOrientationMode = mInterfaceOrientationMode;
 
 @end

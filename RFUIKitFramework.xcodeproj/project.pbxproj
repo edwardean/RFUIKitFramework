@@ -95,6 +95,8 @@
 		307FBA451671B6E2008AF204 /* REUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA3E1671B6E2008AF204 /* REUIAlertView.m */; };
 		307FBA461671B6E2008AF204 /* REUIGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA401671B6E2008AF204 /* REUIGraphics.m */; };
 		307FBA471671B6E2008AF204 /* REUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FBA421671B6E2008AF204 /* REUIImageView.m */; };
+		308CB614173467A6007FDA4C /* RFUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 308CB611173467A6007FDA4C /* RFUIApplication.m */; };
+		308CB615173467A6007FDA4C /* RFUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 308CB613173467A6007FDA4C /* RFUIView.m */; };
 		30E21AF51599B76C00DDE278 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF41599B76C00DDE278 /* UIKit.framework */; };
 		30E21AF71599B76C00DDE278 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF61599B76C00DDE278 /* Foundation.framework */; };
 		30E21AF91599B76C00DDE278 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E21AF81599B76C00DDE278 /* CoreGraphics.framework */; };
@@ -285,6 +287,10 @@
 		307FBA401671B6E2008AF204 /* REUIGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIGraphics.m; sourceTree = "<group>"; };
 		307FBA411671B6E2008AF204 /* REUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUIImageView.h; sourceTree = "<group>"; };
 		307FBA421671B6E2008AF204 /* REUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUIImageView.m; sourceTree = "<group>"; };
+		308CB610173467A6007FDA4C /* RFUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIApplication.h; sourceTree = "<group>"; };
+		308CB611173467A6007FDA4C /* RFUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIApplication.m; sourceTree = "<group>"; };
+		308CB612173467A6007FDA4C /* RFUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIView.h; sourceTree = "<group>"; };
+		308CB613173467A6007FDA4C /* RFUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIView.m; sourceTree = "<group>"; };
 		30E21AF01599B76C00DDE278 /* RFUIKitFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFUIKitFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E21AF41599B76C00DDE278 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		30E21AF61599B76C00DDE278 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -498,6 +504,8 @@
 		304B42D016645A0B000E2C38 /* RFUIKitFramework */ = {
 			isa = PBXGroup;
 			children = (
+				308CB610173467A6007FDA4C /* RFUIApplication.h */,
+				308CB611173467A6007FDA4C /* RFUIApplication.m */,
 				304B42D116645A0B000E2C38 /* RFUIButton.h */,
 				304B42D216645A0B000E2C38 /* RFUIButton.m */,
 				304B42D316645A0B000E2C38 /* RFUICheckView.h */,
@@ -552,6 +560,8 @@
 				304B42FC16645A0B000E2C38 /* RFUITreeViewNode.m */,
 				304B42FD16645A0B000E2C38 /* RFUITreeViewRowAnimation.h */,
 				304B42FE16645A0B000E2C38 /* RFUITreeViewRowAnimation.m */,
+				308CB612173467A6007FDA4C /* RFUIView.h */,
+				308CB613173467A6007FDA4C /* RFUIView.m */,
 				304B42FF16645A0B000E2C38 /* RFUIViewController.h */,
 				304B430016645A0B000E2C38 /* RFUIViewController.m */,
 			);
@@ -815,6 +825,8 @@
 				30EFE1F216B140D000582DB2 /* RFUILocalNetworkActivityIndicator.m in Sources */,
 				30EFE1F316B140D000582DB2 /* RFUINetworkActivityIndicator.m in Sources */,
 				3056F55516CFE37300DCFF44 /* RFUIImageCache.m in Sources */,
+				308CB614173467A6007FDA4C /* RFUIApplication.m in Sources */,
+				308CB615173467A6007FDA4C /* RFUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import "REUIApplication.h"
 #import "RFUIButton.h"
 #import "RFUICheckView.h"
 #import "RFUIForwardView.h"
@@ -63,4 +64,5 @@
 #import "RFUITreeViewCell.h"
 #import "RFUITreeViewNode.h"
 #import "RFUITreeViewRowAnimation.h"
+#import "RFUIView.h"
 #import "RFUIViewController.h"
