@@ -76,6 +76,7 @@
 		304B434116645A0B000E2C38 /* RFUITreeViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B42FC16645A0B000E2C38 /* RFUITreeViewNode.m */; };
 		304B434216645A0B000E2C38 /* RFUITreeViewRowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B42FE16645A0B000E2C38 /* RFUITreeViewRowAnimation.m */; };
 		304B434316645A0B000E2C38 /* RFUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B430016645A0B000E2C38 /* RFUIViewController.m */; };
+		304B76D8173D93EA00134985 /* RFUILayoutContainerWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B76D7173D93EA00134985 /* RFUILayoutContainerWrapperView.m */; };
 		3056F55516CFE37300DCFF44 /* RFUIImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3056F55416CFE37300DCFF44 /* RFUIImageCache.m */; };
 		307BD62D1634B2EF00178FC2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 307BD62C1634B2EF00178FC2 /* Default-568h@2x.png */; };
 		307FB9BD1671B61E008AF204 /* RFUIScreenShooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 307FB9BC1671B61E008AF204 /* RFUIScreenShooter.m */; };
@@ -250,6 +251,8 @@
 		304B42FE16645A0B000E2C38 /* RFUITreeViewRowAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUITreeViewRowAnimation.m; sourceTree = "<group>"; };
 		304B42FF16645A0B000E2C38 /* RFUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIViewController.h; sourceTree = "<group>"; };
 		304B430016645A0B000E2C38 /* RFUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIViewController.m; sourceTree = "<group>"; };
+		304B76D6173D93EA00134985 /* RFUILayoutContainerWrapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUILayoutContainerWrapperView.h; sourceTree = "<group>"; };
+		304B76D7173D93EA00134985 /* RFUILayoutContainerWrapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUILayoutContainerWrapperView.m; sourceTree = "<group>"; };
 		3056F55316CFE37300DCFF44 /* RFUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIImageCache.h; sourceTree = "<group>"; };
 		3056F55416CFE37300DCFF44 /* RFUIImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIImageCache.m; sourceTree = "<group>"; };
 		307BD62C1634B2EF00178FC2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				304B42DE16645A0B000E2C38 /* RFUIKeyboardLayoutView.m */,
 				304B42DF16645A0B000E2C38 /* RFUIKitFramework.h */,
 				304B42E016645A0B000E2C38 /* RFUIKitFramework.m */,
+				304B76D6173D93EA00134985 /* RFUILayoutContainerWrapperView.h */,
+				304B76D7173D93EA00134985 /* RFUILayoutContainerWrapperView.m */,
 				30EFE1EE16B140CF00582DB2 /* RFUILocalNetworkActivityIndicator.h */,
 				30EFE1EF16B140CF00582DB2 /* RFUILocalNetworkActivityIndicator.m */,
 				304B42E116645A0B000E2C38 /* RFUINavigationController.h */,
@@ -827,6 +832,7 @@
 				3056F55516CFE37300DCFF44 /* RFUIImageCache.m in Sources */,
 				308CB614173467A6007FDA4C /* RFUIApplication.m in Sources */,
 				308CB615173467A6007FDA4C /* RFUIView.m in Sources */,
+				304B76D8173D93EA00134985 /* RFUILayoutContainerWrapperView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

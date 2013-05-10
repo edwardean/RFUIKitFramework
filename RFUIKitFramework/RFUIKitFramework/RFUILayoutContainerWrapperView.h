@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
+//  RFUILayoutContainerWrapperView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2013.05.07.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,32 +38,18 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "REUIApplication.h"
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCache.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUILayoutContainerWrapperView.h"
-#import "RFUILocalNetworkActivityIndicator.h"
-#import "RFUINavigationController.h"
-#import "RFUIPageScrollView.h"
-#import "RFUIPageScrollViewCell.h"
-#import "RFUIScreenShooter.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUIStatusBarCenter.h"
-#import "RFUIStatusBarLayoutView.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUITreeView.h"
-#import "RFUITreeViewCell.h"
-#import "RFUITreeViewNode.h"
-#import "RFUITreeViewRowAnimation.h"
-#import "RFUIView.h"
-#import "RFUIViewController.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@interface RFUILayoutContainerWrapperView : UIView
+{
+@protected
+    
+    UIView *mContentView;
+}
+
+// Accessing the Content View
+
+@property (nonatomic, readonly) UIView *contentView;
+
+@end
