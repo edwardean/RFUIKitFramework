@@ -55,9 +55,9 @@
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, mainScreenBounds.size.width, mainScreenBounds.size.height)];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         mDataSource = nil;
         

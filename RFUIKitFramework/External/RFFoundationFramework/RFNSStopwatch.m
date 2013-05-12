@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  RFNSStopwatch.m
+//  REExtendedFoundation
+//  https://github.com/oliromole/RFFoundationFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2010.09.24.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,33 +38,79 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUIApplication.h"
-#import "RFUIBarButtonItemView.h"
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCache.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUILayoutContainerWrapperView.h"
-#import "RFUILocalNetworkActivityIndicator.h"
-#import "RFUINavigationController.h"
-#import "RFUIPageScrollView.h"
-#import "RFUIPageScrollViewCell.h"
-#import "RFUIScreenShooter.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUIStatusBarCenter.h"
-#import "RFUIStatusBarLayoutView.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUITreeView.h"
-#import "RFUITreeViewCell.h"
-#import "RFUITreeViewNode.h"
-#import "RFUITreeViewRowAnimation.h"
-#import "RFUIView.h"
-#import "RFUIViewController.h"
+#import "RFNSStopwatch.h"
+
+@implementation RFNSStopwatch
+
+#pragma mark - Initializing and Creating a RFNSStopwatch
+
+- (id)init
+{
+    if ((self = [super init]))
+    {
+        mElapsed = 0.0;
+        mStartDate = nil;
+    }
+    
+    return self;
+}
+
++ (id)stopwatch
+{
+    return [[self alloc] init];
+}
+
+#pragma mark - Deallocating a RFNSStopwatch
+
+- (void)dealloc
+{
+    mStartDate = nil;
+}
+
+#pragma mark - Accessing the RFNSStopwatch Object
+
+- (double)elapsed
+{
+    return mElapsed;
+}
+
+- (BOOL)isRunning
+{
+    return (mStartDate != nil);
+}
+
+#pragma mark - Managing the Work Stopwatch
+
+- (void)reset
+{
+    mElapsed = 0.0;
+    
+    mStartDate = nil;
+}
+
+- (void)restart
+{
+    mElapsed = 0.0;
+    
+    mStartDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0];
+}
+
+- (void)start
+{
+    if (!mStartDate)
+    {
+        mStartDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.0];
+    }
+}
+
+- (void)stop
+{
+    if (mStartDate)
+    {
+        mElapsed -= [mStartDate timeIntervalSinceNow];
+        
+        mStartDate = nil;
+    }
+}
+
+@end

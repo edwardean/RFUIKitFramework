@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		3039D06715CA5E38005D1E2B /* RFTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3039D06615CA5E38005D1E2B /* RFTestView.m */; };
 		3039D06A15CA5E51005D1E2B /* RFTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3039D06915CA5E51005D1E2B /* RFTestViewController.m */; };
+		303D72F817401E3F00D009FE /* RFUIBarButtonItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D72F717401E3F00D009FE /* RFUIBarButtonItemView.m */; };
+		303D730817401E7800D009FE /* RFFoundationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D72FB17401E7800D009FE /* RFFoundationError.m */; };
+		303D730917401E7800D009FE /* RFFoundationFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D72FD17401E7800D009FE /* RFFoundationFramework.m */; };
+		303D730A17401E7800D009FE /* RFNSBlockInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D72FF17401E7800D009FE /* RFNSBlockInvocation.m */; };
+		303D730B17401E7800D009FE /* RFNSFileMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D730117401E7800D009FE /* RFNSFileMemoryBuffer.m */; };
+		303D730C17401E7800D009FE /* RFNSOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D730317401E7800D009FE /* RFNSOutputStream.m */; };
+		303D730D17401E7800D009FE /* RFNSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D730517401E7800D009FE /* RFNSStopwatch.m */; };
+		303D730E17401E7800D009FE /* RFNSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D730717401E7800D009FE /* RFNSVersion.m */; };
+		303D731417401E9E00D009FE /* RWUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D731117401E9E00D009FE /* RWUUID.m */; };
+		303D731517401E9E00D009FE /* RWUUIDWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 303D731317401E9E00D009FE /* RWUUIDWrapper.m */; };
 		304B430116645A0B000E2C38 /* REBase256.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B427916645A0B000E2C38 /* REBase256.m */; };
 		304B430216645A0B000E2C38 /* REExtendedFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B427B16645A0B000E2C38 /* REExtendedFoundation.m */; };
 		304B430316645A0B000E2C38 /* RENSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 304B427D16645A0B000E2C38 /* RENSArray.m */; };
@@ -117,6 +127,26 @@
 		3039D06615CA5E38005D1E2B /* RFTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestView.m; sourceTree = "<group>"; };
 		3039D06815CA5E51005D1E2B /* RFTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFTestViewController.h; sourceTree = "<group>"; };
 		3039D06915CA5E51005D1E2B /* RFTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFTestViewController.m; sourceTree = "<group>"; };
+		303D72F617401E3F00D009FE /* RFUIBarButtonItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFUIBarButtonItemView.h; sourceTree = "<group>"; };
+		303D72F717401E3F00D009FE /* RFUIBarButtonItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFUIBarButtonItemView.m; sourceTree = "<group>"; };
+		303D72FA17401E7800D009FE /* RFFoundationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFFoundationError.h; sourceTree = "<group>"; };
+		303D72FB17401E7800D009FE /* RFFoundationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFFoundationError.m; sourceTree = "<group>"; };
+		303D72FC17401E7800D009FE /* RFFoundationFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFFoundationFramework.h; sourceTree = "<group>"; };
+		303D72FD17401E7800D009FE /* RFFoundationFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFFoundationFramework.m; sourceTree = "<group>"; };
+		303D72FE17401E7800D009FE /* RFNSBlockInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNSBlockInvocation.h; sourceTree = "<group>"; };
+		303D72FF17401E7800D009FE /* RFNSBlockInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNSBlockInvocation.m; sourceTree = "<group>"; };
+		303D730017401E7800D009FE /* RFNSFileMemoryBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNSFileMemoryBuffer.h; sourceTree = "<group>"; };
+		303D730117401E7800D009FE /* RFNSFileMemoryBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNSFileMemoryBuffer.m; sourceTree = "<group>"; };
+		303D730217401E7800D009FE /* RFNSOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNSOutputStream.h; sourceTree = "<group>"; };
+		303D730317401E7800D009FE /* RFNSOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNSOutputStream.m; sourceTree = "<group>"; };
+		303D730417401E7800D009FE /* RFNSStopwatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNSStopwatch.h; sourceTree = "<group>"; };
+		303D730517401E7800D009FE /* RFNSStopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNSStopwatch.m; sourceTree = "<group>"; };
+		303D730617401E7800D009FE /* RFNSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFNSVersion.h; sourceTree = "<group>"; };
+		303D730717401E7800D009FE /* RFNSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFNSVersion.m; sourceTree = "<group>"; };
+		303D731017401E9E00D009FE /* RWUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWUUID.h; sourceTree = "<group>"; };
+		303D731117401E9E00D009FE /* RWUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWUUID.m; sourceTree = "<group>"; };
+		303D731217401E9E00D009FE /* RWUUIDWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWUUIDWrapper.h; sourceTree = "<group>"; };
+		303D731317401E9E00D009FE /* RWUUIDWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWUUIDWrapper.m; sourceTree = "<group>"; };
 		304B427816645A0B000E2C38 /* REBase256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REBase256.h; sourceTree = "<group>"; };
 		304B427916645A0B000E2C38 /* REBase256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REBase256.m; sourceTree = "<group>"; };
 		304B427A16645A0B000E2C38 /* REExtendedFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REExtendedFoundation.h; sourceTree = "<group>"; };
@@ -352,12 +382,46 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
+		303D72F917401E7800D009FE /* RFFoundationFramework */ = {
+			isa = PBXGroup;
+			children = (
+				303D72FA17401E7800D009FE /* RFFoundationError.h */,
+				303D72FB17401E7800D009FE /* RFFoundationError.m */,
+				303D72FC17401E7800D009FE /* RFFoundationFramework.h */,
+				303D72FD17401E7800D009FE /* RFFoundationFramework.m */,
+				303D72FE17401E7800D009FE /* RFNSBlockInvocation.h */,
+				303D72FF17401E7800D009FE /* RFNSBlockInvocation.m */,
+				303D730017401E7800D009FE /* RFNSFileMemoryBuffer.h */,
+				303D730117401E7800D009FE /* RFNSFileMemoryBuffer.m */,
+				303D730217401E7800D009FE /* RFNSOutputStream.h */,
+				303D730317401E7800D009FE /* RFNSOutputStream.m */,
+				303D730417401E7800D009FE /* RFNSStopwatch.h */,
+				303D730517401E7800D009FE /* RFNSStopwatch.m */,
+				303D730617401E7800D009FE /* RFNSVersion.h */,
+				303D730717401E7800D009FE /* RFNSVersion.m */,
+			);
+			path = RFFoundationFramework;
+			sourceTree = "<group>";
+		};
+		303D730F17401E9E00D009FE /* RWUUIDWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				303D731017401E9E00D009FE /* RWUUID.h */,
+				303D731117401E9E00D009FE /* RWUUID.m */,
+				303D731217401E9E00D009FE /* RWUUIDWrapper.h */,
+				303D731317401E9E00D009FE /* RWUUIDWrapper.m */,
+			);
+			path = RWUUIDWrapper;
+			sourceTree = "<group>";
+		};
 		304B427616645A0B000E2C38 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				303D730F17401E9E00D009FE /* RWUUIDWrapper */,
 				307FB9BF1671B64C008AF204 /* REExtendedCoreGraphics */,
 				304B427716645A0B000E2C38 /* REExtendedFoundation */,
 				304B42A016645A0B000E2C38 /* REExtendedUIKit */,
+				303D72F917401E7800D009FE /* RFFoundationFramework */,
 				304B42CB16645A0B000E2C38 /* RWObjCWrapper */,
 			);
 			path = External;
@@ -509,6 +573,8 @@
 			children = (
 				308CB610173467A6007FDA4C /* RFUIApplication.h */,
 				308CB611173467A6007FDA4C /* RFUIApplication.m */,
+				303D72F617401E3F00D009FE /* RFUIBarButtonItemView.h */,
+				303D72F717401E3F00D009FE /* RFUIBarButtonItemView.m */,
 				304B42D116645A0B000E2C38 /* RFUIButton.h */,
 				304B42D216645A0B000E2C38 /* RFUIButton.m */,
 				304B42D316645A0B000E2C38 /* RFUICheckView.h */,
@@ -833,6 +899,16 @@
 				308CB614173467A6007FDA4C /* RFUIApplication.m in Sources */,
 				308CB615173467A6007FDA4C /* RFUIView.m in Sources */,
 				304B76D8173D93EA00134985 /* RFUILayoutContainerWrapperView.m in Sources */,
+				303D72F817401E3F00D009FE /* RFUIBarButtonItemView.m in Sources */,
+				303D730817401E7800D009FE /* RFFoundationError.m in Sources */,
+				303D730917401E7800D009FE /* RFFoundationFramework.m in Sources */,
+				303D730A17401E7800D009FE /* RFNSBlockInvocation.m in Sources */,
+				303D730B17401E7800D009FE /* RFNSFileMemoryBuffer.m in Sources */,
+				303D730C17401E7800D009FE /* RFNSOutputStream.m in Sources */,
+				303D730D17401E7800D009FE /* RFNSStopwatch.m in Sources */,
+				303D730E17401E7800D009FE /* RFNSVersion.m in Sources */,
+				303D731417401E9E00D009FE /* RWUUID.m in Sources */,
+				303D731517401E9E00D009FE /* RWUUIDWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

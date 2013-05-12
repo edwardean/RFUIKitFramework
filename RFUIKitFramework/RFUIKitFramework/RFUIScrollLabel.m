@@ -51,9 +51,9 @@
     return [self view];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         mLabel = nil;
         mLabelInset = UIEdgeInsetsZero;
@@ -69,9 +69,9 @@
     return self;
 }
 
-+ (id)scrollLabelWithFrame:(CGRect)frame
++ (id)scrollLabelWithFrame:(CGRect)viewFrame
 {
-    return [self scrollViewWithFrame:frame];
+    return [self scrollViewWithFrame:viewFrame];
 }
 
 #pragma mark - Deallocating a RFUIScrollLabel

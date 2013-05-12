@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  RFNSOutputStream.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/RFFoundationFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2012.07.06.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,33 +38,36 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUIApplication.h"
-#import "RFUIBarButtonItemView.h"
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCache.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUILayoutContainerWrapperView.h"
-#import "RFUILocalNetworkActivityIndicator.h"
-#import "RFUINavigationController.h"
-#import "RFUIPageScrollView.h"
-#import "RFUIPageScrollViewCell.h"
-#import "RFUIScreenShooter.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUIStatusBarCenter.h"
-#import "RFUIStatusBarLayoutView.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUITreeView.h"
-#import "RFUITreeViewCell.h"
-#import "RFUITreeViewNode.h"
-#import "RFUITreeViewRowAnimation.h"
-#import "RFUIView.h"
-#import "RFUIViewController.h"
+#import <Foundation/Foundation.h>
+
+typedef enum RFNSOutputStreamDestinationType
+{
+    RFNSOutputStreamDestinationTypeNone = 0,
+    RFNSOutputStreamDestinationTypeVacuum = 1,
+    RFNSOutputStreamDestinationTypeMemory = 2,
+    RFNSOutputStreamDestinationTypeMutableData = 3
+} RFNSOutputStreamDestinationType;
+
+@interface RFNSOutputStream : NSOutputStream
+{
+@protected
+    
+    RFNSOutputStreamDestinationType  mDestinationType;
+    NSMutableData                   *mMutableData;
+    NSError                         *mStreamError;
+    NSStreamStatus                   mStreamStatus;
+}
+
+// Initializing and Creating a RFNSOutputStream
+
+- (id)initToMemory;
++ (id)outputStreamToMemory;
+- (id)initToMutableData:(NSMutableData *)data;
++ (id)outputStreamToMutableData:(NSMutableData *)data;
+- (id)initToVacuum;
++ (id)outputStreamToVacuum;
+
+@end
+
+FOUNDATION_EXTERN NSString * const RFNSStreamDataWrittenToMemoryStreamKey;
+FOUNDATION_EXTERN NSString * const RFNSStreamDataWrittenToMutableDataStreamKey;

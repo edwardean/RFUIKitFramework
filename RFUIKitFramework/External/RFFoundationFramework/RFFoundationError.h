@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  RFFoundationError.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/RFFoundationFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2013.01.12.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,33 +38,16 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUIApplication.h"
-#import "RFUIBarButtonItemView.h"
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCache.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUILayoutContainerWrapperView.h"
-#import "RFUILocalNetworkActivityIndicator.h"
-#import "RFUINavigationController.h"
-#import "RFUIPageScrollView.h"
-#import "RFUIPageScrollViewCell.h"
-#import "RFUIScreenShooter.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUIStatusBarCenter.h"
-#import "RFUIStatusBarLayoutView.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUITreeView.h"
-#import "RFUITreeViewCell.h"
-#import "RFUITreeViewNode.h"
-#import "RFUITreeViewRowAnimation.h"
-#import "RFUIView.h"
-#import "RFUIViewController.h"
+#import <Foundation/Foundation.h>
+
+FOUNDATION_EXTERN NSString * const RFFoundationErrorDomain;
+
+// Error codes
+typedef NS_ENUM(NSUInteger, RFFoundationErrorCode)
+{
+    RFFoundationErrorCodeFileMemoryBufferComponent = 0x00000001,
+    RFFoundationErrorCodeFileMemoryBufferMask      = 0x00FFFF01,
+    RFFoundationErrorCodeComponentMask             = 0x000000FF,
+    RFFoundationErrorCodeCodeMask                  = 0x00FFFF00,
+    RFFoundationErrorCodeReservedMask              = 0xFF000000
+};

@@ -51,9 +51,9 @@
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         mWidth0 = 10.0f;
         mWidth2 = 10.0f;

@@ -46,9 +46,9 @@
 
 #pragma mark - Initializing and Creating a RFUITextField
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         mPlaceholderColor = nil;
         

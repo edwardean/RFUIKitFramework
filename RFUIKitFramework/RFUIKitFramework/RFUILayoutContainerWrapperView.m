@@ -41,6 +41,7 @@
 #import "RFUILayoutContainerWrapperView.h"
 
 #import "REExtendedUIKit.h"
+#import "RFFoundationFramework.h"
 
 #import "RFUIStatusBarCenter.h"
 
@@ -69,6 +70,14 @@
         // Configuring the view.
         self.clipsToBounds = YES;
         
+        // Getting some information about the device.
+        UIDevice *device = [UIDevice currentDevice];
+        RFNSVersion *deviceSystemVersion = [[RFNSVersion alloc] initWithString:device.systemVersion];
+        RFNSVersion *version_6_0 = [[RFNSVersion alloc] initWithComponents:@6, @0, nil];
+        
+        // Calculate a value that indicates the need to indent.
+        mLayoutContainerWrapperViewFlags.needsIndent = ([deviceSystemVersion compare:version_6_0] != NSOrderedAscending);
+        
         // Laying out own subviews.
         [self layoutSubviewsInRFUILayoutContainerWrapperView];
     }
@@ -94,21 +103,35 @@
     // Getting the view frame.
     CGRect viewFrame = self.frame;
     
-    // Getting the status bar frame.
-    RFUIStatusBarCenter *statusBarCenter = [RFUIStatusBarCenter sharedCenter];
-    CGRect statusBarFrame = statusBarCenter.frame;
-    
     // Declaring some variables.
     CGRect contentViewFrame;
     
-    // Calculating the status bar height.
-    CGFloat statusBarHeight = MIN(statusBarFrame.size.width, statusBarFrame.size.height);
+    // We need the indent.
+    if (mLayoutContainerWrapperViewFlags.needsIndent)
+    {
+        // Getting the status bar frame.
+        RFUIStatusBarCenter *statusBarCenter = [RFUIStatusBarCenter sharedCenter];
+        CGRect statusBarFrame = statusBarCenter.frame;
+        
+        // Calculating the status bar height.
+        CGFloat statusBarHeight = MIN(statusBarFrame.size.width, statusBarFrame.size.height);
+        
+        // Calculating the content view frame.
+        contentViewFrame.origin.x = 0.0f;
+        contentViewFrame.origin.y = -statusBarHeight;
+        contentViewFrame.size.width = viewFrame.size.width;
+        contentViewFrame.size.height = viewFrame.size.height + statusBarHeight;
+    }
     
-    // Calculating the content view frame.
-    contentViewFrame.origin.x = 0.0f;
-    contentViewFrame.origin.y = -statusBarHeight;
-    contentViewFrame.size.width = viewFrame.size.width;
-    contentViewFrame.size.height = viewFrame.size.height + statusBarHeight;
+    // We do not need the indent
+    else
+    {
+        // Calculating the content view frame.
+        contentViewFrame.origin.x = 0.0f;
+        contentViewFrame.origin.y = 0.0f;
+        contentViewFrame.size.width = viewFrame.size.width;
+        contentViewFrame.size.height = viewFrame.size.height;
+    }
     
     // Applying the calculated frames.
     [mContentView setFrameIfNeeded:contentViewFrame];

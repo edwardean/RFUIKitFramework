@@ -1,9 +1,9 @@
 //
-//  RFUIKitFramework.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  RFNSStopwatch.h
+//  REExtendedFoundation
+//  https://github.com/oliromole/RFFoundationFramework.git
 //
-//  Created by Roman Oliichuk on 2012.06.26.
+//  Created by Roman Oliichuk on 2010.09.24.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,33 +38,30 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUIApplication.h"
-#import "RFUIBarButtonItemView.h"
-#import "RFUIButton.h"
-#import "RFUICheckView.h"
-#import "RFUIForwardView.h"
-#import "RFUIImageCache.h"
-#import "RFUIImageCheckView.h"
-#import "RFUIImageSplitBackgoundView.h"
-#import "RFUIKeyboardCenter.h"
-#import "RFUIKeyboardLayoutView.h"
-#import "RFUILayoutContainerWrapperView.h"
-#import "RFUILocalNetworkActivityIndicator.h"
-#import "RFUINavigationController.h"
-#import "RFUIPageScrollView.h"
-#import "RFUIPageScrollViewCell.h"
-#import "RFUIScreenShooter.h"
-#import "RFUIScrollLabel.h"
-#import "RFUISplitBackgoundView.h"
-#import "RFUISplitViewController.h"
-#import "RFUIStatusBarCenter.h"
-#import "RFUIStatusBarLayoutView.h"
-#import "RFUITabBarController.h"
-#import "RFUITableViewController.h"
-#import "RFUITextField.h"
-#import "RFUITreeView.h"
-#import "RFUITreeViewCell.h"
-#import "RFUITreeViewNode.h"
-#import "RFUITreeViewRowAnimation.h"
-#import "RFUIView.h"
-#import "RFUIViewController.h"
+#import <Foundation/Foundation.h>
+
+@interface RFNSStopwatch : NSObject
+{
+@protected
+    
+    double  mElapsed;
+    NSDate *mStartDate;
+}
+
+// Initializing and Creating a RFNSStopwatch
+
++ (id)stopwatch;
+
+// Accessing the RFNSStopwatch Object
+
+@property (nonatomic, readonly) double elapsed;
+@property (nonatomic, readonly) BOOL   isRunning;
+
+// Managing the Work Stopwatch
+
+- (void)reset;
+- (void)restart;
+- (void)start;
+- (void)stop;
+
+@end

@@ -49,9 +49,9 @@
     return [[self alloc] init];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         mDelegate = nil;
     }
@@ -59,9 +59,9 @@
     return self;
 }
 
-+ (id)forwardViewWithFrame:(CGRect)frame
++ (id)forwardViewWithFrame:(CGRect)viewFrame
 {
-    return [[self alloc] initWithFrame:frame];
+    return [[self alloc] initWithFrame:viewFrame];
 }
 
 #pragma mark - Deallocating a RFUIForwardView

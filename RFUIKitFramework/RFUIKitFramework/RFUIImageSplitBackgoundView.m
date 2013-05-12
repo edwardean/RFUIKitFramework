@@ -46,9 +46,9 @@
 
 #pragma mark - Initializing and Creating a RFUIImageSplitBackgoundView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
     }
     

@@ -1,9 +1,9 @@
 //
-//  RFUILayoutContainerWrapperView.h
-//  RFUIKitFramework
-//  https://github.com/oliromole/RFUIKitFramework.git
+//  RWUUID.h
+//  RWUUIDWrapper
+//  https://github.com/oliromole/RWUUIDWrapper.git
 //
-//  Created by Roman Oliichuk on 2013.05.07.
+//  Created by Roman Oliichuk on 2011.08.28.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,22 +38,91 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <uuid/uuid.h>
 
-@interface RFUILayoutContainerWrapperView : UIView
+#import <Foundation/Foundation.h>
+
+union RWUUIDRepresentation
+{
+    uuid_t    cUuid;
+    u_int8_t  values8[16];
+    u_int16_t values16[8];
+    u_int32_t values32[4];
+    u_int64_t values64[2];
+};
+
+typedef union RWUUIDRepresentation RWUUIDRepresentation;
+
+@interface RWUUID : NSObject <NSCoding, NSCopying, NSMutableCopying>
 {
 @protected
     
-    UIView *mContentView;
-    struct
-    {
-        unsigned int needsIndent : 1;
-    } mLayoutContainerWrapperViewFlags;
+    RWUUIDRepresentation mUUIDRepresentation;
 }
 
-// Accessing the Content View
+// Initializing and Creating a RWUUID
 
-@property (nonatomic, readonly) UIView *contentView;
++ (id)UUID;
+
+- (id)initWithNull;
++ (id)UUIDWithNull;
+
+- (id)initWithGenerate;
++ (id)UUIDWithGenerate;
+
+- (id)initWithGenerateRandom;
++ (id)UUIDWithGenerateRandom;
+
+- (id)initWithGenerateTime;
++ (id)UUIDWithGenerateTime;
+
+- (id)initWithCUuid:(uuid_t)cUuid;
++ (id)UUIDWithCUuid:(uuid_t)cUuid;
+
+- (id)initWithUUID:(RWUUID *)otherUUID;
++ (id)UUIDWithUUID:(RWUUID *)otherUUID;
+
+- (id)initWithString:(NSString *)aString;
++ (id)UUIDWithString:(NSString *)aString;
+
++ (id)null;
+
+// Getting C UUID
+
+- (void)getCUuid:(uuid_t)cUuid;
+
+// Checking the UUID
+
+@property (nonatomic, readonly) BOOL isNull;
+
+// Comparing UUIDs
+
+- (NSComparisonResult)compare:(RWUUID *)rightUUID;
+- (BOOL)isEqualToUUID:(RWUUID *)rightUUID;
+
+// Getting the String Representation
+
+- (NSString *)string;
+- (NSString *)uppercaseString;
+- (NSString *)lowercaseString;
+
+@end
+
+@interface RWMutableUUID : RWUUID
+{
+@protected
+    
+}
+
+// Setting C UUID
+
+- (void)setCUuid:(uuid_t)cUuid;
+- (void)setUUID:(RWUUID *)otherUUID;
+
+// Generating a new UUID
+
+- (void)generate;
+- (void)generateRandom;
+- (void)generateTime;
 
 @end

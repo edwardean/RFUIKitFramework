@@ -59,11 +59,12 @@
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, 16.0f, 16.0f)];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-#pragma unused(frame)
+    viewFrame.size.width = 16.0f;
+    viewFrame.size.width = 16.0f;
     
-    if ((self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 16.0f, 16.0f)]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         [self addTarget:self action:@selector(rfuiCheckViewEventTouchEventsAction:) forControlEvents:(UIControlEventAllTouchEvents & ~UIControlEventTouchUpInside)];
         [self addTarget:self action:@selector(rfuiCheckViewEventTouchUpInsideAction:) forControlEvents:UIControlEventTouchUpInside];

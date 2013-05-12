@@ -48,12 +48,10 @@
 
 #pragma mark - Initializing and Creating a RFUIStatusBarLayoutView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
-        CGRect viewFrame = self.frame;
-        
         RFUIStatusBarCenter *statusBarCenter = [RFUIStatusBarCenter sharedCenter];
         
         mBackgroundView = nil;

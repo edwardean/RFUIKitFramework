@@ -54,9 +54,9 @@
 
 #pragma mark - Initializing and Creating a RFUIButton
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         [self addTarget:self action:@selector(rfuiButtonEventAllTouchEventsAction:) forControlEvents:UIControlEventAllTouchEvents];
         

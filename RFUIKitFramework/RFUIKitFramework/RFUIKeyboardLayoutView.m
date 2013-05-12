@@ -48,9 +48,9 @@
 
 #pragma mark - Initializing and Creating a RFUIKeyboardLayoutView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
         RFUIKeyboardDisplayState displayState = [RFUIKeyboardCenter sharedCenter].displayState;
         

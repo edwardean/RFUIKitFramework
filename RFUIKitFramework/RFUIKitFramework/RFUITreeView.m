@@ -52,12 +52,10 @@
 
 #pragma mark - Initializing and Creating a RFUITreeView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)viewFrame
 {
-    if ((self = [super initWithFrame:frame]))
+    if ((self = [super initWithFrame:viewFrame]))
     {
-        CGRect viewFrame = self.frame;
-        
         mTreeViewNodesBlock = [^id(RFUITreeViewNode *treeViewNode, NSIndexPath *indexPath) {
 #pragma unused(indexPath)
             
@@ -100,9 +98,9 @@
     return self;
 }
 
-+ (id)treeViewWithFrame:(CGRect)frame
++ (id)treeViewWithFrame:(CGRect)viewFrame
 {
-    return [[self alloc] initWithFrame:frame];
+    return [[self alloc] initWithFrame:viewFrame];
 }
 
 #pragma mark - Deallocating a RFUITreeView
