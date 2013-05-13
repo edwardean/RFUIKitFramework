@@ -1,9 +1,9 @@
 //
-//  RFFoundationError.h
-//  REExtendedFoundation
-//  https://github.com/oliromole/RFFoundationFramework.git
+//  RFUIContainerView.h
+//  RFUIKitFramework
+//  https://github.com/oliromole/RFUIKitFramework.git
 //
-//  Created by Roman Oliichuk on 2013.01.12.
+//  Created by Roman Oliichuk on 2013.05.07.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -39,15 +39,27 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-FOUNDATION_EXTERN NSString * const RFFoundationErrorDomain;
-
-// Error codes
-typedef NS_ENUM(NSUInteger, RFFoundationErrorCode)
+typedef NS_OPTIONS(NSUInteger, RFUIContainerViewContentViewOptions)
 {
-    RFFoundationErrorCodeFileMemoryBufferComponent = 0x00000001,
-    RFFoundationErrorCodeFileMemoryBufferMask      = 0x00FFFF01,
-    RFFoundationErrorCodeComponentMask             = 0x000000FF,
-    RFFoundationErrorCodeCodeMask                  = 0x00FFFF00,
-    RFFoundationErrorCodeReservedMask              = 0xFF000000
+    RFUIContainerViewContentViewCreateAutomatic = 1 << 0,
+    RFUIContainerViewContentViewIsFirstSubview = 1 << 1,
+    RFUIContainerViewContentViewIsLastSubview = 2 << 1,
 };
+
+@interface RFUIContainerView : UIView
+{
+@protected
+    
+    UIView                              *mContentView;
+    RFUIContainerViewContentViewOptions  mContentViewOptions;
+}
+
+// Managing the Content View
+
+@property (nonatomic, strong)   UIView                              *contentView;
+@property (nonatomic)           RFUIContainerViewContentViewOptions  contentViewOptions; // Default value is 0.
+@property (nonatomic, readonly) BOOL                                 hasContentView;
+
+@end
