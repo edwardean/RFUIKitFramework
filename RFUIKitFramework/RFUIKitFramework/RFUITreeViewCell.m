@@ -142,6 +142,7 @@
         backgroundViewFrame.size = viewFrame.size;
         
         mBackgroundView = [[UIView alloc] initWithFrame:backgroundViewFrame];
+        mBackgroundView.userInteractionEnabled = NO;
         
         if (mBackgroundView)
         {
