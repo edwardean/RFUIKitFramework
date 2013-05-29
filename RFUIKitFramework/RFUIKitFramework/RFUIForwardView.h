@@ -48,6 +48,15 @@
 @protected
     
     id<RFUIForwardViewDelegate> __weak mDelegate;
+    
+    void (^mDidAddSubviewBlock)(UIView *subview);
+    void (^mDidMoveToSuperviewBlock)(void);
+    void (^mDidMoveToWindowBlock)(void);
+    void (^mDrawRectBlock)(CGRect rect);
+    void (^mLayoutSubviewsBlock)();
+    void (^mWillMoveToSuperviewBlock)(UIView *newSuperview);
+    void (^mWillMoveToWindowBlock)(UIWindow *newWindow);
+    void (^mWillRemoveSubviewBlock)(UIView *subview);
 }
 
 // Initializing and Creating a RFUIForwardView
@@ -59,6 +68,22 @@
 
 @property (nonatomic, weak) id<RFUIForwardViewDelegate> delegate;
 
+// Laying out Subview
+
+@property (nonatomic, copy) void (^layoutSubviewsBlock)();
+
+// Drawing and Updating the View
+@property (nonatomic, copy) void (^drawRectBlock)(CGRect rect);
+
+// Observing View-Related Changes
+
+@property (nonatomic, copy) void (^didAddSubviewBlock)(UIView *subview);
+@property (nonatomic, copy) void (^willRemoveSubviewBlock)(UIView *subview);
+@property (nonatomic, copy) void (^willMoveToSuperviewBlock)(UIView *newSuperview);
+@property (nonatomic, copy) void (^didMoveToSuperviewBlock)(void);
+@property (nonatomic, copy) void (^willMoveToWindowBlock)(UIWindow *newWindow);
+@property (nonatomic, copy) void (^didMoveToWindowBlock)(void);
+
 @end
 
 @protocol RFUIForwardViewDelegate <NSObject>
@@ -67,6 +92,9 @@
 
 // Laying out Subview
 - (void)forwardViewLayoutSubviews:(RFUIForwardView *)forwardView;
+
+// Drawing and Updating the View
+- (void)forwardView:(RFUIForwardView *)forwardView drawRect:(CGRect)rect;
 
 // Observing View-Related Changes
 - (void)forwardView:(RFUIForwardView *)forwardView didAddSubview:(UIView *)subview;

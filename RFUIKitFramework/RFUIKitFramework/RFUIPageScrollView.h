@@ -105,6 +105,9 @@
 
 @interface NSIndexPath (NSIndexPathRFUIPageScrollView)
 
+// Initializing and Creating a NSIndexPath
+
+- (id)initForRow:(NSInteger)row column:(NSInteger)column;
 + (id)indexPathForRow:(NSInteger)row column:(NSInteger)column;
 
 @property(nonatomic,readonly) NSInteger column;

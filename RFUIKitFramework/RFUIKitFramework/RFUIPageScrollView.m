@@ -723,18 +723,33 @@
 
 @implementation NSIndexPath (NSIndexPathRFUIPageScrollView)
 
-#pragma mark - Initializing a NSIndexPath
+#pragma mark - Initializing and Creating a NSIndexPath
+
+- (id)initForRow:(NSInteger)row column:(NSInteger)column
+{
+    // Creating an array of indexes.
+    NSUInteger indexes[2] = {(NSUInteger)column, (NSUInteger)row};
+    
+    if ((self = [self initWithIndexes:indexes length:2]))
+    {
+    }
+    
+    return self;
+}
 
 + (id)indexPathForRow:(NSInteger)row column:(NSInteger)column
 {
-    return [self indexPathForRow:row inSection:column];
+    return [[self alloc] initForRow:row column:column];
 }
 
 #pragma mark - Properties
 
 - (NSInteger)column
 {
-    NSInteger column = self.section;
+    // Getting the column.
+    NSInteger column = (NSInteger)[self indexAtPosition:0];
+    
+    // Returning the column.
     return column;
 }
 

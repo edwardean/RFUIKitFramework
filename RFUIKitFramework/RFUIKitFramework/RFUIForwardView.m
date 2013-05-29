@@ -53,7 +53,18 @@
 {
     if ((self = [super initWithFrame:viewFrame]))
     {
+        // Setting the defalut values.
         mDelegate = nil;
+        
+        // Setting the defalut values.
+        mDidAddSubviewBlock = nil;
+        mDidMoveToSuperviewBlock = nil;
+        mDidMoveToWindowBlock = nil;
+        mDrawRectBlock = nil;
+        mLayoutSubviewsBlock = nil;
+        mWillMoveToSuperviewBlock = nil;
+        mWillMoveToWindowBlock = nil;
+        mWillRemoveSubviewBlock = nil;
     }
     
     return self;
@@ -68,9 +79,36 @@
 
 - (void)dealloc
 {
+    mDelegate = nil;
+    
+    // Releasing the did add subview block.
+    mDidAddSubviewBlock = nil;
+    
+    // Releasing the did move to superview block.
+    mDidMoveToSuperviewBlock = nil;
+    
+    // Releasing the did move to window block.
+    mDidMoveToWindowBlock = nil;
+    
+    // Releasing the draw rect block.
+    mDrawRectBlock = nil;
+    
+    // Releasing the layout subviews block.
+    mLayoutSubviewsBlock = nil;
+    
+    // Releasing the will move to superview block.
+    mWillMoveToSuperviewBlock = nil;
+    
+    // Releasing the will move to window block.
+    mWillMoveToWindowBlock = nil;
+    
+    // Rleasing the will remove subview block.
+    mWillRemoveSubviewBlock = nil;
 }
 
 #pragma mark - Laying out Subview
+
+@synthesize layoutSubviewsBlock = mLayoutSubviewsBlock;
 
 - (void)layoutSubviews
 {
@@ -83,9 +121,43 @@
     {
         [delegate forwardViewLayoutSubviews:self];
     }
+    
+    if (mLayoutSubviewsBlock)
+    {
+        mLayoutSubviewsBlock();
+    }
+}
+
+#pragma mark - Drawing and Updating the View
+
+@synthesize drawRectBlock = mDrawRectBlock;
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    id<RFUIForwardViewDelegate> delegate = mDelegate;
+    
+    if ([delegate conformsToProtocol:@protocol(RFUIForwardViewDelegate)] &&
+        [delegate respondsToSelector:@selector(forwardView:drawRect:)])
+    {
+        [delegate forwardView:self drawRect:rect];
+    }
+    
+    if (mDrawRectBlock)
+    {
+        mDrawRectBlock(rect);
+    }
 }
 
 #pragma mark - Observing View-Related Changes
+
+@synthesize didAddSubviewBlock = mDidAddSubviewBlock;
+@synthesize willRemoveSubviewBlock = mWillRemoveSubviewBlock;
+@synthesize willMoveToSuperviewBlock = mWillMoveToSuperviewBlock;
+@synthesize didMoveToSuperviewBlock = mDidMoveToSuperviewBlock;
+@synthesize willMoveToWindowBlock = mWillMoveToWindowBlock;
+@synthesize didMoveToWindowBlock = mDidMoveToWindowBlock;
 
 - (void)didAddSubview:(UIView *)subview
 {
@@ -97,6 +169,11 @@
         [delegate respondsToSelector:@selector(forwardView:didAddSubview:)])
     {
         [delegate forwardView:self didAddSubview:subview];
+    }
+    
+    if (mDidAddSubviewBlock)
+    {
+        mDidAddSubviewBlock(subview);
     }
 }
 
@@ -111,6 +188,11 @@
     {
         [delegate forwardView:self willRemoveSubview:subview];
     }
+    
+    if (mWillRemoveSubviewBlock)
+    {
+        mWillRemoveSubviewBlock(subview);
+    }
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
@@ -123,6 +205,11 @@
         [delegate respondsToSelector:@selector(forwardView:willMoveToSuperview:)])
     {
         [delegate forwardView:self willMoveToSuperview:newSuperview];
+    }
+    
+    if (mWillMoveToSuperviewBlock)
+    {
+        mWillMoveToSuperviewBlock(newSuperview);
     }
 }
 
@@ -137,6 +224,11 @@
     {
         [delegate forwardViewDidMoveToSuperview:self];
     }
+    
+    if (mDidMoveToSuperviewBlock)
+    {
+        mDidMoveToSuperviewBlock();
+    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -150,6 +242,11 @@
     {
         [delegate forwardView:self willMoveToWindow:newWindow];
     }
+    
+    if (mWillMoveToWindowBlock)
+    {
+        mWillMoveToWindowBlock(newWindow);
+    }
 }
 
 - (void)didMoveToWindow
@@ -162,6 +259,11 @@
         [delegate respondsToSelector:@selector(forwardViewDidMoveToWindow:)])
     {
         [delegate forwardViewDidMoveToWindow:self];
+    }
+    
+    if (mDidMoveToWindowBlock)
+    {
+        mDidMoveToWindowBlock();
     }
 }
 

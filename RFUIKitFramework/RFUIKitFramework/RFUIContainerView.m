@@ -210,7 +210,7 @@
 
 - (RFUIContainerViewContentViewOptions)contentViewOptions
 {
-    // Returing the content view options.
+    // Returning the content view options.
     return mContentViewOptions;
 }
 

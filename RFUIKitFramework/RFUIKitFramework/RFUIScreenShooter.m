@@ -267,11 +267,9 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
     
     // Creating a screenshot image.
     
-#if (__IPHONE_4_0 <= __IPHONE_OS_VERSION_MIN_REQUIRED) || (__IPHONE_4_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED)
     CGFloat scale = UI_SCREEN_SCALSE();
-#endif
     
-    REUIGraphicsBeginImageContextWithOptions(screenshotImageSize, NO, scale);
+    UIGraphicsBeginImageContextWithOptions(screenshotImageSize, NO, scale);
     
     CGContextRef screenshotContextRef = UIGraphicsGetCurrentContext();
     
@@ -329,7 +327,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         
         // Rednering the window.
         
-        REUIGraphicsBeginImageContextWithOptions(mainWindowSize, NO, scale);
+        UIGraphicsBeginImageContextWithOptions(mainWindowSize, NO, scale);
         
         CGContextRef windowContextRef = UIGraphicsGetCurrentContext();
         
