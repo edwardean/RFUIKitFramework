@@ -59,6 +59,7 @@
 #import "RENSObjCRuntime.h"
 #import "RENSObject.h"
 #import "RENSOrderedSet.h"
+#import "RENSPathUtilities.h"
 #import "RENSPropertyList.h"
 #import "RENSRange.h"
 #import "RENSSet.h"
@@ -67,4 +68,5 @@
 #import "RENSThread.h"
 #import "RENSTimer.h"
 #import "RENSURLRequest.h"
+#import "RERFC5322.h"
 #import "RERFC822.h"

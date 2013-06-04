@@ -1,9 +1,9 @@
 //
-//  REUIGestureRecognizer.h
+//  REUITableView.h
 //  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.08.
+//  Created by Roman Oliichuk on 2013.05.24.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,30 +41,31 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState);
-UIKIT_EXTERN UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string);
+@interface UITableView (UITableViewREUITableView)
 
-@interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
+// Accessing Cells and Sections
 
-// Initializing and Creating a UIGestureRecognizer
+- (UITableViewCell *)cellForRowAtRow:(NSInteger)row inSection:(NSInteger)section;
 
-+ (id)gestureRecognizerWithTarget:(id)target action:(SEL)action;
+// Managing Selections
 
-- (id)initWithBlockAction:(void (^)(id sender))block;
-+ (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
+- (void)selectRowsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)selectAllRowsInSections:(NSIndexSet *)sections animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)selectAllRowsAnimated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
 
-// Managing the View
+- (void)deselectRowsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated;
+- (void)deselectRowsInSections:(NSIndexSet *)sections animated:(BOOL)animated;
+- (void)deselectRowsAnimated:(BOOL)animated;
 
-- (void)removeFromView;
-
-// Adding and Removing Block Actions
-
-- (void)addBlockAction:(void (^)(id control))block;
-- (void)removeBlockAction:(void (^)(id control))block;
-
-- (NSMutableArray *)copyAllBlockActions;
-- (NSMutableArray *)allBlockActions;
+- (void)deselectSelectedRowsInSections:(NSIndexSet *)sections animated:(BOOL)animated;
+- (void)deselectSelectedRowsAnimated:(BOOL)animated;
 
 @end
 
-UIKIT_EXTERN NSString * const UIGestureRecognizerBlockActionsKey;
+@interface NSIndexPath (NSIndexPathREUITableView)
+
+// Initializing and Creating a NSIndexPath
+
+- (id)initForRow:(NSInteger)row inSection:(NSInteger)section;
+
+@end

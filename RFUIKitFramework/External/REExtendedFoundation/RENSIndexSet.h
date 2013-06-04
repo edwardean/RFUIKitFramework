@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSIndexSetCast(indexSet) NSObjectCast(indexSet, NSIndexSet)
+#define NSMutableIndexSetCast(indexSet) NSObjectCast(indexSet, NSMutableIndexSet)
 #define NSMutableIndexSetCastOrCopy(indexSet) NSMutableObjectCastOrCopy(indexSet, NSMutableIndexSet)

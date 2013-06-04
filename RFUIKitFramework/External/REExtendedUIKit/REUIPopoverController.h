@@ -1,9 +1,9 @@
 //
-//  REUIGestureRecognizer.h
-//  REUIKitFramework
+//  REUIPopoverController.h
+//  REExtendedUIKit
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.08.
+//  Created by Roman Oliichuk on 2013.05.18.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,30 +41,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState);
-UIKIT_EXTERN UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string);
+@interface UIPopoverController (UIPopoverControllerREUIPopoverController)
 
-@interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
+// Configuring the Popover Attributes
 
-// Initializing and Creating a UIGestureRecognizer
+- (void)setPopoverContentSizeIfNeeded:(CGSize)popoverContentSize;
+- (void)setPopoverContentSizeIfNeeded:(CGSize)popoverContentSize animated:(BOOL)animated;
 
-+ (id)gestureRecognizerWithTarget:(id)target action:(SEL)action;
+// Presenting and Dismissing the Popover
 
-- (id)initWithBlockAction:(void (^)(id sender))block;
-+ (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
-
-// Managing the View
-
-- (void)removeFromView;
-
-// Adding and Removing Block Actions
-
-- (void)addBlockAction:(void (^)(id control))block;
-- (void)removeBlockAction:(void (^)(id control))block;
-
-- (NSMutableArray *)copyAllBlockActions;
-- (NSMutableArray *)allBlockActions;
+- (void)presentPopoverInView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated;
 
 @end
-
-UIKIT_EXTERN NSString * const UIGestureRecognizerBlockActionsKey;

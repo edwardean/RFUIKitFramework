@@ -40,7 +40,142 @@
 
 #import "REUIAlertView.h"
 
+#import <objc/message.h>
+#import <objc/runtime.h>
+
+#import "REExtendedFoundation.h"
+
+static id (* UIAlertView_REUIAlertView_PreviousInitWithFrame)(id self, SEL _cmd, CGRect frame) = NULL;
+static NSInteger (* UIAlertView_REUIAlertView_PreviousAddButtonWithTitle)(id self, SEL _cmd, NSString *title) = NULL;
+static Class UIAlertView_REUIAlertView_Class = Nil;
+static Class UIAlertView_REUIAlertView_SuperClass = Nil;
+
+id UIAlertView_REUIAlertView_InitWithFrame(id self, SEL _cmd, CGRect frame);
+
+id UIAlertView_REUIAlertView_InitWithFrame(id self, SEL _cmd, CGRect frame)
+{
+    if (UIAlertView_REUIAlertView_PreviousInitWithFrame)
+    {
+        self = UIAlertView_REUIAlertView_PreviousInitWithFrame(self, _cmd, frame);
+    }
+    
+    else
+    {
+        struct objc_super objectSuper;
+        objectSuper.receiver = self;
+        objectSuper.super_class = UIAlertView_REUIAlertView_SuperClass;
+        
+        self = objc_msgSendSuper(&objectSuper, _cmd, frame);
+    }
+    
+    if (self)
+    {
+        NSMutableArray *buttonDictionaries = [[NSMutableArray alloc] init];
+        
+        NSMutableDictionary *objectDictionary = [self objectDictionary];
+        objectDictionary[REUIAlertViewButtonDictionariesKey] = buttonDictionaries;
+    }
+    
+    return self;
+}
+
+NSInteger UIAlertView_REUIAlertView_AddButtonWithTitle(id self, SEL _cmd, NSString *title);
+
+NSInteger UIAlertView_REUIAlertView_AddButtonWithTitle(id self, SEL _cmd, NSString *title)
+{
+    NSInteger indexOfButton = 0;
+    
+    if (UIAlertView_REUIAlertView_PreviousAddButtonWithTitle)
+    {
+        indexOfButton = UIAlertView_REUIAlertView_PreviousAddButtonWithTitle(self, _cmd, title);
+    }
+    
+    else
+    {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"The global UIAlertView_REUIAlertView_PreviousAddButtonWithTitle argument is NULL." userInfo:nil];
+    }
+    
+    NSMutableDictionary *buttonDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIAlertViewButtonDictionariesKey];
+    [buttonDictionaries insertObject:buttonDictionary atIndex:(NSUInteger)indexOfButton];
+    
+    return indexOfButton;
+}
+
 @implementation UIAlertView (UIAlertViewREUIAlertView)
+
+#pragma mark - Initializing a Class
+
++ (void)load
+{
+    UIAlertView_REUIAlertView_Class = [UIAlertView class];
+    UIAlertView_REUIAlertView_SuperClass =  [UIAlertView superclass];
+    
+    BOOL success = YES;
+    
+    success = class_addMethod(UIAlertView_REUIAlertView_Class, @selector(initWithFrame:), (IMP)UIAlertView_REUIAlertView_InitWithFrame, "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8");
+    
+    if (!success)
+    {
+        UIAlertView_REUIAlertView_PreviousInitWithFrame = (id (*)(id self, SEL _cmd, CGRect frame))class_replaceMethod(UIAlertView_REUIAlertView_Class, @selector(initWithFrame:), (IMP)UIAlertView_REUIAlertView_InitWithFrame, "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8");
+    }
+    
+    success = class_addMethod(UIAlertView_REUIAlertView_Class, @selector(addButtonWithTitle:), (IMP)UIAlertView_REUIAlertView_AddButtonWithTitle, "i12@0:4@8");
+    
+    if (!success)
+    {
+        UIAlertView_REUIAlertView_PreviousAddButtonWithTitle = (NSInteger (*)(id self, SEL _cmd, NSString *title))class_replaceMethod(UIAlertView_REUIAlertView_Class, @selector(addButtonWithTitle:), (IMP)UIAlertView_REUIAlertView_AddButtonWithTitle, "i12@0:4@8");
+    }
+}
+
+#pragma mark - Configuring Button Infomation
+
+- (NSMutableDictionary *)buttonDictionaryAtIndex:(NSInteger)index
+{
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIAlertViewButtonDictionariesKey];
+    NSMutableDictionary *buttonDictionary = buttonDictionaries[(NSUInteger)index];
+    
+    return buttonDictionary;
+}
+
+- (void)setButtonDictionary:(NSMutableDictionary *)buttonDictionary atIndex:(NSInteger)index
+{
+    if (!buttonDictionary)
+    {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The buttonDictionary argument is nil." userInfo:nil];
+    }
+    
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIAlertViewButtonDictionariesKey];
+    buttonDictionaries[(NSUInteger)index] = buttonDictionary;
+}
+
+- (NSMutableDictionary *)lastButtonDictionary
+{
+    NSInteger numberOfButtons = self.numberOfButtons;
+    
+    NSMutableDictionary *lastButtonDictionary = nil;
+    
+    if (numberOfButtons > 0)
+    {
+        lastButtonDictionary = [self buttonDictionaryAtIndex:(numberOfButtons - 1)];
+    }
+    
+    return lastButtonDictionary;
+}
+
+- (void)setLastButtonDictionary:(NSMutableDictionary *)buttonDictionary
+{
+    NSInteger numberOfButtons = self.numberOfButtons;
+    
+    if (numberOfButtons > 0)
+    {
+        [self setButtonDictionary:buttonDictionary atIndex:(numberOfButtons - 1)];
+    }
+}
 
 #pragma mark - Dismissing the Alert View
 
@@ -51,3 +186,5 @@
 }
 
 @end
+
+NSString * const REUIAlertViewButtonDictionariesKey = @"REUIAlertViewButtonDictionariesKey";

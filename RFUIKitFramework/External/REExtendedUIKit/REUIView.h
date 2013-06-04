@@ -97,4 +97,17 @@ UIKIT_STATIC_INLINE UIViewAnimationTransition UIViewAnimationTransitionFromUIVie
 - (void)recursiveLayoutIfNeeded;
 - (void)recursiveSetNeedsLayoutAndLayoutIfNeeded;
 
+// Rendring the view
+
+- (UIImage *)renderImage;
+
 @end
+
+UIKIT_STATIC_INLINE CGRect UIViewGetFrame(UIView *view)
+{
+    // Getting the view frame.
+    CGRect viewFrame = (view ? view.frame : CGRectZero);
+    
+    // Returning the view frame.
+    return viewFrame;
+}

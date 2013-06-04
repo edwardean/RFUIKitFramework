@@ -159,6 +159,8 @@
 
 @end
 
+#define NSStringCast(string) NSObjectCast(string, NSString)
+#define NSMutableStringCast(string) NSObjectCast(string, NSMutableString)
 #define NSMutableStringCastOrCopy(string) NSMutableObjectCastOrCopy(string, NSMutableString)
 
 FOUNDATION_EXTERN void *RECStringCreateWithNSString(NSString *nsString, NSStringEncoding encoding, BOOL fast, void *(*mallocFuntion)(size_t), void (*freeFunction)(void *));

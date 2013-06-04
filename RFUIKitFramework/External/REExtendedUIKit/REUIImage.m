@@ -42,6 +42,85 @@
 
 #import <objc/runtime.h>
 
+NSString *NSStringFromUIImageOrientation(UIImageOrientation imageOrientation)
+{
+    switch (imageOrientation)
+    {
+        default:
+        case UIImageOrientationUp:
+            return @"UIImageOrientationUp";
+            
+        case UIImageOrientationDown:
+            return @"UIImageOrientationDown";
+            
+        case UIImageOrientationLeft:
+            return @"UIImageOrientationLeft";
+            
+        case UIImageOrientationRight:
+            return @"UIImageOrientationRight";
+            
+        case UIImageOrientationUpMirrored:
+            return @"UIImageOrientationUpMirrored";
+            
+        case UIImageOrientationDownMirrored:
+            return @"UIImageOrientationDownMirrored";
+            
+        case UIImageOrientationLeftMirrored:
+            return @"UIImageOrientationLeftMirrored";
+            
+        case UIImageOrientationRightMirrored:
+            return @"UIImageOrientationRightMirrored";
+    }
+}
+
+UIImageOrientation UIImageOrientationFromNSString(NSString *string)
+{
+    if ([string isEqual:@"UIImageOrientationUp"])
+    {
+        return UIImageOrientationUp;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationDown"])
+    {
+        return UIImageOrientationDown;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationLeft"])
+    {
+        return UIImageOrientationLeft;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationRight"])
+    {
+        return UIImageOrientationRight;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationUpMirrored"])
+    {
+        return UIImageOrientationUpMirrored;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationDownMirrored"])
+    {
+        return UIImageOrientationDownMirrored;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationLeftMirrored"])
+    {
+        return UIImageOrientationLeftMirrored;
+    }
+    
+    else if ([string isEqual:@"UIImageOrientationRightMirrored"])
+    {
+        return UIImageOrientationRightMirrored;
+    }
+    
+    else
+    {
+        return UIImageOrientationUp;
+    }
+}
+
 @implementation UIImage (UIImageREUIImage)
 
 #pragma mark - Initializing and Creating a UIImage
@@ -189,7 +268,7 @@ jmp_exit:
 {
     CGFloat scale = 1.0f;
     
-    if (scale)
+    if (image)
     {
         scale = image.scale;
     }

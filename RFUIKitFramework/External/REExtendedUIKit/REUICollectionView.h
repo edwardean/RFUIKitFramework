@@ -1,9 +1,9 @@
 //
-//  REUIGestureRecognizer.h
+//  REUICollectionView.h
 //  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.08.
+//  Created by Roman Oliichuk on 2013.05.24.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,30 +41,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState);
-UIKIT_EXTERN UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string);
+@interface NSIndexPath (NSIndexPathREUICollectionView)
 
-@interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
+// Creating Initializing and Creating a NSIndexPath
 
-// Initializing and Creating a UIGestureRecognizer
-
-+ (id)gestureRecognizerWithTarget:(id)target action:(SEL)action;
-
-- (id)initWithBlockAction:(void (^)(id sender))block;
-+ (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
-
-// Managing the View
-
-- (void)removeFromView;
-
-// Adding and Removing Block Actions
-
-- (void)addBlockAction:(void (^)(id control))block;
-- (void)removeBlockAction:(void (^)(id control))block;
-
-- (NSMutableArray *)copyAllBlockActions;
-- (NSMutableArray *)allBlockActions;
+- (id)initWithItem:(NSInteger)item inSection:(NSInteger)section;
 
 @end
-
-UIKIT_EXTERN NSString * const UIGestureRecognizerBlockActionsKey;

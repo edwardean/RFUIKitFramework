@@ -125,4 +125,6 @@
 
 @end
 
+#define NSArrayCast(array) NSObjectCast(array, NSArray)
+#define NSMutableArrayCast(array) NSObjectCast(array, NSMutableArray)
 #define NSMutableArrayCastOrCopy(array) NSMutableObjectCastOrCopy(array, NSMutableArray)

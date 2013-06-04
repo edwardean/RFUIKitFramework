@@ -49,4 +49,20 @@
 
 + (id)viewControllerWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
+// Configuring Display in a Popover Controller
+
+- (void)setContentSizeForViewInPopoverIfNeeded:(CGSize)contentSizeForViewInPopover;
+- (void)setModalInPopoverIfNeeded:(BOOL)modalInPopover;
+
+@end
+
+@interface UIViewController (UIViewControllerPrivateREUIViewController_Dynamic)
+@end
+
+@interface UIViewController (UIViewControllerPrivateREUIViewController)
+
+// Getting Other Related Controllers
+
+@property (nonatomic, readonly) UIPopoverController *popoverController;
+
 @end

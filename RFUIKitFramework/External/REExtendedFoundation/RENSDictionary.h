@@ -89,4 +89,6 @@
 
 #endif
 
+#define NSDictionaryCast(dictionary) NSObjectCast(dictionary, NSDictionary)
+#define NSMutableDictionaryCast(dictionary) NSObjectCast(dictionary, NSMutableDictionary)
 #define NSMutableDictionaryCastOrCopy(dictionary) NSMutableObjectCastOrCopy(dictionary, NSMutableDictionary)

@@ -1,9 +1,9 @@
 //
-//  REUIActionSheet.h
+//  REUIPopoverController.m
 //  REExtendedUIKit
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.30.
+//  Created by Roman Oliichuk on 2013.05.18.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -38,24 +38,47 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "REUIPopoverController.h"
 
-@interface UIActionSheet (UIActionSheetREUIActionSheet)
+#import "REUIView.h"
 
-// Configuring Button Infomation
+@implementation UIPopoverController (UIPopoverControllerREUIPopoverController)
 
-- (NSMutableDictionary *)buttonDictionaryAtIndex:(NSInteger)index;
-- (void)setButtonDictionary:(NSMutableDictionary *)buttonDictionary atIndex:(NSInteger)index;
+#pragma mark - Configuring the Popover Attributes
 
-- (NSMutableDictionary *)lastButtonDictionary;
-- (void)setLastButtonDictionary:(NSMutableDictionary *)buttonDictionary;
+- (void)setPopoverContentSizeIfNeeded:(CGSize)popoverContentSize
+{
+    //
+    // See also:
+    // https://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIPopoverController_class/Reference/Reference.html
+    //
+    
+    // Setting the new popover content size with animation.
+    [self setPopoverContentSizeIfNeeded:popoverContentSize animated:YES];
+}
 
-// Dismissing the Action Sheet
+- (void)setPopoverContentSizeIfNeeded:(CGSize)newPopoverContentSize animated:(BOOL)animated
+{
+    // Getting the old popover content size.
+    CGSize oldPopoverContentSize = self.popoverContentSize;
+    
+    // The old popover content size and the new popover content size are different.
+    if (!CGSizeEqualToSize(oldPopoverContentSize, newPopoverContentSize))
+    {
+        // Setting the new popover content size.
+        [self setPopoverContentSize:newPopoverContentSize animated:animated];
+    }
+}
 
-- (void)dismissWithClickedCancelButtonAnimated:(BOOL)animated;
-- (void)dismissWithClickedDestructiveButtonAnimated:(BOOL)animated;
+#pragma mark - Presenting and Dismissing the Popover
+
+- (void)presentPopoverInView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated;
+{
+    // Getting the view frame.
+    CGRect viewFrame = UIViewGetFrame(view);
+    
+    // Present the popover in the view.
+    [self presentPopoverFromRect:CGRectMake(0.0f, 0.0f, viewFrame.size.width, viewFrame.size.height) inView:view permittedArrowDirections:arrowDirections animated:animated];
+}
 
 @end
-
-FOUNDATION_EXTERN NSString * const REUIActionSheetButtonDictionariesKey;

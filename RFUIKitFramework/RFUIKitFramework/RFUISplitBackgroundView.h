@@ -1,5 +1,5 @@
 //
-//  RFUISplitBackgoundView.h
+//  RFUISplitBackgroundView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
@@ -42,7 +42,7 @@
 #import <UIKit/UIKit.h>
 
 /*
- The RFUISplitBackgoundView split the background view into 9 views.
+ The RFUISplitBackgroundView split the background view into 9 views.
  
  w0 w1 w2
  
@@ -56,7 +56,7 @@
  w1, h1 - determined automatically.
  
  */
-@interface RFUISplitBackgoundView : UIView
+@interface RFUISplitBackgroundView : UIView
 {
 @protected
     
@@ -75,7 +75,7 @@
     CGFloat  mWidth2;
 }
 
-// Configuring the RFUISplitBackgoundView
+// Configuring the RFUISplitBackgroundView
 
 @property (nonatomic) CGFloat height0;
 @property (nonatomic) CGFloat height2;

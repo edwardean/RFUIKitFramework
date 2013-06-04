@@ -1,5 +1,5 @@
 //
-//  RFUISplitBackgoundView.m
+//  RFUISplitBackgroundView.m
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
@@ -38,13 +38,13 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUISplitBackgoundView.h"
+#import "RFUISplitBackgroundView.h"
 
 #import "REExtendedUIKit.h"
 
-@implementation RFUISplitBackgoundView
+@implementation RFUISplitBackgroundView
 
-#pragma mark - Initializing and Creating a RFUISplitBackgoundView
+#pragma mark - Initializing and Creating a RFUISplitBackgroundView
 
 - (id)init
 {
@@ -79,7 +79,7 @@
     return self;
 }
 
-#pragma mark - Deallocating a RFUISplitBackgoundView
+#pragma mark - Deallocating a RFUISplitBackgroundView
 
 - (void)dealloc
 {
@@ -159,7 +159,7 @@
     [mView22 setFrameIfNeeded:CGRectMake(width0 + width1, height0 + height1, width2, height2)];
 }
 
-#pragma mark - Configuring the RFUISplitBackgoundView
+#pragma mark - Configuring the RFUISplitBackgroundView
 
 - (CGFloat)height0
 {

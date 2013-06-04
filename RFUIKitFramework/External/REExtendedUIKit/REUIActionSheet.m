@@ -40,7 +40,142 @@
 
 #import "REUIActionSheet.h"
 
+#import <objc/message.h>
+#import <objc/runtime.h>
+
+#import "REExtendedFoundation.h"
+
+static id (* UIActionSheet_REUIActionSheet_PreviousInitWithFrame)(id self, SEL _cmd, CGRect frame) = NULL;
+static NSInteger (* UIActionSheet_REUIActionSheet_PreviousAddButtonWithTitle)(id self, SEL _cmd, NSString *title) = NULL;
+static Class UIActionSheet_REUIActionSheet_Class = Nil;
+static Class UIActionSheet_REUIActionSheet_SuperClass = Nil;
+
+id UIActionSheet_REUIActionSheet_InitWithFrame(id self, SEL _cmd, CGRect frame);
+
+id UIActionSheet_REUIActionSheet_InitWithFrame(id self, SEL _cmd, CGRect frame)
+{
+    if (UIActionSheet_REUIActionSheet_PreviousInitWithFrame)
+    {
+        self = UIActionSheet_REUIActionSheet_PreviousInitWithFrame(self, _cmd, frame);
+    }
+    
+    else
+    {
+        struct objc_super objectSuper;
+        objectSuper.receiver = self;
+        objectSuper.super_class = UIActionSheet_REUIActionSheet_SuperClass;
+        
+        self = objc_msgSendSuper(&objectSuper, _cmd, frame);
+    }
+    
+    if (self)
+    {
+        NSMutableArray *buttonDictionaries = [[NSMutableArray alloc] init];
+        
+        NSMutableDictionary *objectDictionary = [self objectDictionary];
+        objectDictionary[REUIActionSheetButtonDictionariesKey] = buttonDictionaries;
+    }
+    
+    return self;
+}
+
+NSInteger UIActionSheet_REUIActionSheet_AddButtonWithTitle(id self, SEL _cmd, NSString *title);
+
+NSInteger UIActionSheet_REUIActionSheet_AddButtonWithTitle(id self, SEL _cmd, NSString *title)
+{
+    NSInteger indexOfButton = 0;
+    
+    if (UIActionSheet_REUIActionSheet_PreviousAddButtonWithTitle)
+    {
+        indexOfButton = UIActionSheet_REUIActionSheet_PreviousAddButtonWithTitle(self, _cmd, title);
+    }
+    
+    else
+    {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"The global UIActionSheet_REUIActionSheet_PreviousAddButtonWithTitle argument is NULL." userInfo:nil];
+    }
+    
+    NSMutableDictionary *buttonDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIActionSheetButtonDictionariesKey];
+    [buttonDictionaries insertObject:buttonDictionary atIndex:(NSUInteger)indexOfButton];
+    
+    return indexOfButton;
+}
+
 @implementation UIActionSheet (UIActionSheetREUIActionSheet)
+
+#pragma mark - Initializing a Class
+
++ (void)load
+{
+    UIActionSheet_REUIActionSheet_Class = [UIActionSheet class];
+    UIActionSheet_REUIActionSheet_SuperClass =  [UIActionSheet superclass];
+    
+    BOOL success = YES;
+    
+    success = class_addMethod(UIActionSheet_REUIActionSheet_Class, @selector(initWithFrame:), (IMP)UIActionSheet_REUIActionSheet_InitWithFrame, "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8");
+    
+    if (!success)
+    {
+        UIActionSheet_REUIActionSheet_PreviousInitWithFrame = (id (*)(id self, SEL _cmd, CGRect frame))class_replaceMethod(UIActionSheet_REUIActionSheet_Class, @selector(initWithFrame:), (IMP)UIActionSheet_REUIActionSheet_InitWithFrame, "@24@0:4{CGRect={CGPoint=ff}{CGSize=ff}}8");
+    }
+    
+    success = class_addMethod(UIActionSheet_REUIActionSheet_Class, @selector(addButtonWithTitle:), (IMP)UIActionSheet_REUIActionSheet_AddButtonWithTitle, "i12@0:4@8");
+    
+    if (!success)
+    {
+        UIActionSheet_REUIActionSheet_PreviousAddButtonWithTitle = (NSInteger (*)(id self, SEL _cmd, NSString *title))class_replaceMethod(UIActionSheet_REUIActionSheet_Class, @selector(addButtonWithTitle:), (IMP)UIActionSheet_REUIActionSheet_AddButtonWithTitle, "i12@0:4@8");
+    }
+}
+
+#pragma mark - Configuring Button Infomation
+
+- (NSMutableDictionary *)buttonDictionaryAtIndex:(NSInteger)index
+{
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIActionSheetButtonDictionariesKey];
+    NSMutableDictionary *buttonDictionary = buttonDictionaries[(NSUInteger)index];
+    
+    return buttonDictionary;
+}
+
+- (void)setButtonDictionary:(NSMutableDictionary *)buttonDictionary atIndex:(NSInteger)index
+{
+    if (!buttonDictionary)
+    {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The buttonDictionary argument is nil." userInfo:nil];
+    }
+    
+    NSMutableDictionary *objectDictionary = [self objectDictionary];
+    NSMutableArray *buttonDictionaries = objectDictionary[REUIActionSheetButtonDictionariesKey];
+    buttonDictionaries[(NSUInteger)index] = buttonDictionary;
+}
+
+- (NSMutableDictionary *)lastButtonDictionary
+{
+    NSInteger numberOfButtons = self.numberOfButtons;
+    
+    NSMutableDictionary *lastButtonDictionary = nil;
+    
+    if (numberOfButtons > 0)
+    {
+        lastButtonDictionary = [self buttonDictionaryAtIndex:(numberOfButtons - 1)];
+    }
+    
+    return lastButtonDictionary;
+}
+
+- (void)setLastButtonDictionary:(NSMutableDictionary *)buttonDictionary
+{
+    NSInteger numberOfButtons = self.numberOfButtons;
+    
+    if (numberOfButtons > 0)
+    {
+        [self setButtonDictionary:buttonDictionary atIndex:(numberOfButtons - 1)];
+    }
+}
 
 #pragma mark - Dismissing the Action Sheet
 
@@ -57,3 +192,5 @@
 }
 
 @end
+
+NSString * const REUIActionSheetButtonDictionariesKey = @"REUIActionSheetButtonDictionariesKey";

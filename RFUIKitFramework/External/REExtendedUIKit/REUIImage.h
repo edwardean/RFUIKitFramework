@@ -41,6 +41,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN NSString *NSStringFromUIImageOrientation(UIImageOrientation imageOrientation);
+UIKIT_EXTERN UIImageOrientation UIImageOrientationFromNSString(NSString *string);
+
 @interface UIImage (UIImageREUIImage)
 
 // Initializing and Creating a UIImage

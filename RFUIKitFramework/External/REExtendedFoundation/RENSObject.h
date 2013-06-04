@@ -100,4 +100,5 @@ typedef NS_ENUM(uintptr_t, NSObjectAssociationPolicy)
 
 @end
 
+#define NSObjectCast(object, className) ({ __typeof__(object) __object = (object); [__object isKindOfClass:[className class]] ? ((className *)(__object)) : nil; })
 #define NSMutableObjectCastOrCopy(object, className) ({ __typeof__(object) __object = (object); [__object isKindOfClass:[className class]] ? ((className *)(__object)) : [(__object) mutableCopy]; })

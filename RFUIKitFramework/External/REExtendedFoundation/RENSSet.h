@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSSetCast(set) NSObjectCast(set, NSSet)
+#define NSMutableSetCast(set) NSObjectCast(set, NSMutableSet)
 #define NSMutableSetCastOrCopy(set) NSMutableObjectCastOrCopy(set, NSMutableSet)

@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSURLRequestCast(urlRequest) NSObjectCast(urlRequest, NSURLRequest)
+#define NSMutableURLRequestCast(urlRequest) NSObjectCast(urlRequest, NSMutableURLRequest)
 #define NSMutableURLRequestCastOrCopy(urlRequest) NSMutableObjectCastOrCopy(urlRequest, NSMutableURLRequest)

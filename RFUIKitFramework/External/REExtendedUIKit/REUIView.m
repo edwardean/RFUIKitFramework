@@ -49,9 +49,9 @@
     return [[self alloc] init];
 }
 
-+ (id)viewWithFrame:(CGRect)frame
++ (id)viewWithFrame:(CGRect)viewFrame
 {
-    return [[self alloc] initWithFrame:frame];
+    return [[self alloc] initWithFrame:viewFrame];
 }
 
 #pragma mark - Configuring a View’s Visual Appearance
@@ -171,5 +171,38 @@
     [self recursiveSetNeedsLayout];
     [self recursiveLayoutIfNeeded];
 }
+
+#pragma mark - Rendring the view
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
+- (UIImage *)renderImage
+{
+    // Getting some information about the view.
+    CGRect viewFrame = self.frame;
+    CGFloat contentScaleFactor = self.contentScaleFactor;
+    
+    // Creating the image context.
+    UIGraphicsBeginImageContextWithOptions(viewFrame.size, NO, contentScaleFactor);
+    
+    // Getting the created context.
+    CGContextRef viewContextRef = UIGraphicsGetCurrentContext();
+    
+    // Rendering the view.
+    id viewLayer = self.layer;
+    [viewLayer performSelector:@selector(renderInContext:) withObject:(__bridge id)viewContextRef];
+    
+    // Getting the rendered image.
+    UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Releasing the created context.
+    UIGraphicsEndImageContext();
+    
+    // Returning the rendered image.
+    return renderedImage;
+}
+
+#pragma clang diagnostic pop
 
 @end

@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSCharacterSetCast(characterSet) NSObjectCast(characterSet, NSCharacterSet)
+#define NSMutableCharacterSetCast(characterSet) NSObjectCast(characterSet, NSMutableCharacterSet)
 #define NSMutableCharacterSetCastOrCopy(characterSet) NSMutableObjectCastOrCopy(characterSet, NSMutableCharacterSet)

@@ -43,8 +43,18 @@
 
 @interface UIAlertView (UIAlertViewREUIAlertView)
 
+// Configuring Button Infomation
+
+- (NSMutableDictionary *)buttonDictionaryAtIndex:(NSInteger)index;
+- (void)setButtonDictionary:(NSMutableDictionary *)buttonDictionary atIndex:(NSInteger)index;
+
+- (NSMutableDictionary *)lastButtonDictionary;
+- (void)setLastButtonDictionary:(NSMutableDictionary *)buttonDictionary;
+
 // Dismissing the Alert View
 
 - (void)dismissWithClickedCancelButtonAnimated:(BOOL)animated;
 
 @end
+
+FOUNDATION_EXTERN NSString * const REUIAlertViewButtonDictionariesKey;

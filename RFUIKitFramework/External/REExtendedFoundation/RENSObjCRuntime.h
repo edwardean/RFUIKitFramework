@@ -42,6 +42,9 @@
 
 #import "RWObjCWrapper.h"
 
+#define NS_COMPARE(value1, value2) (((value1) < (value2)) ? (NSOrderedAscending) : (((value1) > (value2)) ? (NSOrderedDescending) : (NSOrderedSame)))
+#define NS_CASCADE_COMPARE(value1, value2, value3) (((value1) < (value2)) ? (NSOrderedAscending) : (((value1) > (value2)) ? (NSOrderedDescending) : (value3)))
+
 NS_INLINE NSComparisonResult NSInvertComparisonResult(NSComparisonResult comparisonResult)
 {
     NSComparisonResult invertedComparisonResult;

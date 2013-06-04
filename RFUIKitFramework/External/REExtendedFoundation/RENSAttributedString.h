@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSAttributedStringCast(attributedString) NSObjectCast(attributedString, NSAttributedString)
+#define NSMutableAttributedStringCast(attributedString) NSObjectCast(attributedString, NSMutableAttributedString)
 #define NSMutableAttributedStringCastOrCopy(attributedString) NSMutableObjectCastOrCopy(attributedString, NSMutableAttributedString)

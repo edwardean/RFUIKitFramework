@@ -40,6 +40,160 @@
 
 #import "REUIColor.h"
 
+#import "REExtendedFoundation.h"
+
+NSString *NSStringFromUIColor(UIColor *color)
+{
+    // Getting the color components.
+    CGFloat alpha = color.alpha;
+    CGFloat blue = color.blue;
+    CGFloat green = color.green;
+    CGFloat red = color.red;
+    
+    // Creating a string which represents the color.
+    NSString *string = [[NSString alloc] initWithFormat:@"{%g, %g, %g, %g}", red, green, blue, alpha];
+    
+    // Returning the string.
+    return string;
+}
+
+UIColor *UIColorFromNSString(NSString *string)
+{
+    CGFloat alpha = 0.0f;
+    CGFloat blue = 0.0f;
+    CGFloat green = 0.0f;
+    CGFloat red = 0.0f;
+    
+    NSMutableString *colorString = [string mutableCopy];
+    
+    if (colorString)
+    {
+        NSRange range = [colorString rangeOfString:(@"^"
+                                                    @"[^\\[\\{]*"
+                                                    @"[\\[\\{]"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^\\]\\}]+"
+                                                    @"[\\]\\}]?")
+                                           options:NSRegularExpressionSearch range:colorString.range];
+        
+        if (!NSRangeIsNotFound(range))
+        {
+            [colorString replaceOccurrencesOfString:(@"^"
+                                                     @"[^\\[\\{]*"
+                                                     @"[\\[\\{]")
+                                         withString:@""
+                                            options:NSRegularExpressionSearch
+                                              range:colorString.range];
+            
+            NSRange colorComponentsStringRange = [colorString rangeOfString:(@"^"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^\\]\\}]+")
+                                                                    options:NSRegularExpressionSearch range:colorString.range];
+            
+            NSCAssert(!NSRangeIsNotFound(colorComponentsStringRange), @"The method has a logical error.");
+            
+            NSRange deleteRange;
+            deleteRange.location = NSMaxRange(colorComponentsStringRange);
+            deleteRange.length = colorString.length - deleteRange.location;
+            
+            [colorString deleteCharactersInRange:deleteRange];
+            
+            NSArray *colorComponentStrings = [colorString componentsSeparatedByString:@","];
+            
+            NSCAssert((colorComponentStrings.count == 4), @"The method has a logical error.");
+            
+            red = [[colorComponentStrings objectAtIndex:0] floatValue];
+            green = [[colorComponentStrings objectAtIndex:1] floatValue];
+            blue = [[colorComponentStrings objectAtIndex:2] floatValue];
+            alpha = [[colorComponentStrings objectAtIndex:3] floatValue];
+        }
+    }
+    
+    UIColor *color = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:alpha];
+    
+    return color;
+}
+
+NSString *NSStringFromUIColor255(UIColor *color)
+{
+    // Getting the color components.
+    CGFloat alpha255 = color.alpha255;
+    CGFloat blue255 = color.blue255;
+    CGFloat green255 = color.green255;
+    CGFloat red255 = color.red255;
+    
+    // Creating a string which represents the color.
+    NSString *string = [[NSString alloc] initWithFormat:@"{%.0g, %.0g, %.0g, %.0g}", red255, green255, blue255, alpha255];
+    
+    // Returning the string.
+    return string;
+}
+
+UIColor *UIColorFromNSString255(NSString *string)
+{
+    CGFloat alpha255 = 0.0f;
+    CGFloat blue255 = 0.0f;
+    CGFloat green255 = 0.0f;
+    CGFloat red255 = 0.0f;
+    
+    NSMutableString *colorString = [string mutableCopy];
+    
+    if (colorString)
+    {
+        NSRange range = [colorString rangeOfString:(@"^"
+                                                    @"[^\\[\\{]*"
+                                                    @"[\\[\\{]"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^,\\]\\}]+,"
+                                                    @"[^\\]\\}]+"
+                                                    @"[\\]\\}]?")
+                                           options:NSRegularExpressionSearch range:colorString.range];
+        
+        if (!NSRangeIsNotFound(range))
+        {
+            [colorString replaceOccurrencesOfString:(@"^"
+                                                     @"[^\\[\\{]*"
+                                                     @"[\\[\\{]")
+                                         withString:@""
+                                            options:NSRegularExpressionSearch
+                                              range:colorString.range];
+            
+            NSRange colorComponentsStringRange = [colorString rangeOfString:(@"^"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^,\\]\\}]+,"
+                                                                             @"[^\\]\\}]+")
+                                                                    options:NSRegularExpressionSearch range:colorString.range];
+            
+            NSCAssert(!NSRangeIsNotFound(colorComponentsStringRange), @"The method has a logical error.");
+            
+            NSRange deleteRange;
+            deleteRange.location = NSMaxRange(colorComponentsStringRange);
+            deleteRange.length = colorString.length - deleteRange.location;
+            
+            [colorString deleteCharactersInRange:deleteRange];
+            
+            NSArray *colorComponentStrings = [colorString componentsSeparatedByString:@","];
+            
+            NSCAssert((colorComponentStrings.count == 4), @"The method has a logical error.");
+            
+            red255 = [[colorComponentStrings objectAtIndex:0] floatValue];
+            green255 = [[colorComponentStrings objectAtIndex:1] floatValue];
+            blue255 = [[colorComponentStrings objectAtIndex:2] floatValue];
+            alpha255 = [[colorComponentStrings objectAtIndex:3] floatValue];
+        }
+    }
+    
+    UIColor *color = [[UIColor alloc] initWithRed255:red255 green255:green255 blue255:blue255 alpha255:alpha255];
+    
+    return color;
+}
+
 @implementation UIColor (UIColorREUIColor)
 
 #pragma mark - Initializing and Creating a UIColor Object from Component Values

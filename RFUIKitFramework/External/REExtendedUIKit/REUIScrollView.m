@@ -51,9 +51,9 @@
     return [self view];
 }
 
-+ (id)scrollViewWithFrame:(CGRect)frame
++ (id)scrollViewWithFrame:(CGRect)viewFrame
 {
-    return [self viewWithFrame:frame];
+    return [self viewWithFrame:viewFrame];
 }
 
 #pragma mark - Managing the Display of Content

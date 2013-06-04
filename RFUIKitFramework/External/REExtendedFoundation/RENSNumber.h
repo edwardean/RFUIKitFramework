@@ -50,6 +50,8 @@
 
 @end
 
+#define NSNumberCast(string) NSObjectCast(string, NSNumber)
+
 FOUNDATION_EXTERN NSNumber * NSNumberCharNegativeOne;
 FOUNDATION_EXTERN NSNumber * NSNumberShortNegativeOne;
 FOUNDATION_EXTERN NSNumber * NSNumberIntNegativeOne;

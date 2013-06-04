@@ -40,6 +40,8 @@
 
 #import "REUIViewController.h"
 
+#import <objc/runtime.h>
+
 @implementation UIViewController (UIViewControllerREUIViewController)
 
 #pragma mark - Initializing and Creating a UIViewController
@@ -52,6 +54,72 @@
 + (id)viewControllerWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     return [[self alloc] initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+}
+
+#pragma mark - Configuring Display in a Popover Controller
+
+- (void)setContentSizeForViewInPopoverIfNeeded:(CGSize)newContentSizeForViewInPopover
+{
+    // Getting the old content size for the view in a popover.
+    CGSize oldContentSizeForViewInPopover = self.contentSizeForViewInPopover;
+    
+    // The olnd content size and new content size are different.
+    if (!CGSizeEqualToSize(oldContentSizeForViewInPopover, newContentSizeForViewInPopover))
+    {
+        // Applying the new content size for the view in a popover.
+        self.contentSizeForViewInPopover = newContentSizeForViewInPopover;
+    }
+}
+
+- (void)setModalInPopoverIfNeeded:(BOOL)newModalInPopover
+{
+    // Getting the old modal in a popover.
+    BOOL oldModalInPopover = self.modalInPopover;
+    
+    // The old modal and the new modal are diffeerent.
+    if (oldModalInPopover != newModalInPopover)
+    {
+        // Applying the new model in a popover.
+        self.modalInPopover = newModalInPopover;
+    }
+}
+
+@end
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
+static id UIViewController_PopoverController(UIViewController *self, SEL _cmd)
+{
+#pragma unused(_cmd)
+    
+    // Setting the default values.
+    UIPopoverController *popoverController = nil;
+    
+    // Getting the getter selector for the "popoverController" private property .
+    SEL popoverControllerSelector = NSSelectorFromString(@"_popoverController");
+    
+    if (popoverControllerSelector && [self respondsToSelector:popoverControllerSelector])
+    {
+        // Getting the popover controller via the privete property.
+        popoverController = [self performSelector:popoverControllerSelector];
+    }
+    
+    // Returning the popover controller.
+    return popoverController;
+}
+
+#pragma clang diagnostic pop
+
+@implementation UIViewController (UIViewControllerPrivateREUIViewController_Dynamic)
+
++ (void)load
+{
+    // Getting the getter selector for the "popoverController" private property .
+    SEL popoverControllerSelector = NSSelectorFromString(@"popoverController");
+    
+    // Adding the getter of the popoverController property if if is needed.
+    class_addMethod([UIViewController class], popoverControllerSelector, (IMP)UIViewController_PopoverController, "@8@0:4");
 }
 
 @end

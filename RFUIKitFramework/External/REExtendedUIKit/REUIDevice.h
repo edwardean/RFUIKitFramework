@@ -1,9 +1,9 @@
 //
-//  REUIGestureRecognizer.h
+//  REUIDevice.h
 //  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.08.
+//  Created by Roman Oliichuk on 2013.05.10.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,30 +41,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState);
-UIKIT_EXTERN UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string);
+@interface UIDevice (UIDeviceREUIDevice)
 
-@interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
+// Getting the Hardware Information.
 
-// Initializing and Creating a UIGestureRecognizer
-
-+ (id)gestureRecognizerWithTarget:(id)target action:(SEL)action;
-
-- (id)initWithBlockAction:(void (^)(id sender))block;
-+ (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
-
-// Managing the View
-
-- (void)removeFromView;
-
-// Adding and Removing Block Actions
-
-- (void)addBlockAction:(void (^)(id control))block;
-- (void)removeBlockAction:(void (^)(id control))block;
-
-- (NSMutableArray *)copyAllBlockActions;
-- (NSMutableArray *)allBlockActions;
+@property (nonatomic, readonly, strong) NSString *hardwareMachine; // The machine class. The property returns nil if it can not get machine class.
+@property (nonatomic, readonly, strong) NSString *hardwareModel;   // The machine model. The property returns nil if it can not get machine model.
 
 @end
-
-UIKIT_EXTERN NSString * const UIGestureRecognizerBlockActionsKey;

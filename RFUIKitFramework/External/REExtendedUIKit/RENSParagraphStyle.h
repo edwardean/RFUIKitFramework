@@ -43,4 +43,6 @@
 
 #import "REExtendedFoundation.h"
 
+#define NSParagraphStyleCast(paragraphStyle) NSObjectCast(paragraphStyle, NSParagraphStyle)
+#define NSMutableParagraphStyleCast(paragraphStyle) NSObjectCast(paragraphStyle, NSMutableParagraphStyle)
 #define NSMutableParagraphStyleCastOrCopy(paragraphStyle) NSMutableObjectCastOrCopy(paragraphStyle, NSMutableParagraphStyle)

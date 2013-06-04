@@ -1,9 +1,9 @@
 //
-//  REUIGestureRecognizer.h
+//  REUIContext.h
 //  REUIKitFramework
 //  https://github.com/oliromole/REExtendedUIKit.git
 //
-//  Created by Roman Oliichuk on 2012.11.08.
+//  Created by Roman Oliichuk on 2013.06.03.
 //  Copyright (c) 2012 Roman Oliichuk. All rights reserved.
 //
 
@@ -41,30 +41,5 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState);
-UIKIT_EXTERN UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string);
-
-@interface UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
-
-// Initializing and Creating a UIGestureRecognizer
-
-+ (id)gestureRecognizerWithTarget:(id)target action:(SEL)action;
-
-- (id)initWithBlockAction:(void (^)(id sender))block;
-+ (id)gestureRecognizerWithBlockAction:(void (^)(id sender))block;
-
-// Managing the View
-
-- (void)removeFromView;
-
-// Adding and Removing Block Actions
-
-- (void)addBlockAction:(void (^)(id control))block;
-- (void)removeBlockAction:(void (^)(id control))block;
-
-- (NSMutableArray *)copyAllBlockActions;
-- (NSMutableArray *)allBlockActions;
-
-@end
-
-UIKIT_EXTERN NSString * const UIGestureRecognizerBlockActionsKey;
+UIKIT_EXTERN NSString *NSStringFromCGBlendMode(CGBlendMode blendMode);
+UIKIT_EXTERN CGBlendMode CGBlendModeFromNSString(NSString *string);

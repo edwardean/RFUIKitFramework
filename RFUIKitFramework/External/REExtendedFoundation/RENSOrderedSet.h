@@ -42,4 +42,6 @@
 
 #import "RENSObject.h"
 
+#define NSOrderedSetCast(orderedSet) NSObjectCast(orderedSet, NSOrderedSet)
+#define NSMutableOrderedSetCast(orderedSet) NSObjectCast(orderedSet, NSMutableOrderedSet)
 #define NSMutableOrderedSetCastOrCopy(orderedSet) NSMutableObjectCastOrCopy(orderedSet, NSMutableOrderedSet)

@@ -51,9 +51,9 @@
     return [self view];
 }
 
-+ (id)labelWithFrame:(CGRect)frame
++ (id)labelWithFrame:(CGRect)viewFrame
 {
-    return [self viewWithFrame:frame];
+    return [self viewWithFrame:viewFrame];
 }
 
 #pragma mark - Drawing and Positioning Overrides

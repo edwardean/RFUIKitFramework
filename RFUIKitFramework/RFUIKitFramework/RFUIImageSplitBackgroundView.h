@@ -1,5 +1,5 @@
 //
-//  RFUIImageSplitBackgoundView.h
+//  RFUIImageSplitBackgroundView.h
 //  RFUIKitFramework
 //  https://github.com/oliromole/RFUIKitFramework.git
 //
@@ -38,21 +38,30 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "RFUISplitBackgoundView.h"
+#import "RFUISplitBackgroundView.h"
 
-@interface RFUIImageSplitBackgoundView : RFUISplitBackgoundView
+@interface RFUIImageSplitBackgroundView : RFUISplitBackgroundView
 {
 @protected
     
 }
 
-// Initialize and Creating a RFUISplitBackgoundView
+// Initialize and Creating a RFUISplitBackgroundView
 
 - (id)initWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22;
-+ (id)imageSplitBackgoundViewWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22;
++ (id)imageSplitBackgroundViewWithImage00:(UIImage *)image00 image01:(UIImage *)image01 image02:(UIImage *)image02 image10:(UIImage *)image10 image11:(UIImage *)image11 image12:(UIImage *)image12 image20:(UIImage *)image20 image21:(UIImage *)image21 image22:(UIImage *)image22;
 
 - (id)initWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22;
-+ (id)imageSplitBackgoundViewWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22;
++ (id)imageSplitBackgroundViewWithImageNamed00:(NSString *)imageNamed00 imageNamed01:(NSString *)imageNamed01 imageNamed02:(NSString *)imageNamed02 imageNamed10:(NSString *)imageNamed10 imageNamed11:(NSString *)imageNamed11 imageNamed12:(NSString *)imageNamed12 imageNamed20:(NSString *)imageNamed20 imageNamed21:(NSString *)imageNamed21 imageNamed22:(NSString *)imageNamed22;
+
+- (id)initWithImage:(UIImage *)image metadata:(NSDictionary *)metadata;
++ (id)imageSplitBackgroundViewWithImage:(UIImage *)image metadata:(NSDictionary *)metadata;
+
+- (id)initWithMetadata:(NSDictionary *)metadata;
++ (id)imageSplitBackgroundViewWithMetadata:(NSDictionary *)metadata;
+
+- (id)initWithMetadataNamed:(NSString *)metadataNamed;
++ (id)imageSplitBackgroundViewWithMetadataNamed:(NSString *)metadataNamed;
 
 // Managing the Content
 

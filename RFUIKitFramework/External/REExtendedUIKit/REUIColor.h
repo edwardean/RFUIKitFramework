@@ -41,6 +41,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+UIKIT_EXTERN NSString *NSStringFromUIColor(UIColor *color);
+UIKIT_EXTERN UIColor *UIColorFromNSString(NSString *string);
+
+UIKIT_EXTERN NSString *NSStringFromUIColor255(UIColor *color);
+UIKIT_EXTERN UIColor *UIColorFromNSString255(NSString *string);
+
 @interface UIColor (UIColorREUIColor)
 
 // Initializing and Creating a UIColor Object from Component Values

@@ -44,7 +44,68 @@
 
 #import "REUIBlockAction.h"
 
-NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlockActionsKey";
+NSString * NSStringFromUIGestureRecognizerState(UIGestureRecognizerState gestureRecognizerState)
+{
+    switch (gestureRecognizerState)
+    {
+        default:
+        case UIGestureRecognizerStatePossible:
+            return @"UIGestureRecognizerStatePossible";
+            
+        case UIGestureRecognizerStateBegan:
+            return @"UIGestureRecognizerStateBegan";
+            
+        case UIGestureRecognizerStateChanged:
+            return @"UIGestureRecognizerStateChanged";
+            
+        case UIGestureRecognizerStateEnded:
+            return @"UIGestureRecognizerStateEnded";
+            
+        case UIGestureRecognizerStateCancelled:
+            return @"UIGestureRecognizerStateCancelled";
+            
+        case UIGestureRecognizerStateFailed:
+            return @"UIGestureRecognizerStateFailed";
+    }
+}
+
+UIGestureRecognizerState UIGestureRecognizerStateFromNSString(NSString *string)
+{
+    if ([string isEqual:@"UIGestureRecognizerStatePossible"])
+    {
+        return UIGestureRecognizerStatePossible;
+    }
+    
+    else if ([string isEqual:@"UIGestureRecognizerStateBegan"])
+    {
+        return UIGestureRecognizerStateBegan;
+    }
+    
+    else if ([string isEqual:@"UIGestureRecognizerStateChanged"])
+    {
+        return UIGestureRecognizerStateChanged;
+    }
+    
+    else if ([string isEqual:@"UIGestureRecognizerStateEnded"])
+    {
+        return UIGestureRecognizerStateEnded;
+    }
+    
+    else if ([string isEqual:@"UIGestureRecognizerStateCancelled"])
+    {
+        return UIGestureRecognizerStateCancelled;
+    }
+    
+    else if ([string isEqual:@"UIGestureRecognizerStateFailed"])
+    {
+        return UIGestureRecognizerStateFailed;
+    }
+    
+    else
+    {
+        return UIGestureRecognizerStatePossible;
+    }
+}
 
 @implementation UIGestureRecognizer (UIGestureRecognizerREUIGestureRecognizer)
 
@@ -180,3 +241,5 @@ NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlock
 }
 
 @end
+
+NSString * const UIGestureRecognizerBlockActionsKey = @"UIGestureRecognizerBlockActionsKey";
