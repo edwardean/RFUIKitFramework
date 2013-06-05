@@ -51,6 +51,7 @@
     if ((self = [super initWithFrame:viewFrame]))
     {
         // Setting the default value.
+        mContentEdgeInsets = UIEdgeInsetsZero;
         mContentView = nil;
         mContentViewOptions = 0;
     }
@@ -79,10 +80,9 @@
     CGRect contentViewFrame;
     
     // Calculating the content view frame.
-    contentViewFrame.origin.x = 0.0f;
-    contentViewFrame.origin.y = 0.0f;
-    contentViewFrame.size.width = viewFrame.size.width;
-    contentViewFrame.size.height = viewFrame.size.height;
+    contentViewFrame.origin = CGPointZero;
+    contentViewFrame.size = viewFrame.size;
+    contentViewFrame = UIEdgeInsetsInsetRect(contentViewFrame, mContentEdgeInsets);
     
     // Applying the calculated content view frame to the all subviews.
     for (UIView *contentView in self.subviews)
@@ -93,6 +93,25 @@
 }
 
 #pragma mark - Accessing the Content View
+
+- (UIEdgeInsets)contentEdgeInsets
+{
+    // Returning the content edge insets.
+    return mContentEdgeInsets;
+}
+
+- (void)setContentEdgeInsets:(UIEdgeInsets)contentEdgeInsets
+{
+    // The old content edge insets and the new content edge insets are different.
+    if (!UIEdgeInsetsEqualToEdgeInsets(mContentEdgeInsets, contentEdgeInsets))
+    {
+        // Saving the new content edge insets.
+        mContentEdgeInsets = contentEdgeInsets;
+        
+        // Setting to need to layout.
+        [self setNeedsLayout];
+    }
+}
 
 - (UIView *)contentView
 {
@@ -131,6 +150,7 @@
         CGRect contentViewFrame;
         contentViewFrame.origin = CGPointZero;
         contentViewFrame.size = viewFrame.size;
+        contentViewFrame = UIEdgeInsetsInsetRect(contentViewFrame, mContentEdgeInsets);
         
         // Creating a content view.
         contentView = [[UIView alloc] initWithFrame:contentViewFrame];

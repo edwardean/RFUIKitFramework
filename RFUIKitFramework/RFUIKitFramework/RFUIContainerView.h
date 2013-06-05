@@ -52,12 +52,14 @@ typedef NS_OPTIONS(NSUInteger, RFUIContainerViewContentViewOptions)
 {
 @protected
     
+    UIEdgeInsets                         mContentEdgeInsets;
     UIView                              *mContentView;
     RFUIContainerViewContentViewOptions  mContentViewOptions;
 }
 
 // Managing the Content View
 
+@property (nonatomic)           UIEdgeInsets                         contentEdgeInsets;  // Default is UIEdgeInsetsZero.
 @property (nonatomic, strong)   UIView                              *contentView;
 @property (nonatomic)           RFUIContainerViewContentViewOptions  contentViewOptions; // Default value is 0.
 @property (nonatomic, readonly) BOOL                                 hasContentView;

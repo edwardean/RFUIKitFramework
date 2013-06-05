@@ -238,52 +238,125 @@
 
 - (void)updateStateView
 {
+    // Getting some information about the conroll.
     UIControlState controlState = self.state;
     BOOL tracking = self.tracking;
     
+    // The user is tracking touches.
     if (!tracking)
     {
+        // Correcting the control state.
         controlState &= ~UIControlStateHighlighted;
     }
     
-    UIControlState simpleControlState = UIControlStateNormal;
+    // Setting to need updata the state view.
+    BOOL needsUpdateStateView = YES;
     
-    if ((controlState & UIControlStateDisabled) == UIControlStateDisabled)
+    // Needs to update state view.
+    if (needsUpdateStateView)
     {
-        simpleControlState = UIControlStateDisabled;
-    }
-    
-    else if ((controlState & UIControlStateHighlighted) == UIControlStateHighlighted)
-    {
-        simpleControlState = UIControlStateHighlighted;
-    }
-    
-    else if ((controlState & UIControlStateSelected) == UIControlStateSelected)
-    {
-        simpleControlState = UIControlStateSelected;
-    }
-    
-    NSNumber *simpleControlStateNumber = [[NSNumber alloc] initWithUnsignedInteger:simpleControlState];
-    
-    UIView *simpleStateView = [mStateViews objectForKey:simpleControlStateNumber];
-    
-    for (NSNumber *stateNumber in mStateViews)
-    {
-        UIView *stateView = [mStateViews objectForKey:stateNumber];
+        // Trying to update the state view for multi control state.
         
-        if (stateView != simpleStateView)
+        // Getting the control state as a number.
+        NSNumber *controlStateNumber = [[NSNumber alloc] initWithUnsignedInteger:controlState];
+        
+        // Getting the state view for the control state.
+        UIView *stateView = [mStateViews objectForKey:controlStateNumber];
+        
+        // We have the state view.
+        if (stateView)
         {
-            if (stateView.superview)
+            // Reseting the flag to need update the state view.
+            needsUpdateStateView = NO;
+            
+            // Enumerating all the state.
+            for (NSNumber *stateNumber in mStateViews)
             {
-                [stateView removeFromSuperview];
+                // Getting the state view for the state.
+                UIView *stateView2 = [mStateViews objectForKey:stateNumber];
+                
+                // The state view is not the current state view.
+                if (stateView2 != stateView)
+                {
+                    // The state view is shown.
+                    if (stateView2.superview)
+                    {
+                        // Hiding the state view.
+                        [stateView2 removeFromSuperview];
+                    }
+                }
+            }
+            
+            // We need to show the current state view.
+            if (stateView && !stateView.superview)
+            {
+                // Showing the current state view.
+                [self addSubview:stateView];
             }
         }
     }
     
-    if (simpleStateView && !simpleStateView.superview)
+    // Needs to update state view.
+    if (needsUpdateStateView)
     {
-        [self addSubview:simpleStateView];
+        // Trying to update the state view for simple control state.
+        
+        // Getting the control state as a number.
+        needsUpdateStateView = NO;
+        
+        // Calculating the simple conrol state.
+        UIControlState simpleControlState = UIControlStateNormal;
+        
+        if ((controlState & UIControlStateDisabled) == UIControlStateDisabled)
+        {
+            simpleControlState = UIControlStateDisabled;
+        }
+        
+        else if ((controlState & UIControlStateHighlighted) == UIControlStateHighlighted)
+        {
+            simpleControlState = UIControlStateHighlighted;
+        }
+        
+        else if ((controlState & UIControlStateSelected) == UIControlStateSelected)
+        {
+            simpleControlState = UIControlStateSelected;
+        }
+        
+        // Getting the simple control state as a number.
+        NSNumber *simpleControlStateNumber = [[NSNumber alloc] initWithUnsignedInteger:simpleControlState];
+        
+        // Getting the state view for the simple control state.
+        UIView *simpleStateView = [mStateViews objectForKey:simpleControlStateNumber];
+        
+        // Enumerating all the state.
+        for (NSNumber *stateNumber in mStateViews)
+        {
+            // Getting the state view for the state.
+            UIView *stateView = [mStateViews objectForKey:stateNumber];
+            
+            // The state view is not the current state view.
+            if (stateView != simpleStateView)
+            {
+                // The state view is shown.
+                if (stateView.superview)
+                {
+                    // Hiding the state view.
+                    [stateView removeFromSuperview];
+                }
+            }
+        }
+        
+        // We need to show the current state view.
+        if (simpleStateView && !simpleStateView.superview)
+        {
+            // Showing the current state view.
+            [self addSubview:simpleStateView];
+        }
     }
+    
+    // Deceiving the static analyzer.
+    needsUpdateStateView = needsUpdateStateView;
+    
 }
 
 #pragma mark - UIControl Events
