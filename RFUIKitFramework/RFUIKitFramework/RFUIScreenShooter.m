@@ -110,7 +110,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         if (!result &&
             !(error && [error.domain isEqual:NSCocoaErrorDomain] && (error.code == NSFileWriteFileExistsError)))
         {
-            NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
+            NSLog(@"WARNING: The -[%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
         }
         
         mTimeInterval = 1.0;
@@ -166,7 +166,7 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         if (!result &&
             !(error && [error.domain isEqual:NSCocoaErrorDomain] && (error.code == NSFileWriteFileExistsError)))
         {
-            NSLog(@"WARNING: The [%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
+            NSLog(@"WARNING: The -[%@ %@] method can not create the directory at path:\n%@\nError:\n%@\nUserInfo:\n%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), mScreenshotsPath, error, error.userInfo);
         }
     }
 }
@@ -342,8 +342,10 @@ static RFUIScreenShooter * volatile RFUIScreenShooter_SharedShooter = nil;
         // Drawing the window image.
         
         CGRect windowImageFrame;
-        windowImageFrame.origin = CGPointZero;
-        windowImageFrame.size = mainWindowSize;
+        windowImageFrame.origin.x = 0.0f;
+        windowImageFrame.origin.y = 0.0f;
+        windowImageFrame.size.width = scale * mainWindowSize.width;
+        windowImageFrame.size.height = scale * mainWindowSize.height;
         
         CGContextDrawImage(screenshotContextRef, windowImageFrame, windowImageRef);
         

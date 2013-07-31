@@ -41,6 +41,7 @@
 #import "RFUIPageScrollView.h"
 
 #import "REExtendedFoundation.h"
+#import "REExtendedUIKit.h"
 
 #import "RFUIPageScrollViewCell.h"
 
@@ -59,19 +60,30 @@
 {
     if ((self = [super initWithFrame:viewFrame]))
     {
+        // Setting the default values.
         mDataSource = nil;
         
+        // Setting the default values.
         mNumberOfRows = 0;
         mNumberOfColumns = 0;
         
+        // Setting the default values.
         mOldPageIndePath = nil;
         mPageIndexPath = nil;
         mPageSize = self.bounds.size;
         mRows = [[NSMutableArray alloc] init];
         mVisibleCells = [[NSMutableArray alloc] init];
         
+        // Creating the container view.
+        mContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0, 0.0)];
+        
+        // Setting the flag to need to reload the data.
         mNeedsReloadData = YES;
         
+        // Building the view hierarchy.
+        [self addSubview:mContainerView];
+        
+        // Configuring the page scroll view.
         self.pagingEnabled = YES;
     }
     
@@ -82,12 +94,19 @@
 
 - (void)dealloc
 {
+    // Releasing the container view.
+    mContainerView = nil;
+    
+    // Releasing the old page index path.
     mOldPageIndePath = nil;
     
+    // Releasing the page index path.
     mPageIndexPath = nil;
     
+    // Releasing the rows.
     mRows = nil;
     
+    // Releasing the visible cells.
     mVisibleCells = nil;
 }
 
@@ -119,10 +138,7 @@
                 contentOffset.y = newPageSize.height * mOldPageIndePath.row;
             }
             
-            if (!CGPointEqualToPoint(self.contentOffset, contentOffset))
-            {
-                [self setContentOffset:contentOffset animated:NO];
-            }
+            [self setContentOffsetIfNeeded:contentOffset animated:NO];
         }
         
         CGRect viewFrame = self.frame;
@@ -131,10 +147,7 @@
         contentSize.width = mNumberOfColumns * viewFrame.size.width;
         contentSize.height = mNumberOfRows * viewFrame.size.height;
         
-        if (!CGSizeEqualToSize(self.contentSize, contentSize))
-        {
-            self.contentSize = contentSize;
-        }
+        [self setContentSizeIfNeeded:contentSize];
         
         viewFrame = self.frame;
         CGPoint contentOffset = self.contentOffset;
@@ -189,10 +202,7 @@
                     pageScrollViewCellFrame.size.width = viewFrame.size.width;
                     pageScrollViewCellFrame.size.height = viewFrame.size.height;
                     
-                    if (!CGRectEqualToRect(pageScrollViewCell.frame, pageScrollViewCellFrame))
-                    {
-                        pageScrollViewCell.frame = pageScrollViewCellFrame;
-                    }
+                    [pageScrollViewCell setFrameIfNeeded:pageScrollViewCellFrame];
                     
                     [indexPaths removeObject:indexPath];
                     
@@ -225,15 +235,12 @@
             pageScrollViewCellFrame.size.width = viewFrame.size.width;
             pageScrollViewCellFrame.size.height = viewFrame.size.height;
             
-            if (!CGRectEqualToRect(pageScrollViewCell.frame, pageScrollViewCellFrame))
-            {
-                pageScrollViewCell.frame = pageScrollViewCellFrame;
-            }
+            [pageScrollViewCell setFrameIfNeeded:pageScrollViewCellFrame];
             
             [[mRows objectAtIndex:(NSUInteger)indexPath.row] replaceObjectAtIndex:(NSUInteger)indexPath.column withObject:pageScrollViewCell];
             [mVisibleCells addObject:pageScrollViewCell];
             
-            [self addSubview:pageScrollViewCell];
+            [mContainerView addSubview:pageScrollViewCell];
         }
     }
 }
@@ -349,6 +356,32 @@
             mOldPageIndePath = mPageIndexPath;
         }
     }
+}
+
+- (CGSize)contentSize
+{
+    // Getting the content size.
+    CGSize contentSize = super.contentSize;
+    
+    // Returning the content size.
+    return contentSize;
+}
+
+- (void)setContentSize:(CGSize)contentSize
+{
+    // Setting new content size.
+    super.contentSize = contentSize;
+    
+    // Getting the actual content size
+    contentSize = super.contentSize;
+    
+    // Calculating the frame for the container view.
+    CGRect containerFrame;
+    containerFrame.origin = CGPointZero;
+    containerFrame.size = contentSize;
+    
+    // Applying the calculated frame for the container view.
+    [mContainerView setFrameIfNeeded:containerFrame];
 }
 
 #pragma mark - Managing the Delegate
@@ -550,7 +583,7 @@
         
         [mVisibleCells removeAllObjects];
         
-        // Geting Info.
+        // Getting Info.
         
         mNumberOfRows = [self numberOfRowsInDataSource];
         mNumberOfColumns = [self numberOfColumnsInDataSource];
@@ -574,19 +607,13 @@
         contentSize.width = mNumberOfColumns * viewFrame.size.width;
         contentSize.height = mNumberOfRows * viewFrame.size.height;
         
-        if (!CGSizeEqualToSize(self.contentSize, contentSize))
-        {
-            self.contentSize = contentSize;
-        }
+        [self setContentSizeIfNeeded:contentSize];
         
         [self setNeedsLayout];
         
         CGPoint contentOffset = CGPointZero;
         
-        if (!CGPointEqualToPoint(self.contentOffset, contentOffset))
-        {
-            [self setContentOffset:contentOffset animated:NO];
-        }
+        [self setContentOffsetIfNeeded:contentOffset animated:NO];
         
         [self calculatePageIndex];
     }
@@ -678,17 +705,14 @@
             
             CGRect pageScrollViewCell2Frame = pageScrollViewCell.frame;
             
-            if (!CGRectEqualToRect(pageScrollViewCell2.frame, pageScrollViewCell2Frame))
-            {
-                pageScrollViewCell2.frame = pageScrollViewCell2Frame;
-            }
+            [pageScrollViewCell2 setFrameIfNeeded:pageScrollViewCell2Frame];
             
             [[mRows objectAtIndex:(NSUInteger)indexPath.row] replaceObjectAtIndex:(NSUInteger)indexPath.column withObject:pageScrollViewCell2];
             [mVisibleCells removeObjectIdenticalTo:pageScrollViewCell];
             [mVisibleCells addObject:pageScrollViewCell2];
             
             [pageScrollViewCell removeFromSuperview];
-            [self addSubview:pageScrollViewCell2];
+            [mContainerView addSubview:pageScrollViewCell2];
         }
     }
 }
@@ -713,10 +737,7 @@
     contentOffset.x = viewBounds.size.width * pageIndexPath.column;
     contentOffset.y = viewBounds.size.height * pageIndexPath.row;
     
-    if (!CGPointEqualToPoint(self.contentOffset, contentOffset))
-    {
-        [self setContentOffset:contentOffset animated:animated];
-    }
+    [self setContentOffsetIfNeeded:contentOffset animated:animated];
 }
 
 @end

@@ -73,19 +73,22 @@
 {
     [super layoutSubviews];
     
-    // Getting the view frame.
-    CGRect viewFrame = self.frame;
+    // Getting the view bounds.
+    CGRect viewBounds = self.bounds;
     
     // Declaring some variables.
     CGRect contentViewFrame;
     
     // Calculating the content view frame.
     contentViewFrame.origin = CGPointZero;
-    contentViewFrame.size = viewFrame.size;
+    contentViewFrame.size = viewBounds.size;
     contentViewFrame = UIEdgeInsetsInsetRect(contentViewFrame, mContentEdgeInsets);
     
+    // Getting subviews.
+    NSArray *subviews = [self.subviews copy];
+    
     // Applying the calculated content view frame to the all subviews.
-    for (UIView *contentView in self.subviews)
+    for (UIView *contentView in subviews)
     {
         // Applying the calculated content view frame.
         [contentView setFrameIfNeeded:contentViewFrame];
@@ -143,13 +146,13 @@
     if (!contentView &&
         ((mContentViewOptions & RFUIContainerViewContentViewCreateAutomatic) == RFUIContainerViewContentViewCreateAutomatic))
     {
-        // Getting the view frame.
-        CGRect viewFrame = self.frame;
+        // Getting the view bounds.
+        CGRect viewBounds = self.bounds;
         
         // Calculating the frame for the content view.
         CGRect contentViewFrame;
         contentViewFrame.origin = CGPointZero;
-        contentViewFrame.size = viewFrame.size;
+        contentViewFrame.size = viewBounds.size;
         contentViewFrame = UIEdgeInsetsInsetRect(contentViewFrame, mContentEdgeInsets);
         
         // Creating a content view.
@@ -281,9 +284,9 @@
             }
             
             // Searching the index of views.
-            NSArray *subvies = [self subviews];
-            NSUInteger indexOfContentView = [subvies indexOfObjectIdenticalTo:contentView];
-            NSUInteger indexOfPositionView = [subvies indexOfObjectIdenticalTo:positionView];
+            NSArray *subviews = self.subviews;
+            NSUInteger indexOfContentView = [subviews indexOfObjectIdenticalTo:contentView];
+            NSUInteger indexOfPositionView = [subviews indexOfObjectIdenticalTo:positionView];
             
             // We found the indices.
             if ((indexOfContentView != NSNotFound) &&

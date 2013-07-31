@@ -52,6 +52,7 @@
     
     id<RFUIPageScrollViewDataSource> __weak mDataSource;
     
+    UIView         *mContainerView;
     BOOL            mNeedsReloadData;
     NSInteger       mNumberOfRows;
     NSInteger       mNumberOfColumns;
